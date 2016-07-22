@@ -1,0 +1,14 @@
+[1]
+    Name = "Posts"
+    Title = "Show list of posts"
+    URL = "/post"
+
+[2]
+    Name = "Tags"
+    Title = "Show list of tags"
+    URL = "/tags"
+
+[3]
+    Name = "Series"
+    Title = "Show list of series"
+    URL = "/series"
