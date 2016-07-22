@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Continuous Time  &middot; Random Notes</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="" />
+
+<meta name="keywords" content="math, continuous time, ">
+
+
+<meta property="og:title" content="Continuous Time  &middot; Random Notes ">
+<meta property="og:site_name" content="Random Notes"/>
+<meta property="og:url" content="http://notes.spencerlyon.com/2015/01/12/continuous-time/" />
+<meta property="og:locale" content="en-EN">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content=""/>
+<meta property="og:article:published_time" content="2015-01-12T00:00:00Z" />
+<meta property="og:article:modified_time" content="2015-01-12T00:00:00Z" />
+
+  
+    
+<meta property="og:article:tag" content="math">
+    
+<meta property="og:article:tag" content="continuous time">
+    
+  
+
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@" />
+<meta name="twitter:title" content="Continuous Time" />
+<meta name="twitter:description" content="" />
+<meta name="twitter:url" content="http://notes.spencerlyon.com/2015/01/12/continuous-time/" />
+<meta name="twitter:domain" content="http://notes.spencerlyon.com/">
+  
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "Continuous Time",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2015-01-12",
+    "description": "",
+    "wordCount":  374 
+  }
+</script>
+
+
+
+<link rel="canonical" href="http://notes.spencerlyon.com/2015/01/12/continuous-time/" />
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://notes.spencerlyon.com/touch-icon-144-precomposed.png">
+<link href="http://notes.spencerlyon.com/favicon.png" rel="icon">
+
+<meta name="generator" content="Hugo 0.16-DEV" />
+
+  <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link href='https://fonts.googleapis.com/css?family=Merriweather:300%7CRaleway%7COpen+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="http://notes.spencerlyon.com/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://notes.spencerlyon.com/css/style.css">
+<link rel="stylesheet" href="http://notes.spencerlyon.com/css/highlight/solarized_dark.css">
+
+  
+</head>
+<body>
+  <main id="main-wrapper" class="container main_wrapper has-sidebar">
+    <header id="main-header" class="container main_header">
+  <div class="container brand">
+  <div class="container title h1-like">
+  <a class="baselink" href="http://notes.spencerlyon.com/">
+  <em>Random Notes</em>
+
+</a>
+
+</div>
+
+  
+<div class="container topline">
+  
+  Spencer Lyon
+
+
+</div>
+
+
+</div>
+
+  <nav class="container nav primary no-print">
+  
+
+<a class="homelink" href="http://notes.spencerlyon.com/">Random Notes</a>
+
+
+  
+<a href="http://notes.spencerlyon.com/post" title="Show list of posts">Posts</a>
+
+<a href="http://notes.spencerlyon.com/tags" title="Show list of tags">Tags</a>
+
+<a href="http://notes.spencerlyon.com/series" title="Show list of series">Series</a>
+
+
+</nav>
+
+<div class="container nav secondary no-print">
+  
+<a id="contact-link-email" class="contact_link" href="mailto:spencer.lyon@stern.nyu.edu">
+  <span class="fa fa-envelope-square"></span><span>email</span></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+  
+
+</header>
+
+
+<article id="main-content" class="container main_content single">
+  <header class="container hat">
+  <h1>Continuous Time
+</h1>
+
+  <div class="metas">
+<time datetime="2015-01-12">12 Jan, 2015</time>
+
+
+  
+    &middot; by Spencer Lyon
+  
+  &middot; Read in about 2 min
+  &middot; (374 Words)
+  <br>
+  
+<a class="label" href="http://notes.spencerlyon.com/tags/math">math</a>
+
+<a class="label" href="http://notes.spencerlyon.com/tags/continuous-time">continuous time</a>
+
+
+
+</div>
+
+</header>
+
+  <div class="container content">
+  
+
+<h1 id="continuous-time-macro">Continuous Time Macro</h1>
+
+<h2 id="solving-an-hjb">Solving an HJB</h2>
+
+<p>The HJB usually takes the form</p>
+
+<p>$$\rho V_t (N<em>t) = \max</em>{C, a} \left{ u&copy; + \mathcal{A} V_t(N_t)\right},$$</p>
+
+<p>where $\mathcal{A} V_t(N_t)$ is the drift of $dV_T(N_t)$, $\rho$ is the discount rate, $u&copy;$ is the flow payoff of $C$. To solve this equation follow these steps:</p>
+
+<ol>
+<li>Take FOC wrt controls (here $C, a$)</li>
+<li>Stare at it for a while and make a guess of the functional form of the solution to the PDE. In this case if $u&copy; = \ln&copy;$ we would have chosen $V(N) = v_0 + v_1 \ln(N)$. You really learn how to do this by practice.</li>
+<li>Plug the assumed functional form into the HJB (take necessary derivatives and replace all instances of $V(N)$)</li>
+<li>Plug in FOC from step 1</li>
+<li>Use method of undetermined coefficients to extract coefficients in assumed functional form. If you are unable to do this, try one more time because you might have made a dumb algebra mistake. After that start over at step 2 with a new guess</li>
+</ol>
+
+<p><em>Note:</em> If you aren&rsquo;t able to provide an explicit functional form, but rather have a more general guess like $V(x, y) = f(x) + y g(x)$, then you should alter your approach slightly. Starting from step 5 you will need to do the following:</p>
+
+<ol>
+<li>You should be able to use the method of undetermined coefficients to come up with ODEs for each of the generic functions in your guess (in this case $f$, and $g$).</li>
+<li>Solve these ODEs however you know how</li>
+<li>If you can&rsquo;t, you probably made a bad guess for the form of the solution, so start over at step 2.</li>
+</ol>
+
+<h2 id="ito-processes">Ito processes</h2>
+
+<h3 id="gbm">GBM</h3>
+
+<p>A geometric Brownian motion solves the following SDE</p>
+
+<p>$$dS_t = \mu S_t dt + \sigma S_t dW_t.$$</p>
+
+<p>The solution is</p>
+
+<p>$$S_t = S_0 \exp \left( \left(\mu - \frac{\sigma^2}{2} \right)t + \sigma W_t \right).$$</p>
+
+<p>We often write GMB as</p>
+
+<p>$$\frac{dS_t}{S_t} = \mu dt + \sigma dW_t$$</p>
+
+<p>or even in terms of $d \log S_t$. By Ito&rsquo;s lemma we have that</p>
+
+<p>$$d \log S_t = \frac{d S_t}{S_t} - \frac{1}{2} \sigma^2 dt.$$</p>
+
+<p>Solving for $\frac{d S_t}{S_t}$ and matching coefficients we see that we must have</p>
+
+<ul>
+<li>drift of $d \log S_t = \mu - \frac{1}{2} \sigma^2$</li>
+<li>Volatility of $d \log S_t = \sigma$.</li>
+</ul>
+
+</div>
+
+
+  <footer class="container">
+  <div class="container navigation no-print">
+  <h2>Navigation</h2>
+  
+  
+
+    
+    <a class="prev" href="http://notes.spencerlyon.com/2014/12/02/the-jupyter-notebook/" title="The Jupyter Notebook">
+      Previous
+    </a>
+    
+
+    
+    <a class="next" href="http://notes.spencerlyon.com/2015/01/29/scala-notes/" title="Scala Notes">
+      Next
+    </a>
+    
+
+  
+
+
+</div>
+
+  <div class="container comments">
+  <h2>Comments</h2>
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//sglyon.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+</article>
+      <footer id="main-footer" class="container main_footer">
+  <script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+  <div class="container nav foot no-print">
+  
+
+  <a class="toplink" href="#">back to top</a>
+
+</div>
+
+  <div class="container credits">
+  
+<div class="container footline">
+  
+
+</div>
+
+
+  
+<div class="container copyright">
+  
+  &copy; 2015 Spencer Lyon.
+
+
+</div>
+
+
+</div>
+
+</footer>
+
+    </main>
+    
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//sglyon.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+<script src="http://notes.spencerlyon.com/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+    
+  </body>
+</html>
+

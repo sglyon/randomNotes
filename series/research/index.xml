@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Research on Random Notes</title>
+    <link>http://notes.spencerlyon.com/series/research/</link>
+    <description>Recent content in Research on Random Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-EN</language>
+    <managingEditor>spencer.lyon@stern.nyu.edu (Spencer Lyon)</managingEditor>
+    <webMaster>spencer.lyon@stern.nyu.edu (Spencer Lyon)</webMaster>
+    <copyright>(c) 2015 Spencer Lyon.</copyright>
+    <lastBuildDate>Tue, 05 May 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://notes.spencerlyon.com/series/research/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Referee_reports</title>
+      <link>http://notes.spencerlyon.com/2015/05/05/referee_reports/</link>
+      <pubDate>Tue, 05 May 2015 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2015/05/05/referee_reports/</guid>
+      <description>&lt;p&gt;Tips from Gianluca about writing referee reports:&lt;/p&gt;
+
+&lt;p&gt;Remember that when you are writing a referee report, you are writing the report to the &lt;em&gt;editor&lt;/em&gt;. Make it easy for them to read and reference by:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Number points in critical assessment section&lt;/li&gt;
+&lt;li&gt;Don&amp;rsquo;t just say &amp;laquo;I don&amp;rsquo;t like this assumption&amp;raquo;. Instead, with each criticism do these three steps:
+
+&lt;ol&gt;
+&lt;li&gt;Don&amp;rsquo;t like this&lt;/li&gt;
+&lt;li&gt;Here&amp;rsquo;s why&lt;/li&gt;
+&lt;li&gt;Here&amp;rsquo;s a better alternative&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

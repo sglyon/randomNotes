@@ -1,0 +1,891 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hacking on Random Notes</title>
+    <link>http://notes.spencerlyon.com/series/hacking/</link>
+    <description>Recent content in Hacking on Random Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-EN</language>
+    <managingEditor>spencer.lyon@stern.nyu.edu (Spencer Lyon)</managingEditor>
+    <webMaster>spencer.lyon@stern.nyu.edu (Spencer Lyon)</webMaster>
+    <copyright>(c) 2015 Spencer Lyon.</copyright>
+    <lastBuildDate>Wed, 01 Jun 2016 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://notes.spencerlyon.com/series/hacking/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Rust</title>
+      <link>http://notes.spencerlyon.com/2016/06/01/rust/</link>
+      <pubDate>Wed, 01 Jun 2016 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2016/06/01/rust/</guid>
+      <description>
+
+&lt;h2 id=&#34;openssl:d3c7600f67cc433a55785816ff4c3a47&#34;&gt;openssl&lt;/h2&gt;
+
+&lt;p&gt;I couldn&amp;rsquo;t get any cargo projects that depend on open ssl to build. I just did:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;brew install openssl
+brew link --force openssl
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Answer came from &lt;a href=&#34;https://github.com/sfackler/rust-openssl/issues/255#issuecomment-145092826&#34;&gt;here&lt;/a&gt;)&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>GitHub pro tips</title>
+      <link>http://notes.spencerlyon.com/2016/01/04/github-pro-tips/</link>
+      <pubDate>Mon, 04 Jan 2016 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2016/01/04/github-pro-tips/</guid>
+      <description>
+
+&lt;h2 id=&#34;post-commit-hooks:93ed8abeb42c248f3c551d1cb44159d4&#34;&gt;Post-commit hooks&lt;/h2&gt;
+
+&lt;p&gt;You can use github post commit hooks to send an HTTP payload to a server after
+every commit. The payload will contain data about the commit that you can then
+use to trigger arbitrary actions (e.g. run scripts) on the server.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve used a simple go library &lt;a href=&#34;https://github.com/adnanh/webhook&#34;&gt;webhook&lt;/a&gt; to do
+this. To get it up and running I did the following:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Install &lt;code&gt;webhook&lt;/code&gt; with: &lt;code&gt;go get github.com/adnanh/webhook&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Configure a post-commit webhook on github by:
+
+&lt;ul&gt;
+&lt;li&gt;Going to the repository settings then &amp;laquo;Webhooks and services&amp;raquo;&lt;/li&gt;
+&lt;li&gt;Clicking &amp;laquo;Add webook&amp;raquo;&lt;/li&gt;
+&lt;li&gt;Enter &lt;code&gt;http://SERVER-IP:9000/hooks/HOOK-ID&lt;/code&gt;, where &lt;code&gt;SERVER-IP&lt;/code&gt; is the ip address of the server and &lt;code&gt;HOOK-ID&lt;/code&gt; is the name of a hook I will use in the next step&lt;/li&gt;
+&lt;li&gt;Enter a &amp;laquo;password&amp;raquo; in the &lt;code&gt;secret&lt;/code&gt; field. Will be used later&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Create a &lt;code&gt;hooks.json&lt;/code&gt; file with the contents of &lt;a href=&#34;https://github.com/adnanh/webhook/wiki/Hook-Examples#incoming-github-webhook&#34;&gt;this example&lt;/a&gt;. In the example &lt;code&gt;HOOK-ID&lt;/code&gt; is given by the &lt;code&gt;&amp;quot;id&amp;quot;&lt;/code&gt; field in the only element of the JSON array.&lt;/li&gt;
+&lt;li&gt;Change the &lt;code&gt;execute-command&lt;/code&gt; to the script I want to run and &lt;code&gt;command-working-directory&lt;/code&gt; to where I want ro run the script (also change the &lt;code&gt;secret&lt;/code&gt; to what I chose in step 2)&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;$GOPATH/bin/webhook -hooks hooks.json -verbose&lt;/code&gt; to start the server (assumes &lt;code&gt;$GOPATH&lt;/code&gt; is set properly)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;That&amp;rsquo;s it! Now, every time we push a commit to master the script runs locally on
+our machine.&lt;/p&gt;
+
+&lt;p&gt;Note that if we kill the process running webhook the hooks won&amp;rsquo;t work anymore. I
+start the server on a remote machine using &lt;code&gt;nohup&lt;/code&gt; and &lt;code&gt;&amp;amp;&lt;/code&gt;. The actual command I
+used was&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;nohup $GOPATH/bin/webhook -hooks hooks.json -verbose &amp;gt; webhook.out 2&amp;gt; webhook.err &amp;lt; /dev/null &amp;amp;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;See the example &lt;code&gt;hook.json&lt;/code&gt; file &lt;a href=&#34;https://github.com/DaveBackus/Data_Bootcamp/blob/master/website/hook.json&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;jupyter-notebooks-in-gists:93ed8abeb42c248f3c551d1cb44159d4&#34;&gt;Jupyter notebooks in gists&lt;/h2&gt;
+
+&lt;p&gt;Here’s what I do to put a notebook in a gist:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Go here &lt;a href=&#34;https://gist.github.com&#34;&gt;https://gist.github.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Create a new public gist&lt;/li&gt;
+&lt;li&gt;Name the file &lt;code&gt;my_notebook.ipynb&lt;/code&gt; and write ​_something_​ in it.&lt;/li&gt;
+&lt;li&gt;Once the gist has been created and you are viewing it click the url and copy the big long string at the end. It could look like &lt;code&gt;82e0defcbddb09dd021df771bcf5a4b6&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Clone the gist as a repo to your computer using &lt;code&gt;git clone git@gist.github.com:BIGLONGSTRING.git notebook_gist&lt;/code&gt; where &lt;code&gt;BIGLONGSTRING&lt;/code&gt; is the thing from step 4 and &lt;code&gt;notebook_gist&lt;/code&gt; is the name of the folder on your comptuer&lt;/li&gt;
+&lt;li&gt;Copy your actual notebook into &lt;code&gt;notebook_gist&lt;/code&gt; folder, then add, commit, push like normal&lt;/li&gt;
+&lt;li&gt;After pushing go to &lt;a href=&#34;http://nbviewer.jupyter.org&#34;&gt;nbviewer&lt;/a&gt; and paste &lt;code&gt;BIGLONGSTRING&lt;/code&gt; into the seach box on their site. This should load up the notebook from your gist and you&amp;rsquo;re done!&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;To update the notebook, simply put a new version of it into that &lt;code&gt;notebook_gist&lt;/code&gt; repo, commit, and push. The changes should go live on nbviewer.&lt;/p&gt;
+
+&lt;p&gt;If you aren&amp;rsquo;t seeing an updated version of the notebook after pushing to the gist repo, you might need to visit the url in private mode or reset the browser cache.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>OSX tips</title>
+      <link>http://notes.spencerlyon.com/2015/09/18/osx-tips/</link>
+      <pubDate>Fri, 18 Sep 2015 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2015/09/18/osx-tips/</guid>
+      <description>&lt;p&gt;When I install Iterm fresh I need to do a few things in settings -&amp;gt; profiles -&amp;gt; keys:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Change so left option is Esc+&lt;/li&gt;
+&lt;li&gt;Map option right arrow to escape sequence f&lt;/li&gt;
+&lt;li&gt;Map option left arrow to escape sequence b&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I got the last two tips from &lt;a href=&#34;http://apple.stackexchange.com/questions/136928/using-alt-cmd-right-left-arrow-in-iterm&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Using Docker</title>
+      <link>http://notes.spencerlyon.com/2015/07/01/using-docker/</link>
+      <pubDate>Wed, 01 Jul 2015 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2015/07/01/using-docker/</guid>
+      <description>&lt;p&gt;Common commands I use:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;boot2docker up&lt;/code&gt;: This launches the boot2docker daemon on osx. After running I then have to copy/paste the &lt;code&gt;export&lt;/code&gt; statements printed by this command to set up ports. An alternative is &lt;code&gt;$(boot2docker shellinit)&lt;/code&gt;, which will do the copy/pase of &lt;code&gt;export&lt;/code&gt;s for me.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker ps -a&lt;/code&gt;: lists all containers&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker rm $(docker ps -a -q)&lt;/code&gt;: remove all containers (running or not)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker images&lt;/code&gt;: list local images&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker run IMAGE_NAME&lt;/code&gt;: runs the docker image. NOTE: often not useful because you also need to&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker run -it IMAGE_NAME COMMAND&lt;/code&gt;: runs &lt;code&gt;COMMAND&lt;/code&gt; inside the image &lt;code&gt;IMAGE_NAME&lt;/code&gt; and leaves you in terminal/interactive mode. This is most often what I use. Often the command is &lt;code&gt;/bin/bash&lt;/code&gt; to just drop me into the terminal&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker run -it -v LOCAL_PATH:REMOTE_PATH IMAGE_NAME COMMAND&lt;/code&gt;: runs &lt;code&gt;COMMAND&lt;/code&gt;: like the above, but maps a local file/folder at &lt;code&gt;LOCAL_PATH&lt;/code&gt; to the image&amp;rsquo;s filesystem at &lt;code&gt;REMOTE_PATH&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker stop $(docker ps -a -q)&lt;/code&gt;: stops all processes&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker build -t USERNAME/IMAGE_NAME .&lt;/code&gt;: Use the dockerfile in the current directory to build an image. Tag the image with the &lt;code&gt;USERNAME&lt;/code&gt; and &lt;code&gt;IMAGE_NAME&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker search NAME&lt;/code&gt;: searches dockerhub for images containing &lt;code&gt;NAME&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker pull USERNAME/IMAGE_NAME&lt;/code&gt;: Pulls image &lt;code&gt;USERNAME/IMAGE_NAME&lt;/code&gt; from dockerhub&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker history USERNAME/IMAGE_NAME&lt;/code&gt;: shows the history of an image&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker rmi IMAGE_ID1 IMAGE_ID2&lt;/code&gt;: remove images by ID. Can list multiple images at once&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker stop IMAGE_ID&lt;/code&gt;: stops an image&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker run -p IMAGE_PORT:LOCAL_PORT ....&lt;/code&gt;: runs an image (with other args and image name omitted) and maps port &lt;code&gt;IMAGE_PORT&lt;/code&gt; on the image to &lt;code&gt;LOCAL_PORT&lt;/code&gt; on my machine.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>HPC</title>
+      <link>http://notes.spencerlyon.com/2015/05/11/hpc/</link>
+      <pubDate>Mon, 11 May 2015 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2015/05/11/hpc/</guid>
+      <description>
+
+&lt;h1 id=&#34;julia-and-mercer&#34;&gt;Julia and mercer&lt;/h1&gt;
+
+&lt;p&gt;Here are some tips, tricks I&amp;rsquo;ve picked up for working with Julia on NYUs super
+computer.&lt;/p&gt;
+
+&lt;h2 id=&#34;installing-julia&#34;&gt;Installing Julia&lt;/h2&gt;
+
+&lt;p&gt;I have a shell script that I periodically run to download the latest released
+version of Julia:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;#!/usr/bin/env sh
+
+wget -O julia_binary.tar.gz https://julialang.s3.amazonaws.com/bin/linux/x64/0.4/julia-0.4-latest-linux-x86_64.tar.gz
+
+rm -rf $WORK/src/julia*
+mkdir -p $WORK/src/julia
+tar -C $WORK/src/julia -zxf julia_binary.tar.gz --strip-components=1
+rm julia_binary.tar.gz
+
+# prepend julia to path
+export PATH=$WORK/src/julia/bin:$PATH
+
+# remove old symlink and make a new one
+mkdir $WORK/bin
+rm -f $WORK/bin/julia
+ln -s $WORK/src/julia/bin/julia $WORK/bin/julia
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I put this in a file &lt;code&gt;$WORK/bin/update_julia&lt;/code&gt;, then whenever I need to update
+my julia installation I do &lt;code&gt;bash $WORK/bin/update_julia&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;This script will put the Julia binary in &lt;code&gt;$WORK/bin/julia&lt;/code&gt; (that&amp;rsquo;s what I enter
+to run Julia.)&lt;/p&gt;
+
+&lt;h2 id=&#34;installing-specific-packages&#34;&gt;Installing specific packages&lt;/h2&gt;
+
+&lt;p&gt;Most packages are installable using either &lt;code&gt;Pkg.clone&lt;/code&gt; or &lt;code&gt;Pkg.add&lt;/code&gt;. However,
+some require extra setup.&lt;/p&gt;
+
+&lt;p&gt;Here are specailized instructions for installing specific packages.&lt;/p&gt;
+
+&lt;h3 id=&#34;hdf5-jl&#34;&gt;HDF5.jl&lt;/h3&gt;
+
+&lt;p&gt;I first tried &lt;code&gt;Pkg.add(&amp;quot;HDF5&amp;quot;)&lt;/code&gt;. That didn&amp;rsquo;t work. The problem is that I don&amp;rsquo;t
+have access to a package manager on mercer, so I need to link against libhdf5
+that is already on mercer.&lt;/p&gt;
+
+&lt;p&gt;I tracked down the shared library on mercer and found that it was at the
+following location (NOTE: you might want to check it there are more recent
+versions available):&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;/share/apps/hdf5/1.8.14/openmpi/intel/lib/libhdf5.so.9&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Then I edited &lt;code&gt;$HOME/.julia/v0.4/HDF5/deps/deps.jl&lt;/code&gt; to look like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-julia&#34;&gt;# This is an auto-generated file; do not edit
+
+# Pre-hooks
+
+# Macro to load a library
+macro checked_lib(libname, path)
+    ((VERSION &amp;gt;= v&amp;quot;0.4.0-dev+3844&amp;quot; ? Base.Libdl.dlopen_e : Base.dlopen_e)(path) == C_NULL) &amp;amp;&amp;amp; error(&amp;quot;Unable to load \n\n$libname ($path)\n\nPlease re-run Pkg.build(package), and restart Julia.&amp;quot;)
+    quote const $(esc(libname)) = $path end
+end
+
+# Load dependencies
+@checked_lib libhdf5 &amp;quot;/share/apps/hdf5/1.8.14/openmpi/intel/lib/libhdf5.so.9&amp;quot;
+# Load-hooks
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You might need to create both the &lt;code&gt;HDF5/deps&lt;/code&gt; folder and the file &lt;code&gt;deps.jl&lt;/code&gt;.
+You should now be able to start a Julia session and run &lt;code&gt;using HDF5&lt;/code&gt; and it
+will work without a problem.&lt;/p&gt;
+
+&lt;p&gt;You do &lt;strong&gt;not&lt;/strong&gt; need to run &lt;code&gt;Pkg.build(&amp;quot;HDF5&amp;quot;)&lt;/code&gt; after updating deps.jl&lt;/p&gt;
+
+&lt;h3 id=&#34;mbedtls-jl&#34;&gt;MbedTLS.jl&lt;/h3&gt;
+
+&lt;p&gt;If you need to install MbedTLS.jl or if it is a dependency of something else
+you need to install, you will probably see an error about &lt;code&gt;cmake&lt;/code&gt; not being
+available when you do &lt;code&gt;Pkg.add(&amp;quot;MbedTLS&amp;quot;)&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The fix here is to simply run &lt;code&gt;module load cmake&lt;/code&gt; at the shell prompt, then
+start Julia in that same session, and try &lt;code&gt;Pkg.add(&amp;quot;MbedTLS&amp;quot;)&lt;/code&gt; or
+&lt;code&gt;Pkg.build(&amp;quot;MbedTLS&amp;quot;)&lt;/code&gt; again (run &lt;code&gt;Pkg.build&lt;/code&gt; if you already tried &lt;code&gt;Pkg.add&lt;/code&gt;
+and it failed).&lt;/p&gt;
+
+&lt;h1 id=&#34;mpi-jobs&#34;&gt;MPI jobs&lt;/h1&gt;
+
+&lt;p&gt;I got this script from &lt;a href=&#34;http://csc.cnsi.ucsb.edu/docs/running-jobs-torque&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;NOTE: if you are using Julia with multiple processors, skip this section and
+move to the next one.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#!/bin/sh
+##############################################################################
+# IMPORTANT:  the next line determines how many nodes to run on
+#  nodes is number of nodes, ppn= processors (cores) per node
+#PBS -l nodes=2:ppn=4
+#
+# Make sure that we are in the same subdirectory as where the qsub command
+# is issued.
+#
+cd $PBS_O_WORKDIR
+#
+#  make a list of allocated nodes(cores)
+#  Note that if multiple jobs run in same directory, use different names
+#     for example, add on jobid nmber.
+cat $PBS_NODEFILE &amp;gt; nodes
+# How many cores total do we have?
+NO_OF_CORES=`cat $PBS_NODEFILE | egrep -v &#39;^#&#39;\|&#39;^$&#39; | wc -l | awk &#39;{print $1}&#39;`
+NODE_LIST=`cat $PBS_NODEFILE `
+#
+# Just for kicks, see which nodes we got.
+echo $NODE_LIST
+#
+# Run the executable. *DO NOT PUT* a &#39;&amp;amp;&#39; at the end!!
+#
+mpirun -np $NO_OF_CORES -machinefile nodes ./pi3 &amp;gt;&amp;amp; log
+#
+#########################################
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The following also looked like good resources:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://wikis.nyu.edu/display/NYUHPC/Running+jobs+-+MPI&#34;&gt;https://wikis.nyu.edu/display/NYUHPC/Running+jobs+-+MPI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://wiki.anl.gov/cnm/HPC/Submitting_and_Managing_Jobs/Example_Job_Script&#34;&gt;https://wiki.anl.gov/cnm/HPC/Submitting_and_Managing_Jobs/Example_Job_Script&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;julia-on-a-cluster&#34;&gt;Julia on a cluster&lt;/h2&gt;
+
+&lt;p&gt;I can&amp;rsquo;t just do &lt;code&gt;julia -p N&lt;/code&gt; or &lt;code&gt;addprocs(N)&lt;/code&gt; to get it to work. That would
+give me &lt;code&gt;N&lt;/code&gt; procs on the login node. What I need instead is to use the
+&lt;code&gt;machinefile&lt;/code&gt; option for starting Julia and give it  the &lt;code&gt;$PBS_NODEFILE&lt;/code&gt;. This
+is an example of a PBS script I had that worked:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#PBS -l nodes=1:ppn=20
+#PBS -l walltime=10:00:00
+#PBS -N gerzensee
+#PBS -M spencer.lyon@nyu.edu
+#PBS -m abe
+#PBS -j oe
+#PBS -t 1,9
+
+module purge
+
+# this moves us to the directory where qsub was submitted
+# should be $WORK/Research/Gerzesee/Code/international
+cd $PBS_O_WORKDIR
+
+# cat $PBS_NODEFILE | sed -e &#39;s/.local$/-ib.ibnet/&#39; &amp;gt; my_machines
+# cat $PBS_NODEFILE &amp;gt; my_machines
+
+# run the code! -- use machinefile to start one julia on each process
+/work/sgl290/bin/julia --machinefile $PBS_NODEFILE driver.jl
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In this example I started two jobs (with &lt;code&gt;PBS_ARRAYID&lt;/code&gt; equal to 1 and 9). Each
+job used 20 cores on one node for 10 hours. The path &lt;code&gt;/work/sgl290/bin/julia&lt;/code&gt;
+is the path that was set up for me by running the shell script from above.&lt;/p&gt;
+
+&lt;p&gt;In this example &lt;code&gt;driver.jl&lt;/code&gt; looked like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-julia&#34;&gt;include(&amp;quot;main.jl&amp;quot;)
+using JLD
+
+for i in workers()
+    remotecall_fetch(i, include, &amp;quot;main.jl&amp;quot;)
+end
+
+# set up arguments
+model_id = parse(Int, get(ENV[&amp;quot;PBS_ARRAYID&amp;quot;], &amp;quot;1&amp;quot;))
+
+# CODE TO DO THE WORK USING using all the cores.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;There are a few things to point out about this code. First &lt;code&gt;main.jl&lt;/code&gt; is a file
+that collects all the code I will be running. I first call &lt;code&gt;include(&amp;quot;main.jl&amp;quot;)&lt;/code&gt;
+and then go through all the workers and call &lt;code&gt;remotecall_fetch(i, include,
+&amp;quot;main.jl&amp;quot;)&lt;/code&gt; to load it on each process. I do it this way for a few reasons:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Loading is only on the master process first allows all precompilation to take
+place without multiple processes trying to write the same &lt;code&gt;.ji&lt;/code&gt; files at the
+same time&lt;/li&gt;
+&lt;li&gt;I include the file sequentially on all workers again so that no worker steps
+on another worker&amp;rsquo;s toes.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I then extract an integer &lt;code&gt;model_id&lt;/code&gt; that specifies which job is currently
+running. This number corresponds to the job number from the pbs script
+(integers 1 and 9 in the example above). I use this to drive which
+parameterization I am working with.&lt;/p&gt;
+
+&lt;p&gt;The comment at the end is simply there as a placeholder for you to put the code
+that actually does the work.&lt;/p&gt;
+
+&lt;h1 id=&#34;sharing-folders&#34;&gt;Sharing folders&lt;/h1&gt;
+
+&lt;p&gt;To share a folder &lt;code&gt;/scratch/sgl290/awesomeness&lt;/code&gt; with user &lt;code&gt;abc123&lt;/code&gt; I would need
+to enter the following commands on mercer:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;setfacl -m u:abc123:rx /scratch/sgl290
+setfacl -Rm u:abc123:rwx,d:u:abc123:rwx /scratch/sgl290/awesomeness
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The first command gives read and execute permissions to my scratch folder &amp;ndash;
+necessary for letting them enter the folder and it&amp;rsquo;s children.&lt;/p&gt;
+
+&lt;p&gt;The second command gives him read, write, exceute permissions to the
+awesomeness folder all sub files/folders.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Using Pandoc</title>
+      <link>http://notes.spencerlyon.com/2015/04/09/using-pandoc/</link>
+      <pubDate>Thu, 09 Apr 2015 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2015/04/09/using-pandoc/</guid>
+      <description>&lt;p&gt;I have tweaked my pandoc settings. They are mostly a copy of &lt;a href=&#34;https://github.com/kjhealy/pandoc-templates&#34;&gt;Keiran Healy&amp;rsquo;s&lt;/a&gt; settings, but I have made a few modifications.&lt;/p&gt;
+
+&lt;p&gt;These are the steps I took to get things working how I wanted to:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;git clone git@github.com:kjhealy/pandoc-templates.git&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;that directory into &lt;code&gt;~/.pandoc&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;s&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt; :See the readme for &lt;a href=&#34;https://github.com/spencerlyon2/pandoc-templates&#34;&gt;my pandoc-templates&lt;/a&gt; repo&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Scala Notes</title>
+      <link>http://notes.spencerlyon.com/2015/01/29/scala-notes/</link>
+      <pubDate>Thu, 29 Jan 2015 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2015/01/29/scala-notes/</guid>
+      <description>
+
+&lt;h1 id=&#34;scala&#34;&gt;Scala&lt;/h1&gt;
+
+&lt;h2 id=&#34;notes-from-functional-programming-in-scala&#34;&gt;Notes from &amp;laquo;Functional Programming in Scala&amp;raquo;&lt;/h2&gt;
+
+&lt;p&gt;The &lt;code&gt;Option&lt;/code&gt; class in
+&lt;a href=&#34;https://github.com/spencerlyon2/fpinscala/blob/master/exercises/src/main/scala/fpinscala/errorhandling/Option.scala&#34;&gt;Option.scala&lt;/a&gt;
+and the &lt;code&gt;RNG&lt;/code&gt; class in
+&lt;a href=&#34;https://github.com/spencerlyon2/fpinscala/blob/master/exercises/src/main/scala/fpinscala/state/State.scala&#34;&gt;State.scala&lt;/a&gt;
+have examples of using &lt;code&gt;flatMap&lt;/code&gt; to implement &lt;code&gt;map2&lt;/code&gt;. The pattern is common, but
+a bit weird. Stare at it for a while if you want to figure out how powerful
+&lt;code&gt;flatMap&lt;/code&gt; is.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>The Jupyter Notebook</title>
+      <link>http://notes.spencerlyon.com/2014/12/02/the-jupyter-notebook/</link>
+      <pubDate>Tue, 02 Dec 2014 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2014/12/02/the-jupyter-notebook/</guid>
+      <description>
+
+&lt;h1 id=&#34;ipynb:4fa1436551b3df29c2923e4fe3e62959&#34;&gt;Ipynb&lt;/h1&gt;
+
+&lt;h2 id=&#34;slidemode:4fa1436551b3df29c2923e4fe3e62959&#34;&gt;Slidemode&lt;/h2&gt;
+
+&lt;p&gt;To activate slide mode I did the following&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Clone nbextensions repo into the right place:&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code&gt;cd ~/.ipython
+git clone git@github.com:ipython-contrib/IPython-notebook-extensions.git nbextensions
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Edit &lt;code&gt;~/.ipython/profile_default&lt;/code&gt; and &lt;code&gt;~/.ipython/profile_default&lt;/code&gt; so that in the section titled &lt;code&gt;$([IPython.events]).on(&#39;app_initialized.NotebookApp&#39;, function(){&lt;/code&gt; I had the line &lt;code&gt;IPython.load_extensions(&#39;slidemode/main&#39;)&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;If I want to use nbconvert to give me reveal.js slides and then view them locally I need to start a python webserver:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ipython nbconvert --to slides my_notebook.ipynb
+python -m SimpleHTTPServer 8000
+open http://127.0.0.1:8000
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;registering-kernels-in-ipython-3-0:4fa1436551b3df29c2923e4fe3e62959&#34;&gt;Registering kernels in IPython 3.0+&lt;/h2&gt;
+
+&lt;p&gt;IPython versions 3.0+ have a great feature where you can launch the notebook and then select the kernel you want from a dropdown list. Right now I have python2, python3, R, and Julia ready to go. This makes it so we can switch from notebooks in different languages without having to restart IPython.&lt;/p&gt;
+
+&lt;p&gt;To register a new kernel you only need to create a file named &lt;code&gt;kernel.json&lt;/code&gt; in &lt;code&gt;~/.ipython/kernels/&amp;lt;language_name&amp;gt;/kernel.json&lt;/code&gt;. For example I have:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;HW2|master⚡ ⇒ cat ~/.ipython/kernels/julia/kernel.json
+{
+ &amp;quot;display_name&amp;quot;: &amp;quot;Julia&amp;quot;,
+ &amp;quot;language&amp;quot;: &amp;quot;julia&amp;quot;,
+ &amp;quot;argv&amp;quot;: [
+    &amp;quot;julia&amp;quot;,
+    &amp;quot;-i&amp;quot;,
+    &amp;quot;-F&amp;quot;,
+    &amp;quot;/Users/sglyon/.julia/v0.3/IJulia/src/kernel.jl&amp;quot;,
+    &amp;quot;{connection_file}&amp;quot;
+ ],
+ &amp;quot;codemirror_mode&amp;quot;:&amp;quot;julia&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;HW2|master⚡ ⇒ cat ~/.ipython/kernels/ir/kernel.json
+{&amp;quot;argv&amp;quot;: [&amp;quot;R&amp;quot;,&amp;quot;-e&amp;quot;,&amp;quot;IRkernel::main()&amp;quot;,&amp;quot;--args&amp;quot;,&amp;quot;{connection_file}&amp;quot;],
+ &amp;quot;display_name&amp;quot;:&amp;quot;R&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;HW2|master⚡ ⇒ cat ~/.ipython/kernels/python3/kernel.json
+{
+ &amp;quot;argv&amp;quot;: [&amp;quot;/Users/sglyon/anaconda/envs/py3/bin/python3&amp;quot;, &amp;quot;-m&amp;quot;, &amp;quot;IPython.kernel&amp;quot;,
+          &amp;quot;-f&amp;quot;, &amp;quot;{connection_file}&amp;quot;],
+ &amp;quot;display_name&amp;quot;: &amp;quot;Python 3&amp;quot;,
+ &amp;quot;language&amp;quot;: &amp;quot;python&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;remote-access-to-ipynb:4fa1436551b3df29c2923e4fe3e62959&#34;&gt;Remote access to ipynb&lt;/h3&gt;
+
+&lt;p&gt;See also the note about setting up a persistent notebook on GCE in the cloud.md file.&lt;/p&gt;
+
+&lt;h3 id=&#34;extensions:4fa1436551b3df29c2923e4fe3e62959&#34;&gt;Extensions&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/ipython-contrib/IPython-notebook-extensions/wiki/config-extension&#34;&gt;https://github.com/ipython-contrib/IPython-notebook-extensions/wiki/config-extension&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Editing: &lt;code&gt;/usr/local/share/jupyter/nbextensions/livereveal/main.js&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;hello&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Cloud tips</title>
+      <link>http://notes.spencerlyon.com/2014/10/05/cloud-tips/</link>
+      <pubDate>Sun, 05 Oct 2014 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2014/10/05/cloud-tips/</guid>
+      <description>
+
+&lt;h1 id=&#34;cloud:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;Cloud&lt;/h1&gt;
+
+&lt;h2 id=&#34;aws:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;AWS&lt;/h2&gt;
+
+&lt;h3 id=&#34;persistent-notebook:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;Persistent notebook&lt;/h3&gt;
+
+&lt;p&gt;I have a persistent instance running.&lt;/p&gt;
+
+&lt;p&gt;I followed &lt;a href=&#34;https://grollchristian.wordpress.com/2014/09/01/ijulia-for-amazon-ec2/&#34;&gt;this blog post&lt;/a&gt; to get it set up.&lt;/p&gt;
+
+&lt;p&gt;I can connect to it via&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ssh -i ~/dotfiles/sglyon-mbp.pem.txt ubuntu@ec2-54-201-41-126.us-west-2.compute.amazonaws.com
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;ipython notebook --profile=julia&lt;/code&gt; is running. I can connect to it from any browser by going to&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;https://ec2-54-201-41-126.us-west-2.compute.amazonaws.com:8998
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The password is &lt;code&gt;lyon0409&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;I needed to add the &lt;code&gt;IJulia all tcp&lt;/code&gt; security group to the instance through the AWS online management console.&lt;/p&gt;
+
+&lt;h4 id=&#34;new-user:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;new user&lt;/h4&gt;
+
+&lt;p&gt;I made a new user here by following the ideas &lt;a href=&#34;http://brianflove.com/2013/06/18/add-new-sudo-user-to-ec2-ubuntu/&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;mounting-a-volume:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;Mounting a volume&lt;/h4&gt;
+
+&lt;p&gt;I mounted a volume to &lt;code&gt;~/storage&lt;/code&gt; (&lt;code&gt;sudo mount /dev/xvdf /home/sglyon/storage)&lt;/code&gt;, but didn&amp;rsquo;t have permission to do anything. To fix that I chowned it: &lt;code&gt;sudo chown -R sglyon ~/storage&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;gce:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;GCE&lt;/h2&gt;
+
+&lt;p&gt;First step is to install the tools. This is a one time thing where I enter this command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;curl https://sdk.cloud.google.com | bash
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then follow the prompts and such until it is installed. I chose the directory &lt;code&gt;~/google-cloud-sdk&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;I didn&amp;rsquo;t have it alter my path for me, but  I added the following line in my list where I set &lt;code&gt;$PATH&lt;/code&gt; from within my ~/.zshenv:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$HOME/google-cloud-sdk/bin
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;julia-and-gce:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;Julia and GCE&lt;/h3&gt;
+
+&lt;p&gt;I (partially) followed &lt;a href=&#34;http://www.blog.juliaferraioli.com/2013/12/julia-on-google-compute-engine.html&#34;&gt;this blog post&lt;/a&gt; to get things started.&lt;/p&gt;
+
+&lt;p&gt;To create a new instance from the command line I need to run the following&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;gcloud compute --project &amp;quot;sgl-julia&amp;quot; instances create &amp;quot;instance-name&amp;quot; --zone &amp;quot;us-central1-b&amp;quot; --machine-type &amp;quot;n1-standard-1&amp;quot; --network &amp;quot;default&amp;quot; --maintenance-policy &amp;quot;MIGRATE&amp;quot; --scopes &amp;quot;https://www.googleapis.com/auth/devstorage.read_only&amp;quot; --image &amp;quot;https://www.googleapis.com/compute/v1/projects/sgl-julia/global/images/julia-src-deb-10212014&amp;quot; --no-boot-disk-auto-delete
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;where &lt;code&gt;instance-name&lt;/code&gt; is replaced with the actual name of the instance I want to create.&lt;/p&gt;
+
+&lt;p&gt;I can then ssh into the new instance (after it is created) by running&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;gcloud compute --project &amp;quot;sgl-julia&amp;quot; ssh --zone &amp;quot;us-central1-b&amp;quot; &amp;quot;instance-name&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If I want to select a different type of instance, I would change the &lt;code&gt;--machine-type&lt;/code&gt; parameter name. See &lt;a href=&#34;https://developers.google.com/compute/pricing&#34;&gt;this page&lt;/a&gt; for an explanation of the different types and prices.&lt;/p&gt;
+
+&lt;p&gt;To turn off (delete) my instance I would enter the following command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;gcloud compute --project &amp;quot;sgl-julia&amp;quot; instances delete &amp;quot;instance-1&amp;quot; --zone &amp;quot;us-central1-b&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If I also wanted to delete the corresponding persistent disk I would enter&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;gcloud compute --project &amp;quot;sgl-julia&amp;quot; disks delete &amp;quot;instance-1&amp;quot; --zone &amp;quot;us-central1-b&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;writing-the-package:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;Writing the package&lt;/h4&gt;
+
+&lt;p&gt;I had to install &lt;a href=&#34;https://github.com/markcarver/mac-ssh-askpass&#34;&gt;this script&lt;/a&gt; in order for ssh to work. I did the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cd ~/Downloads
+git clone https://github.com/markcarver/mac-ssh-askpass
+cd mac-ssh-askpass
+sudo ./INSTALL
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The package also requires that &lt;code&gt;gcloud&lt;/code&gt; and friends are installed.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Terminal Tips</title>
+      <link>http://notes.spencerlyon.com/2014/07/13/terminal-tips/</link>
+      <pubDate>Sun, 13 Jul 2014 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2014/07/13/terminal-tips/</guid>
+      <description>
+
+&lt;h1 id=&#34;terminal:115290b373a664e595e935c25cb1d0c4&#34;&gt;Terminal&lt;/h1&gt;
+
+&lt;h2 id=&#34;connecting-via-flooty:115290b373a664e595e935c25cb1d0c4&#34;&gt;Connecting via flooty&lt;/h2&gt;
+
+&lt;p&gt;This command starts a process so someone can log in to my machine:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;flootty --create TomTerminal --url=https://floobits.com/cc7768/ChaseTomShared --unsafe
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This command allows someone to log in after the command above has been entered&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;flootty --url=https://floobits.com/cc7768/ChaseTomShared TomTerminal
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;git:115290b373a664e595e935c25cb1d0c4&#34;&gt;git&lt;/h2&gt;
+
+&lt;p&gt;I like to view diffs in Kaleidoscope.&lt;/p&gt;
+
+&lt;p&gt;There are a few ways&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# This compares file/folder XXX from branch1 and branch2.
+git difftool branch1 branch2 XXX
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# This compares file/folder XXX from current working state and branch2
+git difftool HEAD branch2 XXX
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;setting-up-ssh-into-stern-machine:115290b373a664e595e935c25cb1d0c4&#34;&gt;Setting up ssh into stern machine.&lt;/h2&gt;
+
+&lt;p&gt;I had to run the following commands on the stern desktop&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo apt-get install openssh-server
+sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.factory-defaults
+sudo chmod a-w /etc/ssh/sshd_config.factory-defaults
+sudo restart ssh
+
+sudo touch ~/.ssh/authorized_keys
+chmod 600 ~/.ssh/authorized_keys
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then I had to copy contents of the file &lt;code&gt;~/.ssh/id_rsa.pub&lt;/code&gt;  on this machine to &lt;code&gt;~/.ssh/authorized_keys&lt;/code&gt; on the office machine. I did this with the following command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cat ~/.ssh/id_rsa.pub | ssh username@ip_address -p PORTnumber &#39;cat &amp;gt;&amp;gt; .ssh/authorized_keys&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then I was good to go.&lt;/p&gt;
+
+&lt;h2 id=&#34;slow-ssh-to-from-osx:115290b373a664e595e935c25cb1d0c4&#34;&gt;Slow ssh to/from osx&lt;/h2&gt;
+
+&lt;p&gt;I needed to change the following two things.&lt;/p&gt;
+
+&lt;p&gt;On client machine in &lt;code&gt;/ect/ssh_config&lt;/code&gt; I replaced&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# GSSAPIKeyExchange yes
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;with&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;GSSAPIKeyExchange no
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;On the remote machine in &lt;code&gt;/ect/sshd_config&lt;/code&gt; I replaced&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#UseDNS yes
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;with&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;UseDNS no
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;restart-computer-via-terminal:115290b373a664e595e935c25cb1d0c4&#34;&gt;Restart computer via terminal&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;ssh user@host sudo /sbin/shutdown -r now
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Linux Tips</title>
+      <link>http://notes.spencerlyon.com/2013/12/28/linux-tips/</link>
+      <pubDate>Sat, 28 Dec 2013 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2013/12/28/linux-tips/</guid>
+      <description>
+
+&lt;h2 id=&#34;dpkg-errors&#34;&gt;dpkg errors&lt;/h2&gt;
+
+&lt;p&gt;I wasn&amp;rsquo;t able to get &lt;code&gt;apt-get&lt;/code&gt; to do anything. The problem was that my &lt;code&gt;/boot&lt;/code&gt; partition was full.&lt;/p&gt;
+
+&lt;p&gt;I checked that this was the problem using&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;df -i
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;and&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;df -i
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I then iterated on the following two commands:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;dpkg -l linux-{image,headers}-&amp;quot;[0-9]*&amp;quot; | awk &#39;/^ii/{ print $2}&#39; | grep -v -e `uname -r | cut -f1,2 -d&amp;quot;-&amp;quot;` | grep -e &#39;[0-9]&#39; | xargs sudo apt-get -y -f purge
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;and&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;sudo apt-get -f autoremove
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Somehow it worked.&lt;/p&gt;
+
+&lt;p&gt;Followed hints &lt;a href=&#34;http://askubuntu.com/questions/89710/how-do-i-free-up-more-space-in-boot&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;curl-certs&#34;&gt;curl certs&lt;/h3&gt;
+
+&lt;p&gt;Sometimes when updating a Julia package that uses &lt;code&gt;curl&lt;/code&gt; to get dependencies I get the following error:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                Dload  Upload   Total   Spent    Left  Speed
+ 0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0curl: (77) error setting certificate verify locations:
+ CAfile: /etc/pki/tls/certs/ca-bundle.crt
+ CApath: none
+================================[ ERROR: Blosc ]================================
+
+failed process: Process(`curl -f -o c-blosc-1.5.3.tar.gz -L https://github.com/Blosc/c-blosc/archive/v1.5.3.tar.gz`, ProcessExited(77)) [77]
+while loading /home/ap/.julia/v0.3/Blosc/deps/build.jl, in expression starting on line 17
+
+================================================================================
+INFO: Building HDF5
+INFO: Building LightXML
+INFO: Building ZMQ
+
+================================[ BUILD ERRORS ]================================
+
+WARNING: Blosc had build errors.
+
+- packages with build errors remain installed in /home/ap/.julia/v0.3
+- build the package(s) and all dependencies with `Pkg.build(&amp;quot;Blosc&amp;quot;)`
+- build a single package by running its `deps/build.jl` script
+
+===============================================================================
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To fix it I entered the following from the terminal&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;echo &amp;quot;cacert=/etc/ssl/certs/ca-certificates.crt&amp;quot; &amp;gt;&amp;gt; ~/.curlrc
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;That fixed it&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Julia</title>
+      <link>http://notes.spencerlyon.com/2013/02/12/julia/</link>
+      <pubDate>Tue, 12 Feb 2013 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2013/02/12/julia/</guid>
+      <description>
+
+&lt;h2 id=&#34;tips-and-tricks&#34;&gt;Tips and tricks&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Sometimes you want to have a reference to a variable defined within a scoped block when that block finished. To do that declare &lt;code&gt;local varname&lt;/code&gt; as in this example from the Gadfly source:
+&lt;code&gt;julia
+local xs, ys
+try
+(xs, ys) = map(toVecOrDist, (aes.x, aes.y))
+catch e
+error(&amp;quot;Stat.qq requires that x and y be bound to either a Distribution or to arrays of plain numbers.&amp;quot;)
+end
+&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;calling-c-code&#34;&gt;Calling C code&lt;/h2&gt;
+
+&lt;h3 id=&#34;compiling-c-extensions-in-osx&#34;&gt;Compiling C extensions in OSX&lt;/h3&gt;
+
+&lt;p&gt;Consider the following C file (call it &lt;code&gt;pisum.c&lt;/code&gt;):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-C&#34;&gt;#include&amp;lt;math.h&amp;gt;
+
+double pisum(long n)
+{
+    int i;
+    double j;
+    j=0;
+    for (i = 1; i &amp;lt; n; i++)
+    {
+        j += pow(-1, i + 1) / (2.0*i-1);
+    }
+    j=4*j;
+    return j;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I would compile this for use in Julia using&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ gcc -shared -fPIC pisum.c -o pisum
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then In julia I can wrap it like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-julia&#34;&gt;c_pisum(x=80000000) = ccall((:pisum, &amp;quot;pisum&amp;quot;), Float64, (Clong), convert(Clong, x))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;compiling-in-ubuntu&#34;&gt;Compiling in ubuntu&lt;/h3&gt;
+
+&lt;p&gt;I need to do these things in ubuntu for same example&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ gcc -c -Wall -Werror -fpic my_c_file.c
+$ gcc -shared -o lib_my_c_lib.so my_c_file.o
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then in julia I call it like this&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-julia&#34;&gt;c_pisum3() = ccall((:foo, &amp;quot;lib_my_c_lib.so&amp;quot;), ...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;why-do-i-like-julia-for-economics&#34;&gt;Why do I like Julia for Economics?&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Fast
+
+&lt;ul&gt;
+&lt;li&gt;Economists write down problems with many state variables&lt;/li&gt;
+&lt;li&gt;Solve functional equations on that state space&lt;/li&gt;
+&lt;li&gt;explicit looping iteration over matrices that represent those functions on&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Functional
+
+&lt;ul&gt;
+&lt;li&gt;Proper support for concepts for basic functional programming makes code readable and concise
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;do&lt;/code&gt; notation&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;map&lt;/code&gt;, &lt;code&gt;fold&lt;/code&gt;, &lt;code&gt;reduce&lt;/code&gt;, &lt;code&gt;pmap&lt;/code&gt;, comprehensions&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&amp;laquo;Leightweight&amp;raquo; data types allow us to have very small types (types can be thought of a dict that can additional specify how functions operate on it, even relative to other arguments the function is called with)&lt;/li&gt;
+&lt;li&gt;Multiple dispatch allows us to combine previous two points in unique and powerful ways (type-based API &amp;ndash; not kwarg)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Flexible
+
+&lt;ul&gt;
+&lt;li&gt;Most of Julia&amp;rsquo;s standard library is written in Julia &amp;ndash; and is very fast&lt;/li&gt;
+&lt;li&gt;This means other code written in Julia has potential to perform at the same level as standard library code (if written well)&lt;/li&gt;
+&lt;li&gt;Not true of other popular languages for economists (e.g., R, MATLAB, Python &amp;ndash; they all require you to write some variant of C code that you wrap or hook into)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Call C code
+
+&lt;ul&gt;
+&lt;li&gt;Many great numerical libraries are written in C/Fortran&lt;/li&gt;
+&lt;li&gt;Ability to have zero overhead, zero-wrapper (call directly into shared-object file) access to these libraries gives added flexibility and power
+
+&lt;ul&gt;
+&lt;li&gt;Dierckx&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Projects like PyCall, JavaCall, RCall let you use the tools you  have become dependent on as you make a gradual transition to working within python. Dependent on API&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Parallel
+
+&lt;ul&gt;
+&lt;li&gt;Parallel programming building blocks built into the language.&lt;/li&gt;
+&lt;li&gt;Makes writing parallel code much easier.&lt;/li&gt;
+&lt;li&gt;Important for economists that loop over arrays as long as on each iteration one element does not depend on updated values of other elements from that same iteration (common).&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Other notes:
+- Many users of other languages. Would need to convince them that the benefit of learning julia outweighs the cost of learning a new language and perhaps abandoning a subset of collected tools.
+    + Users of Matlab or Python specifically will be able to pick up Julia in almost a copy/paste fashion and just change some syntax. This is not &amp;laquo;optimal Julia&amp;raquo;, but it will function.&lt;/p&gt;
+
+&lt;p&gt;Deficiencies:&lt;/p&gt;
+
+&lt;p&gt;Jonathan:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;code from scratch, Julia is easier to write performant code&lt;/li&gt;
+&lt;li&gt;When you don&amp;rsquo;t write everything from scratch (e.g. numerical optimization) it is often harder to find mature (in terms of users/tests) packages than in other languages. Young (but growing) package ecosystem relative to Python, Matlab, R (partially mitigated by ability to call these languages)&lt;/li&gt;
+&lt;li&gt;Weak conventions for documentation. Changing soon with new documentation system.&lt;/li&gt;
+&lt;li&gt;Less materials online for learning the language.&lt;/li&gt;
+&lt;li&gt;Many OOP people will feel like Julia&amp;rsquo;s types are lacking. They play similar roles, but do so in a different way. Types are more functional. More OOP programmers in this audience (python, Matlab) than functional programmers&lt;/li&gt;
+&lt;li&gt;Need materials that show how to leverage Julia&amp;rsquo;s type-system. Easy to get off the ground programming, hard to master (skiing vs snowboarding).&lt;/li&gt;
+&lt;li&gt;How to use functional programming in a way that is natural and readable. How to keep track of how computation happens. Easier to trace through procedural style&lt;/li&gt;
+&lt;li&gt;CONVENTIONS&lt;/li&gt;
+&lt;li&gt;Hard to determine which function is going to be called. Need to use @edit, @which, @less&lt;/li&gt;
+&lt;li&gt;How to get involved with the community? issues list, mailing list&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

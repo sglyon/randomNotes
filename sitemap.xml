@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/</loc>
+    <lastmod>2016-06-29T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/2016/06/29/monte-carlo-methods/</loc>
+    <lastmod>2016-06-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/2016/06/29/reinforcement-learning-intro/</loc>
+    <lastmod>2016-06-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/2016/06/01/rust/</loc>
+    <lastmod>2016-06-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/2016/01/04/github-pro-tips/</loc>
+    <lastmod>2016-01-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/2015/12/28/probability-distributions/</loc>
+    <lastmod>2015-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/2015/09/18/osx-tips/</loc>
+    <lastmod>2015-09-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/2015/09/05/notes-on-deterministic-difference-equations/</loc>
+    <lastmod>2015-09-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/2015/07/01/using-docker/</loc>
+    <lastmod>2015-07-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/2015/05/11/hpc/</loc>
+    <lastmod>2015-05-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/2015/05/05/referee_reports/</loc>
+    <lastmod>2015-05-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/2015/04/09/using-pandoc/</loc>
+    <lastmod>2015-04-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/2015/01/29/scala-notes/</loc>
+    <lastmod>2015-01-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/2015/01/12/continuous-time/</loc>
+    <lastmod>2015-01-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/2014/12/02/the-jupyter-notebook/</loc>
+    <lastmod>2014-12-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/2014/10/05/cloud-tips/</loc>
+    <lastmod>2014-10-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/2014/07/13/terminal-tips/</loc>
+    <lastmod>2014-07-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/2013/12/28/linux-tips/</loc>
+    <lastmod>2013-12-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/2013/02/12/julia/</loc>
+    <lastmod>2013-02-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/blink/</loc>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/1/01/01/notes-on-kalman-filter/</loc>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/1/01/01/notes-on-mcmc-methods/</loc>
+  </url>
+  
+</urlset>

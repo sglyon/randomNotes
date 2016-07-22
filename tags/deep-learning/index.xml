@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Deep Learning on Random Notes</title>
+    <link>http://notes.spencerlyon.com/tags/deep-learning/</link>
+    <description>Recent content in Deep Learning on Random Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-EN</language>
+    <managingEditor>spencer.lyon@stern.nyu.edu (Spencer Lyon)</managingEditor>
+    <webMaster>spencer.lyon@stern.nyu.edu (Spencer Lyon)</webMaster>
+    <copyright>(c) 2015 Spencer Lyon.</copyright>
+    <lastBuildDate>Thu, 21 Jul 2016 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://notes.spencerlyon.com/tags/deep-learning/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Papers by DeepMind group</title>
+      <link>http://notes.spencerlyon.com/2016/07/21/papers-by-deepmind-group/</link>
+      <pubDate>Thu, 21 Jul 2016 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2016/07/21/papers-by-deepmind-group/</guid>
+      <description>
+
+&lt;h2 id=&#34;atari-series:361fadf8343b5365725453fa91cf89a5&#34;&gt;Atari series&lt;/h2&gt;
+
+&lt;p&gt;This section describes a family of related papers. It introduces their algorithm for using deep neural networks in a Q-learning control setting and then provides many extensions of the core algorithm.&lt;/p&gt;
+
+&lt;h3 id=&#34;mnih-v-kavukcuoglu-k-silver-d-graves-a-antonoglou-i-wierstra-d-riedmiller-m-2013-playing-atari-with-deep-reinforcement-learning-arxiv-retrieved-from-http-arxiv-org-abs-1312-5602:361fadf8343b5365725453fa91cf89a5&#34;&gt;Mnih, V., Kavukcuoglu, K., Silver, D., Graves, A., Antonoglou, I., Wierstra, D., &amp;amp; Riedmiller, M. (2013). Playing Atari with Deep Reinforcement Learning. arXiv. Retrieved from &lt;a href=&#34;http://arxiv.org/abs/1312.5602&#34;&gt;http://arxiv.org/abs/1312.5602&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;This is the first paper to introduce the algorithm that made them famous. It &lt;em&gt;feels&lt;/em&gt; like a draft of their first nature paper (see below). The algorithm is known as deep Q-network or DQN. They use a stochastic gradient descent SGD algorithm to update coefficients on a variant of Q-learning that uses a deep network to represent the Q function. Their algorithm is model-free and off-policy.&lt;/p&gt;
+
+&lt;p&gt;Earlier attempts to use neural network with Q-learning had mostly failed. This algorithm has two defining features that made it successful:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;They used a technique called experience replay to form mini-batches for policy updates. With experience replay you pool tuples of state, action, reward, and next state transitions in a database. The database is a queue that holds the N most recent transitions. When a policy update is made M transitions are uniformly drawn from the database. This alleviates the problem that successive observations are highly correlated, which violates the common deep learning assumption that observations are iid.&lt;/li&gt;
+&lt;li&gt;They always have two separate instances of the Q-function network. One is the policy network and is updated at each step. The other is used to form targets for the Q-learning TD update. Every C iterations the target network is synced with the target network. This helps with stability as it breaks the correlation between the Q values they want to learn and the target.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;mnih-v-kavukcuoglu-k-silver-d-rusu-a-a-veness-j-bellemare-m-g-hassabis-d-2015-human-level-control-through-deep-reinforcement-learning-nature-518-7540-529-533-http-doi-org-10-1038-nature14236:361fadf8343b5365725453fa91cf89a5&#34;&gt;Mnih, V., Kavukcuoglu, K., Silver, D., Rusu, A. a, Veness, J., Bellemare, M. G., … Hassabis, D. (2015). Human-level control through deep reinforcement learning. Nature, 518(7540), 529–533. &lt;a href=&#34;http://doi.org/10.1038/nature14236&#34;&gt;http://doi.org/10.1038/nature14236&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;This is their first Nature publication. The paper is a more polished version of the previous paper and is important for the same reasons.&lt;/p&gt;
+
+&lt;p&gt;One other thing they stressed in this paper that they didn&amp;rsquo;t focus on in the previous paper is that when they apply the updates, they clip (not rescale) the TD errors to live in [-1, 1]. This is a common trick that helps improve stability.&lt;/p&gt;
+
+&lt;h3 id=&#34;nair-a-srinivasan-p-blackwell-s-alcicek-c-fearon-r-de-maria-a-silver-d-2015-massively-parallel-methods-for-deep-reinforcement-learning-arxiv-14-retrieved-from-http-arxiv-org-abs-1507-04296:361fadf8343b5365725453fa91cf89a5&#34;&gt;Nair, A., Srinivasan, P., Blackwell, S., Alcicek, C., Fearon, R., De Maria, A., … Silver, D. (2015). Massively Parallel Methods for Deep Reinforcement Learning. arXiv, 14. Retrieved from &lt;a href=&#34;http://arxiv.org/abs/1507.04296&#34;&gt;http://arxiv.org/abs/1507.04296&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;This is an HPC paper that explains how they took the DQN algorithm and put in on an HPC system.&lt;/p&gt;
+
+&lt;p&gt;The main components are shown in figure 2 and explained in section 4. I won&amp;rsquo;t repeat them here.&lt;/p&gt;
+
+&lt;h3 id=&#34;van-hasselt-h-guez-a-silver-d-2015-deep-reinforcement-learning-with-double-q-learning-arxiv-retrieved-from-http-arxiv-org-abs-1509-06461-nhttp-www-arxiv-org-pdf-1509-06461-pdf:361fadf8343b5365725453fa91cf89a5&#34;&gt;van Hasselt, H., Guez, A., &amp;amp; Silver, D. (2015). Deep Reinforcement Learning with Double Q-learning. arXiv. Retrieved from &lt;a href=&#34;http://arxiv.org/abs/1509.06461nhttp://www.arxiv.org/pdf/1509.06461.pdf&#34;&gt;http://arxiv.org/abs/1509.06461nhttp://www.arxiv.org/pdf/1509.06461.pdf&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;This is the next paper in the series.&lt;/p&gt;
+
+&lt;p&gt;Q-learning tends to over-estimate the action-value function (this happens because it takes a max on every step, making the algorithm favor overestimates over underestimates). The authors argue that the DQN algorithm suffers from this problem. The main contribution of this paper is the application of a double Q-learning algorithm on top of DQN, resulting in much higher Atari performance.&lt;/p&gt;
+
+&lt;p&gt;In double Q learning, two action-value functions are learned. Each experience is randomly assigned to one of these two value functions and its coefficients are updated while the other&amp;rsquo;s remain the same. If the associated parameter vectors are called theta and theta&amp;rsquo;, then the target for double Q learning is &lt;code&gt;Y = R&#39; + gamma Q(S&#39;, argmax_a Q(s&#39;, a; theta); theta&#39;)&lt;/code&gt;. The key insight is that one set of values is used to do the max, the other is used to evaluate Q for Y.&lt;/p&gt;
+
+&lt;h3 id=&#34;schaul-t-quan-j-antonoglou-i-silver-d-2015-prioritized-experience-replay-arxiv-1-23-retrieved-from-http-arxiv-org-abs-1511-05952:361fadf8343b5365725453fa91cf89a5&#34;&gt;Schaul, T., Quan, J., Antonoglou, I., &amp;amp; Silver, D. (2015). Prioritized Experience Replay. arXiv, 1–23. Retrieved from &lt;a href=&#34;http://arxiv.org/abs/1511.05952&#34;&gt;http://arxiv.org/abs/1511.05952&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;This paper extends the idea of experience replay by providing a way to revisit &amp;laquo;more important&amp;raquo; transitions more often. More important is defined as transitions that had a higher TD-error (y - Q).&lt;/p&gt;
+
+&lt;p&gt;There are some subtitles to make sure this can be efficient, not lead to overfitting, and not introduce bias. These are addressed in the paper.&lt;/p&gt;
+
+&lt;p&gt;The actual algorithm they implement is based on Double DQN (to reduce overestimation bias of action-values) where the only modification is in how the sampling in experience replay is done.&lt;/p&gt;
+
+&lt;h3 id=&#34;wang-z-de-freitas-n-lanctot-m-2016-dueling-network-architectures-for-deep-reinforcement-learning-arxiv-9-1-16-retrieved-from-http-arxiv-org-abs-1511-06581:361fadf8343b5365725453fa91cf89a5&#34;&gt;Wang, Z., de Freitas, N., &amp;amp; Lanctot, M. (2016). Dueling Network Architectures for Deep Reinforcement Learning. arXiv, (9), 1–16. Retrieved from &lt;a href=&#34;http://arxiv.org/abs/1511.06581&#34;&gt;http://arxiv.org/abs/1511.06581&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;Another extension to DQN. This time instead of altering the algorithm (as they did with double DQN and prioritized replay), they alter the structure of the employed neural networks. The input and convolutional layers are all the same as in DQN. The fully connected layer, however, now outputs two separate things:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;A scalar estimate of the state value V(s)&lt;/li&gt;
+&lt;li&gt;An estimate of the action advantage for each action a. (call is A(s, a) = Q(s, a) - V(s))&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;After the fully connected layer outputs these two things, the two layers are aggregated into a vector of Q(s, a) values. So, the input/output of the entire network still the same (input: states, output: Q-values). However, the process for getting there is slightly different. This is actually non-trivial because the advantage function has expectation 0, so naive SGD can&amp;rsquo;t work. The other main contribution of the paper is describing how to overcome this.&lt;/p&gt;
+
+&lt;h3 id=&#34;hasselt-h-van-guez-a-hessel-m-silver-d-2016-learning-functions-across-many-orders-of-magnitudes-arxiv:361fadf8343b5365725453fa91cf89a5&#34;&gt;Hasselt, H. Van, Guez, A., Hessel, M., &amp;amp; Silver, D. (2016). Learning functions across many orders of magnitudes. arXiv.&lt;/h3&gt;
+
+&lt;p&gt;This paper extends DQN in a way that doesn&amp;rsquo;t require clipping rewards (game score reported by Atari) to be in {-1, 0, 1}. This is an issue because scoring really matters for games like Ms. Pac Man where cumulative score matters much more than instances where scoring happened.&lt;/p&gt;
+
+&lt;p&gt;The authors document the fact that similar things have been done to normalize different stages of the learning process. They also explain how attempts at target normalization has been attempted, but in a way that influences many aspects of the overall algorithm. Instead, in this paper, they isolate their efforts on target normalization, leaving all other components unchanged.&lt;/p&gt;
+
+&lt;h3 id=&#34;mnih-v-badia-a-p-mirza-m-graves-a-lillicrap-t-p-harley-t-kavukcuoglu-k-2016-asynchronous-methods-for-deep-reinforcement-learning-arxiv-1-28-retrieved-from-http-arxiv-org-abs-1602-01783:361fadf8343b5365725453fa91cf89a5&#34;&gt;Mnih, V., Badia, A. P., Mirza, M., Graves, A., Lillicrap, T. P., Harley, T., … Kavukcuoglu, K. (2016). Asynchronous Methods for Deep Reinforcement Learning. arXiv, 1–28. Retrieved from &lt;a href=&#34;http://arxiv.org/abs/1602.01783&#34;&gt;http://arxiv.org/abs/1602.01783&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;This paper is the final (so far) follow up to DQN where they avoid stability issues in deep Q-learning using an async learner/policy setup instead of experience replay.&lt;/p&gt;
+
+&lt;p&gt;The main idea is really simple: run multiple actor-learners each with their own policy on different threads of the same machine. They will likely explore different regions of the state space. This allows you to explore many places at once &amp;ndash; speeding up learning.&lt;/p&gt;
+
+&lt;p&gt;NOTE: the policy and target parameters are the same and shared memory across threads. Different threads will do backup updates to the coefficient whenever they want. There is a paper (HOGWILD!) that talks about why multiple write to the same shared memory coefficient vector is ok.&lt;/p&gt;
+
+&lt;p&gt;Because they don&amp;rsquo;t use experience replay they are able to use on-policy RL algorithms (SARSA, actor-critic, etc). Also, because the algorithm is parallel, there is a performance boost.&lt;/p&gt;
+
+&lt;p&gt;The async advantage actor-critic method seems to be the very state of the art in RL algorithms right now. It can be run on a multi-core desktop and do really well at a variety of tasks.&lt;/p&gt;
+
+&lt;h2 id=&#34;other-papers:361fadf8343b5365725453fa91cf89a5&#34;&gt;Other papers&lt;/h2&gt;
+
+&lt;p&gt;These are the other papers by the DeepMind crew.&lt;/p&gt;
+
+&lt;h3 id=&#34;silver-d-lever-g-heess-n-degris-t-wierstra-d-riedmiller-m-2014-deterministic-policy-gradient-algorithms-proceedings-of-the-31st-international-conference-on-machine-learning-icml-14-387-395:361fadf8343b5365725453fa91cf89a5&#34;&gt;Silver, D., Lever, G., Heess, N., Degris, T., Wierstra, D., &amp;amp; Riedmiller, M. (2014). Deterministic Policy Gradient Algorithms. Proceedings of the 31st International Conference on Machine Learning (ICML-14), 387–395.&lt;/h3&gt;
+
+&lt;p&gt;This paper provides a handful of related algorithms for doing online, model-free, and either on-policy or off-policy control with a deterministic policy in a RL problem with continuous actions.&lt;/p&gt;
+
+&lt;p&gt;The main contribution of the paper is to prove that the deterministic policy gradient (DPG) (developed here) exists and under certain conditions on the form of approximation, converges. They also derived the policy gradient in closed form, making the algorithms tractable. Finally, they also proved that under certain regularity conditions, that DPG is the limit of the stochastic policy gradient as the variance goes to 0.&lt;/p&gt;
+
+&lt;h3 id=&#34;lillicrap-t-p-hunt-j-j-pritzel-a-heess-n-erez-t-tassa-y-wierstra-d-2015-continuous-control-with-deep-reinforcement-learning-arxiv-1-14-http-doi-org-10-1561-2200000006:361fadf8343b5365725453fa91cf89a5&#34;&gt;Lillicrap, T. P., Hunt, J. J., Pritzel, A., Heess, N., Erez, T., Tassa, Y., … Wierstra, D. (2015). Continuous control with deep reinforcement learning. arXiv, 1–14. &lt;a href=&#34;http://doi.org/10.1561/2200000006&#34;&gt;http://doi.org/10.1561/2200000006&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;In some ways this paper is a bridge between the deterministic policy gradient (DPG, Silver 2014) for RL with continuous action spaces and the use of neural networks to represent policy and value function from the Deep Q Network (DQN; DeepMind 2013,2015). Innovations made in DQN are crucial here. They summarize their contribution as follows:&lt;/p&gt;
+
+&lt;p&gt;&amp;raquo; Our contribution here is to provide modifications to DPG, inspired by the success of DQN, which allow it to use neural network function approximations to learn in large state and action spaces online.&amp;raquo;&lt;/p&gt;
+
+&lt;p&gt;The paper provided the following simple intuition for me: q-learning is hard to apply to continuous action spaces because we need to do a max at every time step (e.g. usually call a non-linear solver). To avoid this, we can use an actor-critic method that parameterizes both the policy and the value so that the maximization step is done in closed form using gradient descent.&lt;/p&gt;
+
+&lt;h3 id=&#34;heess-n-wayne-g-silver-d-lillicrap-t-tassa-y-erez-t-2015-learning-continuous-control-policies-by-stochastic-value-gradients-arxiv-1-13-retrieved-from-http-arxiv-org-abs-1510-09142:361fadf8343b5365725453fa91cf89a5&#34;&gt;Heess, N., Wayne, G., Silver, D., Lillicrap, T., Tassa, Y., &amp;amp; Erez, T. (2015). Learning Continuous Control Policies by Stochastic Value Gradients. arXiv, 1–13. Retrieved from &lt;a href=&#34;http://arxiv.org/abs/1510.09142&#34;&gt;http://arxiv.org/abs/1510.09142&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;This paper presents set of algorithms that are used to solve control problems with continuous state and action spaces, using value and policy functions parameterized by neural networks. These algorithms range from model-free to model-based and are used to compute stochastic policies.&lt;/p&gt;
+
+&lt;p&gt;The main contribution of the paper is to show how re-parameterize the bellman equation so stochastic features are written as the environment/policy given state action transitions plus some noise. Expectations are then taken over the known noise distributions, using samples from the real trajectory provided by the environment. In conjunction with this idea, the authors derive ways to compute the gradients for the value function under stochastic policies. The authors claim this is another main contribution of the paper.&lt;/p&gt;
+
+&lt;h3 id=&#34;silver-d-huang-a-maddison-c-j-guez-a-sifre-l-van-den-driessche-g-hassabis-d-2016-mastering-the-game-of-go-with-deep-neural-networks-and-tree-search-nature-529-7587-484-489-http-doi-org-10-1038-nature16961:361fadf8343b5365725453fa91cf89a5&#34;&gt;Silver, D., Huang, A., Maddison, C. J., Guez, A., Sifre, L., van den Driessche, G., … Hassabis, D. (2016). Mastering the game of Go with deep neural networks and tree search. Nature, 529(7587), 484–489. &lt;a href=&#34;http://doi.org/10.1038/nature16961&#34;&gt;http://doi.org/10.1038/nature16961&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;This is the famous AlphaGo paper. It&amp;rsquo;s short, dense, and worth reading. I took some notes on the structure of the network. I&amp;rsquo;ll include them here, but they are not a substitute for reading the paper&lt;/p&gt;
+
+&lt;p&gt;The algorithm Alpha go uses is built up of 4 neural networks:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;A neural network for the policy function trained with supervised learning on 30 million expert level, real world moves. The network does 6 alternations between convolutional layer + ReLU and finishes with a soft max. Output is probability distribution over actions. Coefficients are sigma. Call this network SL.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;A shallow network &amp;laquo;fast policy&amp;raquo; used to perform Monte Carlo roll outs (MC simulations starting from a particular state) was also trained using the 30 million observations. This network is just a linear soft as over &amp;laquo;small pattern features&amp;raquo;. Coefficients are pi. Computation time to choose an action is 2 micro seconds (compared to SL, which is 3 milliseconds).&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;An identically structured neural network trained using reinforcement learning. The reward signal is 0 for all non-terminal states and plus or minus one in the terminal state. SGD is used to direct coefficients rho towards direction that maximizes expected outcome (a backup that uses the terminal reward thought the entire game). Call this network RL.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;A neural network approximating the value function. The network has a similar structure to SL and RL, but outputs a single value instead of a distribution (uses something other than soft max at the end). This can&amp;rsquo;t be trained using the 30 million expert moves because the network memorizes the value of each state. Instead they collect a sample of 30 million moves, each sample drawn from a different game. Each of these 30 million games was formed by RL playing against itself until termination.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

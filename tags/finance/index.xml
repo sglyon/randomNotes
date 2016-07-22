@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Finance on Random Notes</title>
+    <link>http://notes.spencerlyon.com/tags/finance/</link>
+    <description>Recent content in Finance on Random Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-EN</language>
+    <managingEditor>spencer.lyon@stern.nyu.edu (Spencer Lyon)</managingEditor>
+    <webMaster>spencer.lyon@stern.nyu.edu (Spencer Lyon)</webMaster>
+    <copyright>(c) 2015 Spencer Lyon.</copyright>
+    <lastBuildDate>Thu, 12 Feb 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://notes.spencerlyon.com/tags/finance/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Information in macroeconomics and finance</title>
+      <link>http://notes.spencerlyon.com/2015/02/12/information-in-macroeconomics-and-finance/</link>
+      <pubDate>Thu, 12 Feb 2015 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2015/02/12/information-in-macroeconomics-and-finance/</guid>
+      <description>
+
+&lt;h2 id=&#34;notes-on-veldkamp-book:2aa7f71754166409a640d7d8ee66adf1&#34;&gt;Notes on Veldkamp book&lt;/h2&gt;
+
+&lt;h3 id=&#34;chapter-1-intro:2aa7f71754166409a640d7d8ee66adf1&#34;&gt;Chapter 1: Intro&lt;/h3&gt;
+
+&lt;p&gt;This book focuses on Bayesian learning models. This means agents know the true model of the economy and will only have uncertaintiy regarding future realizations of random variables. Agents also know the true distribution from which the future realizations are drawn (rational expectations).&lt;/p&gt;
+
+&lt;p&gt;Learning can be passive or active. Passive learning happens when agents are endowed with information or gain information by observing prices and quantities. It is passive because agents don&amp;rsquo;t have &lt;em&gt;any&lt;/em&gt; control over the learning they do. Active learning is intentional learning &amp;ndash; people are choosing signals or purchasing info/data.&lt;/p&gt;
+
+&lt;h4 id=&#34;themes-in-the-book:2aa7f71754166409a640d7d8ee66adf1&#34;&gt;Themes in the book&lt;/h4&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Information choice bridges the gap between rational and behavioral techniques. By not having all agents always fully informed, we can explain better some aspects of economic data&lt;/li&gt;
+&lt;li&gt;Information is different from physical goods because it is expensive to discover and cheap to maintain &amp;ndash; information has increasing returns to scale&lt;/li&gt;
+&lt;li&gt;Correlated info or coordination motive? We sometimes see many agents making similar decisions at the same time. A classical interpretation is that they are acting cooperatively. An alternative is that they have correlated information&lt;/li&gt;
+&lt;li&gt;The effect of introducing information choice depends on the strategic motives in actions and on whether the information being chosen is public or private. Different modeling choices lead to different things like inertia in decisions (unresponsiveness), multiple equilibria&lt;/li&gt;
+&lt;li&gt;Information choice facilitates empirical testing of information based theory. Models that try to predict what agents know is a good way to address the problem of not being able to observe information sets&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Summary of themes/outcomes:&lt;/p&gt;
+
+&lt;p&gt;|  Model Outcome   |      Private Signals      |    Public Signals   |
+|&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;+&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;+&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;|
+| Complementarity  | Inertia                   | Multiple equilibria |
+| Substitutability | Dispersion and volatility | Coordinated actions |&lt;/p&gt;
+
+&lt;h3 id=&#34;chapter-2-bayesian-updating:2aa7f71754166409a640d7d8ee66adf1&#34;&gt;Chapter 2: Bayesian Updating&lt;/h3&gt;
+
+&lt;p&gt;The familiar equation defining Bayes&amp;rsquo; law:&lt;/p&gt;
+
+&lt;p&gt;$$P(A | B) = \frac{P(B|A) P(A)}{P(B)}$$&lt;/p&gt;
+
+&lt;p&gt;We derive Bayes&amp;rsquo; law from the definition of the conditional probabilities $P(A|B)$ and $P(B|A)$.&lt;/p&gt;
+
+&lt;h4 id=&#34;normal-random-variables:2aa7f71754166409a640d7d8ee66adf1&#34;&gt;Normal random variables&lt;/h4&gt;
+
+&lt;p&gt;Let $x \sim N(A, \alpha^{-1})$ be a scalar random variable. Let $B = x + e, e \sim N(0, \beta^{-1})$ be a noisy signal about $x$&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:2aa7f71754166409a640d7d8ee66adf1:1&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:2aa7f71754166409a640d7d8ee66adf1:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;Applying Bayes law (see homework 1 for details), we can derive the conditional mean&lt;/p&gt;
+
+&lt;p&gt;$$E[x | B] = \frac{\alpha A + \beta B}{\alpha + \beta}$$&lt;/p&gt;
+
+&lt;p&gt;and conditional variance&lt;/p&gt;
+
+&lt;p&gt;$$V[x|B] = \left(\alpha + \beta \right)^{-1}.$$&lt;/p&gt;
+
+&lt;p&gt;So, we see that given a normal random variable and a normal signal about that random variable, the conditional posterior is also normal where the mean is a precision weighted average of prior and signal means and the posterior precision is the inverse of the sum of variances.&lt;/p&gt;
+
+&lt;p&gt;Let $x \sim N(\mu, \Sigma)$ and $B = x + \epsilon, \epsilon \sim N(0, \Sigma_e)$ be a multivariate random variable and signal, respectively. Application of Bayes&amp;rsquo; law reveals conditional moments are&lt;/p&gt;
+
+&lt;p&gt;$$E[x | B] = \left(\Sigma^{-1} + \Sigma_e^{-1} \right)^{-1} (\Sigma^{-1} \mu + \Sigma_e^{-1} B)$$&lt;/p&gt;
+
+&lt;p&gt;and&lt;/p&gt;
+
+&lt;p&gt;$$V[x|B] = \left(\Sigma^{-1} + \Sigma_e^{-1} \right)^{-1}.$$&lt;/p&gt;
+
+&lt;p&gt;Notice these are the same form, just tweaked to make matrix operations valid.&lt;/p&gt;
+
+&lt;h4 id=&#34;uniform-random-variables:2aa7f71754166409a640d7d8ee66adf1&#34;&gt;Uniform random variables&lt;/h4&gt;
+
+&lt;p&gt;Now let $x \sim U[-b, b]$ and $k = x + \epsilon, \epsilon \sim U[-a, a]$. Applying Bayes&amp;rsquo; Law is a bit tricky here because you have to worry about conditions on the boundaries. Thinking everything through, you see that the posterior is&lt;/p&gt;
+
+&lt;p&gt;$$x|k \sim U[c, d],$$&lt;/p&gt;
+
+&lt;p&gt;where&lt;/p&gt;
+
+&lt;p&gt;$$c=\max (-b, k-a)$$&lt;/p&gt;
+
+&lt;p&gt;$$d=\min (k+a, b)$$&lt;/p&gt;
+
+&lt;p&gt;When people speak of a diffuse prior, they mean $x \sim \lim_{b\rightarrow \infty} U[-b, b]$.&lt;/p&gt;
+
+&lt;h4 id=&#34;kalman-filter:2aa7f71754166409a640d7d8ee66adf1&#34;&gt;Kalman filter&lt;/h4&gt;
+
+&lt;p&gt;In the book she talks about how in dynamic models, the Bayesian updating rules for normally distributed random variables becomes the Kalman filter. We didn&amp;rsquo;t touch on this in class so I will skip it.&lt;/p&gt;
+
+&lt;h4 id=&#34;dynamic-updating-in-continuous-time:2aa7f71754166409a640d7d8ee66adf1&#34;&gt;Dynamic updating in continuous time&lt;/h4&gt;
+
+&lt;p&gt;There is also a section in the book on updating in continuous time that wasn&amp;rsquo;t covered in the lecture.&lt;/p&gt;
+
+&lt;h3 id=&#34;chapter-3-measuring-information-flows:2aa7f71754166409a640d7d8ee66adf1&#34;&gt;Chapter 3: Measuring information flows&lt;/h3&gt;
+
+&lt;p&gt;We want a framework within which we can think about a feasible set for information choices. When looking at a consumption savings model, we can usually use prices to construct a budget set for consumers. If we try to extend that idea to information, what should the cost information be? What units should it be measured in? We will talk briefly about a few common technologies researchers use to address or sidestep these issues.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: a quick note from text is that with normally distributed variables and signals choosing the signal precision is the same as choosing the posterior precision. This is a result of the posterior precision being the sum of prior and signal precisions, thus creating a one to one mapping between posterior and signal precisions.&lt;/p&gt;
+
+&lt;h4 id=&#34;entropy:2aa7f71754166409a640d7d8ee66adf1&#34;&gt;Entropy&lt;/h4&gt;
+
+&lt;p&gt;Entropy is a measure of the uncertainty of a random variable. It answer the question &amp;laquo;How much information is required, on average, to describe $x$ with the probability density function $p(\cdot)$&amp;laquo;? Entropy is given by&lt;/p&gt;
+
+&lt;p&gt;$$H(x) = - E \left[\ln (p(x)) \right].$$&lt;/p&gt;
+
+&lt;p&gt;So, for a discrete random variable we have&lt;/p&gt;
+
+&lt;p&gt;$$H(x) = - \sum_x p(x) \left[\ln (p(x)) \right].$$&lt;/p&gt;
+
+&lt;p&gt;For a multivariate continuous random variable we have&lt;/p&gt;
+
+&lt;p&gt;$$H(x) = - \int f(x_1, x_2 \dots, x_n) dx_1 dx_2 \cdots d x_n$$&lt;/p&gt;
+
+&lt;p&gt;Random facts:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Entropy of a constant is zero ($p(x) = 1$ which is inside a log)&lt;/li&gt;
+&lt;li&gt;Entropy of a binomial is $\ln(2)$, regardless of the values of the realizations. This means entropy is scale invariant for a binomial. Also, for this reason we call a &lt;em&gt;bit&lt;/em&gt; of information something with entropy $\ln(2)$&lt;/li&gt;
+&lt;li&gt;Entropy of a uniform is $ln(a)$, where $a$ is the length of the positive probability region&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;mutual-information:2aa7f71754166409a640d7d8ee66adf1&#34;&gt;Mutual information&lt;/h4&gt;
+
+&lt;p&gt;Mutual information answers the question &amp;laquo;how much do two variables $x$ and $y$ reveal about another? How much does knowing one reduce the entropy of the other?&amp;raquo;. Putting it simply, if $I(x, \hat{y}) &amp;gt; I(x, y)$ we say that $\hat{y}$ reveals more than $y$ about $x$. Mutual information ($I$) is defined as&lt;/p&gt;
+
+&lt;p&gt;$$I(x, y) = H(x) - H(x|y)$$,&lt;/p&gt;
+
+&lt;p&gt;where $H(x|y)$ is the conditional entropy (to compute just use entropy formula and replace probabilities with conditional probabilities).&lt;/p&gt;
+
+&lt;h5 id=&#34;i-for-normally-distributed-random-variables:2aa7f71754166409a640d7d8ee66adf1&#34;&gt;I for normally distributed random variables&lt;/h5&gt;
+
+&lt;p&gt;If $x \sim N(\mu, \sigma^2)$, then its entropy will be given by&lt;/p&gt;
+
+&lt;p&gt;$$H(x) = \frac{1}{2} \ln (2 \pi e \sigma^2).$$&lt;/p&gt;
+
+&lt;p&gt;For $x\sim MVN(\mu, \Sigma)$ we have&lt;/p&gt;
+
+&lt;p&gt;$$H(x) = \frac{1}{2} \ln ((2 \pi e)^n |\Sigma|),$$&lt;/p&gt;
+
+&lt;p&gt;where $n$ is the number of dimensions.&lt;/p&gt;
+
+&lt;p&gt;If $y = x + e, e \sim N(0, \Sigma_e)$ then we have&lt;/p&gt;
+
+&lt;p&gt;$$I(x,y) = \frac{1}{2} \log \left( \frac{|\Sigma|}{\bigm| (\Sigma^{-1} + \Sigma_e^{-1})^{-1} \bigm|} \right).$$&lt;/p&gt;
+
+&lt;p&gt;If $\Sigma, \Sigma_e$ are diagonal (components of $x$ and $e$ are mutually independent) then the mutual information reduces to&lt;/p&gt;
+
+&lt;p&gt;$$I(x, y) = \frac{1}{2} \ln \left(\prod&lt;em&gt;{i-1}^n \frac{\hat{\Sigma}&lt;/em&gt;{ii}^{-1}}{\Sigma_{ii}^{-1}} \right),$$&lt;/p&gt;
+
+&lt;p&gt;where $\hat{\Sigma}^{-1}:= \Sigma^{-1} + \Sigma_e^{-1}$ is the posterior precision.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: quick note from text. A normally distributed RV has maximal entropy of all random variables with a given variance.&lt;/p&gt;
+
+&lt;h4 id=&#34;entropy-constraints:2aa7f71754166409a640d7d8ee66adf1&#34;&gt;Entropy constraints&lt;/h4&gt;
+
+&lt;p&gt;We can think about constructing bounds on available information using entropy and mutual information. Typically the constraint is of the form&lt;/p&gt;
+
+&lt;p&gt;$$I(x, y) \le K.$$&lt;/p&gt;
+
+&lt;p&gt;For the special case where $x$ and $y$ are multivariate normal, this constraint can be written&lt;/p&gt;
+
+&lt;p&gt;$$|\Sigma| \exp(-2 K) \le | \hat{\Sigma} |,$$&lt;/p&gt;
+
+&lt;p&gt;which says the posterior variance must be sufficiently high. The constant $K$ is often called the &lt;em&gt;capacity&lt;/em&gt;, and in this context is a limit on the mutual information between the state and signal.&lt;/p&gt;
+
+&lt;h4 id=&#34;rational-inattention:2aa7f71754166409a640d7d8ee66adf1&#34;&gt;Rational Inattention&lt;/h4&gt;
+
+&lt;p&gt;Represents learning as a form of more and more refined search. The capacity $K$ is approximately the number of binary signals received. Example is the over/under guessing game. I think of a number between 1-100. You start guessing numbers and for each guess I tell you above or below. Optimal strategy for you is bisection. The &lt;em&gt;order&lt;/em&gt; of the 0 1 (under, over) signals matter.&lt;/p&gt;
+
+&lt;h4 id=&#34;additive-cost-in-signal-precision:2aa7f71754166409a640d7d8ee66adf1&#34;&gt;Additive cost in signal precision&lt;/h4&gt;
+
+&lt;p&gt;An alternative to entropy constraints is a simple linear constraint on the precision of the signal. In this case learning takes the form of a sequence of independent draws. If priors are normal and signals are drawn from $N(f, \sigma)$, then each signal adds $\sigma^{-1}$ to the posterior precision.&lt;/p&gt;
+
+&lt;p&gt;In the total independence case we have all covariance matrices (prior, signals, posterior) are diagonal. In this world the entropy constraint can be written&lt;/p&gt;
+
+&lt;p&gt;$$\prod&lt;em&gt;{i=1}^N \hat{\Sigma}&lt;/em&gt;{ii}^{-1} \le \tilde{K}$$&lt;/p&gt;
+
+&lt;p&gt;and the linear precision constraint would be&lt;/p&gt;
+
+&lt;p&gt;$$\sum&lt;em&gt;{i=1}^N \hat{\Sigma}&lt;/em&gt;{ii}^{-1} \le \tilde{K}&amp;lsquo;$$.&lt;/p&gt;
+
+&lt;p&gt;Built into the product based entropy is the idea increasing returns to learning. If you know a lot along one dimension, adding a unit of precision is less costly than when you don&amp;rsquo;t know much (because the solution to x &amp;lt; y in (large * x = 1) and (small * y = 1)).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;NOTE:&lt;/strong&gt; If we think about variance reduction instead of increasing precision, both measures have decreasing returns (it is hard to learn &lt;em&gt;everything&lt;/em&gt; about a random variable).&lt;/p&gt;
+
+&lt;h4 id=&#34;diminishing-returns-to-learning-and-unlearnable-risk:2aa7f71754166409a640d7d8ee66adf1&#34;&gt;Diminishing returns to learning and unlearnable risk&lt;/h4&gt;
+
+&lt;p&gt;Adding unlearnable risk also generates diminishing returns. One way to do this would be to say that for some $\alpha \in (0, 1)$&lt;/p&gt;
+
+&lt;p&gt;$$\frac{|\Sigma - \alpha \Sigma|}{|\hat{\Sigma} - \alpha \Sigma|} \le 2^{e K}$$&lt;/p&gt;
+
+&lt;p&gt;As $\hat{\Sigma}_{ii} \rightarrow0$ we learn everything about the $ith$ variable, but this sends the denominator to zero making it infinitely costly.&lt;/p&gt;
+
+&lt;h4 id=&#34;learning-when-outcomes-are-correlated:2aa7f71754166409a640d7d8ee66adf1&#34;&gt;Learning when outcomes are correlated&lt;/h4&gt;
+
+&lt;p&gt;Use principle component analysis (eigenvalue decompositions and/or Cholesky decomposition) to orthogonalize the system.&lt;/p&gt;
+
+&lt;h3 id=&#34;chapter-4-games-with-heterogeneous-information:2aa7f71754166409a640d7d8ee66adf1&#34;&gt;Chapter 4: Games with Heterogeneous Information&lt;/h3&gt;
+
+&lt;p&gt;Main idea: coordination games often have multiple equilibria, adding heterogeneous information can often deliver a unique solution.&lt;/p&gt;
+
+&lt;h3 id=&#34;glossary:2aa7f71754166409a640d7d8ee66adf1&#34;&gt;Glossary&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Strategic substitutability: do not want to coordinate because of asymmetric information. Typically leads to highly volatile actions. In finance these volatile actions are often used to inject volatility into asset prices and returns&lt;/li&gt;
+&lt;li&gt;Entropy: Entropy is a measure of the uncertainty of a random variable. It answer the question &amp;laquo;How much information is required, on average, to describe $x$ with the probability density function $p(\cdot)$&amp;laquo;?&lt;/li&gt;
+&lt;li&gt;Mutual information: Mutual information answers the question &amp;laquo;how much do two variables $x$ and $y$ reveal about another? How much does knowing one reduce the entropy of the other?&amp;raquo;&lt;/li&gt;
+&lt;li&gt;Rational inattention: Agent gets a constant, noisy flow of information&lt;/li&gt;
+&lt;li&gt;Inattentiveness: Agents get no information flow almost all of the time and then occasionally observes the current state perfectly. Small information costs generate long periods inertia.&lt;/li&gt;
+&lt;li&gt;Recognition: Agents may not be aware of their choice sets. Similar to payment mechanism in some search models, but different because recognition has cumulative learning &amp;ndash; not one time matching opportunities.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:2aa7f71754166409a640d7d8ee66adf1:1&#34;&gt;We denote this signal as $B|x \sim N(x, \beta^{-1})$
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:2aa7f71754166409a640d7d8ee66adf1:1&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

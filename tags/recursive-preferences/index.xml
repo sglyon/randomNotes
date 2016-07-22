@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Recursive Preferences on Random Notes</title>
+    <link>http://notes.spencerlyon.com/tags/recursive-preferences/</link>
+    <description>Recent content in Recursive Preferences on Random Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-EN</language>
+    <managingEditor>spencer.lyon@stern.nyu.edu (Spencer Lyon)</managingEditor>
+    <webMaster>spencer.lyon@stern.nyu.edu (Spencer Lyon)</webMaster>
+    <copyright>(c) 2015 Spencer Lyon.</copyright>
+    <lastBuildDate>Mon, 15 Jun 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://notes.spencerlyon.com/tags/recursive-preferences/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Notes on Recursive Preferences</title>
+      <link>http://notes.spencerlyon.com/2015/06/15/notes-on-recursive-preferences/</link>
+      <pubDate>Mon, 15 Jun 2015 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2015/06/15/notes-on-recursive-preferences/</guid>
+      <description>
+
+&lt;h1 id=&#34;recursive-preferences&#34;&gt;Recursive Preferences&lt;/h1&gt;
+
+&lt;p&gt;Various forms of recursive preferences have been proposed such as, Epstein-Zin&amp;hellip; The main advantage of using this structure for utility is that one is able to separate the intertemporal elasticity of substitution and risk aversion.&lt;/p&gt;
+
+&lt;h1 id=&#34;epstein-zin&#34;&gt;Epstein-Zin&lt;/h1&gt;
+
+&lt;p&gt;The Epstein-Zin preferences typically take a variation of the following form&lt;/p&gt;
+
+&lt;p&gt;$$V_t = \left( (1 - \beta) c_t^{\rho} + \beta \left[ E&lt;em&gt;t[V&lt;/em&gt;{t+1}^{\alpha}]^{\frac{1}{\alpha}} \right]^\rho \right)^{\frac{1}{\rho}} $$&lt;/p&gt;
+
+&lt;p&gt;where we require $\rho&amp;lt;1$ and $\alpha &amp;lt; 1$. We interpret $\rho$ as parameter that governs the elasticity of inter-temporal substitution and $\alpha$ as the parameter that governs risk aversion. Smaller values of $\alpha$ imply higher risk aversion and smaller values of $\rho$ imply higher elasticities of inter-temporal substitution. We will now review some special cases and see how these preferences relate to the standard time additive preferences.&lt;/p&gt;
+
+&lt;h2 id=&#34;deterministic-consumption&#34;&gt;Deterministic Consumption&lt;/h2&gt;
+
+&lt;p&gt;If we choose to have deterministic consumption, then notice that the expectation disappears. Additionally, we can take the expression to the power of $\rho$ and get that&lt;/p&gt;
+
+&lt;p&gt;$$V_t^{\rho} = (1 - \beta) c&lt;em&gt;t^{\rho} + \beta V&lt;/em&gt;{t+1}^\rho$$&lt;/p&gt;
+
+&lt;p&gt;which we can see reduces to&lt;/p&gt;
+
+&lt;p&gt;$$V&lt;em&gt;t^{\rho} = (1 - \beta) \sum&lt;/em&gt;{s=t}^{\infty} \beta^s c_s^{\rho} $$&lt;/p&gt;
+
+&lt;h2 id=&#34;inter-temporal-substitution-equals-risk-aversion&#34;&gt;Inter-temporal Substitution equals Risk Aversion&lt;/h2&gt;
+
+&lt;p&gt;Now consider when $\alpha = \rho$. In this case, we can reduce the preferences to&lt;/p&gt;
+
+&lt;p&gt;$$V_t = \left( (1 - \beta) c_t^{\rho} + \beta E&lt;em&gt;t[V&lt;/em&gt;{t+1}^{\alpha}] \right)^{\frac{1}{\rho}} $$
+$$V_t = \left( (1 - \beta) c_t^{\rho} + \beta E&lt;em&gt;t[V&lt;/em&gt;{t+1}^{\rho}] \right)^{\frac{1}{\rho}} $$
+$$V_t^{\rho} = \left( (1 - \beta) c_t^{\rho} + \beta E&lt;em&gt;t[V&lt;/em&gt;{t+1}^{\rho}] \right) $$&lt;/p&gt;
+
+&lt;p&gt;which looks just like the recursive representation of our additive preferences. This is the additional insight that the Epstein-Zin preferences give us. They allow us to separate inter-temporal substitution and risk aversion, but if we set the two equal within the Epstein-Zin preferences then we return to our standard time additive utility formulation.&lt;/p&gt;
+
+&lt;h2 id=&#34;resolution-of-uncertainty&#34;&gt;Resolution of Uncertainty&lt;/h2&gt;
+
+&lt;p&gt;We want to think about parameterizations that imply that agents would like early resolution of uncertainty. This requires that $\rho &amp;gt; \alpha$.&lt;/p&gt;
+
+&lt;h2 id=&#34;other-notes&#34;&gt;Other notes&lt;/h2&gt;
+
+&lt;h3 id=&#34;ts-expansion&#34;&gt;TS Expansion&lt;/h3&gt;
+
+&lt;p&gt;Denote $U_t = \frac{V_t^{\rho}}{\rho}$. Then the second order TS expansion of $U$ around $E[\log U_t]$ is equal to&lt;/p&gt;
+
+&lt;p&gt;$$U_t \approx (1 - \beta) \frac{c^{\rho}}{\rho} + \delta E&lt;em&gt;t[U&lt;/em&gt;{t+1}] - \frac{1}{2} \delta (\rho - \alpha) \frac{\text{var}&lt;em&gt;t[U&lt;/em&gt;{t+1}]}{E&lt;em&gt;t[U&lt;/em&gt;{t+1}^{\rho}]}$$&lt;/p&gt;
+
+&lt;p&gt;See Colacito, Croce, Ho, and Howard (2014) for more information.&lt;/p&gt;
+
+&lt;p&gt;Notice a few things:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The additive case is $\rho = \alpha$, so the term in the variance of $U_{t+1}$ drops out&lt;/li&gt;
+&lt;li&gt;With a preference for early resolution of uncertainty, $\rho &amp;gt; \alpha$ and uncertainty about the future value function decreases welfare (intuitively).&lt;/li&gt;
+&lt;li&gt;One possible projection of this result is that $\rho &amp;gt; \alpha$ generates an incentive to trade $E&lt;em&gt;t[U&lt;/em&gt;{t+1}]$ to reduce $\text{var}&lt;em&gt;t[U&lt;/em&gt;{t+1}]$.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;risk-sharing-channel&#34;&gt;Risk Sharing Channel&lt;/h3&gt;
+
+&lt;p&gt;Recall that the SDF under additive preferences has the form&lt;/p&gt;
+
+&lt;p&gt;$$m = \beta \frac{u&amp;rsquo;(c&lt;em&gt;{t})}{u&amp;rsquo;(c&lt;/em&gt;{t+1})}$$&lt;/p&gt;
+
+&lt;p&gt;With the recursive preferences presented here we get&lt;/p&gt;
+
+&lt;p&gt;$$m = \beta \left(\frac{c&lt;em&gt;{t+1}}{c&lt;/em&gt;{t}}\right)^{\rho - 1} \left(\frac{V&lt;em&gt;{t+1}}{\mu(V&lt;/em&gt;{t+1})} \right)$$.&lt;/p&gt;
+
+&lt;p&gt;The additional term is a risk sharing term that depends on the relationship between $\rho$ and $\alpha$. If the agent has a preference for early resolution of uncertainty ($\rho &amp;lt; \alpha$) then an increase $U_{t+1}$ causes M to increase. This shows up in a number of places:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Colacito, Croce, Ho, and Howard (2014) argue that good long-run productivity news for one country causes a net &lt;em&gt;outflow&lt;/em&gt; of resources from that country. This reasoning relies on the fact that with EZ preferences there is a 1-to-1 map between &lt;em&gt;lifetime&lt;/em&gt; wealth and the value function. If lifetime wealth goes up, the value function goes up, which causes marginal utility to go down, which via this risk sharing term in the SDF causes a planner (or equivalently, markets) to allocate resources away from this agent and towards the relatively higher marginal utility agent.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

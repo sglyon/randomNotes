@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Computing on Random Notes</title>
+    <link>http://notes.spencerlyon.com/tags/computing/</link>
+    <description>Recent content in Computing on Random Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-EN</language>
+    <managingEditor>spencer.lyon@stern.nyu.edu (Spencer Lyon)</managingEditor>
+    <webMaster>spencer.lyon@stern.nyu.edu (Spencer Lyon)</webMaster>
+    <copyright>(c) 2015 Spencer Lyon.</copyright>
+    <lastBuildDate>Mon, 11 May 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://notes.spencerlyon.com/tags/computing/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>HPC</title>
+      <link>http://notes.spencerlyon.com/2015/05/11/hpc/</link>
+      <pubDate>Mon, 11 May 2015 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2015/05/11/hpc/</guid>
+      <description>
+
+&lt;h1 id=&#34;julia-and-mercer&#34;&gt;Julia and mercer&lt;/h1&gt;
+
+&lt;p&gt;Here are some tips, tricks I&amp;rsquo;ve picked up for working with Julia on NYUs super
+computer.&lt;/p&gt;
+
+&lt;h2 id=&#34;installing-julia&#34;&gt;Installing Julia&lt;/h2&gt;
+
+&lt;p&gt;I have a shell script that I periodically run to download the latest released
+version of Julia:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;#!/usr/bin/env sh
+
+wget -O julia_binary.tar.gz https://julialang.s3.amazonaws.com/bin/linux/x64/0.4/julia-0.4-latest-linux-x86_64.tar.gz
+
+rm -rf $WORK/src/julia*
+mkdir -p $WORK/src/julia
+tar -C $WORK/src/julia -zxf julia_binary.tar.gz --strip-components=1
+rm julia_binary.tar.gz
+
+# prepend julia to path
+export PATH=$WORK/src/julia/bin:$PATH
+
+# remove old symlink and make a new one
+mkdir $WORK/bin
+rm -f $WORK/bin/julia
+ln -s $WORK/src/julia/bin/julia $WORK/bin/julia
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I put this in a file &lt;code&gt;$WORK/bin/update_julia&lt;/code&gt;, then whenever I need to update
+my julia installation I do &lt;code&gt;bash $WORK/bin/update_julia&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;This script will put the Julia binary in &lt;code&gt;$WORK/bin/julia&lt;/code&gt; (that&amp;rsquo;s what I enter
+to run Julia.)&lt;/p&gt;
+
+&lt;h2 id=&#34;installing-specific-packages&#34;&gt;Installing specific packages&lt;/h2&gt;
+
+&lt;p&gt;Most packages are installable using either &lt;code&gt;Pkg.clone&lt;/code&gt; or &lt;code&gt;Pkg.add&lt;/code&gt;. However,
+some require extra setup.&lt;/p&gt;
+
+&lt;p&gt;Here are specailized instructions for installing specific packages.&lt;/p&gt;
+
+&lt;h3 id=&#34;hdf5-jl&#34;&gt;HDF5.jl&lt;/h3&gt;
+
+&lt;p&gt;I first tried &lt;code&gt;Pkg.add(&amp;quot;HDF5&amp;quot;)&lt;/code&gt;. That didn&amp;rsquo;t work. The problem is that I don&amp;rsquo;t
+have access to a package manager on mercer, so I need to link against libhdf5
+that is already on mercer.&lt;/p&gt;
+
+&lt;p&gt;I tracked down the shared library on mercer and found that it was at the
+following location (NOTE: you might want to check it there are more recent
+versions available):&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;/share/apps/hdf5/1.8.14/openmpi/intel/lib/libhdf5.so.9&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Then I edited &lt;code&gt;$HOME/.julia/v0.4/HDF5/deps/deps.jl&lt;/code&gt; to look like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-julia&#34;&gt;# This is an auto-generated file; do not edit
+
+# Pre-hooks
+
+# Macro to load a library
+macro checked_lib(libname, path)
+    ((VERSION &amp;gt;= v&amp;quot;0.4.0-dev+3844&amp;quot; ? Base.Libdl.dlopen_e : Base.dlopen_e)(path) == C_NULL) &amp;amp;&amp;amp; error(&amp;quot;Unable to load \n\n$libname ($path)\n\nPlease re-run Pkg.build(package), and restart Julia.&amp;quot;)
+    quote const $(esc(libname)) = $path end
+end
+
+# Load dependencies
+@checked_lib libhdf5 &amp;quot;/share/apps/hdf5/1.8.14/openmpi/intel/lib/libhdf5.so.9&amp;quot;
+# Load-hooks
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You might need to create both the &lt;code&gt;HDF5/deps&lt;/code&gt; folder and the file &lt;code&gt;deps.jl&lt;/code&gt;.
+You should now be able to start a Julia session and run &lt;code&gt;using HDF5&lt;/code&gt; and it
+will work without a problem.&lt;/p&gt;
+
+&lt;p&gt;You do &lt;strong&gt;not&lt;/strong&gt; need to run &lt;code&gt;Pkg.build(&amp;quot;HDF5&amp;quot;)&lt;/code&gt; after updating deps.jl&lt;/p&gt;
+
+&lt;h3 id=&#34;mbedtls-jl&#34;&gt;MbedTLS.jl&lt;/h3&gt;
+
+&lt;p&gt;If you need to install MbedTLS.jl or if it is a dependency of something else
+you need to install, you will probably see an error about &lt;code&gt;cmake&lt;/code&gt; not being
+available when you do &lt;code&gt;Pkg.add(&amp;quot;MbedTLS&amp;quot;)&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The fix here is to simply run &lt;code&gt;module load cmake&lt;/code&gt; at the shell prompt, then
+start Julia in that same session, and try &lt;code&gt;Pkg.add(&amp;quot;MbedTLS&amp;quot;)&lt;/code&gt; or
+&lt;code&gt;Pkg.build(&amp;quot;MbedTLS&amp;quot;)&lt;/code&gt; again (run &lt;code&gt;Pkg.build&lt;/code&gt; if you already tried &lt;code&gt;Pkg.add&lt;/code&gt;
+and it failed).&lt;/p&gt;
+
+&lt;h1 id=&#34;mpi-jobs&#34;&gt;MPI jobs&lt;/h1&gt;
+
+&lt;p&gt;I got this script from &lt;a href=&#34;http://csc.cnsi.ucsb.edu/docs/running-jobs-torque&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;NOTE: if you are using Julia with multiple processors, skip this section and
+move to the next one.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#!/bin/sh
+##############################################################################
+# IMPORTANT:  the next line determines how many nodes to run on
+#  nodes is number of nodes, ppn= processors (cores) per node
+#PBS -l nodes=2:ppn=4
+#
+# Make sure that we are in the same subdirectory as where the qsub command
+# is issued.
+#
+cd $PBS_O_WORKDIR
+#
+#  make a list of allocated nodes(cores)
+#  Note that if multiple jobs run in same directory, use different names
+#     for example, add on jobid nmber.
+cat $PBS_NODEFILE &amp;gt; nodes
+# How many cores total do we have?
+NO_OF_CORES=`cat $PBS_NODEFILE | egrep -v &#39;^#&#39;\|&#39;^$&#39; | wc -l | awk &#39;{print $1}&#39;`
+NODE_LIST=`cat $PBS_NODEFILE `
+#
+# Just for kicks, see which nodes we got.
+echo $NODE_LIST
+#
+# Run the executable. *DO NOT PUT* a &#39;&amp;amp;&#39; at the end!!
+#
+mpirun -np $NO_OF_CORES -machinefile nodes ./pi3 &amp;gt;&amp;amp; log
+#
+#########################################
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The following also looked like good resources:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://wikis.nyu.edu/display/NYUHPC/Running+jobs+-+MPI&#34;&gt;https://wikis.nyu.edu/display/NYUHPC/Running+jobs+-+MPI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://wiki.anl.gov/cnm/HPC/Submitting_and_Managing_Jobs/Example_Job_Script&#34;&gt;https://wiki.anl.gov/cnm/HPC/Submitting_and_Managing_Jobs/Example_Job_Script&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;julia-on-a-cluster&#34;&gt;Julia on a cluster&lt;/h2&gt;
+
+&lt;p&gt;I can&amp;rsquo;t just do &lt;code&gt;julia -p N&lt;/code&gt; or &lt;code&gt;addprocs(N)&lt;/code&gt; to get it to work. That would
+give me &lt;code&gt;N&lt;/code&gt; procs on the login node. What I need instead is to use the
+&lt;code&gt;machinefile&lt;/code&gt; option for starting Julia and give it  the &lt;code&gt;$PBS_NODEFILE&lt;/code&gt;. This
+is an example of a PBS script I had that worked:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#PBS -l nodes=1:ppn=20
+#PBS -l walltime=10:00:00
+#PBS -N gerzensee
+#PBS -M spencer.lyon@nyu.edu
+#PBS -m abe
+#PBS -j oe
+#PBS -t 1,9
+
+module purge
+
+# this moves us to the directory where qsub was submitted
+# should be $WORK/Research/Gerzesee/Code/international
+cd $PBS_O_WORKDIR
+
+# cat $PBS_NODEFILE | sed -e &#39;s/.local$/-ib.ibnet/&#39; &amp;gt; my_machines
+# cat $PBS_NODEFILE &amp;gt; my_machines
+
+# run the code! -- use machinefile to start one julia on each process
+/work/sgl290/bin/julia --machinefile $PBS_NODEFILE driver.jl
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In this example I started two jobs (with &lt;code&gt;PBS_ARRAYID&lt;/code&gt; equal to 1 and 9). Each
+job used 20 cores on one node for 10 hours. The path &lt;code&gt;/work/sgl290/bin/julia&lt;/code&gt;
+is the path that was set up for me by running the shell script from above.&lt;/p&gt;
+
+&lt;p&gt;In this example &lt;code&gt;driver.jl&lt;/code&gt; looked like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-julia&#34;&gt;include(&amp;quot;main.jl&amp;quot;)
+using JLD
+
+for i in workers()
+    remotecall_fetch(i, include, &amp;quot;main.jl&amp;quot;)
+end
+
+# set up arguments
+model_id = parse(Int, get(ENV[&amp;quot;PBS_ARRAYID&amp;quot;], &amp;quot;1&amp;quot;))
+
+# CODE TO DO THE WORK USING using all the cores.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;There are a few things to point out about this code. First &lt;code&gt;main.jl&lt;/code&gt; is a file
+that collects all the code I will be running. I first call &lt;code&gt;include(&amp;quot;main.jl&amp;quot;)&lt;/code&gt;
+and then go through all the workers and call &lt;code&gt;remotecall_fetch(i, include,
+&amp;quot;main.jl&amp;quot;)&lt;/code&gt; to load it on each process. I do it this way for a few reasons:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Loading is only on the master process first allows all precompilation to take
+place without multiple processes trying to write the same &lt;code&gt;.ji&lt;/code&gt; files at the
+same time&lt;/li&gt;
+&lt;li&gt;I include the file sequentially on all workers again so that no worker steps
+on another worker&amp;rsquo;s toes.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I then extract an integer &lt;code&gt;model_id&lt;/code&gt; that specifies which job is currently
+running. This number corresponds to the job number from the pbs script
+(integers 1 and 9 in the example above). I use this to drive which
+parameterization I am working with.&lt;/p&gt;
+
+&lt;p&gt;The comment at the end is simply there as a placeholder for you to put the code
+that actually does the work.&lt;/p&gt;
+
+&lt;h1 id=&#34;sharing-folders&#34;&gt;Sharing folders&lt;/h1&gt;
+
+&lt;p&gt;To share a folder &lt;code&gt;/scratch/sgl290/awesomeness&lt;/code&gt; with user &lt;code&gt;abc123&lt;/code&gt; I would need
+to enter the following commands on mercer:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;setfacl -m u:abc123:rx /scratch/sgl290
+setfacl -Rm u:abc123:rwx,d:u:abc123:rwx /scratch/sgl290/awesomeness
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The first command gives read and execute permissions to my scratch folder &amp;ndash;
+necessary for letting them enter the folder and it&amp;rsquo;s children.&lt;/p&gt;
+
+&lt;p&gt;The second command gives him read, write, exceute permissions to the
+awesomeness folder all sub files/folders.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Cloud tips</title>
+      <link>http://notes.spencerlyon.com/2014/10/05/cloud-tips/</link>
+      <pubDate>Sun, 05 Oct 2014 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2014/10/05/cloud-tips/</guid>
+      <description>
+
+&lt;h1 id=&#34;cloud:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;Cloud&lt;/h1&gt;
+
+&lt;h2 id=&#34;aws:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;AWS&lt;/h2&gt;
+
+&lt;h3 id=&#34;persistent-notebook:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;Persistent notebook&lt;/h3&gt;
+
+&lt;p&gt;I have a persistent instance running.&lt;/p&gt;
+
+&lt;p&gt;I followed &lt;a href=&#34;https://grollchristian.wordpress.com/2014/09/01/ijulia-for-amazon-ec2/&#34;&gt;this blog post&lt;/a&gt; to get it set up.&lt;/p&gt;
+
+&lt;p&gt;I can connect to it via&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ssh -i ~/dotfiles/sglyon-mbp.pem.txt ubuntu@ec2-54-201-41-126.us-west-2.compute.amazonaws.com
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;ipython notebook --profile=julia&lt;/code&gt; is running. I can connect to it from any browser by going to&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;https://ec2-54-201-41-126.us-west-2.compute.amazonaws.com:8998
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The password is &lt;code&gt;lyon0409&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;I needed to add the &lt;code&gt;IJulia all tcp&lt;/code&gt; security group to the instance through the AWS online management console.&lt;/p&gt;
+
+&lt;h4 id=&#34;new-user:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;new user&lt;/h4&gt;
+
+&lt;p&gt;I made a new user here by following the ideas &lt;a href=&#34;http://brianflove.com/2013/06/18/add-new-sudo-user-to-ec2-ubuntu/&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;mounting-a-volume:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;Mounting a volume&lt;/h4&gt;
+
+&lt;p&gt;I mounted a volume to &lt;code&gt;~/storage&lt;/code&gt; (&lt;code&gt;sudo mount /dev/xvdf /home/sglyon/storage)&lt;/code&gt;, but didn&amp;rsquo;t have permission to do anything. To fix that I chowned it: &lt;code&gt;sudo chown -R sglyon ~/storage&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;gce:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;GCE&lt;/h2&gt;
+
+&lt;p&gt;First step is to install the tools. This is a one time thing where I enter this command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;curl https://sdk.cloud.google.com | bash
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then follow the prompts and such until it is installed. I chose the directory &lt;code&gt;~/google-cloud-sdk&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;I didn&amp;rsquo;t have it alter my path for me, but  I added the following line in my list where I set &lt;code&gt;$PATH&lt;/code&gt; from within my ~/.zshenv:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$HOME/google-cloud-sdk/bin
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;julia-and-gce:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;Julia and GCE&lt;/h3&gt;
+
+&lt;p&gt;I (partially) followed &lt;a href=&#34;http://www.blog.juliaferraioli.com/2013/12/julia-on-google-compute-engine.html&#34;&gt;this blog post&lt;/a&gt; to get things started.&lt;/p&gt;
+
+&lt;p&gt;To create a new instance from the command line I need to run the following&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;gcloud compute --project &amp;quot;sgl-julia&amp;quot; instances create &amp;quot;instance-name&amp;quot; --zone &amp;quot;us-central1-b&amp;quot; --machine-type &amp;quot;n1-standard-1&amp;quot; --network &amp;quot;default&amp;quot; --maintenance-policy &amp;quot;MIGRATE&amp;quot; --scopes &amp;quot;https://www.googleapis.com/auth/devstorage.read_only&amp;quot; --image &amp;quot;https://www.googleapis.com/compute/v1/projects/sgl-julia/global/images/julia-src-deb-10212014&amp;quot; --no-boot-disk-auto-delete
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;where &lt;code&gt;instance-name&lt;/code&gt; is replaced with the actual name of the instance I want to create.&lt;/p&gt;
+
+&lt;p&gt;I can then ssh into the new instance (after it is created) by running&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;gcloud compute --project &amp;quot;sgl-julia&amp;quot; ssh --zone &amp;quot;us-central1-b&amp;quot; &amp;quot;instance-name&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If I want to select a different type of instance, I would change the &lt;code&gt;--machine-type&lt;/code&gt; parameter name. See &lt;a href=&#34;https://developers.google.com/compute/pricing&#34;&gt;this page&lt;/a&gt; for an explanation of the different types and prices.&lt;/p&gt;
+
+&lt;p&gt;To turn off (delete) my instance I would enter the following command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;gcloud compute --project &amp;quot;sgl-julia&amp;quot; instances delete &amp;quot;instance-1&amp;quot; --zone &amp;quot;us-central1-b&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If I also wanted to delete the corresponding persistent disk I would enter&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;gcloud compute --project &amp;quot;sgl-julia&amp;quot; disks delete &amp;quot;instance-1&amp;quot; --zone &amp;quot;us-central1-b&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;writing-the-package:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;Writing the package&lt;/h4&gt;
+
+&lt;p&gt;I had to install &lt;a href=&#34;https://github.com/markcarver/mac-ssh-askpass&#34;&gt;this script&lt;/a&gt; in order for ssh to work. I did the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cd ~/Downloads
+git clone https://github.com/markcarver/mac-ssh-askpass
+cd mac-ssh-askpass
+sudo ./INSTALL
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The package also requires that &lt;code&gt;gcloud&lt;/code&gt; and friends are installed.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

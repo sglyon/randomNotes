@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Math on Random Notes</title>
+    <link>http://notes.spencerlyon.com/tags/math/</link>
+    <description>Recent content in Math on Random Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-EN</language>
+    <managingEditor>spencer.lyon@stern.nyu.edu (Spencer Lyon)</managingEditor>
+    <webMaster>spencer.lyon@stern.nyu.edu (Spencer Lyon)</webMaster>
+    <copyright>(c) 2015 Spencer Lyon.</copyright>
+    <lastBuildDate>Mon, 28 Dec 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://notes.spencerlyon.com/tags/math/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Probability distributions</title>
+      <link>http://notes.spencerlyon.com/2015/12/28/probability-distributions/</link>
+      <pubDate>Mon, 28 Dec 2015 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2015/12/28/probability-distributions/</guid>
+      <description>
+
+&lt;p&gt;Some probability distributions that are useful (usually to economists) for one reason or another.&lt;/p&gt;
+
+&lt;h3 id=&#34;pareto-distribution&#34;&gt;Pareto Distribution&lt;/h3&gt;
+
+&lt;p&gt;The &lt;a href=&#34;https://en.wikipedia.org/wiki/Pareto_distribution&#34;&gt;Pareto distribution&lt;/a&gt; has a simple CDF: $G(x) = 1 - \underline{x}^{\gamma}x^{-\gamma}$, where $\underline{x}$ satisfies $G(\underline{x}) = 0$ and $\gamma$ governs the variance.&lt;/p&gt;
+
+&lt;p&gt;A useful property of the Pareto distribution is that when it is truncated, the truncated CDF is the same as the original, except that $\underline{x}$ is moved up.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Notes on Deterministic Difference Equations</title>
+      <link>http://notes.spencerlyon.com/2015/09/05/notes-on-deterministic-difference-equations/</link>
+      <pubDate>Sat, 05 Sep 2015 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2015/09/05/notes-on-deterministic-difference-equations/</guid>
+      <description>
+
+&lt;h1 id=&#34;deterministic-difference-equations&#34;&gt;Deterministic Difference Equations&lt;/h1&gt;
+
+&lt;h2 id=&#34;scalar-first-order-linear-equations&#34;&gt;Scalar First-Order Linear Equations&lt;/h2&gt;
+
+&lt;p&gt;The basic scalar first-order difference equation can be represented by:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$$x_{t+1} = b x_t + c z_t, \quad t \geq 0$$&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;where $x_t, b, c, z_t$ are all real numbers. Since these equations are deterministic then we already know the sequence ${ z_t }$ and will assume it is bounded. If $z_t$ is constant for all $t$ then this equation is called &lt;em&gt;autonomous&lt;/em&gt;. If $c z_t = 0$ for all $t$ then this equation is called homogenous. A particular solution to this difference equation is the constant solution where $x_t = \bar{x}$ for all $t$ and $\bar{x} = \frac{c}{1-b}$ for $b \neq 1$. This solution is known as a &lt;em&gt;stationary point&lt;/em&gt; or &lt;em&gt;steady state.&lt;/em&gt; A more general solution to the autonomous difference equation can be given by&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$$x_t = (x_0 - \bar{x}) b^t + \bar{x}$$&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;We can describe the behavior of this solution by&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/span&gt;&lt;/th&gt;
+&lt;th&gt;$x_0$ given&lt;/th&gt;
+&lt;th&gt;$x_0$ unknown&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;$abs(b) &amp;gt; 1$&lt;/td&gt;
+&lt;td&gt;Exploding unless $x_0 = \bar{x}$&lt;/td&gt;
+&lt;td&gt;$x_t = \bar{x}$ $\forall t \geq 0$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;$abs(b) &amp;lt; 1$&lt;/td&gt;
+&lt;td&gt;Globally asympototically stable&lt;/td&gt;
+&lt;td&gt;Indeterminancy&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;A general solution for the nonautonomous case depends on whether $x_0$ is given or not. If $x_0$ is given then we can solve for $x_t$ through backwards substitution to obtain&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$$x_t = c \sum_{j=0}^{t-1} b^j z_{t - 1 - j} + b^t x_0$$&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;If $|b| &amp;lt; 1$ then in the limit it converges to the &lt;em&gt;generalized steady state&lt;/em&gt; which is&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$$\lim_{t \rightarrow \infty} x_t = \lim_{t \rightarrow infty} c \sum_{j=0}^{t-1} b^j z_{t-1-j}$$&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Now consider the case when $x_0$ is not given, for example, imagine that the process $x_t$ representes an asset&amp;rsquo;s price. In our example the difference equation is simply an asset pricing equation and to solve for the price at $t$ we can substitute forward and get&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$$x_t = \left( \frac{1}{b} \right)^T x_{t+T} - \frac{c}{b} \sum_{j=0}^{T-1} \left(\frac{1}{b} \right)^j z_{t+j}$$&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;for any $T \geq 1$. If we take $T \rightarrow \infty$ and assume the &lt;em&gt;transversality condition&lt;/em&gt; (also known as the &lt;em&gt;no-bubble condition&lt;/em&gt;) which says&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$$\lim_{T \rightarrow \infty} \left( \frac{1}{b} \right)^T x_{t+T} = 0$$&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;then we can obtain the forward looking solution&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$$x_t = - \frac{c}{b} \sum_{j=0}^{\infty} \left( \frac{1}{b} \right)^j z_{t+j}$$&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;If $|b| &amp;gt; 1$ then this sum converges.&lt;/p&gt;
+
+&lt;p&gt;Now imagine that $|b| &amp;gt; 1$ and we remove the transversality condition then the solution admits many unstable solutions. Define &lt;code&gt;$x_t^*$&lt;/code&gt; as the solution given by the sum above, then for any &lt;code&gt;$\{B_t\}$&lt;/code&gt; satisfying &lt;code&gt;$B_{t+1} = b B_t$&lt;/code&gt; the expression &lt;code&gt;$x_t = x_t^* + B_t$&lt;/code&gt; is a solution. In this case, we refer to &lt;code&gt;$x_t^*$&lt;/code&gt; as the &lt;em&gt;fundamental value&lt;/em&gt; and $B_t$ as a &lt;em&gt;bubble&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;If $|b| &amp;lt; 1$ then this sum likely doesn&amp;rsquo;t converge. In similar fashion as previously, we could write the solutions as $x_t = \frac{c}{1 - b} + B_t$ and for any $B_t$ that follows the same process (&lt;code&gt;$B_{t+1} = b B_t$&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;We have seen that two conditions determine what the solutions to our first-order scalar difference equations look like, namely:&lt;/p&gt;
+
+&lt;p&gt;1) Whether the initial value is given : This determines whether $x_t$ is &lt;em&gt;predetermined&lt;/em&gt;.
+2) Whether $b$ is greater or less than 1 : This is determines whether the eigenvalue is stable.&lt;/p&gt;
+
+&lt;h2 id=&#34;lag-operators-and-scalar-second-order-linear-difference-equations&#34;&gt;Lag Operators and Scalar Second-Order Linear Difference Equations&lt;/h2&gt;
+
+&lt;p&gt;We now introduce an operator that is common in the economics literature and is known as the &lt;em&gt;lag operator&lt;/em&gt;. The lag operator, $L$, operates on a dynamics process ${x_t }$ in the following fashion:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;$L x_t = x_{t-1}$&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$L^n x_t = x_{t-n}$&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$L^n c = c$&lt;/code&gt; for any constant &lt;code&gt;$c$&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Additionally, there are some useful formulas that we include for $ |\lambda| &amp;lt; 1$&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$$\frac{1}{1 - \lambda L^n} = \sum_{j=0}^\infty \lambda^j L^{nj}$$&lt;/code&gt;
+&lt;code&gt;$$\frac{1}{(1 - \lambda L^n)^2} = \sum_{j=0}^\infty (j + 1) \lambda^j L^{nj}$$&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;and for a matrix $A$ with all of its eigenvalues in the unit circle&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$$(I - A L^n)^{-1} = \sum_{j=0}^\infty A^j L^{nj}$$&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Consider a second-order linear difference equation&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$$x_{t+2} = a x_{t+1} + b x_{t} + c z_{t}$$&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;where &lt;code&gt;$x_0 \in \mathbb{R}$&lt;/code&gt; is given, $a, b, c$ are real-valued constants, and &lt;code&gt;$\{ z_t \}$&lt;/code&gt; is a given sequence of bounded real-valued numbers. We could express this equation in terms of the lag-operator by&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$$(L^{-2} - a L^{-1} - b) x_t = c z_t$$&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;with characteristic equation&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$$\lambda^2 - a \lambda - b = 0$$&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This characteristic equation has two roots &lt;code&gt;$\lambda_1$&lt;/code&gt; and &lt;code&gt;$\lambda_2$&lt;/code&gt;. We could factor the difference equation into&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$$(L^{-1} - \lambda_1) (L^{-1} - \lambda_2) x_t = c z_t$$&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Then without loss of generality consider 3 possible cases: Either &lt;code&gt;$\lambda_1, \lambda_2 \in \mathbb{R}$&lt;/code&gt; with &lt;code&gt;$\lambda_1 \neq \lambda_2$&lt;/code&gt;, &lt;code&gt;$\lambda_1, \lambda_2 \in \mathbb{R}$&lt;/code&gt; with &lt;code&gt;$\lambda_1 = \lambda_2$&lt;/code&gt;, or &lt;code&gt;$\lambda_1, \lambda_2 \in \mathbb{C}$&lt;/code&gt;. I will only think about the first case here: We can break this case into several sub-cases.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;$ | \lambda_1 | &amp;gt; | \lambda_2 | &amp;gt; 1$&lt;/code&gt; : Then the solution explodes as time proceeds &amp;ndash; We call the steady state the &lt;em&gt;source&lt;/em&gt; (it is constant there and to either side it blows up).&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$ | \lambda_1 | &amp;lt; | \lambda_2 | &amp;lt; 1$&lt;/code&gt; : Then for any initial value, the solution converges to the steady state &amp;ndash; We call the steady state the &lt;em&gt;sink&lt;/em&gt; (everything sinks towards this point).&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$| \lambda_1 | &amp;lt; 1 &amp;lt; | \lambda_2 |$&lt;/code&gt; The solution for this case is known as the &lt;em&gt;saddle path solution&lt;/em&gt;. Then by sending &lt;code&gt;$(L^{-1} - \lambda_2)$&lt;/code&gt; to the RHS we can write &lt;code&gt;$$(L^{-1} - \lambda_1) x_t = - \frac{c}{\lambda_2} \frac{z_t}{(1 - \lambda_2^{-1} L^{-1})}$$&lt;/code&gt; which reduces to &lt;code&gt;$$x_{t+1} = \lambda_1 x_t -\frac{c}{\lambda_2} \sum_{j=0}^\infty \left( \frac{1}{\lambda_2} \right)^{j} z_{t + j}$$.&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;first-order-linear-systems&#34;&gt;First-Order Linear Systems&lt;/h2&gt;
+
+&lt;p&gt;We now consider first-order linear systems. We can write many higher order lineary systems down as a first-order linear system, so this will be the form that we consider&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$$A x_{t+1} = B x_{t} + C z_t$$&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Additionally, we will assume what is known as regularity &amp;ndash; That $\text{det}(A \alpha - B) \neq 0$ identically in $\alpha$. What this does is restrict ourselves to processes with solutions for generic exogenous sequences (Imagine that in the scalar case $a = b = 0$ then we wouldn&amp;rsquo;t have a solution for generic processes for $c z_t$ because we would have the equation $0 = c z_t$). Additionally, depending on what we are working with we sometimes assume that there exists $T &amp;gt; 0$ such that $z_t = \bar{z}$ for all $t &amp;gt; T$ &amp;ndash; This assumption makes it possible for our system to have a steady state.&lt;/p&gt;
+
+&lt;p&gt;We define a steady state by a point $\bar{x}$ such that if $x_t = \bar{x}$ then $x_s = \bar{x}$ for all $s &amp;gt; t$. If $(A - B)$ is invertible (and we include our assumption on the constant values of $\bar{z}$) then our unique steady state is defined by $\bar{x} = (A - B)^{-1} C \bar{z}$.&lt;/p&gt;
+
+&lt;p&gt;A sequence &lt;code&gt;$\{ x_t \}$&lt;/code&gt; is &lt;em&gt;stable&lt;/em&gt; if there exists $M &amp;gt; 0$ such that &lt;code&gt;$|| x_t ||_{\text{max}} &amp;lt; M$&lt;/code&gt; for all $t$; where the operation &lt;code&gt;$||x_{t}||_{\text{max}} = \max_j | X_j |$&lt;/code&gt; for any $x \in \mathbb{R}^n$.&lt;/p&gt;
+
+&lt;p&gt;A point $\bar{x}$ is &lt;em&gt;asymptotically stable&lt;/em&gt; for the sequence &lt;code&gt;$\{ x_t \}$&lt;/code&gt; if &lt;code&gt;$\lim_{t \rightarrow \infty} x_t = \bar{x}$&lt;/code&gt; for some &lt;code&gt;$x_0$&lt;/code&gt;. The &lt;em&gt;basin&lt;/em&gt; (or &lt;em&gt;attraction&lt;/em&gt;) of an asymptotically stable steady state $\bar{x}$ is the set of all points &lt;code&gt;$x_0$&lt;/code&gt; such that &lt;code&gt;$\lim_{t \rightarrow \infty} = \bar{x}$&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;A point $\bar{x}$ is &lt;em&gt;globally (asymptotically) stable&lt;/em&gt; for the sequence &lt;code&gt;$\{ x_t \}$ if $\lim_{t \rightarrow \infty} x_t = \bar{x}$&lt;/code&gt; for any value &lt;code&gt;$x_0$&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;We will assume that &lt;code&gt;$\{ z_t \}$&lt;/code&gt; is a stable sequence.&lt;/p&gt;
+
+&lt;h3 id=&#34;nonsingular-systems&#34;&gt;Nonsingular systems&lt;/h3&gt;
+
+&lt;p&gt;Let $A$ be nonsingular then we can write our first-order linear system as&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$$x_{t+1} = A^{-1} B x_t + A^{-1} C z_t$$&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Jianjun Miao. &amp;laquo;Economic dynamics in discrete time.&amp;raquo; MIT Press. 2014.&lt;/li&gt;
+&lt;li&gt;Lars Ljunqvist and Thomas Sargent. &amp;laquo;Recursive Macroeconomic Theory.&amp;raquo; MIT Press. 2013&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Continuous Time</title>
+      <link>http://notes.spencerlyon.com/2015/01/12/continuous-time/</link>
+      <pubDate>Mon, 12 Jan 2015 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2015/01/12/continuous-time/</guid>
+      <description>
+
+&lt;h1 id=&#34;continuous-time-macro&#34;&gt;Continuous Time Macro&lt;/h1&gt;
+
+&lt;h2 id=&#34;solving-an-hjb&#34;&gt;Solving an HJB&lt;/h2&gt;
+
+&lt;p&gt;The HJB usually takes the form&lt;/p&gt;
+
+&lt;p&gt;$$\rho V_t (N&lt;em&gt;t) = \max&lt;/em&gt;{C, a} \left{ u&amp;copy; + \mathcal{A} V_t(N_t)\right},$$&lt;/p&gt;
+
+&lt;p&gt;where $\mathcal{A} V_t(N_t)$ is the drift of $dV_T(N_t)$, $\rho$ is the discount rate, $u&amp;copy;$ is the flow payoff of $C$. To solve this equation follow these steps:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Take FOC wrt controls (here $C, a$)&lt;/li&gt;
+&lt;li&gt;Stare at it for a while and make a guess of the functional form of the solution to the PDE. In this case if $u&amp;copy; = \ln&amp;copy;$ we would have chosen $V(N) = v_0 + v_1 \ln(N)$. You really learn how to do this by practice.&lt;/li&gt;
+&lt;li&gt;Plug the assumed functional form into the HJB (take necessary derivatives and replace all instances of $V(N)$)&lt;/li&gt;
+&lt;li&gt;Plug in FOC from step 1&lt;/li&gt;
+&lt;li&gt;Use method of undetermined coefficients to extract coefficients in assumed functional form. If you are unable to do this, try one more time because you might have made a dumb algebra mistake. After that start over at step 2 with a new guess&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; If you aren&amp;rsquo;t able to provide an explicit functional form, but rather have a more general guess like $V(x, y) = f(x) + y g(x)$, then you should alter your approach slightly. Starting from step 5 you will need to do the following:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;You should be able to use the method of undetermined coefficients to come up with ODEs for each of the generic functions in your guess (in this case $f$, and $g$).&lt;/li&gt;
+&lt;li&gt;Solve these ODEs however you know how&lt;/li&gt;
+&lt;li&gt;If you can&amp;rsquo;t, you probably made a bad guess for the form of the solution, so start over at step 2.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;ito-processes&#34;&gt;Ito processes&lt;/h2&gt;
+
+&lt;h3 id=&#34;gbm&#34;&gt;GBM&lt;/h3&gt;
+
+&lt;p&gt;A geometric Brownian motion solves the following SDE&lt;/p&gt;
+
+&lt;p&gt;$$dS_t = \mu S_t dt + \sigma S_t dW_t.$$&lt;/p&gt;
+
+&lt;p&gt;The solution is&lt;/p&gt;
+
+&lt;p&gt;$$S_t = S_0 \exp \left( \left(\mu - \frac{\sigma^2}{2} \right)t + \sigma W_t \right).$$&lt;/p&gt;
+
+&lt;p&gt;We often write GMB as&lt;/p&gt;
+
+&lt;p&gt;$$\frac{dS_t}{S_t} = \mu dt + \sigma dW_t$$&lt;/p&gt;
+
+&lt;p&gt;or even in terms of $d \log S_t$. By Ito&amp;rsquo;s lemma we have that&lt;/p&gt;
+
+&lt;p&gt;$$d \log S_t = \frac{d S_t}{S_t} - \frac{1}{2} \sigma^2 dt.$$&lt;/p&gt;
+
+&lt;p&gt;Solving for $\frac{d S_t}{S_t}$ and matching coefficients we see that we must have&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;drift of $d \log S_t = \mu - \frac{1}{2} \sigma^2$&lt;/li&gt;
+&lt;li&gt;Volatility of $d \log S_t = \sigma$.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Notes on Kalman Filter</title>
+      <link>http://notes.spencerlyon.com/1/01/01/notes-on-kalman-filter/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/1/01/01/notes-on-kalman-filter/</guid>
+      <description>
+
+&lt;h1 id=&#34;kalman-filter:c4efa121509565b86b05f158ad1df0bd&#34;&gt;Kalman Filter&lt;/h1&gt;
+
+&lt;p&gt;The Kalman filter is a vital tool in any macro-economist&amp;rsquo;s (and more generally any modelers) toolbox. A filtering problem is loosely described by the use of a history of observed information to infer information about the history of some other unobservable variable (state). The Kalman filter is a recursive filter in the sense that if we have a best guess for the state value for the previous period, $t-1$, then the period $t$ observation in conjunction with the best guess for the state value in the previous period is sufficient to provide a best guess for the state value in this period.&lt;/p&gt;
+
+&lt;p&gt;The model that we will present in conjunction with the Kalman filter is called a Gaussian linear state space model and is typically described by the following two equations:&lt;/p&gt;
+
+&lt;p&gt;$$y_t = C x_t + D \varepsilon_t$$
+$$x&lt;em&gt;t = A x&lt;/em&gt;{t-1} + B \eta_t$$&lt;/p&gt;
+
+&lt;p&gt;The matrices $(A, B, C, D)$ are all known and the model noise, $\varepsilon_t$ and $\eta_t$, are both identically and independently distributed as standard normals. The first equation is often referred to as the &lt;em&gt;measurement equation&lt;/em&gt; because the history of $y^t$ is observable to the agent at period $t$.  The second equation is known as the state evolution equation, and is fundamentally different than the measurement equation because $s^t$ is unobservable. The fact that one equation is observable while the other is not and the Markov properties of the model put this model into a broader class of models known as &lt;em&gt;hidden Markov models&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;derivation:c4efa121509565b86b05f158ad1df0bd&#34;&gt;Derivation&lt;/h2&gt;
+
+&lt;p&gt;I will now present the derivation of the Kalman filter. As mentioned earlier, we would like to infer information about the states, $x_t$, using information that we observe $y_t$. More specifically, we would like to infer the value of $x_t$ given a history of $y^t$. We begin by having some initial condition on $x_0$ &amp;ndash; This condition can be either a distribution &lt;em&gt;or&lt;/em&gt; simply a value. We will denote the estimated values of the state using a hat i.e. write $\hat{x}$&lt;/p&gt;
+
+&lt;p&gt;The recursive nature of the Kalman filter means that each period we enter the period with a best guess for the value of the state which we will call the predicted state, call it $\hat{x}_{t | t-1}$. This predicted state is found through&lt;/p&gt;
+
+&lt;p&gt;$$ E_t[x_t] = E&lt;em&gt;t \left[ E&lt;/em&gt;{t-1} \left[x_t \right] \right]$$
+$$ = E&lt;em&gt;t \left[ E&lt;/em&gt;{t-1} \left[A x_{t-1} + B \varepsilon_t \right] \right]$$
+$$ = E&lt;em&gt;t \left[ A \hat{x}&lt;/em&gt;{t-1 | t-1} + B \varepsilon&lt;em&gt;t \right] = A \hat{x}&lt;/em&gt;{t-1 | t-1}$$&lt;/p&gt;
+
+&lt;p&gt;where $\hat{x}&lt;em&gt;{t-1 | t-1}$ is defined as our best estimate of the state conditional on the information up to period $t-1$. Our goal is to establish an unbiased estimator, $\hat{x}&lt;/em&gt;{t | t}$, for the state $x_t$ and to minimize the squared error at every period where we define the error as $e_t := (x&lt;em&gt;t - \hat{x}&lt;/em&gt;{t|t})$. Others have found (and justified) a solution of the form&lt;/p&gt;
+
+&lt;p&gt;$$ \hat{x}&lt;em&gt;{t | t} = \hat{x}&lt;/em&gt;{t | t-1} + K (y&lt;em&gt;t - C \hat{x}&lt;/em&gt;{t | t-1})$$&lt;/p&gt;
+
+&lt;p&gt;We refer to $(y&lt;em&gt;t - C \hat{x}&lt;/em&gt;{t | t-1})$ as the innovation or residual because it is the difference between what we would observe with no noise and what we actually observe. Taking the derivative of the square errors with respect to $K_t$ reveals the value of $K&lt;em&gt;t$ which minimizes the distance between $x$ and $\hat{x}&lt;/em&gt;{t | t}$.&lt;/p&gt;
+
+&lt;p&gt;$$K_t = &amp;hellip; $$&lt;/p&gt;
+
+&lt;h1 id=&#34;references:c4efa121509565b86b05f158ad1df0bd&#34;&gt;References&lt;/h1&gt;
+
+&lt;p&gt;Fill these in more adequately later&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Quant-Econ&lt;/li&gt;
+&lt;li&gt;D.B.O. Anderson and J.B Moore. Optimal Filtering. Dover Publications, 1979.
+*&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Notes on MCMC Methods</title>
+      <link>http://notes.spencerlyon.com/1/01/01/notes-on-mcmc-methods/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/1/01/01/notes-on-mcmc-methods/</guid>
+      <description>
+
+&lt;h1 id=&#34;basic-idea:57acf39946df9a4c07fcdea2d9aa68c1&#34;&gt;Basic Idea&lt;/h1&gt;
+
+&lt;p&gt;The key idea behind the MCMC algorithms is that under certain conditions, Markov chains have a stationary distribution. If we can build a Markov chain whose stationary distribution is the distribution that we would like to sample from then it is relatively easy to get draws from this distribution by simulating lots of points and then randomly drawing from them.&lt;/p&gt;
+
+&lt;h1 id=&#34;metropolis-hastings:57acf39946df9a4c07fcdea2d9aa68c1&#34;&gt;Metropolis-Hastings&lt;/h1&gt;
+
+&lt;p&gt;Both the Metropolis and Gibbs algorithms are special cases of the Metropolis-Hastings algorithm. It has &amp;hellip;&lt;/p&gt;
+
+&lt;h1 id=&#34;metropolis:57acf39946df9a4c07fcdea2d9aa68c1&#34;&gt;Metropolis&lt;/h1&gt;
+
+&lt;p&gt;As previously mentioned, the Metropolis algorithm is a special case of Metropolis-Hastings &amp;ndash; In particular, it is the case in which we have a symmetric proposal density (People often use random walks)&lt;/p&gt;
+
+&lt;h1 id=&#34;gibbs:57acf39946df9a4c07fcdea2d9aa68c1&#34;&gt;Gibbs&lt;/h1&gt;
+
+&lt;p&gt;Gibbs sampling uses closed form expressions for conditionals such that we accept each draw.&lt;/p&gt;
+
+&lt;h1 id=&#34;coupling-from-the-past:57acf39946df9a4c07fcdea2d9aa68c1&#34;&gt;Coupling From the Past&lt;/h1&gt;
+
+&lt;p&gt;Imagine we have a Markovian process ${ X_t }$ whose stationary distribution we would like to draw from. One natural way to draw from this process is to start at some $x_0$ and simulate the process forward until it &amp;laquo;converges&amp;raquo; in some sense to the stationary distribution &amp;ndash; Remember under certain conditions (such as irreducibility etc&amp;hellip;) Markov processes are guaranteed to converge to their stationary distribution as $t \rightarrow \infty$. While intuitive, this approach has several short comings:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;1. You are never drawing from the *exact* stationary distribution
+2. It is hard to determine rates of convergence, so the number of periods you choose for &amp;quot;convergence&amp;quot; is somewhat arbitrary and is done using guess work.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In order to deal with this, we can take advantage of a very simple idea. Let&amp;rsquo;s start a process at period $-\infty$ and simulate it forward until period 0. At period 0, it should have converged to the stationary distribution. In continuous state spaces it is more difficult, so I will explain it for discrete spaces. Imagine we have $N$ states in our Markov chain then at period $-T$, it has to have arrived at one of the $N$ states. Start $N$ processes (one at each state) at period $-T$ and simulate them forward until period 0 (with the same set of shocks!). If all of these processes have converged to a single state then we know that our original process would have also converged to that state and thus the process is now in its stationary distribution (because we have &amp;laquo;simulated&amp;raquo; the process for an infinite number of periods). If it hasn&amp;rsquo;t converged then try again with a larger $T$ &amp;ndash; These processes are guaranteed to &amp;laquo;coalesce&amp;raquo; in finite number of states.&lt;/p&gt;
+
+&lt;h1 id=&#34;references:57acf39946df9a4c07fcdea2d9aa68c1&#34;&gt;References&lt;/h1&gt;
+
+&lt;p&gt;John Stachurski&amp;rsquo;s coupling from the past papers&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

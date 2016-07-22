@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Markov on Random Notes</title>
+    <link>http://notes.spencerlyon.com/tags/markov/</link>
+    <description>Recent content in Markov on Random Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-EN</language>
+    <managingEditor>spencer.lyon@stern.nyu.edu (Spencer Lyon)</managingEditor>
+    <webMaster>spencer.lyon@stern.nyu.edu (Spencer Lyon)</webMaster>
+    <copyright>(c) 2015 Spencer Lyon.</copyright>
+    <atom:link href="http://notes.spencerlyon.com/tags/markov/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Notes on MCMC Methods</title>
+      <link>http://notes.spencerlyon.com/1/01/01/notes-on-mcmc-methods/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/1/01/01/notes-on-mcmc-methods/</guid>
+      <description>
+
+&lt;h1 id=&#34;basic-idea:57acf39946df9a4c07fcdea2d9aa68c1&#34;&gt;Basic Idea&lt;/h1&gt;
+
+&lt;p&gt;The key idea behind the MCMC algorithms is that under certain conditions, Markov chains have a stationary distribution. If we can build a Markov chain whose stationary distribution is the distribution that we would like to sample from then it is relatively easy to get draws from this distribution by simulating lots of points and then randomly drawing from them.&lt;/p&gt;
+
+&lt;h1 id=&#34;metropolis-hastings:57acf39946df9a4c07fcdea2d9aa68c1&#34;&gt;Metropolis-Hastings&lt;/h1&gt;
+
+&lt;p&gt;Both the Metropolis and Gibbs algorithms are special cases of the Metropolis-Hastings algorithm. It has &amp;hellip;&lt;/p&gt;
+
+&lt;h1 id=&#34;metropolis:57acf39946df9a4c07fcdea2d9aa68c1&#34;&gt;Metropolis&lt;/h1&gt;
+
+&lt;p&gt;As previously mentioned, the Metropolis algorithm is a special case of Metropolis-Hastings &amp;ndash; In particular, it is the case in which we have a symmetric proposal density (People often use random walks)&lt;/p&gt;
+
+&lt;h1 id=&#34;gibbs:57acf39946df9a4c07fcdea2d9aa68c1&#34;&gt;Gibbs&lt;/h1&gt;
+
+&lt;p&gt;Gibbs sampling uses closed form expressions for conditionals such that we accept each draw.&lt;/p&gt;
+
+&lt;h1 id=&#34;coupling-from-the-past:57acf39946df9a4c07fcdea2d9aa68c1&#34;&gt;Coupling From the Past&lt;/h1&gt;
+
+&lt;p&gt;Imagine we have a Markovian process ${ X_t }$ whose stationary distribution we would like to draw from. One natural way to draw from this process is to start at some $x_0$ and simulate the process forward until it &amp;laquo;converges&amp;raquo; in some sense to the stationary distribution &amp;ndash; Remember under certain conditions (such as irreducibility etc&amp;hellip;) Markov processes are guaranteed to converge to their stationary distribution as $t \rightarrow \infty$. While intuitive, this approach has several short comings:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;1. You are never drawing from the *exact* stationary distribution
+2. It is hard to determine rates of convergence, so the number of periods you choose for &amp;quot;convergence&amp;quot; is somewhat arbitrary and is done using guess work.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In order to deal with this, we can take advantage of a very simple idea. Let&amp;rsquo;s start a process at period $-\infty$ and simulate it forward until period 0. At period 0, it should have converged to the stationary distribution. In continuous state spaces it is more difficult, so I will explain it for discrete spaces. Imagine we have $N$ states in our Markov chain then at period $-T$, it has to have arrived at one of the $N$ states. Start $N$ processes (one at each state) at period $-T$ and simulate them forward until period 0 (with the same set of shocks!). If all of these processes have converged to a single state then we know that our original process would have also converged to that state and thus the process is now in its stationary distribution (because we have &amp;laquo;simulated&amp;raquo; the process for an infinite number of periods). If it hasn&amp;rsquo;t converged then try again with a larger $T$ &amp;ndash; These processes are guaranteed to &amp;laquo;coalesce&amp;raquo; in finite number of states.&lt;/p&gt;
+
+&lt;h1 id=&#34;references:57acf39946df9a4c07fcdea2d9aa68c1&#34;&gt;References&lt;/h1&gt;
+
+&lt;p&gt;John Stachurski&amp;rsquo;s coupling from the past papers&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

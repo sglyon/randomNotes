@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Github on Random Notes</title>
+    <link>http://notes.spencerlyon.com/tags/github/</link>
+    <description>Recent content in Github on Random Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-EN</language>
+    <managingEditor>spencer.lyon@stern.nyu.edu (Spencer Lyon)</managingEditor>
+    <webMaster>spencer.lyon@stern.nyu.edu (Spencer Lyon)</webMaster>
+    <copyright>(c) 2015 Spencer Lyon.</copyright>
+    <lastBuildDate>Mon, 04 Jan 2016 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://notes.spencerlyon.com/tags/github/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>GitHub pro tips</title>
+      <link>http://notes.spencerlyon.com/2016/01/04/github-pro-tips/</link>
+      <pubDate>Mon, 04 Jan 2016 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2016/01/04/github-pro-tips/</guid>
+      <description>
+
+&lt;h2 id=&#34;post-commit-hooks:93ed8abeb42c248f3c551d1cb44159d4&#34;&gt;Post-commit hooks&lt;/h2&gt;
+
+&lt;p&gt;You can use github post commit hooks to send an HTTP payload to a server after
+every commit. The payload will contain data about the commit that you can then
+use to trigger arbitrary actions (e.g. run scripts) on the server.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve used a simple go library &lt;a href=&#34;https://github.com/adnanh/webhook&#34;&gt;webhook&lt;/a&gt; to do
+this. To get it up and running I did the following:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Install &lt;code&gt;webhook&lt;/code&gt; with: &lt;code&gt;go get github.com/adnanh/webhook&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Configure a post-commit webhook on github by:
+
+&lt;ul&gt;
+&lt;li&gt;Going to the repository settings then &amp;laquo;Webhooks and services&amp;raquo;&lt;/li&gt;
+&lt;li&gt;Clicking &amp;laquo;Add webook&amp;raquo;&lt;/li&gt;
+&lt;li&gt;Enter &lt;code&gt;http://SERVER-IP:9000/hooks/HOOK-ID&lt;/code&gt;, where &lt;code&gt;SERVER-IP&lt;/code&gt; is the ip address of the server and &lt;code&gt;HOOK-ID&lt;/code&gt; is the name of a hook I will use in the next step&lt;/li&gt;
+&lt;li&gt;Enter a &amp;laquo;password&amp;raquo; in the &lt;code&gt;secret&lt;/code&gt; field. Will be used later&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Create a &lt;code&gt;hooks.json&lt;/code&gt; file with the contents of &lt;a href=&#34;https://github.com/adnanh/webhook/wiki/Hook-Examples#incoming-github-webhook&#34;&gt;this example&lt;/a&gt;. In the example &lt;code&gt;HOOK-ID&lt;/code&gt; is given by the &lt;code&gt;&amp;quot;id&amp;quot;&lt;/code&gt; field in the only element of the JSON array.&lt;/li&gt;
+&lt;li&gt;Change the &lt;code&gt;execute-command&lt;/code&gt; to the script I want to run and &lt;code&gt;command-working-directory&lt;/code&gt; to where I want ro run the script (also change the &lt;code&gt;secret&lt;/code&gt; to what I chose in step 2)&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;$GOPATH/bin/webhook -hooks hooks.json -verbose&lt;/code&gt; to start the server (assumes &lt;code&gt;$GOPATH&lt;/code&gt; is set properly)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;That&amp;rsquo;s it! Now, every time we push a commit to master the script runs locally on
+our machine.&lt;/p&gt;
+
+&lt;p&gt;Note that if we kill the process running webhook the hooks won&amp;rsquo;t work anymore. I
+start the server on a remote machine using &lt;code&gt;nohup&lt;/code&gt; and &lt;code&gt;&amp;amp;&lt;/code&gt;. The actual command I
+used was&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;nohup $GOPATH/bin/webhook -hooks hooks.json -verbose &amp;gt; webhook.out 2&amp;gt; webhook.err &amp;lt; /dev/null &amp;amp;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;See the example &lt;code&gt;hook.json&lt;/code&gt; file &lt;a href=&#34;https://github.com/DaveBackus/Data_Bootcamp/blob/master/website/hook.json&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;jupyter-notebooks-in-gists:93ed8abeb42c248f3c551d1cb44159d4&#34;&gt;Jupyter notebooks in gists&lt;/h2&gt;
+
+&lt;p&gt;Here’s what I do to put a notebook in a gist:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Go here &lt;a href=&#34;https://gist.github.com&#34;&gt;https://gist.github.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Create a new public gist&lt;/li&gt;
+&lt;li&gt;Name the file &lt;code&gt;my_notebook.ipynb&lt;/code&gt; and write ​_something_​ in it.&lt;/li&gt;
+&lt;li&gt;Once the gist has been created and you are viewing it click the url and copy the big long string at the end. It could look like &lt;code&gt;82e0defcbddb09dd021df771bcf5a4b6&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Clone the gist as a repo to your computer using &lt;code&gt;git clone git@gist.github.com:BIGLONGSTRING.git notebook_gist&lt;/code&gt; where &lt;code&gt;BIGLONGSTRING&lt;/code&gt; is the thing from step 4 and &lt;code&gt;notebook_gist&lt;/code&gt; is the name of the folder on your comptuer&lt;/li&gt;
+&lt;li&gt;Copy your actual notebook into &lt;code&gt;notebook_gist&lt;/code&gt; folder, then add, commit, push like normal&lt;/li&gt;
+&lt;li&gt;After pushing go to &lt;a href=&#34;http://nbviewer.jupyter.org&#34;&gt;nbviewer&lt;/a&gt; and paste &lt;code&gt;BIGLONGSTRING&lt;/code&gt; into the seach box on their site. This should load up the notebook from your gist and you&amp;rsquo;re done!&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;To update the notebook, simply put a new version of it into that &lt;code&gt;notebook_gist&lt;/code&gt; repo, commit, and push. The changes should go live on nbviewer.&lt;/p&gt;
+
+&lt;p&gt;If you aren&amp;rsquo;t seeing an updated version of the notebook after pushing to the gist repo, you might need to visit the url in private mode or reset the browser cache.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

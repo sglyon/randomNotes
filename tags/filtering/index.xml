@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Filtering on Random Notes</title>
+    <link>http://notes.spencerlyon.com/tags/filtering/</link>
+    <description>Recent content in Filtering on Random Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-EN</language>
+    <managingEditor>spencer.lyon@stern.nyu.edu (Spencer Lyon)</managingEditor>
+    <webMaster>spencer.lyon@stern.nyu.edu (Spencer Lyon)</webMaster>
+    <copyright>(c) 2015 Spencer Lyon.</copyright>
+    <atom:link href="http://notes.spencerlyon.com/tags/filtering/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Notes on Kalman Filter</title>
+      <link>http://notes.spencerlyon.com/1/01/01/notes-on-kalman-filter/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/1/01/01/notes-on-kalman-filter/</guid>
+      <description>
+
+&lt;h1 id=&#34;kalman-filter:c4efa121509565b86b05f158ad1df0bd&#34;&gt;Kalman Filter&lt;/h1&gt;
+
+&lt;p&gt;The Kalman filter is a vital tool in any macro-economist&amp;rsquo;s (and more generally any modelers) toolbox. A filtering problem is loosely described by the use of a history of observed information to infer information about the history of some other unobservable variable (state). The Kalman filter is a recursive filter in the sense that if we have a best guess for the state value for the previous period, $t-1$, then the period $t$ observation in conjunction with the best guess for the state value in the previous period is sufficient to provide a best guess for the state value in this period.&lt;/p&gt;
+
+&lt;p&gt;The model that we will present in conjunction with the Kalman filter is called a Gaussian linear state space model and is typically described by the following two equations:&lt;/p&gt;
+
+&lt;p&gt;$$y_t = C x_t + D \varepsilon_t$$
+$$x&lt;em&gt;t = A x&lt;/em&gt;{t-1} + B \eta_t$$&lt;/p&gt;
+
+&lt;p&gt;The matrices $(A, B, C, D)$ are all known and the model noise, $\varepsilon_t$ and $\eta_t$, are both identically and independently distributed as standard normals. The first equation is often referred to as the &lt;em&gt;measurement equation&lt;/em&gt; because the history of $y^t$ is observable to the agent at period $t$.  The second equation is known as the state evolution equation, and is fundamentally different than the measurement equation because $s^t$ is unobservable. The fact that one equation is observable while the other is not and the Markov properties of the model put this model into a broader class of models known as &lt;em&gt;hidden Markov models&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;derivation:c4efa121509565b86b05f158ad1df0bd&#34;&gt;Derivation&lt;/h2&gt;
+
+&lt;p&gt;I will now present the derivation of the Kalman filter. As mentioned earlier, we would like to infer information about the states, $x_t$, using information that we observe $y_t$. More specifically, we would like to infer the value of $x_t$ given a history of $y^t$. We begin by having some initial condition on $x_0$ &amp;ndash; This condition can be either a distribution &lt;em&gt;or&lt;/em&gt; simply a value. We will denote the estimated values of the state using a hat i.e. write $\hat{x}$&lt;/p&gt;
+
+&lt;p&gt;The recursive nature of the Kalman filter means that each period we enter the period with a best guess for the value of the state which we will call the predicted state, call it $\hat{x}_{t | t-1}$. This predicted state is found through&lt;/p&gt;
+
+&lt;p&gt;$$ E_t[x_t] = E&lt;em&gt;t \left[ E&lt;/em&gt;{t-1} \left[x_t \right] \right]$$
+$$ = E&lt;em&gt;t \left[ E&lt;/em&gt;{t-1} \left[A x_{t-1} + B \varepsilon_t \right] \right]$$
+$$ = E&lt;em&gt;t \left[ A \hat{x}&lt;/em&gt;{t-1 | t-1} + B \varepsilon&lt;em&gt;t \right] = A \hat{x}&lt;/em&gt;{t-1 | t-1}$$&lt;/p&gt;
+
+&lt;p&gt;where $\hat{x}&lt;em&gt;{t-1 | t-1}$ is defined as our best estimate of the state conditional on the information up to period $t-1$. Our goal is to establish an unbiased estimator, $\hat{x}&lt;/em&gt;{t | t}$, for the state $x_t$ and to minimize the squared error at every period where we define the error as $e_t := (x&lt;em&gt;t - \hat{x}&lt;/em&gt;{t|t})$. Others have found (and justified) a solution of the form&lt;/p&gt;
+
+&lt;p&gt;$$ \hat{x}&lt;em&gt;{t | t} = \hat{x}&lt;/em&gt;{t | t-1} + K (y&lt;em&gt;t - C \hat{x}&lt;/em&gt;{t | t-1})$$&lt;/p&gt;
+
+&lt;p&gt;We refer to $(y&lt;em&gt;t - C \hat{x}&lt;/em&gt;{t | t-1})$ as the innovation or residual because it is the difference between what we would observe with no noise and what we actually observe. Taking the derivative of the square errors with respect to $K_t$ reveals the value of $K&lt;em&gt;t$ which minimizes the distance between $x$ and $\hat{x}&lt;/em&gt;{t | t}$.&lt;/p&gt;
+
+&lt;p&gt;$$K_t = &amp;hellip; $$&lt;/p&gt;
+
+&lt;h1 id=&#34;references:c4efa121509565b86b05f158ad1df0bd&#34;&gt;References&lt;/h1&gt;
+
+&lt;p&gt;Fill these in more adequately later&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Quant-Econ&lt;/li&gt;
+&lt;li&gt;D.B.O. Anderson and J.B Moore. Optimal Filtering. Dover Publications, 1979.
+*&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

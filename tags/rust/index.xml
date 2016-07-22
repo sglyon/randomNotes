@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rust on Random Notes</title>
+    <link>http://notes.spencerlyon.com/tags/rust/</link>
+    <description>Recent content in Rust on Random Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-EN</language>
+    <managingEditor>spencer.lyon@stern.nyu.edu (Spencer Lyon)</managingEditor>
+    <webMaster>spencer.lyon@stern.nyu.edu (Spencer Lyon)</webMaster>
+    <copyright>(c) 2015 Spencer Lyon.</copyright>
+    <lastBuildDate>Wed, 01 Jun 2016 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://notes.spencerlyon.com/tags/rust/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Rust</title>
+      <link>http://notes.spencerlyon.com/2016/06/01/rust/</link>
+      <pubDate>Wed, 01 Jun 2016 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2016/06/01/rust/</guid>
+      <description>
+
+&lt;h2 id=&#34;openssl:d3c7600f67cc433a55785816ff4c3a47&#34;&gt;openssl&lt;/h2&gt;
+
+&lt;p&gt;I couldn&amp;rsquo;t get any cargo projects that depend on open ssl to build. I just did:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;brew install openssl
+brew link --force openssl
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Answer came from &lt;a href=&#34;https://github.com/sfackler/rust-openssl/issues/255#issuecomment-145092826&#34;&gt;here&lt;/a&gt;)&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

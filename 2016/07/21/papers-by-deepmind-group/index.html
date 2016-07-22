@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Papers by DeepMind group  &middot; Random Notes</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="" />
+
+<meta name="keywords" content="MC, RL, algorithms, deep learning, ">
+
+
+<meta property="og:title" content="Papers by DeepMind group  &middot; Random Notes ">
+<meta property="og:site_name" content="Random Notes"/>
+<meta property="og:url" content="http://notes.spencerlyon.com/2016/07/21/papers-by-deepmind-group/" />
+<meta property="og:locale" content="en-EN">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content=""/>
+<meta property="og:article:published_time" content="2016-07-21T00:00:00Z" />
+<meta property="og:article:modified_time" content="2016-07-21T00:00:00Z" />
+
+  
+    
+<meta property="og:article:tag" content="MC">
+    
+<meta property="og:article:tag" content="RL">
+    
+<meta property="og:article:tag" content="algorithms">
+    
+<meta property="og:article:tag" content="deep learning">
+    
+  
+
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@" />
+<meta name="twitter:title" content="Papers by DeepMind group" />
+<meta name="twitter:description" content="" />
+<meta name="twitter:url" content="http://notes.spencerlyon.com/2016/07/21/papers-by-deepmind-group/" />
+<meta name="twitter:domain" content="http://notes.spencerlyon.com/">
+  
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "Papers by DeepMind group",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2016-07-21",
+    "description": "",
+    "wordCount":  2032 
+  }
+</script>
+
+
+
+<link rel="canonical" href="http://notes.spencerlyon.com/2016/07/21/papers-by-deepmind-group/" />
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://notes.spencerlyon.com/touch-icon-144-precomposed.png">
+<link href="http://notes.spencerlyon.com/favicon.png" rel="icon">
+
+<meta name="generator" content="Hugo 0.16-DEV" />
+
+  <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link href='https://fonts.googleapis.com/css?family=Merriweather:300%7CRaleway%7COpen+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="http://notes.spencerlyon.com/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://notes.spencerlyon.com/css/style.css">
+<link rel="stylesheet" href="http://notes.spencerlyon.com/css/highlight/solarized_dark.css">
+
+  
+</head>
+<body>
+  <main id="main-wrapper" class="container main_wrapper has-sidebar">
+    <header id="main-header" class="container main_header">
+  <div class="container brand">
+  <div class="container title h1-like">
+  <a class="baselink" href="http://notes.spencerlyon.com/">
+  <em>Random Notes</em>
+
+</a>
+
+</div>
+
+  
+<div class="container topline">
+  
+  Spencer Lyon
+
+
+</div>
+
+
+</div>
+
+  <nav class="container nav primary no-print">
+  
+
+<a class="homelink" href="http://notes.spencerlyon.com/">Random Notes</a>
+
+
+  
+<a href="http://notes.spencerlyon.com/post" title="Show list of posts">Posts</a>
+
+<a href="http://notes.spencerlyon.com/tags" title="Show list of tags">Tags</a>
+
+<a href="http://notes.spencerlyon.com/series" title="Show list of series">Series</a>
+
+
+</nav>
+
+<div class="container nav secondary no-print">
+  
+<a id="contact-link-email" class="contact_link" href="mailto:spencer.lyon@stern.nyu.edu">
+  <span class="fa fa-envelope-square"></span><span>email</span></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+  
+
+</header>
+
+
+<article id="main-content" class="container main_content single">
+  <header class="container hat">
+  <h1>Papers by DeepMind group
+</h1>
+
+  <div class="metas">
+<time datetime="2016-07-21">21 Jul, 2016</time>
+
+
+  
+    &middot; by Spencer Lyon
+  
+  &middot; Read in about 10 min
+  &middot; (2032 Words)
+  <br>
+  
+<a class="label" href="http://notes.spencerlyon.com/tags/mc">MC</a>
+
+<a class="label" href="http://notes.spencerlyon.com/tags/rl">RL</a>
+
+<a class="label" href="http://notes.spencerlyon.com/tags/algorithms">algorithms</a>
+
+<a class="label" href="http://notes.spencerlyon.com/tags/deep-learning">deep learning</a>
+
+
+
+</div>
+
+</header>
+
+  <div class="container content">
+  
+
+<h2 id="atari-series:361fadf8343b5365725453fa91cf89a5">Atari series</h2>
+
+<p>This section describes a family of related papers. It introduces their algorithm for using deep neural networks in a Q-learning control setting and then provides many extensions of the core algorithm.</p>
+
+<h3 id="mnih-v-kavukcuoglu-k-silver-d-graves-a-antonoglou-i-wierstra-d-riedmiller-m-2013-playing-atari-with-deep-reinforcement-learning-arxiv-retrieved-from-http-arxiv-org-abs-1312-5602:361fadf8343b5365725453fa91cf89a5">Mnih, V., Kavukcuoglu, K., Silver, D., Graves, A., Antonoglou, I., Wierstra, D., &amp; Riedmiller, M. (2013). Playing Atari with Deep Reinforcement Learning. arXiv. Retrieved from <a href="http://arxiv.org/abs/1312.5602">http://arxiv.org/abs/1312.5602</a></h3>
+
+<p>This is the first paper to introduce the algorithm that made them famous. It <em>feels</em> like a draft of their first nature paper (see below). The algorithm is known as deep Q-network or DQN. They use a stochastic gradient descent SGD algorithm to update coefficients on a variant of Q-learning that uses a deep network to represent the Q function. Their algorithm is model-free and off-policy.</p>
+
+<p>Earlier attempts to use neural network with Q-learning had mostly failed. This algorithm has two defining features that made it successful:</p>
+
+<ol>
+<li>They used a technique called experience replay to form mini-batches for policy updates. With experience replay you pool tuples of state, action, reward, and next state transitions in a database. The database is a queue that holds the N most recent transitions. When a policy update is made M transitions are uniformly drawn from the database. This alleviates the problem that successive observations are highly correlated, which violates the common deep learning assumption that observations are iid.</li>
+<li>They always have two separate instances of the Q-function network. One is the policy network and is updated at each step. The other is used to form targets for the Q-learning TD update. Every C iterations the target network is synced with the target network. This helps with stability as it breaks the correlation between the Q values they want to learn and the target.</li>
+</ol>
+
+<h3 id="mnih-v-kavukcuoglu-k-silver-d-rusu-a-a-veness-j-bellemare-m-g-hassabis-d-2015-human-level-control-through-deep-reinforcement-learning-nature-518-7540-529-533-http-doi-org-10-1038-nature14236:361fadf8343b5365725453fa91cf89a5">Mnih, V., Kavukcuoglu, K., Silver, D., Rusu, A. a, Veness, J., Bellemare, M. G., … Hassabis, D. (2015). Human-level control through deep reinforcement learning. Nature, 518(7540), 529–533. <a href="http://doi.org/10.1038/nature14236">http://doi.org/10.1038/nature14236</a></h3>
+
+<p>This is their first Nature publication. The paper is a more polished version of the previous paper and is important for the same reasons.</p>
+
+<p>One other thing they stressed in this paper that they didn&rsquo;t focus on in the previous paper is that when they apply the updates, they clip (not rescale) the TD errors to live in [-1, 1]. This is a common trick that helps improve stability.</p>
+
+<h3 id="nair-a-srinivasan-p-blackwell-s-alcicek-c-fearon-r-de-maria-a-silver-d-2015-massively-parallel-methods-for-deep-reinforcement-learning-arxiv-14-retrieved-from-http-arxiv-org-abs-1507-04296:361fadf8343b5365725453fa91cf89a5">Nair, A., Srinivasan, P., Blackwell, S., Alcicek, C., Fearon, R., De Maria, A., … Silver, D. (2015). Massively Parallel Methods for Deep Reinforcement Learning. arXiv, 14. Retrieved from <a href="http://arxiv.org/abs/1507.04296">http://arxiv.org/abs/1507.04296</a></h3>
+
+<p>This is an HPC paper that explains how they took the DQN algorithm and put in on an HPC system.</p>
+
+<p>The main components are shown in figure 2 and explained in section 4. I won&rsquo;t repeat them here.</p>
+
+<h3 id="van-hasselt-h-guez-a-silver-d-2015-deep-reinforcement-learning-with-double-q-learning-arxiv-retrieved-from-http-arxiv-org-abs-1509-06461-nhttp-www-arxiv-org-pdf-1509-06461-pdf:361fadf8343b5365725453fa91cf89a5">van Hasselt, H., Guez, A., &amp; Silver, D. (2015). Deep Reinforcement Learning with Double Q-learning. arXiv. Retrieved from <a href="http://arxiv.org/abs/1509.06461nhttp://www.arxiv.org/pdf/1509.06461.pdf">http://arxiv.org/abs/1509.06461nhttp://www.arxiv.org/pdf/1509.06461.pdf</a></h3>
+
+<p>This is the next paper in the series.</p>
+
+<p>Q-learning tends to over-estimate the action-value function (this happens because it takes a max on every step, making the algorithm favor overestimates over underestimates). The authors argue that the DQN algorithm suffers from this problem. The main contribution of this paper is the application of a double Q-learning algorithm on top of DQN, resulting in much higher Atari performance.</p>
+
+<p>In double Q learning, two action-value functions are learned. Each experience is randomly assigned to one of these two value functions and its coefficients are updated while the other&rsquo;s remain the same. If the associated parameter vectors are called theta and theta&rsquo;, then the target for double Q learning is <code>Y = R' + gamma Q(S', argmax_a Q(s', a; theta); theta')</code>. The key insight is that one set of values is used to do the max, the other is used to evaluate Q for Y.</p>
+
+<h3 id="schaul-t-quan-j-antonoglou-i-silver-d-2015-prioritized-experience-replay-arxiv-1-23-retrieved-from-http-arxiv-org-abs-1511-05952:361fadf8343b5365725453fa91cf89a5">Schaul, T., Quan, J., Antonoglou, I., &amp; Silver, D. (2015). Prioritized Experience Replay. arXiv, 1–23. Retrieved from <a href="http://arxiv.org/abs/1511.05952">http://arxiv.org/abs/1511.05952</a></h3>
+
+<p>This paper extends the idea of experience replay by providing a way to revisit &laquo;more important&raquo; transitions more often. More important is defined as transitions that had a higher TD-error (y - Q).</p>
+
+<p>There are some subtitles to make sure this can be efficient, not lead to overfitting, and not introduce bias. These are addressed in the paper.</p>
+
+<p>The actual algorithm they implement is based on Double DQN (to reduce overestimation bias of action-values) where the only modification is in how the sampling in experience replay is done.</p>
+
+<h3 id="wang-z-de-freitas-n-lanctot-m-2016-dueling-network-architectures-for-deep-reinforcement-learning-arxiv-9-1-16-retrieved-from-http-arxiv-org-abs-1511-06581:361fadf8343b5365725453fa91cf89a5">Wang, Z., de Freitas, N., &amp; Lanctot, M. (2016). Dueling Network Architectures for Deep Reinforcement Learning. arXiv, (9), 1–16. Retrieved from <a href="http://arxiv.org/abs/1511.06581">http://arxiv.org/abs/1511.06581</a></h3>
+
+<p>Another extension to DQN. This time instead of altering the algorithm (as they did with double DQN and prioritized replay), they alter the structure of the employed neural networks. The input and convolutional layers are all the same as in DQN. The fully connected layer, however, now outputs two separate things:</p>
+
+<ol>
+<li>A scalar estimate of the state value V(s)</li>
+<li>An estimate of the action advantage for each action a. (call is A(s, a) = Q(s, a) - V(s))</li>
+</ol>
+
+<p>After the fully connected layer outputs these two things, the two layers are aggregated into a vector of Q(s, a) values. So, the input/output of the entire network still the same (input: states, output: Q-values). However, the process for getting there is slightly different. This is actually non-trivial because the advantage function has expectation 0, so naive SGD can&rsquo;t work. The other main contribution of the paper is describing how to overcome this.</p>
+
+<h3 id="hasselt-h-van-guez-a-hessel-m-silver-d-2016-learning-functions-across-many-orders-of-magnitudes-arxiv:361fadf8343b5365725453fa91cf89a5">Hasselt, H. Van, Guez, A., Hessel, M., &amp; Silver, D. (2016). Learning functions across many orders of magnitudes. arXiv.</h3>
+
+<p>This paper extends DQN in a way that doesn&rsquo;t require clipping rewards (game score reported by Atari) to be in {-1, 0, 1}. This is an issue because scoring really matters for games like Ms. Pac Man where cumulative score matters much more than instances where scoring happened.</p>
+
+<p>The authors document the fact that similar things have been done to normalize different stages of the learning process. They also explain how attempts at target normalization has been attempted, but in a way that influences many aspects of the overall algorithm. Instead, in this paper, they isolate their efforts on target normalization, leaving all other components unchanged.</p>
+
+<h3 id="mnih-v-badia-a-p-mirza-m-graves-a-lillicrap-t-p-harley-t-kavukcuoglu-k-2016-asynchronous-methods-for-deep-reinforcement-learning-arxiv-1-28-retrieved-from-http-arxiv-org-abs-1602-01783:361fadf8343b5365725453fa91cf89a5">Mnih, V., Badia, A. P., Mirza, M., Graves, A., Lillicrap, T. P., Harley, T., … Kavukcuoglu, K. (2016). Asynchronous Methods for Deep Reinforcement Learning. arXiv, 1–28. Retrieved from <a href="http://arxiv.org/abs/1602.01783">http://arxiv.org/abs/1602.01783</a></h3>
+
+<p>This paper is the final (so far) follow up to DQN where they avoid stability issues in deep Q-learning using an async learner/policy setup instead of experience replay.</p>
+
+<p>The main idea is really simple: run multiple actor-learners each with their own policy on different threads of the same machine. They will likely explore different regions of the state space. This allows you to explore many places at once &ndash; speeding up learning.</p>
+
+<p>NOTE: the policy and target parameters are the same and shared memory across threads. Different threads will do backup updates to the coefficient whenever they want. There is a paper (HOGWILD!) that talks about why multiple write to the same shared memory coefficient vector is ok.</p>
+
+<p>Because they don&rsquo;t use experience replay they are able to use on-policy RL algorithms (SARSA, actor-critic, etc). Also, because the algorithm is parallel, there is a performance boost.</p>
+
+<p>The async advantage actor-critic method seems to be the very state of the art in RL algorithms right now. It can be run on a multi-core desktop and do really well at a variety of tasks.</p>
+
+<h2 id="other-papers:361fadf8343b5365725453fa91cf89a5">Other papers</h2>
+
+<p>These are the other papers by the DeepMind crew.</p>
+
+<h3 id="silver-d-lever-g-heess-n-degris-t-wierstra-d-riedmiller-m-2014-deterministic-policy-gradient-algorithms-proceedings-of-the-31st-international-conference-on-machine-learning-icml-14-387-395:361fadf8343b5365725453fa91cf89a5">Silver, D., Lever, G., Heess, N., Degris, T., Wierstra, D., &amp; Riedmiller, M. (2014). Deterministic Policy Gradient Algorithms. Proceedings of the 31st International Conference on Machine Learning (ICML-14), 387–395.</h3>
+
+<p>This paper provides a handful of related algorithms for doing online, model-free, and either on-policy or off-policy control with a deterministic policy in a RL problem with continuous actions.</p>
+
+<p>The main contribution of the paper is to prove that the deterministic policy gradient (DPG) (developed here) exists and under certain conditions on the form of approximation, converges. They also derived the policy gradient in closed form, making the algorithms tractable. Finally, they also proved that under certain regularity conditions, that DPG is the limit of the stochastic policy gradient as the variance goes to 0.</p>
+
+<h3 id="lillicrap-t-p-hunt-j-j-pritzel-a-heess-n-erez-t-tassa-y-wierstra-d-2015-continuous-control-with-deep-reinforcement-learning-arxiv-1-14-http-doi-org-10-1561-2200000006:361fadf8343b5365725453fa91cf89a5">Lillicrap, T. P., Hunt, J. J., Pritzel, A., Heess, N., Erez, T., Tassa, Y., … Wierstra, D. (2015). Continuous control with deep reinforcement learning. arXiv, 1–14. <a href="http://doi.org/10.1561/2200000006">http://doi.org/10.1561/2200000006</a></h3>
+
+<p>In some ways this paper is a bridge between the deterministic policy gradient (DPG, Silver 2014) for RL with continuous action spaces and the use of neural networks to represent policy and value function from the Deep Q Network (DQN; DeepMind 2013,2015). Innovations made in DQN are crucial here. They summarize their contribution as follows:</p>
+
+<p>&raquo; Our contribution here is to provide modifications to DPG, inspired by the success of DQN, which allow it to use neural network function approximations to learn in large state and action spaces online.&raquo;</p>
+
+<p>The paper provided the following simple intuition for me: q-learning is hard to apply to continuous action spaces because we need to do a max at every time step (e.g. usually call a non-linear solver). To avoid this, we can use an actor-critic method that parameterizes both the policy and the value so that the maximization step is done in closed form using gradient descent.</p>
+
+<h3 id="heess-n-wayne-g-silver-d-lillicrap-t-tassa-y-erez-t-2015-learning-continuous-control-policies-by-stochastic-value-gradients-arxiv-1-13-retrieved-from-http-arxiv-org-abs-1510-09142:361fadf8343b5365725453fa91cf89a5">Heess, N., Wayne, G., Silver, D., Lillicrap, T., Tassa, Y., &amp; Erez, T. (2015). Learning Continuous Control Policies by Stochastic Value Gradients. arXiv, 1–13. Retrieved from <a href="http://arxiv.org/abs/1510.09142">http://arxiv.org/abs/1510.09142</a></h3>
+
+<p>This paper presents set of algorithms that are used to solve control problems with continuous state and action spaces, using value and policy functions parameterized by neural networks. These algorithms range from model-free to model-based and are used to compute stochastic policies.</p>
+
+<p>The main contribution of the paper is to show how re-parameterize the bellman equation so stochastic features are written as the environment/policy given state action transitions plus some noise. Expectations are then taken over the known noise distributions, using samples from the real trajectory provided by the environment. In conjunction with this idea, the authors derive ways to compute the gradients for the value function under stochastic policies. The authors claim this is another main contribution of the paper.</p>
+
+<h3 id="silver-d-huang-a-maddison-c-j-guez-a-sifre-l-van-den-driessche-g-hassabis-d-2016-mastering-the-game-of-go-with-deep-neural-networks-and-tree-search-nature-529-7587-484-489-http-doi-org-10-1038-nature16961:361fadf8343b5365725453fa91cf89a5">Silver, D., Huang, A., Maddison, C. J., Guez, A., Sifre, L., van den Driessche, G., … Hassabis, D. (2016). Mastering the game of Go with deep neural networks and tree search. Nature, 529(7587), 484–489. <a href="http://doi.org/10.1038/nature16961">http://doi.org/10.1038/nature16961</a></h3>
+
+<p>This is the famous AlphaGo paper. It&rsquo;s short, dense, and worth reading. I took some notes on the structure of the network. I&rsquo;ll include them here, but they are not a substitute for reading the paper</p>
+
+<p>The algorithm Alpha go uses is built up of 4 neural networks:</p>
+
+<ol>
+<li><p>A neural network for the policy function trained with supervised learning on 30 million expert level, real world moves. The network does 6 alternations between convolutional layer + ReLU and finishes with a soft max. Output is probability distribution over actions. Coefficients are sigma. Call this network SL.</p></li>
+
+<li><p>A shallow network &laquo;fast policy&raquo; used to perform Monte Carlo roll outs (MC simulations starting from a particular state) was also trained using the 30 million observations. This network is just a linear soft as over &laquo;small pattern features&raquo;. Coefficients are pi. Computation time to choose an action is 2 micro seconds (compared to SL, which is 3 milliseconds).</p></li>
+
+<li><p>An identically structured neural network trained using reinforcement learning. The reward signal is 0 for all non-terminal states and plus or minus one in the terminal state. SGD is used to direct coefficients rho towards direction that maximizes expected outcome (a backup that uses the terminal reward thought the entire game). Call this network RL.</p></li>
+
+<li><p>A neural network approximating the value function. The network has a similar structure to SL and RL, but outputs a single value instead of a distribution (uses something other than soft max at the end). This can&rsquo;t be trained using the 30 million expert moves because the network memorizes the value of each state. Instead they collect a sample of 30 million moves, each sample drawn from a different game. Each of these 30 million games was formed by RL playing against itself until termination.</p></li>
+</ol>
+
+</div>
+
+
+  <footer class="container">
+  <div class="container navigation no-print">
+  <h2>Navigation</h2>
+  
+  
+
+    
+    <a class="prev" href="http://notes.spencerlyon.com/2016/06/29/monte-carlo-methods/" title="Monte Carlo methods">
+      Previous
+    </a>
+    
+
+    
+
+  
+
+
+</div>
+
+  <div class="container comments">
+  <h2>Comments</h2>
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//sglyon.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+</article>
+      <footer id="main-footer" class="container main_footer">
+  <script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+  <div class="container nav foot no-print">
+  
+
+  <a class="toplink" href="#">back to top</a>
+
+</div>
+
+  <div class="container credits">
+  
+<div class="container footline">
+  
+
+</div>
+
+
+  
+<div class="container copyright">
+  
+  &copy; 2015 Spencer Lyon.
+
+
+</div>
+
+
+</div>
+
+</footer>
+
+    </main>
+    
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//sglyon.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+<script src="http://notes.spencerlyon.com/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+    
+  </body>
+</html>
+

@@ -1,0 +1,976 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Random Notes</title>
+    <link>http://notes.spencerlyon.com/post/</link>
+    <description>Recent content in Posts on Random Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-EN</language>
+    <managingEditor>spencer.lyon@stern.nyu.edu (Spencer Lyon)</managingEditor>
+    <webMaster>spencer.lyon@stern.nyu.edu (Spencer Lyon)</webMaster>
+    <copyright>(c) 2015 Spencer Lyon.</copyright>
+    <lastBuildDate>Wed, 29 Jun 2016 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://notes.spencerlyon.com/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Monte Carlo methods</title>
+      <link>http://notes.spencerlyon.com/2016/06/29/monte-carlo-methods/</link>
+      <pubDate>Wed, 29 Jun 2016 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2016/06/29/monte-carlo-methods/</guid>
+      <description>
+
+&lt;p&gt;This is part 2 in the reinforcement learning for economists notes. For part 1 see &lt;a href=&#34;http://notes.spencerlyon.com/2016/06/29/reinforcement-learning-intro/&#34;&gt;Reinforcement Learning Intro&lt;/a&gt;. For a list of all entries in the series go &lt;a href=&#34;http://notes.spencerlyon.com/series/reinforcement-learning&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;monte-carlo-methods&#34;&gt;Monte Carlo methods&lt;/h2&gt;
+
+&lt;p&gt;As defined in &lt;a href=&#34;http://notes.spencerlyon.com/2016/06/29/reinforcement-learning-intro/&#34;&gt;Reinforcement Learning Intro&lt;/a&gt; &lt;em&gt;GPI&lt;/em&gt; encompasses the core ideas for all the RL algorithms in this book. One family of such algorithms is Monte Carlo (MC) methods. One distinguishing feature of these methods is that they can be implemented in a completely &lt;strong&gt;model-free&lt;/strong&gt; way. This means that to apply them we need to know nothing about the dynamics of the model; we simply need to be able to observe sequences of states, actions, and rewards.&lt;/p&gt;
+
+&lt;h3 id=&#34;prediciton-methods&#34;&gt;Prediciton methods&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Monte Carlo prediciton&lt;/strong&gt; is a method for learning the state-value function for a given policy. The algorithm is given by:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://notes.spencerlyon.com/first_visit_mc_prediction.png&#34; alt=&#34;MC prediciton&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Notice that the MC prediction algorithm does not update any estimates of the value function until &lt;em&gt;after&lt;/em&gt; the entire episode is realized. In this sense we would say that the method does not &lt;strong&gt;bootstrap&lt;/strong&gt;, meaning it does not use approximations of the value in other states to update the value in a particular state (value iteration is bootstrapping).&lt;/p&gt;
+
+&lt;h3 id=&#34;control-methods&#34;&gt;Control methods&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Monte Carlo control&lt;/strong&gt; is an iterative algorithm where each iteration contains a Monte Carlo prediction step followed by a policy improvment step. The improvement step is simply done by making the policy greedy with the predicted value function.&lt;/p&gt;
+
+&lt;p&gt;Some technical conditions must be satisfied to ensure convergence of this naive algorithm:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;episodes have exploring starts (meaning that they don&amp;rsquo;t attempt to be greedy or optimal at the start)&lt;/li&gt;
+&lt;li&gt;There are an infinite number of episodes&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;These are ok theoretically, but prohibative computationally.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Monte Carlo ES&lt;/strong&gt; is an algorithm that does away with the assumption that you need an infinite number of episodes. It proceeds as&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://notes.spencerlyon.com/monte_carlo_es.png&#34; alt=&#34;MC ES&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Notice that we don&amp;rsquo;t need the assumption of an infinite number of episodes because we don&amp;rsquo;t do a full policy evaluation each step.&lt;/p&gt;
+
+&lt;p&gt;To do away with the exploring starts assumption we need to define a few more terms.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;A policy $\pi$ is said to be &lt;strong&gt;$\varepsilon$-soft&lt;/strong&gt; if $\pi(a|s) &amp;gt; \frac{\varepsilon}{| A(s) |}$ for all $a \in A$ and $s \in S$.&lt;/li&gt;
+&lt;li&gt;An &lt;strong&gt;$\varepsilon$-greedy&lt;/strong&gt; is a policy where all non-greedy actions are chosen with probability $\frac{\varepsilon}{| A(s) |}$, while the greedy policy is chosen with probability $1 - \varepsilon + \frac{\varepsilon}{| A(s) |}$.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;On-policy&lt;/strong&gt; methods evaluate and improve the policy that is used to make decisions.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Off-policy&lt;/strong&gt; methods use one policy to make decisions while trying to evaluate and improve another policy.&lt;/li&gt;
+&lt;li&gt;A &lt;strong&gt;first-visit&lt;/strong&gt; MC method uses only the &lt;em&gt;return&lt;/em&gt; (not reward) after the &lt;em&gt;first&lt;/em&gt; occurance of a state (or state-action pair) when doing evaluation. An &lt;strong&gt;every-visit&lt;/strong&gt; method uses the &lt;em&gt;return&lt;/em&gt; after every occurance of a state (or state-action pair) when doing evaluation.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;An on-policy first-visit MC control algorithm for $\varepsilon$-soft policies is given below:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://notes.spencerlyon.com/on_policy_eps_soft_mc_control.png&#34; alt=&#34;On-policy first-visit MC control&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;importance-sampling&#34;&gt;Importance sampling&lt;/h3&gt;
+
+&lt;p&gt;This section will include more prediction and control methods, but is an important enough concept that it deserves its own section.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Reinforcement Learning Intro</title>
+      <link>http://notes.spencerlyon.com/2016/06/29/reinforcement-learning-intro/</link>
+      <pubDate>Wed, 29 Jun 2016 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2016/06/29/reinforcement-learning-intro/</guid>
+      <description>
+
+&lt;p&gt;This is part 1 in the reinforcement learning for economists notes. For a list of all entries in the series go &lt;a href=&#34;http://notes.spencerlyon.com/series/reinforcement-learning&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;These notes mostly follow Sutton, R. S., &amp;amp; Barto, A. G. (2015). Reinforcement Learning: An Introduction (2 Draft, Vol. 9). &lt;a href=&#34;http://doi.org/10.1109/TNN.1998.712192&#34;&gt;http://doi.org/10.1109/TNN.1998.712192&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The notes themselves might be interpreted as a macro-economist&amp;rsquo;s view of reinforcement learning (RL). I will cast many objects/ideas from the book into the domain-specific framework I am familiar with.&lt;/p&gt;
+
+&lt;h1 id=&#34;what-is-reinforcement-learning:14a4c2b55a012de9d01c88422abd12c3&#34;&gt;What is reinforcement learning?&lt;/h1&gt;
+
+&lt;p&gt;&lt;strong&gt;Reinforcement Learning&lt;/strong&gt; is a branch of machine learning that aims to learn by doing.&lt;/p&gt;
+
+&lt;h1 id=&#34;basic-strcture:14a4c2b55a012de9d01c88422abd12c3&#34;&gt;Basic strcture&lt;/h1&gt;
+
+&lt;p&gt;The basic structure of the RL problem is similar to a dynamic programming (DP) problem. Both summarize the environment an agent faces via a state variable $s$ that is a member of the state space $S$. Agents must choose actions from an action space $A(s)$. The dependence on $s$ takes into account any state-dependent constraints that specify which actions are feasible from that given state. A generic element of the space $A$ is called an action and is denoted $a \in A$.&lt;/p&gt;
+
+&lt;p&gt;In both RL and DP, algorithms are constructed to choose policies $\pi: S -&amp;gt; \Delta(A)$ and approximate or evaluate the value of such policies. The notaiton $\Delta(A)$ is a simplex or probability distribution over $A$. When we write $\pi(a | s)$ the probability of choosing $a$ in state $s$ under the policy $\pi$. In most economic models policies are degenerate, meaning that they specify a single action with probablity 1 for each state. In this case we may write $a = \pi(s)$ as the policy.&lt;/p&gt;
+
+&lt;p&gt;In DP these values are often expresesd as a value function $V: S -&amp;gt; R$. This is known as a &lt;strong&gt;state-value&lt;/strong&gt; function.&lt;/p&gt;
+
+&lt;p&gt;In RL values are either expressed using $V$, or using a &lt;strong&gt;action-value&lt;/strong&gt; function $Q: S \times A -&amp;gt; R$.&lt;/p&gt;
+
+&lt;p&gt;Let $\gamma \in [0, 1]$ be a discount factor.&lt;/p&gt;
+
+&lt;p&gt;Timing in Sutton and Barto is such that in time $t$ the agent sees state $S_t \in S$, chooses action $A_t \in A(S&lt;em&gt;t)$, then recieves a &lt;strong&gt;reward&lt;/strong&gt; $R&lt;/em&gt;{t+1}$, and finally observes a new state $S_{t+1} \in S$.&lt;/p&gt;
+
+&lt;p&gt;A &lt;strong&gt;Return&lt;/strong&gt; $G_t \in R$ is the sum of discounted rewards:&lt;/p&gt;
+
+&lt;!-- NOTE: for hugo we need to escape the `_` for some reason... --&gt;
+
+&lt;p&gt;$$G_t = \sum_{k=0}^{\infty} \gamma^k R_{t+k+1}$$&lt;/p&gt;
+
+&lt;p&gt;We can write the value of following a particular policy $\pi$ starting in a state $s$ using state-value functions as:&lt;/p&gt;
+
+&lt;p&gt;$$v_{\pi}(s) \equiv E_{\pi} \left[G_t | S_t = s \right] = E_{\pi} \left[\sum_{k=0}^{\infty} \gamma^k R_{t+k+1} | S_t = s \right].$$&lt;/p&gt;
+
+&lt;p&gt;Likewise we can write the action-value of following policy $\pi$ from state $s$ and action $a$ as&lt;/p&gt;
+
+&lt;p&gt;$$q_{\pi}(s, a) \equiv E_{\pi} \left[G_t | S_t = s A_t = a\right] = E_{\pi} \left[\sum_{k=0}^{\infty} \gamma^k R_{t+k+1} | S_t = s, A_t = a \right].$$&lt;/p&gt;
+
+&lt;p&gt;We define the optimal state-value function as $v(s) \equiv \max_{\pi} v_{\pi}(s)$ and the optimal action-value function as $q(s, a) \equiv \max_{\pi} q_{\pi}(s, a)$. We can obtain $v$ from $q$ as $v = \max_{a} q(s, a)$. Thus, knowing $q$ gives more information than knowing $v$: $q$ gives the optimal value of taking &lt;em&gt;any&lt;/em&gt; action from state $s$ and $v$ gives the optimal value of taking the &lt;em&gt;optimal&lt;/em&gt; value from state $s$.&lt;/p&gt;
+
+&lt;h1 id=&#34;algorithms:14a4c2b55a012de9d01c88422abd12c3&#34;&gt;Algorithms&lt;/h1&gt;
+
+&lt;p&gt;The class of RL algorithms can be understood by first defining some terms from DP.&lt;/p&gt;
+
+&lt;p&gt;Given a policy $\pi$, &lt;strong&gt;policy evaluation&lt;/strong&gt; is the process by which the state-or-action-value function is computed from $\pi$. This typically happens via some sort of backup operation. In DP we use a &lt;strong&gt;full-backup&lt;/strong&gt; where &amp;laquo;each iteration of iterative policy evaluation backs up the value of every state once to produce the new approximate value function&amp;raquo;. Economists call this full-backup one iteration on the Bellman equation.&lt;/p&gt;
+
+&lt;p&gt;In a control problem, after evaluating a policy we typically seek to improve it. &lt;strong&gt;policy-improvement&lt;/strong&gt; is often implemented by selecting a &lt;strong&gt;greedy&lt;/strong&gt; policy state by state. That is, a new policy $\pi&amp;rsquo;$ is obtained from $\pi$ by selecting $\pi&amp;rsquo;(s) = \text{argmax}_a q_{\pi}(s, a)$.&lt;/p&gt;
+
+&lt;h2 id=&#34;dp-algorithms:14a4c2b55a012de9d01c88422abd12c3&#34;&gt;DP Algorithms&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Generalized policy iteration (GPI)&lt;/strong&gt; is a major concept in the Sutton and Barto book. The core idea is alternating between policy evaluation and policy improvement. Policy evaluation drives the estimated value function towards the value of the policy while policy improvement improecs the policy with respect to the estimated value function. These two operations are competing in some sense as each one creates a moving target for the other. If both evaluation and improvement components have stabalized, then the value and policy functions must be optimal. The value function only converges when it is consistent with the current policy and the policy function only converges when it is optimal with respect to the current value function.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Policy-iteration&lt;/strong&gt; is an example of GPI where we alternate on full policy evaluation and full policy improvment. The evaluation step provides the value of the current policy. The improvement step obtains a new policy, taking into account the values associated with the current policy.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Value-iteration&lt;/strong&gt; is another example of GPI where one iteration of the bellman operator is applied as a partial policy evaluation, followed by a full policy improvement.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Asynchronous DP algorithms&lt;/strong&gt; are modifications of policy or value iteration where you do not perform a full backup of the policy or value functions on each iteration (meaning you don&amp;rsquo;t update the policy and value functions for all states in every iteration). Instead, these methods vary in which states they update, using whatever values for other states happen to be available.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Rust</title>
+      <link>http://notes.spencerlyon.com/2016/06/01/rust/</link>
+      <pubDate>Wed, 01 Jun 2016 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2016/06/01/rust/</guid>
+      <description>
+
+&lt;h2 id=&#34;openssl:d3c7600f67cc433a55785816ff4c3a47&#34;&gt;openssl&lt;/h2&gt;
+
+&lt;p&gt;I couldn&amp;rsquo;t get any cargo projects that depend on open ssl to build. I just did:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;brew install openssl
+brew link --force openssl
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Answer came from &lt;a href=&#34;https://github.com/sfackler/rust-openssl/issues/255#issuecomment-145092826&#34;&gt;here&lt;/a&gt;)&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>GitHub pro tips</title>
+      <link>http://notes.spencerlyon.com/2016/01/04/github-pro-tips/</link>
+      <pubDate>Mon, 04 Jan 2016 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2016/01/04/github-pro-tips/</guid>
+      <description>
+
+&lt;h2 id=&#34;post-commit-hooks:93ed8abeb42c248f3c551d1cb44159d4&#34;&gt;Post-commit hooks&lt;/h2&gt;
+
+&lt;p&gt;You can use github post commit hooks to send an HTTP payload to a server after
+every commit. The payload will contain data about the commit that you can then
+use to trigger arbitrary actions (e.g. run scripts) on the server.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve used a simple go library &lt;a href=&#34;https://github.com/adnanh/webhook&#34;&gt;webhook&lt;/a&gt; to do
+this. To get it up and running I did the following:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Install &lt;code&gt;webhook&lt;/code&gt; with: &lt;code&gt;go get github.com/adnanh/webhook&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Configure a post-commit webhook on github by:
+
+&lt;ul&gt;
+&lt;li&gt;Going to the repository settings then &amp;laquo;Webhooks and services&amp;raquo;&lt;/li&gt;
+&lt;li&gt;Clicking &amp;laquo;Add webook&amp;raquo;&lt;/li&gt;
+&lt;li&gt;Enter &lt;code&gt;http://SERVER-IP:9000/hooks/HOOK-ID&lt;/code&gt;, where &lt;code&gt;SERVER-IP&lt;/code&gt; is the ip address of the server and &lt;code&gt;HOOK-ID&lt;/code&gt; is the name of a hook I will use in the next step&lt;/li&gt;
+&lt;li&gt;Enter a &amp;laquo;password&amp;raquo; in the &lt;code&gt;secret&lt;/code&gt; field. Will be used later&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Create a &lt;code&gt;hooks.json&lt;/code&gt; file with the contents of &lt;a href=&#34;https://github.com/adnanh/webhook/wiki/Hook-Examples#incoming-github-webhook&#34;&gt;this example&lt;/a&gt;. In the example &lt;code&gt;HOOK-ID&lt;/code&gt; is given by the &lt;code&gt;&amp;quot;id&amp;quot;&lt;/code&gt; field in the only element of the JSON array.&lt;/li&gt;
+&lt;li&gt;Change the &lt;code&gt;execute-command&lt;/code&gt; to the script I want to run and &lt;code&gt;command-working-directory&lt;/code&gt; to where I want ro run the script (also change the &lt;code&gt;secret&lt;/code&gt; to what I chose in step 2)&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;$GOPATH/bin/webhook -hooks hooks.json -verbose&lt;/code&gt; to start the server (assumes &lt;code&gt;$GOPATH&lt;/code&gt; is set properly)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;That&amp;rsquo;s it! Now, every time we push a commit to master the script runs locally on
+our machine.&lt;/p&gt;
+
+&lt;p&gt;Note that if we kill the process running webhook the hooks won&amp;rsquo;t work anymore. I
+start the server on a remote machine using &lt;code&gt;nohup&lt;/code&gt; and &lt;code&gt;&amp;amp;&lt;/code&gt;. The actual command I
+used was&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;nohup $GOPATH/bin/webhook -hooks hooks.json -verbose &amp;gt; webhook.out 2&amp;gt; webhook.err &amp;lt; /dev/null &amp;amp;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;See the example &lt;code&gt;hook.json&lt;/code&gt; file &lt;a href=&#34;https://github.com/DaveBackus/Data_Bootcamp/blob/master/website/hook.json&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;jupyter-notebooks-in-gists:93ed8abeb42c248f3c551d1cb44159d4&#34;&gt;Jupyter notebooks in gists&lt;/h2&gt;
+
+&lt;p&gt;Here’s what I do to put a notebook in a gist:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Go here &lt;a href=&#34;https://gist.github.com&#34;&gt;https://gist.github.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Create a new public gist&lt;/li&gt;
+&lt;li&gt;Name the file &lt;code&gt;my_notebook.ipynb&lt;/code&gt; and write ​_something_​ in it.&lt;/li&gt;
+&lt;li&gt;Once the gist has been created and you are viewing it click the url and copy the big long string at the end. It could look like &lt;code&gt;82e0defcbddb09dd021df771bcf5a4b6&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Clone the gist as a repo to your computer using &lt;code&gt;git clone git@gist.github.com:BIGLONGSTRING.git notebook_gist&lt;/code&gt; where &lt;code&gt;BIGLONGSTRING&lt;/code&gt; is the thing from step 4 and &lt;code&gt;notebook_gist&lt;/code&gt; is the name of the folder on your comptuer&lt;/li&gt;
+&lt;li&gt;Copy your actual notebook into &lt;code&gt;notebook_gist&lt;/code&gt; folder, then add, commit, push like normal&lt;/li&gt;
+&lt;li&gt;After pushing go to &lt;a href=&#34;http://nbviewer.jupyter.org&#34;&gt;nbviewer&lt;/a&gt; and paste &lt;code&gt;BIGLONGSTRING&lt;/code&gt; into the seach box on their site. This should load up the notebook from your gist and you&amp;rsquo;re done!&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;To update the notebook, simply put a new version of it into that &lt;code&gt;notebook_gist&lt;/code&gt; repo, commit, and push. The changes should go live on nbviewer.&lt;/p&gt;
+
+&lt;p&gt;If you aren&amp;rsquo;t seeing an updated version of the notebook after pushing to the gist repo, you might need to visit the url in private mode or reset the browser cache.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Probability distributions</title>
+      <link>http://notes.spencerlyon.com/2015/12/28/probability-distributions/</link>
+      <pubDate>Mon, 28 Dec 2015 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2015/12/28/probability-distributions/</guid>
+      <description>
+
+&lt;p&gt;Some probability distributions that are useful (usually to economists) for one reason or another.&lt;/p&gt;
+
+&lt;h3 id=&#34;pareto-distribution&#34;&gt;Pareto Distribution&lt;/h3&gt;
+
+&lt;p&gt;The &lt;a href=&#34;https://en.wikipedia.org/wiki/Pareto_distribution&#34;&gt;Pareto distribution&lt;/a&gt; has a simple CDF: $G(x) = 1 - \underline{x}^{\gamma}x^{-\gamma}$, where $\underline{x}$ satisfies $G(\underline{x}) = 0$ and $\gamma$ governs the variance.&lt;/p&gt;
+
+&lt;p&gt;A useful property of the Pareto distribution is that when it is truncated, the truncated CDF is the same as the original, except that $\underline{x}$ is moved up.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>OSX tips</title>
+      <link>http://notes.spencerlyon.com/2015/09/18/osx-tips/</link>
+      <pubDate>Fri, 18 Sep 2015 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2015/09/18/osx-tips/</guid>
+      <description>&lt;p&gt;When I install Iterm fresh I need to do a few things in settings -&amp;gt; profiles -&amp;gt; keys:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Change so left option is Esc+&lt;/li&gt;
+&lt;li&gt;Map option right arrow to escape sequence f&lt;/li&gt;
+&lt;li&gt;Map option left arrow to escape sequence b&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I got the last two tips from &lt;a href=&#34;http://apple.stackexchange.com/questions/136928/using-alt-cmd-right-left-arrow-in-iterm&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Notes on Deterministic Difference Equations</title>
+      <link>http://notes.spencerlyon.com/2015/09/05/notes-on-deterministic-difference-equations/</link>
+      <pubDate>Sat, 05 Sep 2015 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2015/09/05/notes-on-deterministic-difference-equations/</guid>
+      <description>
+
+&lt;h1 id=&#34;deterministic-difference-equations&#34;&gt;Deterministic Difference Equations&lt;/h1&gt;
+
+&lt;h2 id=&#34;scalar-first-order-linear-equations&#34;&gt;Scalar First-Order Linear Equations&lt;/h2&gt;
+
+&lt;p&gt;The basic scalar first-order difference equation can be represented by:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$$x_{t+1} = b x_t + c z_t, \quad t \geq 0$$&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;where $x_t, b, c, z_t$ are all real numbers. Since these equations are deterministic then we already know the sequence ${ z_t }$ and will assume it is bounded. If $z_t$ is constant for all $t$ then this equation is called &lt;em&gt;autonomous&lt;/em&gt;. If $c z_t = 0$ for all $t$ then this equation is called homogenous. A particular solution to this difference equation is the constant solution where $x_t = \bar{x}$ for all $t$ and $\bar{x} = \frac{c}{1-b}$ for $b \neq 1$. This solution is known as a &lt;em&gt;stationary point&lt;/em&gt; or &lt;em&gt;steady state.&lt;/em&gt; A more general solution to the autonomous difference equation can be given by&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$$x_t = (x_0 - \bar{x}) b^t + \bar{x}$$&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;We can describe the behavior of this solution by&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/span&gt;&lt;/th&gt;
+&lt;th&gt;$x_0$ given&lt;/th&gt;
+&lt;th&gt;$x_0$ unknown&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;$abs(b) &amp;gt; 1$&lt;/td&gt;
+&lt;td&gt;Exploding unless $x_0 = \bar{x}$&lt;/td&gt;
+&lt;td&gt;$x_t = \bar{x}$ $\forall t \geq 0$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;$abs(b) &amp;lt; 1$&lt;/td&gt;
+&lt;td&gt;Globally asympototically stable&lt;/td&gt;
+&lt;td&gt;Indeterminancy&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;A general solution for the nonautonomous case depends on whether $x_0$ is given or not. If $x_0$ is given then we can solve for $x_t$ through backwards substitution to obtain&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$$x_t = c \sum_{j=0}^{t-1} b^j z_{t - 1 - j} + b^t x_0$$&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;If $|b| &amp;lt; 1$ then in the limit it converges to the &lt;em&gt;generalized steady state&lt;/em&gt; which is&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$$\lim_{t \rightarrow \infty} x_t = \lim_{t \rightarrow infty} c \sum_{j=0}^{t-1} b^j z_{t-1-j}$$&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Now consider the case when $x_0$ is not given, for example, imagine that the process $x_t$ representes an asset&amp;rsquo;s price. In our example the difference equation is simply an asset pricing equation and to solve for the price at $t$ we can substitute forward and get&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$$x_t = \left( \frac{1}{b} \right)^T x_{t+T} - \frac{c}{b} \sum_{j=0}^{T-1} \left(\frac{1}{b} \right)^j z_{t+j}$$&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;for any $T \geq 1$. If we take $T \rightarrow \infty$ and assume the &lt;em&gt;transversality condition&lt;/em&gt; (also known as the &lt;em&gt;no-bubble condition&lt;/em&gt;) which says&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$$\lim_{T \rightarrow \infty} \left( \frac{1}{b} \right)^T x_{t+T} = 0$$&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;then we can obtain the forward looking solution&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$$x_t = - \frac{c}{b} \sum_{j=0}^{\infty} \left( \frac{1}{b} \right)^j z_{t+j}$$&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;If $|b| &amp;gt; 1$ then this sum converges.&lt;/p&gt;
+
+&lt;p&gt;Now imagine that $|b| &amp;gt; 1$ and we remove the transversality condition then the solution admits many unstable solutions. Define &lt;code&gt;$x_t^*$&lt;/code&gt; as the solution given by the sum above, then for any &lt;code&gt;$\{B_t\}$&lt;/code&gt; satisfying &lt;code&gt;$B_{t+1} = b B_t$&lt;/code&gt; the expression &lt;code&gt;$x_t = x_t^* + B_t$&lt;/code&gt; is a solution. In this case, we refer to &lt;code&gt;$x_t^*$&lt;/code&gt; as the &lt;em&gt;fundamental value&lt;/em&gt; and $B_t$ as a &lt;em&gt;bubble&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;If $|b| &amp;lt; 1$ then this sum likely doesn&amp;rsquo;t converge. In similar fashion as previously, we could write the solutions as $x_t = \frac{c}{1 - b} + B_t$ and for any $B_t$ that follows the same process (&lt;code&gt;$B_{t+1} = b B_t$&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;We have seen that two conditions determine what the solutions to our first-order scalar difference equations look like, namely:&lt;/p&gt;
+
+&lt;p&gt;1) Whether the initial value is given : This determines whether $x_t$ is &lt;em&gt;predetermined&lt;/em&gt;.
+2) Whether $b$ is greater or less than 1 : This is determines whether the eigenvalue is stable.&lt;/p&gt;
+
+&lt;h2 id=&#34;lag-operators-and-scalar-second-order-linear-difference-equations&#34;&gt;Lag Operators and Scalar Second-Order Linear Difference Equations&lt;/h2&gt;
+
+&lt;p&gt;We now introduce an operator that is common in the economics literature and is known as the &lt;em&gt;lag operator&lt;/em&gt;. The lag operator, $L$, operates on a dynamics process ${x_t }$ in the following fashion:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;$L x_t = x_{t-1}$&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$L^n x_t = x_{t-n}$&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$L^n c = c$&lt;/code&gt; for any constant &lt;code&gt;$c$&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Additionally, there are some useful formulas that we include for $ |\lambda| &amp;lt; 1$&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$$\frac{1}{1 - \lambda L^n} = \sum_{j=0}^\infty \lambda^j L^{nj}$$&lt;/code&gt;
+&lt;code&gt;$$\frac{1}{(1 - \lambda L^n)^2} = \sum_{j=0}^\infty (j + 1) \lambda^j L^{nj}$$&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;and for a matrix $A$ with all of its eigenvalues in the unit circle&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$$(I - A L^n)^{-1} = \sum_{j=0}^\infty A^j L^{nj}$$&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Consider a second-order linear difference equation&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$$x_{t+2} = a x_{t+1} + b x_{t} + c z_{t}$$&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;where &lt;code&gt;$x_0 \in \mathbb{R}$&lt;/code&gt; is given, $a, b, c$ are real-valued constants, and &lt;code&gt;$\{ z_t \}$&lt;/code&gt; is a given sequence of bounded real-valued numbers. We could express this equation in terms of the lag-operator by&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$$(L^{-2} - a L^{-1} - b) x_t = c z_t$$&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;with characteristic equation&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$$\lambda^2 - a \lambda - b = 0$$&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This characteristic equation has two roots &lt;code&gt;$\lambda_1$&lt;/code&gt; and &lt;code&gt;$\lambda_2$&lt;/code&gt;. We could factor the difference equation into&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$$(L^{-1} - \lambda_1) (L^{-1} - \lambda_2) x_t = c z_t$$&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Then without loss of generality consider 3 possible cases: Either &lt;code&gt;$\lambda_1, \lambda_2 \in \mathbb{R}$&lt;/code&gt; with &lt;code&gt;$\lambda_1 \neq \lambda_2$&lt;/code&gt;, &lt;code&gt;$\lambda_1, \lambda_2 \in \mathbb{R}$&lt;/code&gt; with &lt;code&gt;$\lambda_1 = \lambda_2$&lt;/code&gt;, or &lt;code&gt;$\lambda_1, \lambda_2 \in \mathbb{C}$&lt;/code&gt;. I will only think about the first case here: We can break this case into several sub-cases.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;$ | \lambda_1 | &amp;gt; | \lambda_2 | &amp;gt; 1$&lt;/code&gt; : Then the solution explodes as time proceeds &amp;ndash; We call the steady state the &lt;em&gt;source&lt;/em&gt; (it is constant there and to either side it blows up).&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$ | \lambda_1 | &amp;lt; | \lambda_2 | &amp;lt; 1$&lt;/code&gt; : Then for any initial value, the solution converges to the steady state &amp;ndash; We call the steady state the &lt;em&gt;sink&lt;/em&gt; (everything sinks towards this point).&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$| \lambda_1 | &amp;lt; 1 &amp;lt; | \lambda_2 |$&lt;/code&gt; The solution for this case is known as the &lt;em&gt;saddle path solution&lt;/em&gt;. Then by sending &lt;code&gt;$(L^{-1} - \lambda_2)$&lt;/code&gt; to the RHS we can write &lt;code&gt;$$(L^{-1} - \lambda_1) x_t = - \frac{c}{\lambda_2} \frac{z_t}{(1 - \lambda_2^{-1} L^{-1})}$$&lt;/code&gt; which reduces to &lt;code&gt;$$x_{t+1} = \lambda_1 x_t -\frac{c}{\lambda_2} \sum_{j=0}^\infty \left( \frac{1}{\lambda_2} \right)^{j} z_{t + j}$$.&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;first-order-linear-systems&#34;&gt;First-Order Linear Systems&lt;/h2&gt;
+
+&lt;p&gt;We now consider first-order linear systems. We can write many higher order lineary systems down as a first-order linear system, so this will be the form that we consider&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$$A x_{t+1} = B x_{t} + C z_t$$&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Additionally, we will assume what is known as regularity &amp;ndash; That $\text{det}(A \alpha - B) \neq 0$ identically in $\alpha$. What this does is restrict ourselves to processes with solutions for generic exogenous sequences (Imagine that in the scalar case $a = b = 0$ then we wouldn&amp;rsquo;t have a solution for generic processes for $c z_t$ because we would have the equation $0 = c z_t$). Additionally, depending on what we are working with we sometimes assume that there exists $T &amp;gt; 0$ such that $z_t = \bar{z}$ for all $t &amp;gt; T$ &amp;ndash; This assumption makes it possible for our system to have a steady state.&lt;/p&gt;
+
+&lt;p&gt;We define a steady state by a point $\bar{x}$ such that if $x_t = \bar{x}$ then $x_s = \bar{x}$ for all $s &amp;gt; t$. If $(A - B)$ is invertible (and we include our assumption on the constant values of $\bar{z}$) then our unique steady state is defined by $\bar{x} = (A - B)^{-1} C \bar{z}$.&lt;/p&gt;
+
+&lt;p&gt;A sequence &lt;code&gt;$\{ x_t \}$&lt;/code&gt; is &lt;em&gt;stable&lt;/em&gt; if there exists $M &amp;gt; 0$ such that &lt;code&gt;$|| x_t ||_{\text{max}} &amp;lt; M$&lt;/code&gt; for all $t$; where the operation &lt;code&gt;$||x_{t}||_{\text{max}} = \max_j | X_j |$&lt;/code&gt; for any $x \in \mathbb{R}^n$.&lt;/p&gt;
+
+&lt;p&gt;A point $\bar{x}$ is &lt;em&gt;asymptotically stable&lt;/em&gt; for the sequence &lt;code&gt;$\{ x_t \}$&lt;/code&gt; if &lt;code&gt;$\lim_{t \rightarrow \infty} x_t = \bar{x}$&lt;/code&gt; for some &lt;code&gt;$x_0$&lt;/code&gt;. The &lt;em&gt;basin&lt;/em&gt; (or &lt;em&gt;attraction&lt;/em&gt;) of an asymptotically stable steady state $\bar{x}$ is the set of all points &lt;code&gt;$x_0$&lt;/code&gt; such that &lt;code&gt;$\lim_{t \rightarrow \infty} = \bar{x}$&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;A point $\bar{x}$ is &lt;em&gt;globally (asymptotically) stable&lt;/em&gt; for the sequence &lt;code&gt;$\{ x_t \}$ if $\lim_{t \rightarrow \infty} x_t = \bar{x}$&lt;/code&gt; for any value &lt;code&gt;$x_0$&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;We will assume that &lt;code&gt;$\{ z_t \}$&lt;/code&gt; is a stable sequence.&lt;/p&gt;
+
+&lt;h3 id=&#34;nonsingular-systems&#34;&gt;Nonsingular systems&lt;/h3&gt;
+
+&lt;p&gt;Let $A$ be nonsingular then we can write our first-order linear system as&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$$x_{t+1} = A^{-1} B x_t + A^{-1} C z_t$$&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Jianjun Miao. &amp;laquo;Economic dynamics in discrete time.&amp;raquo; MIT Press. 2014.&lt;/li&gt;
+&lt;li&gt;Lars Ljunqvist and Thomas Sargent. &amp;laquo;Recursive Macroeconomic Theory.&amp;raquo; MIT Press. 2013&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Using Docker</title>
+      <link>http://notes.spencerlyon.com/2015/07/01/using-docker/</link>
+      <pubDate>Wed, 01 Jul 2015 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2015/07/01/using-docker/</guid>
+      <description>&lt;p&gt;Common commands I use:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;boot2docker up&lt;/code&gt;: This launches the boot2docker daemon on osx. After running I then have to copy/paste the &lt;code&gt;export&lt;/code&gt; statements printed by this command to set up ports. An alternative is &lt;code&gt;$(boot2docker shellinit)&lt;/code&gt;, which will do the copy/pase of &lt;code&gt;export&lt;/code&gt;s for me.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker ps -a&lt;/code&gt;: lists all containers&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker rm $(docker ps -a -q)&lt;/code&gt;: remove all containers (running or not)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker images&lt;/code&gt;: list local images&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker run IMAGE_NAME&lt;/code&gt;: runs the docker image. NOTE: often not useful because you also need to&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker run -it IMAGE_NAME COMMAND&lt;/code&gt;: runs &lt;code&gt;COMMAND&lt;/code&gt; inside the image &lt;code&gt;IMAGE_NAME&lt;/code&gt; and leaves you in terminal/interactive mode. This is most often what I use. Often the command is &lt;code&gt;/bin/bash&lt;/code&gt; to just drop me into the terminal&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker run -it -v LOCAL_PATH:REMOTE_PATH IMAGE_NAME COMMAND&lt;/code&gt;: runs &lt;code&gt;COMMAND&lt;/code&gt;: like the above, but maps a local file/folder at &lt;code&gt;LOCAL_PATH&lt;/code&gt; to the image&amp;rsquo;s filesystem at &lt;code&gt;REMOTE_PATH&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker stop $(docker ps -a -q)&lt;/code&gt;: stops all processes&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker build -t USERNAME/IMAGE_NAME .&lt;/code&gt;: Use the dockerfile in the current directory to build an image. Tag the image with the &lt;code&gt;USERNAME&lt;/code&gt; and &lt;code&gt;IMAGE_NAME&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker search NAME&lt;/code&gt;: searches dockerhub for images containing &lt;code&gt;NAME&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker pull USERNAME/IMAGE_NAME&lt;/code&gt;: Pulls image &lt;code&gt;USERNAME/IMAGE_NAME&lt;/code&gt; from dockerhub&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker history USERNAME/IMAGE_NAME&lt;/code&gt;: shows the history of an image&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker rmi IMAGE_ID1 IMAGE_ID2&lt;/code&gt;: remove images by ID. Can list multiple images at once&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker stop IMAGE_ID&lt;/code&gt;: stops an image&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker run -p IMAGE_PORT:LOCAL_PORT ....&lt;/code&gt;: runs an image (with other args and image name omitted) and maps port &lt;code&gt;IMAGE_PORT&lt;/code&gt; on the image to &lt;code&gt;LOCAL_PORT&lt;/code&gt; on my machine.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>HPC</title>
+      <link>http://notes.spencerlyon.com/2015/05/11/hpc/</link>
+      <pubDate>Mon, 11 May 2015 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2015/05/11/hpc/</guid>
+      <description>
+
+&lt;h1 id=&#34;julia-and-mercer&#34;&gt;Julia and mercer&lt;/h1&gt;
+
+&lt;p&gt;Here are some tips, tricks I&amp;rsquo;ve picked up for working with Julia on NYUs super
+computer.&lt;/p&gt;
+
+&lt;h2 id=&#34;installing-julia&#34;&gt;Installing Julia&lt;/h2&gt;
+
+&lt;p&gt;I have a shell script that I periodically run to download the latest released
+version of Julia:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;#!/usr/bin/env sh
+
+wget -O julia_binary.tar.gz https://julialang.s3.amazonaws.com/bin/linux/x64/0.4/julia-0.4-latest-linux-x86_64.tar.gz
+
+rm -rf $WORK/src/julia*
+mkdir -p $WORK/src/julia
+tar -C $WORK/src/julia -zxf julia_binary.tar.gz --strip-components=1
+rm julia_binary.tar.gz
+
+# prepend julia to path
+export PATH=$WORK/src/julia/bin:$PATH
+
+# remove old symlink and make a new one
+mkdir $WORK/bin
+rm -f $WORK/bin/julia
+ln -s $WORK/src/julia/bin/julia $WORK/bin/julia
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I put this in a file &lt;code&gt;$WORK/bin/update_julia&lt;/code&gt;, then whenever I need to update
+my julia installation I do &lt;code&gt;bash $WORK/bin/update_julia&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;This script will put the Julia binary in &lt;code&gt;$WORK/bin/julia&lt;/code&gt; (that&amp;rsquo;s what I enter
+to run Julia.)&lt;/p&gt;
+
+&lt;h2 id=&#34;installing-specific-packages&#34;&gt;Installing specific packages&lt;/h2&gt;
+
+&lt;p&gt;Most packages are installable using either &lt;code&gt;Pkg.clone&lt;/code&gt; or &lt;code&gt;Pkg.add&lt;/code&gt;. However,
+some require extra setup.&lt;/p&gt;
+
+&lt;p&gt;Here are specailized instructions for installing specific packages.&lt;/p&gt;
+
+&lt;h3 id=&#34;hdf5-jl&#34;&gt;HDF5.jl&lt;/h3&gt;
+
+&lt;p&gt;I first tried &lt;code&gt;Pkg.add(&amp;quot;HDF5&amp;quot;)&lt;/code&gt;. That didn&amp;rsquo;t work. The problem is that I don&amp;rsquo;t
+have access to a package manager on mercer, so I need to link against libhdf5
+that is already on mercer.&lt;/p&gt;
+
+&lt;p&gt;I tracked down the shared library on mercer and found that it was at the
+following location (NOTE: you might want to check it there are more recent
+versions available):&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;/share/apps/hdf5/1.8.14/openmpi/intel/lib/libhdf5.so.9&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Then I edited &lt;code&gt;$HOME/.julia/v0.4/HDF5/deps/deps.jl&lt;/code&gt; to look like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-julia&#34;&gt;# This is an auto-generated file; do not edit
+
+# Pre-hooks
+
+# Macro to load a library
+macro checked_lib(libname, path)
+    ((VERSION &amp;gt;= v&amp;quot;0.4.0-dev+3844&amp;quot; ? Base.Libdl.dlopen_e : Base.dlopen_e)(path) == C_NULL) &amp;amp;&amp;amp; error(&amp;quot;Unable to load \n\n$libname ($path)\n\nPlease re-run Pkg.build(package), and restart Julia.&amp;quot;)
+    quote const $(esc(libname)) = $path end
+end
+
+# Load dependencies
+@checked_lib libhdf5 &amp;quot;/share/apps/hdf5/1.8.14/openmpi/intel/lib/libhdf5.so.9&amp;quot;
+# Load-hooks
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You might need to create both the &lt;code&gt;HDF5/deps&lt;/code&gt; folder and the file &lt;code&gt;deps.jl&lt;/code&gt;.
+You should now be able to start a Julia session and run &lt;code&gt;using HDF5&lt;/code&gt; and it
+will work without a problem.&lt;/p&gt;
+
+&lt;p&gt;You do &lt;strong&gt;not&lt;/strong&gt; need to run &lt;code&gt;Pkg.build(&amp;quot;HDF5&amp;quot;)&lt;/code&gt; after updating deps.jl&lt;/p&gt;
+
+&lt;h3 id=&#34;mbedtls-jl&#34;&gt;MbedTLS.jl&lt;/h3&gt;
+
+&lt;p&gt;If you need to install MbedTLS.jl or if it is a dependency of something else
+you need to install, you will probably see an error about &lt;code&gt;cmake&lt;/code&gt; not being
+available when you do &lt;code&gt;Pkg.add(&amp;quot;MbedTLS&amp;quot;)&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The fix here is to simply run &lt;code&gt;module load cmake&lt;/code&gt; at the shell prompt, then
+start Julia in that same session, and try &lt;code&gt;Pkg.add(&amp;quot;MbedTLS&amp;quot;)&lt;/code&gt; or
+&lt;code&gt;Pkg.build(&amp;quot;MbedTLS&amp;quot;)&lt;/code&gt; again (run &lt;code&gt;Pkg.build&lt;/code&gt; if you already tried &lt;code&gt;Pkg.add&lt;/code&gt;
+and it failed).&lt;/p&gt;
+
+&lt;h1 id=&#34;mpi-jobs&#34;&gt;MPI jobs&lt;/h1&gt;
+
+&lt;p&gt;I got this script from &lt;a href=&#34;http://csc.cnsi.ucsb.edu/docs/running-jobs-torque&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;NOTE: if you are using Julia with multiple processors, skip this section and
+move to the next one.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#!/bin/sh
+##############################################################################
+# IMPORTANT:  the next line determines how many nodes to run on
+#  nodes is number of nodes, ppn= processors (cores) per node
+#PBS -l nodes=2:ppn=4
+#
+# Make sure that we are in the same subdirectory as where the qsub command
+# is issued.
+#
+cd $PBS_O_WORKDIR
+#
+#  make a list of allocated nodes(cores)
+#  Note that if multiple jobs run in same directory, use different names
+#     for example, add on jobid nmber.
+cat $PBS_NODEFILE &amp;gt; nodes
+# How many cores total do we have?
+NO_OF_CORES=`cat $PBS_NODEFILE | egrep -v &#39;^#&#39;\|&#39;^$&#39; | wc -l | awk &#39;{print $1}&#39;`
+NODE_LIST=`cat $PBS_NODEFILE `
+#
+# Just for kicks, see which nodes we got.
+echo $NODE_LIST
+#
+# Run the executable. *DO NOT PUT* a &#39;&amp;amp;&#39; at the end!!
+#
+mpirun -np $NO_OF_CORES -machinefile nodes ./pi3 &amp;gt;&amp;amp; log
+#
+#########################################
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The following also looked like good resources:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://wikis.nyu.edu/display/NYUHPC/Running+jobs+-+MPI&#34;&gt;https://wikis.nyu.edu/display/NYUHPC/Running+jobs+-+MPI&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://wiki.anl.gov/cnm/HPC/Submitting_and_Managing_Jobs/Example_Job_Script&#34;&gt;https://wiki.anl.gov/cnm/HPC/Submitting_and_Managing_Jobs/Example_Job_Script&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;julia-on-a-cluster&#34;&gt;Julia on a cluster&lt;/h2&gt;
+
+&lt;p&gt;I can&amp;rsquo;t just do &lt;code&gt;julia -p N&lt;/code&gt; or &lt;code&gt;addprocs(N)&lt;/code&gt; to get it to work. That would
+give me &lt;code&gt;N&lt;/code&gt; procs on the login node. What I need instead is to use the
+&lt;code&gt;machinefile&lt;/code&gt; option for starting Julia and give it  the &lt;code&gt;$PBS_NODEFILE&lt;/code&gt;. This
+is an example of a PBS script I had that worked:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;#PBS -l nodes=1:ppn=20
+#PBS -l walltime=10:00:00
+#PBS -N gerzensee
+#PBS -M spencer.lyon@nyu.edu
+#PBS -m abe
+#PBS -j oe
+#PBS -t 1,9
+
+module purge
+
+# this moves us to the directory where qsub was submitted
+# should be $WORK/Research/Gerzesee/Code/international
+cd $PBS_O_WORKDIR
+
+# cat $PBS_NODEFILE | sed -e &#39;s/.local$/-ib.ibnet/&#39; &amp;gt; my_machines
+# cat $PBS_NODEFILE &amp;gt; my_machines
+
+# run the code! -- use machinefile to start one julia on each process
+/work/sgl290/bin/julia --machinefile $PBS_NODEFILE driver.jl
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In this example I started two jobs (with &lt;code&gt;PBS_ARRAYID&lt;/code&gt; equal to 1 and 9). Each
+job used 20 cores on one node for 10 hours. The path &lt;code&gt;/work/sgl290/bin/julia&lt;/code&gt;
+is the path that was set up for me by running the shell script from above.&lt;/p&gt;
+
+&lt;p&gt;In this example &lt;code&gt;driver.jl&lt;/code&gt; looked like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-julia&#34;&gt;include(&amp;quot;main.jl&amp;quot;)
+using JLD
+
+for i in workers()
+    remotecall_fetch(i, include, &amp;quot;main.jl&amp;quot;)
+end
+
+# set up arguments
+model_id = parse(Int, get(ENV[&amp;quot;PBS_ARRAYID&amp;quot;], &amp;quot;1&amp;quot;))
+
+# CODE TO DO THE WORK USING using all the cores.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;There are a few things to point out about this code. First &lt;code&gt;main.jl&lt;/code&gt; is a file
+that collects all the code I will be running. I first call &lt;code&gt;include(&amp;quot;main.jl&amp;quot;)&lt;/code&gt;
+and then go through all the workers and call &lt;code&gt;remotecall_fetch(i, include,
+&amp;quot;main.jl&amp;quot;)&lt;/code&gt; to load it on each process. I do it this way for a few reasons:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Loading is only on the master process first allows all precompilation to take
+place without multiple processes trying to write the same &lt;code&gt;.ji&lt;/code&gt; files at the
+same time&lt;/li&gt;
+&lt;li&gt;I include the file sequentially on all workers again so that no worker steps
+on another worker&amp;rsquo;s toes.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I then extract an integer &lt;code&gt;model_id&lt;/code&gt; that specifies which job is currently
+running. This number corresponds to the job number from the pbs script
+(integers 1 and 9 in the example above). I use this to drive which
+parameterization I am working with.&lt;/p&gt;
+
+&lt;p&gt;The comment at the end is simply there as a placeholder for you to put the code
+that actually does the work.&lt;/p&gt;
+
+&lt;h1 id=&#34;sharing-folders&#34;&gt;Sharing folders&lt;/h1&gt;
+
+&lt;p&gt;To share a folder &lt;code&gt;/scratch/sgl290/awesomeness&lt;/code&gt; with user &lt;code&gt;abc123&lt;/code&gt; I would need
+to enter the following commands on mercer:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;setfacl -m u:abc123:rx /scratch/sgl290
+setfacl -Rm u:abc123:rwx,d:u:abc123:rwx /scratch/sgl290/awesomeness
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The first command gives read and execute permissions to my scratch folder &amp;ndash;
+necessary for letting them enter the folder and it&amp;rsquo;s children.&lt;/p&gt;
+
+&lt;p&gt;The second command gives him read, write, exceute permissions to the
+awesomeness folder all sub files/folders.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Referee_reports</title>
+      <link>http://notes.spencerlyon.com/2015/05/05/referee_reports/</link>
+      <pubDate>Tue, 05 May 2015 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2015/05/05/referee_reports/</guid>
+      <description>&lt;p&gt;Tips from Gianluca about writing referee reports:&lt;/p&gt;
+
+&lt;p&gt;Remember that when you are writing a referee report, you are writing the report to the &lt;em&gt;editor&lt;/em&gt;. Make it easy for them to read and reference by:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Number points in critical assessment section&lt;/li&gt;
+&lt;li&gt;Don&amp;rsquo;t just say &amp;laquo;I don&amp;rsquo;t like this assumption&amp;raquo;. Instead, with each criticism do these three steps:
+
+&lt;ol&gt;
+&lt;li&gt;Don&amp;rsquo;t like this&lt;/li&gt;
+&lt;li&gt;Here&amp;rsquo;s why&lt;/li&gt;
+&lt;li&gt;Here&amp;rsquo;s a better alternative&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Using Pandoc</title>
+      <link>http://notes.spencerlyon.com/2015/04/09/using-pandoc/</link>
+      <pubDate>Thu, 09 Apr 2015 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2015/04/09/using-pandoc/</guid>
+      <description>&lt;p&gt;I have tweaked my pandoc settings. They are mostly a copy of &lt;a href=&#34;https://github.com/kjhealy/pandoc-templates&#34;&gt;Keiran Healy&amp;rsquo;s&lt;/a&gt; settings, but I have made a few modifications.&lt;/p&gt;
+
+&lt;p&gt;These are the steps I took to get things working how I wanted to:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;git clone git@github.com:kjhealy/pandoc-templates.git&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;that directory into &lt;code&gt;~/.pandoc&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;s&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt; :See the readme for &lt;a href=&#34;https://github.com/spencerlyon2/pandoc-templates&#34;&gt;my pandoc-templates&lt;/a&gt; repo&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Scala Notes</title>
+      <link>http://notes.spencerlyon.com/2015/01/29/scala-notes/</link>
+      <pubDate>Thu, 29 Jan 2015 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2015/01/29/scala-notes/</guid>
+      <description>
+
+&lt;h1 id=&#34;scala&#34;&gt;Scala&lt;/h1&gt;
+
+&lt;h2 id=&#34;notes-from-functional-programming-in-scala&#34;&gt;Notes from &amp;laquo;Functional Programming in Scala&amp;raquo;&lt;/h2&gt;
+
+&lt;p&gt;The &lt;code&gt;Option&lt;/code&gt; class in
+&lt;a href=&#34;https://github.com/spencerlyon2/fpinscala/blob/master/exercises/src/main/scala/fpinscala/errorhandling/Option.scala&#34;&gt;Option.scala&lt;/a&gt;
+and the &lt;code&gt;RNG&lt;/code&gt; class in
+&lt;a href=&#34;https://github.com/spencerlyon2/fpinscala/blob/master/exercises/src/main/scala/fpinscala/state/State.scala&#34;&gt;State.scala&lt;/a&gt;
+have examples of using &lt;code&gt;flatMap&lt;/code&gt; to implement &lt;code&gt;map2&lt;/code&gt;. The pattern is common, but
+a bit weird. Stare at it for a while if you want to figure out how powerful
+&lt;code&gt;flatMap&lt;/code&gt; is.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Continuous Time</title>
+      <link>http://notes.spencerlyon.com/2015/01/12/continuous-time/</link>
+      <pubDate>Mon, 12 Jan 2015 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2015/01/12/continuous-time/</guid>
+      <description>
+
+&lt;h1 id=&#34;continuous-time-macro&#34;&gt;Continuous Time Macro&lt;/h1&gt;
+
+&lt;h2 id=&#34;solving-an-hjb&#34;&gt;Solving an HJB&lt;/h2&gt;
+
+&lt;p&gt;The HJB usually takes the form&lt;/p&gt;
+
+&lt;p&gt;$$\rho V_t (N&lt;em&gt;t) = \max&lt;/em&gt;{C, a} \left{ u&amp;copy; + \mathcal{A} V_t(N_t)\right},$$&lt;/p&gt;
+
+&lt;p&gt;where $\mathcal{A} V_t(N_t)$ is the drift of $dV_T(N_t)$, $\rho$ is the discount rate, $u&amp;copy;$ is the flow payoff of $C$. To solve this equation follow these steps:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Take FOC wrt controls (here $C, a$)&lt;/li&gt;
+&lt;li&gt;Stare at it for a while and make a guess of the functional form of the solution to the PDE. In this case if $u&amp;copy; = \ln&amp;copy;$ we would have chosen $V(N) = v_0 + v_1 \ln(N)$. You really learn how to do this by practice.&lt;/li&gt;
+&lt;li&gt;Plug the assumed functional form into the HJB (take necessary derivatives and replace all instances of $V(N)$)&lt;/li&gt;
+&lt;li&gt;Plug in FOC from step 1&lt;/li&gt;
+&lt;li&gt;Use method of undetermined coefficients to extract coefficients in assumed functional form. If you are unable to do this, try one more time because you might have made a dumb algebra mistake. After that start over at step 2 with a new guess&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; If you aren&amp;rsquo;t able to provide an explicit functional form, but rather have a more general guess like $V(x, y) = f(x) + y g(x)$, then you should alter your approach slightly. Starting from step 5 you will need to do the following:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;You should be able to use the method of undetermined coefficients to come up with ODEs for each of the generic functions in your guess (in this case $f$, and $g$).&lt;/li&gt;
+&lt;li&gt;Solve these ODEs however you know how&lt;/li&gt;
+&lt;li&gt;If you can&amp;rsquo;t, you probably made a bad guess for the form of the solution, so start over at step 2.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;ito-processes&#34;&gt;Ito processes&lt;/h2&gt;
+
+&lt;h3 id=&#34;gbm&#34;&gt;GBM&lt;/h3&gt;
+
+&lt;p&gt;A geometric Brownian motion solves the following SDE&lt;/p&gt;
+
+&lt;p&gt;$$dS_t = \mu S_t dt + \sigma S_t dW_t.$$&lt;/p&gt;
+
+&lt;p&gt;The solution is&lt;/p&gt;
+
+&lt;p&gt;$$S_t = S_0 \exp \left( \left(\mu - \frac{\sigma^2}{2} \right)t + \sigma W_t \right).$$&lt;/p&gt;
+
+&lt;p&gt;We often write GMB as&lt;/p&gt;
+
+&lt;p&gt;$$\frac{dS_t}{S_t} = \mu dt + \sigma dW_t$$&lt;/p&gt;
+
+&lt;p&gt;or even in terms of $d \log S_t$. By Ito&amp;rsquo;s lemma we have that&lt;/p&gt;
+
+&lt;p&gt;$$d \log S_t = \frac{d S_t}{S_t} - \frac{1}{2} \sigma^2 dt.$$&lt;/p&gt;
+
+&lt;p&gt;Solving for $\frac{d S_t}{S_t}$ and matching coefficients we see that we must have&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;drift of $d \log S_t = \mu - \frac{1}{2} \sigma^2$&lt;/li&gt;
+&lt;li&gt;Volatility of $d \log S_t = \sigma$.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>The Jupyter Notebook</title>
+      <link>http://notes.spencerlyon.com/2014/12/02/the-jupyter-notebook/</link>
+      <pubDate>Tue, 02 Dec 2014 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2014/12/02/the-jupyter-notebook/</guid>
+      <description>
+
+&lt;h1 id=&#34;ipynb:4fa1436551b3df29c2923e4fe3e62959&#34;&gt;Ipynb&lt;/h1&gt;
+
+&lt;h2 id=&#34;slidemode:4fa1436551b3df29c2923e4fe3e62959&#34;&gt;Slidemode&lt;/h2&gt;
+
+&lt;p&gt;To activate slide mode I did the following&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Clone nbextensions repo into the right place:&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code&gt;cd ~/.ipython
+git clone git@github.com:ipython-contrib/IPython-notebook-extensions.git nbextensions
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Edit &lt;code&gt;~/.ipython/profile_default&lt;/code&gt; and &lt;code&gt;~/.ipython/profile_default&lt;/code&gt; so that in the section titled &lt;code&gt;$([IPython.events]).on(&#39;app_initialized.NotebookApp&#39;, function(){&lt;/code&gt; I had the line &lt;code&gt;IPython.load_extensions(&#39;slidemode/main&#39;)&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;If I want to use nbconvert to give me reveal.js slides and then view them locally I need to start a python webserver:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ipython nbconvert --to slides my_notebook.ipynb
+python -m SimpleHTTPServer 8000
+open http://127.0.0.1:8000
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;registering-kernels-in-ipython-3-0:4fa1436551b3df29c2923e4fe3e62959&#34;&gt;Registering kernels in IPython 3.0+&lt;/h2&gt;
+
+&lt;p&gt;IPython versions 3.0+ have a great feature where you can launch the notebook and then select the kernel you want from a dropdown list. Right now I have python2, python3, R, and Julia ready to go. This makes it so we can switch from notebooks in different languages without having to restart IPython.&lt;/p&gt;
+
+&lt;p&gt;To register a new kernel you only need to create a file named &lt;code&gt;kernel.json&lt;/code&gt; in &lt;code&gt;~/.ipython/kernels/&amp;lt;language_name&amp;gt;/kernel.json&lt;/code&gt;. For example I have:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;HW2|master⚡ ⇒ cat ~/.ipython/kernels/julia/kernel.json
+{
+ &amp;quot;display_name&amp;quot;: &amp;quot;Julia&amp;quot;,
+ &amp;quot;language&amp;quot;: &amp;quot;julia&amp;quot;,
+ &amp;quot;argv&amp;quot;: [
+    &amp;quot;julia&amp;quot;,
+    &amp;quot;-i&amp;quot;,
+    &amp;quot;-F&amp;quot;,
+    &amp;quot;/Users/sglyon/.julia/v0.3/IJulia/src/kernel.jl&amp;quot;,
+    &amp;quot;{connection_file}&amp;quot;
+ ],
+ &amp;quot;codemirror_mode&amp;quot;:&amp;quot;julia&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;HW2|master⚡ ⇒ cat ~/.ipython/kernels/ir/kernel.json
+{&amp;quot;argv&amp;quot;: [&amp;quot;R&amp;quot;,&amp;quot;-e&amp;quot;,&amp;quot;IRkernel::main()&amp;quot;,&amp;quot;--args&amp;quot;,&amp;quot;{connection_file}&amp;quot;],
+ &amp;quot;display_name&amp;quot;:&amp;quot;R&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;HW2|master⚡ ⇒ cat ~/.ipython/kernels/python3/kernel.json
+{
+ &amp;quot;argv&amp;quot;: [&amp;quot;/Users/sglyon/anaconda/envs/py3/bin/python3&amp;quot;, &amp;quot;-m&amp;quot;, &amp;quot;IPython.kernel&amp;quot;,
+          &amp;quot;-f&amp;quot;, &amp;quot;{connection_file}&amp;quot;],
+ &amp;quot;display_name&amp;quot;: &amp;quot;Python 3&amp;quot;,
+ &amp;quot;language&amp;quot;: &amp;quot;python&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;remote-access-to-ipynb:4fa1436551b3df29c2923e4fe3e62959&#34;&gt;Remote access to ipynb&lt;/h3&gt;
+
+&lt;p&gt;See also the note about setting up a persistent notebook on GCE in the cloud.md file.&lt;/p&gt;
+
+&lt;h3 id=&#34;extensions:4fa1436551b3df29c2923e4fe3e62959&#34;&gt;Extensions&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/ipython-contrib/IPython-notebook-extensions/wiki/config-extension&#34;&gt;https://github.com/ipython-contrib/IPython-notebook-extensions/wiki/config-extension&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Editing: &lt;code&gt;/usr/local/share/jupyter/nbextensions/livereveal/main.js&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;hello&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Cloud tips</title>
+      <link>http://notes.spencerlyon.com/2014/10/05/cloud-tips/</link>
+      <pubDate>Sun, 05 Oct 2014 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2014/10/05/cloud-tips/</guid>
+      <description>
+
+&lt;h1 id=&#34;cloud:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;Cloud&lt;/h1&gt;
+
+&lt;h2 id=&#34;aws:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;AWS&lt;/h2&gt;
+
+&lt;h3 id=&#34;persistent-notebook:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;Persistent notebook&lt;/h3&gt;
+
+&lt;p&gt;I have a persistent instance running.&lt;/p&gt;
+
+&lt;p&gt;I followed &lt;a href=&#34;https://grollchristian.wordpress.com/2014/09/01/ijulia-for-amazon-ec2/&#34;&gt;this blog post&lt;/a&gt; to get it set up.&lt;/p&gt;
+
+&lt;p&gt;I can connect to it via&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ssh -i ~/dotfiles/sglyon-mbp.pem.txt ubuntu@ec2-54-201-41-126.us-west-2.compute.amazonaws.com
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;ipython notebook --profile=julia&lt;/code&gt; is running. I can connect to it from any browser by going to&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;https://ec2-54-201-41-126.us-west-2.compute.amazonaws.com:8998
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The password is &lt;code&gt;lyon0409&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;I needed to add the &lt;code&gt;IJulia all tcp&lt;/code&gt; security group to the instance through the AWS online management console.&lt;/p&gt;
+
+&lt;h4 id=&#34;new-user:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;new user&lt;/h4&gt;
+
+&lt;p&gt;I made a new user here by following the ideas &lt;a href=&#34;http://brianflove.com/2013/06/18/add-new-sudo-user-to-ec2-ubuntu/&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;mounting-a-volume:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;Mounting a volume&lt;/h4&gt;
+
+&lt;p&gt;I mounted a volume to &lt;code&gt;~/storage&lt;/code&gt; (&lt;code&gt;sudo mount /dev/xvdf /home/sglyon/storage)&lt;/code&gt;, but didn&amp;rsquo;t have permission to do anything. To fix that I chowned it: &lt;code&gt;sudo chown -R sglyon ~/storage&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;gce:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;GCE&lt;/h2&gt;
+
+&lt;p&gt;First step is to install the tools. This is a one time thing where I enter this command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;curl https://sdk.cloud.google.com | bash
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then follow the prompts and such until it is installed. I chose the directory &lt;code&gt;~/google-cloud-sdk&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;I didn&amp;rsquo;t have it alter my path for me, but  I added the following line in my list where I set &lt;code&gt;$PATH&lt;/code&gt; from within my ~/.zshenv:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$HOME/google-cloud-sdk/bin
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;julia-and-gce:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;Julia and GCE&lt;/h3&gt;
+
+&lt;p&gt;I (partially) followed &lt;a href=&#34;http://www.blog.juliaferraioli.com/2013/12/julia-on-google-compute-engine.html&#34;&gt;this blog post&lt;/a&gt; to get things started.&lt;/p&gt;
+
+&lt;p&gt;To create a new instance from the command line I need to run the following&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;gcloud compute --project &amp;quot;sgl-julia&amp;quot; instances create &amp;quot;instance-name&amp;quot; --zone &amp;quot;us-central1-b&amp;quot; --machine-type &amp;quot;n1-standard-1&amp;quot; --network &amp;quot;default&amp;quot; --maintenance-policy &amp;quot;MIGRATE&amp;quot; --scopes &amp;quot;https://www.googleapis.com/auth/devstorage.read_only&amp;quot; --image &amp;quot;https://www.googleapis.com/compute/v1/projects/sgl-julia/global/images/julia-src-deb-10212014&amp;quot; --no-boot-disk-auto-delete
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;where &lt;code&gt;instance-name&lt;/code&gt; is replaced with the actual name of the instance I want to create.&lt;/p&gt;
+
+&lt;p&gt;I can then ssh into the new instance (after it is created) by running&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;gcloud compute --project &amp;quot;sgl-julia&amp;quot; ssh --zone &amp;quot;us-central1-b&amp;quot; &amp;quot;instance-name&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If I want to select a different type of instance, I would change the &lt;code&gt;--machine-type&lt;/code&gt; parameter name. See &lt;a href=&#34;https://developers.google.com/compute/pricing&#34;&gt;this page&lt;/a&gt; for an explanation of the different types and prices.&lt;/p&gt;
+
+&lt;p&gt;To turn off (delete) my instance I would enter the following command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;gcloud compute --project &amp;quot;sgl-julia&amp;quot; instances delete &amp;quot;instance-1&amp;quot; --zone &amp;quot;us-central1-b&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If I also wanted to delete the corresponding persistent disk I would enter&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;gcloud compute --project &amp;quot;sgl-julia&amp;quot; disks delete &amp;quot;instance-1&amp;quot; --zone &amp;quot;us-central1-b&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;writing-the-package:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;Writing the package&lt;/h4&gt;
+
+&lt;p&gt;I had to install &lt;a href=&#34;https://github.com/markcarver/mac-ssh-askpass&#34;&gt;this script&lt;/a&gt; in order for ssh to work. I did the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cd ~/Downloads
+git clone https://github.com/markcarver/mac-ssh-askpass
+cd mac-ssh-askpass
+sudo ./INSTALL
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The package also requires that &lt;code&gt;gcloud&lt;/code&gt; and friends are installed.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

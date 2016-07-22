@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Notes on Random Notes</title>
+    <link>http://notes.spencerlyon.com/series/notes/</link>
+    <description>Recent content in Notes on Random Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-EN</language>
+    <managingEditor>spencer.lyon@stern.nyu.edu (Spencer Lyon)</managingEditor>
+    <webMaster>spencer.lyon@stern.nyu.edu (Spencer Lyon)</webMaster>
+    <copyright>(c) 2015 Spencer Lyon.</copyright>
+    <lastBuildDate>Tue, 23 Feb 2016 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://notes.spencerlyon.com/series/notes/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Sargent Reading group</title>
+      <link>http://notes.spencerlyon.com/2016/02/23/sargent-reading-group/</link>
+      <pubDate>Tue, 23 Feb 2016 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2016/02/23/sargent-reading-group/</guid>
+      <description>
+
+&lt;h2 id=&#34;2-16-2016:ede6b588bfdaeb15678d6bac4beb9bab&#34;&gt;2-16-2016&lt;/h2&gt;
+
+&lt;h4 id=&#34;simon-mongey:ede6b588bfdaeb15678d6bac4beb9bab&#34;&gt;Simon Mongey&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.dropbox.com/s/bpp8jkzp3u65jv9/Gopinath%20Itskhoki%20%28Macro%20Hbook%29%20-%20In%20search%20of%20real%20rigidities.pdf?dl=0&#34;&gt;&lt;strong&gt;In Search Of Real Rigidities&lt;/strong&gt;&lt;/a&gt; by &lt;strong&gt;Gopinath, Itskhoki (2010)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;peifan-wu:ede6b588bfdaeb15678d6bac4beb9bab&#34;&gt;Peifan Wu&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.dropbox.com/s/bpp8jkzp3u65jv9/Gopinath%20Itskhoki%20%28Macro%20Hbook%29%20-%20In%20search%20of%20real%20rigidities.pdf?dl=0&#34;&gt;&lt;strong&gt;Market Penetration Costs And The New Consumers Margin In International Trade&lt;/strong&gt;&lt;/a&gt; by &lt;strong&gt;Arkolakis (2010)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Model:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Melitz with minor adjustments:
+
+&lt;ul&gt;
+&lt;li&gt;instead of fixed costs there is an endogenous cost that is a function of
+two things:
+
+&lt;ol&gt;
+&lt;li&gt;Measure of consumers in foreign market (increasing marginal impact)&lt;/li&gt;
+&lt;li&gt;Firm productivity (decreasing marginal impact)&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Results:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Using French data:
+
+&lt;ul&gt;
+&lt;li&gt;most firms don&amp;rsquo;t export.&lt;/li&gt;
+&lt;li&gt;A large portion of those that do only have small volume&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;miguel-castro:ede6b588bfdaeb15678d6bac4beb9bab&#34;&gt;Miguel Castro&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.gsb.stanford.edu/sites/default/files/documents/Begenau%20(1).pdf&#34;&gt;&lt;strong&gt;Market Penetration Costs And The New Consumers Margin In International Trade&lt;/strong&gt;&lt;/a&gt; by &lt;strong&gt;Begenau And Landvoigt (2015)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Model:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Regulated and unregulated banking sectors&lt;/li&gt;
+&lt;li&gt;Amount of savings (assets?) from previous period enters today&amp;rsquo;s utility&lt;/li&gt;
+&lt;li&gt;Cost shocks + limited liability&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;pau-roldan:ede6b588bfdaeb15678d6bac4beb9bab&#34;&gt;Pau Roldan&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://stanford.edu/~dgarciam/jmp_garcia_macia.pdf&#34;&gt;&lt;strong&gt;The Financing Of Ideas And The Great Deviation&lt;/strong&gt;&lt;/a&gt; by &lt;strong&gt;Garcia-Macia (2015)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Facts:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;only crisis in recent history without trend reversion. Author claims key
+reason is that it was a financial crisis.&lt;/li&gt;
+&lt;li&gt;Frictions are worse for intangible capital than tangible capital&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Two assumptions:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;intangible capital is harder to seized by investors in case of default&lt;/li&gt;
+&lt;li&gt;intangible capital faces a higher depreciation rate.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Model:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;SOE.&lt;/li&gt;
+&lt;li&gt;production
+
+&lt;ul&gt;
+&lt;li&gt;continuum of firms, output aggregated in CES&lt;/li&gt;
+&lt;li&gt;firms use labor, physical cap, intangible cap. Increasing returns&lt;/li&gt;
+&lt;li&gt;Fixed cost every period&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Capital
+
+&lt;ul&gt;
+&lt;li&gt;Convex adj. cost.&lt;/li&gt;
+&lt;li&gt;mean reverting shocks to depreciation of intangible capital&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Financing:
+
+&lt;ul&gt;
+&lt;li&gt;dividend&lt;/li&gt;
+&lt;li&gt;1 period default-able debt (in either type of capital). If default,
+debt-holders only recover fraction of principal. This fraction lower for
+intangible capital&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;lots of shocks, more stuff, &amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Equilibrium:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Firms with low depreciation shock will expect depreciation to stay low &amp;ndash;&amp;gt;
+more intangible capital intensive&lt;/li&gt;
+&lt;li&gt;In financial crisis intangible capital hit harder, so firms with low
+depreciation shocks hit harder&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;jonathan-payne:ede6b588bfdaeb15678d6bac4beb9bab&#34;&gt;Jonathan Payne&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://economics.mit.edu/files/7558&#34;&gt;&lt;strong&gt;Managing A Liquidity Trap: Monetary And Fiscal Policy&lt;/strong&gt;&lt;/a&gt; by &lt;strong&gt;Ivan Werning (2012)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Model:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;perfect foresight&lt;/li&gt;
+&lt;li&gt;continuous time&lt;/li&gt;
+&lt;li&gt;log-linear NK model (phillips and IS curves)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Experiment: natural interest rate will be negative for a while, then will jump
+up and be positive.&lt;/p&gt;
+
+&lt;p&gt;Planner problem: choose interest rate in LQ problem (squares of output gap,
+spending rate, government spending gap)&lt;/p&gt;
+
+&lt;p&gt;Is able to do 4 experiments in closed form because he has a simple model and
+perfect foresight.&lt;/p&gt;
+
+&lt;h4 id=&#34;sonia-gilbukh:ede6b588bfdaeb15678d6bac4beb9bab&#34;&gt;Sonia Gilbukh&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://dl.dropboxusercontent.com/content_link/lpZOdZdiYAr22E09704KK7026hLUjBLoh17Jii30TmUsOO4PNO054uBTiBJyeisO/file&#34;&gt;&lt;strong&gt;Retail Globalization And Household Welfare: Evidence From Mexico&lt;/strong&gt;&lt;/a&gt; by &lt;strong&gt;David Atkin, Benjamin Faber And Marco Gonzalez-navarro (2016)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Facts:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Mexican people angry about Walmart entering grocery market &amp;ndash; says it ruins
+jobs for mom+pop shops&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Data:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Looked at moments that characterize how income in different sectors changed
+in response to entrance of Walmart&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;josh-weiss:ede6b588bfdaeb15678d6bac4beb9bab&#34;&gt;Josh Weiss&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.journals.uchicago.edu/doi/10.1086/588585&#34;&gt;&lt;strong&gt;Moral Hazard Versus Liquidity And Optimal Unemployment Insurance&lt;/strong&gt;&lt;/a&gt; by &lt;strong&gt;Chetty (2008)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Main purpose: should insurance be higher or lower (not looking for optimal
+level)?&lt;/p&gt;
+
+&lt;p&gt;Model:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;discrete time, finite horizon, no discounting, no borrowing&lt;/li&gt;
+&lt;li&gt;searches every period for constant cost. Once matches, keeps job at constant wage forever&lt;/li&gt;
+&lt;li&gt;government has balanced BC, that taxes labor income to finance unemployment&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Equilibrium:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Impact of increased unemployment benefits
+
+&lt;ul&gt;
+&lt;li&gt;liquidity effect: can&amp;rsquo;t borrow while searching &amp;ndash; search more&lt;/li&gt;
+&lt;li&gt;wage lower when get job b/c gov BC must be balanced &amp;ndash; search less&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Only uses model to produce a welfare function he can use in data to analyze
+two effects above&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;igor-cesarec:ede6b588bfdaeb15678d6bac4beb9bab&#34;&gt;Igor Cesarec&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.columbia.edu/~mu2166/dnwr_pegs_iu/paper.pdf&#34;&gt;&lt;strong&gt;Downward Nominal Wage Rigidity, Currency Pegs, And Involuntary Unemployment&lt;/strong&gt;&lt;/a&gt; by &lt;strong&gt;Schmitt-grohe And Uribe (2016)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Model:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;two goods: tradable and non tradable&lt;/li&gt;
+&lt;li&gt;HH supply labor inelastically&lt;/li&gt;
+&lt;li&gt;internationally traded bond, natural borrowing limit, exog stoch interest rate&lt;/li&gt;
+&lt;li&gt;Firms
+
+&lt;ul&gt;
+&lt;li&gt;use labor Only&lt;/li&gt;
+&lt;li&gt;stochastic endowment of tradable goods&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Nominal wage downwardly Rigidity
+
+&lt;ul&gt;
+&lt;li&gt;Wage can&amp;rsquo;t fall more than gamma times previous wage. Can rise infinitely (use Argentine data to motivate)
+-&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Analysis in currency peg model:
+    - Two nominal rigidities (fixed exchange rate, rigid wage)
+    - Lead rigidity in real wage (nominal/interest rate &amp;ndash; rigidity in top and
+    bottom)
+    - Could be avoided by dropping exchange rate by devaluing currency. Can&amp;rsquo;t
+    in pegged model.
+    - Can&amp;rsquo;t change the r, need to change w. Can do in with fiscal policy &amp;ndash;
+    just tax wage to make it fall. Hard to implement &amp;ndash; people don&amp;rsquo;t like tax
+    - Instead they explore optimal taxes on foreign borrowing (capital
+    controls). Solve with Ramsey problem.
+    - Leads to smoothing consumption by smoothing out wage path (goes up less
+    in booms and down less in busts, relative to model w/out capital controls)
+    - Problem is distorting intertemporal margins. Plus is lower unemployment
+    in recessions (also mean and volatility of unemp both lower).&lt;/p&gt;
+
+&lt;h4 id=&#34;balint-szoke:ede6b588bfdaeb15678d6bac4beb9bab&#34;&gt;Balint Szoke&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.tandfonline.com/doi/abs/10.1198/jasa.2009.0008&#34;&gt;&lt;strong&gt;On The Determination Of General Scientific Models With Application To Asset Pricing&lt;/strong&gt;&lt;/a&gt; by &lt;strong&gt;Gallant And Mcculloch (2009)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;no likelihood for structural model&lt;/li&gt;
+&lt;li&gt;can simulate structural model&lt;/li&gt;
+&lt;li&gt;have info on priors on eqm objects in structural model&lt;/li&gt;
+&lt;li&gt;We can come up with statistical aux model&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;3-1-2016:ede6b588bfdaeb15678d6bac4beb9bab&#34;&gt;3-1-2016&lt;/h2&gt;
+
+&lt;h4 id=&#34;miguel-faria-e-castro:ede6b588bfdaeb15678d6bac4beb9bab&#34;&gt;Miguel Faria E Castro&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.nber.org/papers/w21007&#34;&gt;&lt;strong&gt;Regional Redistribution Through The U.S. Mortgage Market&lt;/strong&gt;&lt;/a&gt; by &lt;strong&gt;Hurst, Keys, Seru, Vavra(2015)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Facts about how mortgages work in US:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Private securities price default risk. GSE (goverment issued, fannie mae and
+freedie mac) doesn&amp;rsquo;t, so they act as a resdistribution vehicle across default
+risk&lt;/li&gt;
+&lt;li&gt;After controlling for borrower characteristics no relationship between
+delinquincy rate and GSE mortgages, but a strong relationship between the
+delinquincy rate and private mortgages.&lt;/li&gt;
+&lt;li&gt;Build a model to look at what would happen to welfare if they shut down these
+redistribution mechanisms. Build off a Bewley model&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;chase-coleman:ede6b588bfdaeb15678d6bac4beb9bab&#34;&gt;Chase Coleman&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://papers.ssrn.com/sol3/papers.cfm?abstract_id=2179445&#34;&gt;&lt;strong&gt;A Polynomial Optimization Approach To Principal-agent Problems&lt;/strong&gt;&lt;/a&gt; by &lt;strong&gt;Renner Schmedders (2016)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;A new solution method for PA problems.&lt;/li&gt;
+&lt;li&gt;Simplifies a complicated problem by leaning on semi-definite programming&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;diego-daruich:ede6b588bfdaeb15678d6bac4beb9bab&#34;&gt;Diego Daruich&lt;/h4&gt;
+
+&lt;p&gt;[&lt;strong&gt;The Technology Of Skill Formation&lt;/strong&gt;](&amp;lsquo;&lt;a href=&#34;https://www.aeaweb.org/articles.php?doi=10.1257/aer.97.2.31&#39;&#34;&gt;https://www.aeaweb.org/articles.php?doi=10.1257/aer.97.2.31&#39;&lt;/a&gt;) by &lt;strong&gt;Cunha And Heckman (2007)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Investing in human capital accumulation&lt;/li&gt;
+&lt;li&gt;Consider of age at investing in skill accumulation&lt;/li&gt;
+&lt;li&gt;Investing early in life leads to higher returns late in life&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;mi-luo:ede6b588bfdaeb15678d6bac4beb9bab&#34;&gt;Mi Luo&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://scholar.harvard.edu/files/rkekre/files/jmp_rkekre_v010216.pdf?m=1451805728&#34;&gt;&lt;strong&gt;Unemployment Insurance In Macroeconomic Stabilization&lt;/strong&gt;&lt;/a&gt; by &lt;strong&gt;Rohan Kekre (2016)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Model (2 period economy):&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&amp;laquo;Only  three frictions&amp;raquo; at first (search, inc mkts, MH)&lt;/li&gt;
+&lt;li&gt;Will add nominal rigidities and ZLB later&lt;/li&gt;
+&lt;li&gt;Search/matching/production in first period. Second period endowments based
+on period 1 employement status&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;pau-roldan-1:ede6b588bfdaeb15678d6bac4beb9bab&#34;&gt;Pau Roldan&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://jesseperla.com/papers/benhabib_perla_tonetti_2.pdf&#34;&gt;&lt;strong&gt;The Growth Dynamics Of Innovation, Diffusion, And The Technology Frontier&lt;/strong&gt;&lt;/a&gt; by &lt;strong&gt;Benhabib, Perla And Tonetti (2015)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Extension of model where we create growth through diffusion of technology
+(Perla Tonetti)&lt;/li&gt;
+&lt;li&gt;Result of previous paper is that there is a threshold above which all firms
+imitate or act like the most productive firms.
+
+&lt;ul&gt;
+&lt;li&gt;Given Frechet initial condition, there is a unique stationary distr.&lt;/li&gt;
+&lt;li&gt;Main problem is that support of stationary distr is unbounded.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Interaction between innovation and imitation that permits a stationary
+distribution of productivity&lt;/li&gt;
+&lt;li&gt;Key mechanism here is that some firms find it optimal to not innovate because
+other firms around them get a higher return on innovation and they can simply
+imitate.&lt;/li&gt;
+&lt;li&gt;In this paper if you allow for leapfrogging (some firms moving right to
+frontier) the stationary distribution is unique and bounded.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;jonathan-payne-1:ede6b588bfdaeb15678d6bac4beb9bab&#34;&gt;Jonathan Payne&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://halshs.archives-ouvertes.fr/halshs-00196183/document&#34;&gt;&lt;strong&gt;Constrained Efficiency In The Neoclassical Growth Model With Uninsurable Idiosyncratic Shocks&lt;/strong&gt;&lt;/a&gt; by &lt;strong&gt;Julio Davila, Jay H Hong, Per Krusell (2012)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Estimating welfare in Bewley/Huggett/Ayigari models.&lt;/li&gt;
+&lt;li&gt;Think about constrained pareto optimality as defined by &amp;laquo;could planner do
+better than CE when he has to obey constraints&amp;raquo;. Only difference planner has
+is that he internalizes impact of his choices on interest rates/prices.&lt;/li&gt;
+&lt;li&gt;Planner is utilitarian (equal weights on all agents).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;josh-weiss-1:ede6b588bfdaeb15678d6bac4beb9bab&#34;&gt;Josh Weiss&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://pubs.aeaweb.org/doi/pdfplus/10.1257/aer.99.5.1808&#34;&gt;&lt;strong&gt;Risk Taking By Entrepreneurs&lt;/strong&gt;&lt;/a&gt; by &lt;strong&gt;Vereshchagina And Hopenhayn (2009)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Entrepreneurs tend to take on more risk and learn &lt;em&gt;lower&lt;/em&gt; returns than other
+investors. So why do they do it?&lt;/li&gt;
+&lt;li&gt;This paper writes a simple/short model that tries to answer this question.&lt;/li&gt;
+&lt;li&gt;You can switch occupations from being a worker to an Entrepreneurs. Once
+entrepreneur always an entrepreneur&lt;/li&gt;
+&lt;li&gt;Entrepreneurs have access to high return technology.&lt;/li&gt;
+&lt;li&gt;Worker VF has kink when you decide to become Entrepreneur. Leads to
+non-concavity in VF&lt;/li&gt;
+&lt;li&gt;If you are in this local non-concavity region of wealth, you can randomize
+over being each type of agent and this effectively makes the VF concave.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;me:ede6b588bfdaeb15678d6bac4beb9bab&#34;&gt;Me&lt;/h4&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

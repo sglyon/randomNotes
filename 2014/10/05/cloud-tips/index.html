@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Cloud tips  &middot; Random Notes</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="" />
+
+<meta name="keywords" content="Cloud, Computing, AWS, GCE, ">
+
+
+<meta property="og:title" content="Cloud tips  &middot; Random Notes ">
+<meta property="og:site_name" content="Random Notes"/>
+<meta property="og:url" content="http://notes.spencerlyon.com/2014/10/05/cloud-tips/" />
+<meta property="og:locale" content="en-EN">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content=""/>
+<meta property="og:article:published_time" content="2014-10-05T00:00:00Z" />
+<meta property="og:article:modified_time" content="2014-10-05T00:00:00Z" />
+
+  
+    
+<meta property="og:article:tag" content="Cloud">
+    
+<meta property="og:article:tag" content="Computing">
+    
+<meta property="og:article:tag" content="AWS">
+    
+<meta property="og:article:tag" content="GCE">
+    
+  
+
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@" />
+<meta name="twitter:title" content="Cloud tips" />
+<meta name="twitter:description" content="" />
+<meta name="twitter:url" content="http://notes.spencerlyon.com/2014/10/05/cloud-tips/" />
+<meta name="twitter:domain" content="http://notes.spencerlyon.com/">
+  
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "Cloud tips",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2014-10-05",
+    "description": "",
+    "wordCount":  374 
+  }
+</script>
+
+
+
+<link rel="canonical" href="http://notes.spencerlyon.com/2014/10/05/cloud-tips/" />
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://notes.spencerlyon.com/touch-icon-144-precomposed.png">
+<link href="http://notes.spencerlyon.com/favicon.png" rel="icon">
+
+<meta name="generator" content="Hugo 0.16-DEV" />
+
+  <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link href='https://fonts.googleapis.com/css?family=Merriweather:300%7CRaleway%7COpen+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="http://notes.spencerlyon.com/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://notes.spencerlyon.com/css/style.css">
+<link rel="stylesheet" href="http://notes.spencerlyon.com/css/highlight/solarized_dark.css">
+
+  
+</head>
+<body>
+  <main id="main-wrapper" class="container main_wrapper has-sidebar">
+    <header id="main-header" class="container main_header">
+  <div class="container brand">
+  <div class="container title h1-like">
+  <a class="baselink" href="http://notes.spencerlyon.com/">
+  <em>Random Notes</em>
+
+</a>
+
+</div>
+
+  
+<div class="container topline">
+  
+  Spencer Lyon
+
+
+</div>
+
+
+</div>
+
+  <nav class="container nav primary no-print">
+  
+
+<a class="homelink" href="http://notes.spencerlyon.com/">Random Notes</a>
+
+
+  
+<a href="http://notes.spencerlyon.com/post" title="Show list of posts">Posts</a>
+
+<a href="http://notes.spencerlyon.com/tags" title="Show list of tags">Tags</a>
+
+<a href="http://notes.spencerlyon.com/series" title="Show list of series">Series</a>
+
+
+</nav>
+
+<div class="container nav secondary no-print">
+  
+<a id="contact-link-email" class="contact_link" href="mailto:spencer.lyon@stern.nyu.edu">
+  <span class="fa fa-envelope-square"></span><span>email</span></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+  
+
+</header>
+
+
+<article id="main-content" class="container main_content single">
+  <header class="container hat">
+  <h1>Cloud tips
+</h1>
+
+  <div class="metas">
+<time datetime="2014-10-05">5 Oct, 2014</time>
+
+
+  
+    &middot; by Spencer Lyon
+  
+  &middot; Read in about 2 min
+  &middot; (374 Words)
+  <br>
+  
+<a class="label" href="http://notes.spencerlyon.com/tags/cloud">Cloud</a>
+
+<a class="label" href="http://notes.spencerlyon.com/tags/computing">Computing</a>
+
+<a class="label" href="http://notes.spencerlyon.com/tags/aws">AWS</a>
+
+<a class="label" href="http://notes.spencerlyon.com/tags/gce">GCE</a>
+
+
+
+</div>
+
+</header>
+
+  <div class="container content">
+  
+
+<h1 id="cloud:b4b4b2a2fd994675c7f6b325e6b2a679">Cloud</h1>
+
+<h2 id="aws:b4b4b2a2fd994675c7f6b325e6b2a679">AWS</h2>
+
+<h3 id="persistent-notebook:b4b4b2a2fd994675c7f6b325e6b2a679">Persistent notebook</h3>
+
+<p>I have a persistent instance running.</p>
+
+<p>I followed <a href="https://grollchristian.wordpress.com/2014/09/01/ijulia-for-amazon-ec2/">this blog post</a> to get it set up.</p>
+
+<p>I can connect to it via</p>
+
+<pre><code class="language-bash">ssh -i ~/dotfiles/sglyon-mbp.pem.txt ubuntu@ec2-54-201-41-126.us-west-2.compute.amazonaws.com
+</code></pre>
+
+<p><code>ipython notebook --profile=julia</code> is running. I can connect to it from any browser by going to</p>
+
+<pre><code>https://ec2-54-201-41-126.us-west-2.compute.amazonaws.com:8998
+</code></pre>
+
+<p>The password is <code>lyon0409</code>.</p>
+
+<p>I needed to add the <code>IJulia all tcp</code> security group to the instance through the AWS online management console.</p>
+
+<h4 id="new-user:b4b4b2a2fd994675c7f6b325e6b2a679">new user</h4>
+
+<p>I made a new user here by following the ideas <a href="http://brianflove.com/2013/06/18/add-new-sudo-user-to-ec2-ubuntu/">here</a></p>
+
+<h4 id="mounting-a-volume:b4b4b2a2fd994675c7f6b325e6b2a679">Mounting a volume</h4>
+
+<p>I mounted a volume to <code>~/storage</code> (<code>sudo mount /dev/xvdf /home/sglyon/storage)</code>, but didn&rsquo;t have permission to do anything. To fix that I chowned it: <code>sudo chown -R sglyon ~/storage</code></p>
+
+<h2 id="gce:b4b4b2a2fd994675c7f6b325e6b2a679">GCE</h2>
+
+<p>First step is to install the tools. This is a one time thing where I enter this command:</p>
+
+<pre><code>curl https://sdk.cloud.google.com | bash
+</code></pre>
+
+<p>Then follow the prompts and such until it is installed. I chose the directory <code>~/google-cloud-sdk</code></p>
+
+<p>I didn&rsquo;t have it alter my path for me, but  I added the following line in my list where I set <code>$PATH</code> from within my ~/.zshenv:</p>
+
+<pre><code>$HOME/google-cloud-sdk/bin
+</code></pre>
+
+<h3 id="julia-and-gce:b4b4b2a2fd994675c7f6b325e6b2a679">Julia and GCE</h3>
+
+<p>I (partially) followed <a href="http://www.blog.juliaferraioli.com/2013/12/julia-on-google-compute-engine.html">this blog post</a> to get things started.</p>
+
+<p>To create a new instance from the command line I need to run the following</p>
+
+<pre><code>gcloud compute --project &quot;sgl-julia&quot; instances create &quot;instance-name&quot; --zone &quot;us-central1-b&quot; --machine-type &quot;n1-standard-1&quot; --network &quot;default&quot; --maintenance-policy &quot;MIGRATE&quot; --scopes &quot;https://www.googleapis.com/auth/devstorage.read_only&quot; --image &quot;https://www.googleapis.com/compute/v1/projects/sgl-julia/global/images/julia-src-deb-10212014&quot; --no-boot-disk-auto-delete
+</code></pre>
+
+<p>where <code>instance-name</code> is replaced with the actual name of the instance I want to create.</p>
+
+<p>I can then ssh into the new instance (after it is created) by running</p>
+
+<pre><code>gcloud compute --project &quot;sgl-julia&quot; ssh --zone &quot;us-central1-b&quot; &quot;instance-name&quot;
+</code></pre>
+
+<p>If I want to select a different type of instance, I would change the <code>--machine-type</code> parameter name. See <a href="https://developers.google.com/compute/pricing">this page</a> for an explanation of the different types and prices.</p>
+
+<p>To turn off (delete) my instance I would enter the following command:</p>
+
+<pre><code>gcloud compute --project &quot;sgl-julia&quot; instances delete &quot;instance-1&quot; --zone &quot;us-central1-b&quot;
+</code></pre>
+
+<p>If I also wanted to delete the corresponding persistent disk I would enter</p>
+
+<pre><code>gcloud compute --project &quot;sgl-julia&quot; disks delete &quot;instance-1&quot; --zone &quot;us-central1-b&quot;
+</code></pre>
+
+<h4 id="writing-the-package:b4b4b2a2fd994675c7f6b325e6b2a679">Writing the package</h4>
+
+<p>I had to install <a href="https://github.com/markcarver/mac-ssh-askpass">this script</a> in order for ssh to work. I did the following:</p>
+
+<pre><code>cd ~/Downloads
+git clone https://github.com/markcarver/mac-ssh-askpass
+cd mac-ssh-askpass
+sudo ./INSTALL
+</code></pre>
+
+<p>The package also requires that <code>gcloud</code> and friends are installed.</p>
+
+</div>
+
+
+  <footer class="container">
+  <div class="container navigation no-print">
+  <h2>Navigation</h2>
+  
+  
+
+    
+    <a class="prev" href="http://notes.spencerlyon.com/2014/07/13/terminal-tips/" title="Terminal Tips">
+      Previous
+    </a>
+    
+
+    
+    <a class="next" href="http://notes.spencerlyon.com/2014/12/02/the-jupyter-notebook/" title="The Jupyter Notebook">
+      Next
+    </a>
+    
+
+  
+
+
+</div>
+
+  <div class="container comments">
+  <h2>Comments</h2>
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//sglyon.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+</article>
+      <footer id="main-footer" class="container main_footer">
+  <script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+  <div class="container nav foot no-print">
+  
+
+  <a class="toplink" href="#">back to top</a>
+
+</div>
+
+  <div class="container credits">
+  
+<div class="container footline">
+  
+
+</div>
+
+
+  
+<div class="container copyright">
+  
+  &copy; 2015 Spencer Lyon.
+
+
+</div>
+
+
+</div>
+
+</footer>
+
+    </main>
+    
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//sglyon.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+<script src="http://notes.spencerlyon.com/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+    
+  </body>
+</html>
+

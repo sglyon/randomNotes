@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Monte Carlo methods  &middot; Random Notes</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="" />
+
+<meta name="keywords" content="MC, RL, algorithms, ">
+
+
+<meta property="og:title" content="Monte Carlo methods  &middot; Random Notes ">
+<meta property="og:site_name" content="Random Notes"/>
+<meta property="og:url" content="http://notes.spencerlyon.com/2016/06/29/monte-carlo-methods/" />
+<meta property="og:locale" content="en-EN">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content=""/>
+<meta property="og:article:published_time" content="2016-06-29T00:00:00Z" />
+<meta property="og:article:modified_time" content="2016-06-29T00:00:00Z" />
+
+  
+    
+<meta property="og:article:tag" content="MC">
+    
+<meta property="og:article:tag" content="RL">
+    
+<meta property="og:article:tag" content="algorithms">
+    
+  
+
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@" />
+<meta name="twitter:title" content="Monte Carlo methods" />
+<meta name="twitter:description" content="" />
+<meta name="twitter:url" content="http://notes.spencerlyon.com/2016/06/29/monte-carlo-methods/" />
+<meta name="twitter:domain" content="http://notes.spencerlyon.com/">
+  
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "Monte Carlo methods",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2016-06-29",
+    "description": "",
+    "wordCount":  494 
+  }
+</script>
+
+
+
+<link rel="canonical" href="http://notes.spencerlyon.com/2016/06/29/monte-carlo-methods/" />
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://notes.spencerlyon.com/touch-icon-144-precomposed.png">
+<link href="http://notes.spencerlyon.com/favicon.png" rel="icon">
+
+<meta name="generator" content="Hugo 0.16-DEV" />
+
+  <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link href='https://fonts.googleapis.com/css?family=Merriweather:300%7CRaleway%7COpen+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="http://notes.spencerlyon.com/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://notes.spencerlyon.com/css/style.css">
+<link rel="stylesheet" href="http://notes.spencerlyon.com/css/highlight/solarized_dark.css">
+
+  
+</head>
+<body>
+  <main id="main-wrapper" class="container main_wrapper has-sidebar">
+    <header id="main-header" class="container main_header">
+  <div class="container brand">
+  <div class="container title h1-like">
+  <a class="baselink" href="http://notes.spencerlyon.com/">
+  <em>Random Notes</em>
+
+</a>
+
+</div>
+
+  
+<div class="container topline">
+  
+  Spencer Lyon
+
+
+</div>
+
+
+</div>
+
+  <nav class="container nav primary no-print">
+  
+
+<a class="homelink" href="http://notes.spencerlyon.com/">Random Notes</a>
+
+
+  
+<a href="http://notes.spencerlyon.com/post" title="Show list of posts">Posts</a>
+
+<a href="http://notes.spencerlyon.com/tags" title="Show list of tags">Tags</a>
+
+<a href="http://notes.spencerlyon.com/series" title="Show list of series">Series</a>
+
+
+</nav>
+
+<div class="container nav secondary no-print">
+  
+<a id="contact-link-email" class="contact_link" href="mailto:spencer.lyon@stern.nyu.edu">
+  <span class="fa fa-envelope-square"></span><span>email</span></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+  
+
+</header>
+
+
+<article id="main-content" class="container main_content single">
+  <header class="container hat">
+  <h1>Monte Carlo methods
+</h1>
+
+  <div class="metas">
+<time datetime="2016-06-29">29 Jun, 2016</time>
+
+
+  
+    &middot; by Spencer Lyon
+  
+  &middot; Read in about 3 min
+  &middot; (494 Words)
+  <br>
+  
+<a class="label" href="http://notes.spencerlyon.com/tags/mc">MC</a>
+
+<a class="label" href="http://notes.spencerlyon.com/tags/rl">RL</a>
+
+<a class="label" href="http://notes.spencerlyon.com/tags/algorithms">algorithms</a>
+
+
+
+</div>
+
+</header>
+
+  <div class="container content">
+  
+
+<p>This is part 2 in the reinforcement learning for economists notes. For part 1 see <a href="/2016/06/29/reinforcement-learning-intro/">Reinforcement Learning Intro</a>. For a list of all entries in the series go <a href="/series/reinforcement-learning">here</a></p>
+
+<h2 id="monte-carlo-methods">Monte Carlo methods</h2>
+
+<p>As defined in <a href="/2016/06/29/reinforcement-learning-intro/">Reinforcement Learning Intro</a> <em>GPI</em> encompasses the core ideas for all the RL algorithms in this book. One family of such algorithms is Monte Carlo (MC) methods. One distinguishing feature of these methods is that they can be implemented in a completely <strong>model-free</strong> way. This means that to apply them we need to know nothing about the dynamics of the model; we simply need to be able to observe sequences of states, actions, and rewards.</p>
+
+<h3 id="prediciton-methods">Prediciton methods</h3>
+
+<p><strong>Monte Carlo prediciton</strong> is a method for learning the state-value function for a given policy. The algorithm is given by:</p>
+
+<p><img src="/first_visit_mc_prediction.png" alt="MC prediciton" /></p>
+
+<p>Notice that the MC prediction algorithm does not update any estimates of the value function until <em>after</em> the entire episode is realized. In this sense we would say that the method does not <strong>bootstrap</strong>, meaning it does not use approximations of the value in other states to update the value in a particular state (value iteration is bootstrapping).</p>
+
+<h3 id="control-methods">Control methods</h3>
+
+<p><strong>Monte Carlo control</strong> is an iterative algorithm where each iteration contains a Monte Carlo prediction step followed by a policy improvment step. The improvement step is simply done by making the policy greedy with the predicted value function.</p>
+
+<p>Some technical conditions must be satisfied to ensure convergence of this naive algorithm:</p>
+
+<ul>
+<li>episodes have exploring starts (meaning that they don&rsquo;t attempt to be greedy or optimal at the start)</li>
+<li>There are an infinite number of episodes</li>
+</ul>
+
+<p>These are ok theoretically, but prohibative computationally.</p>
+
+<p><strong>Monte Carlo ES</strong> is an algorithm that does away with the assumption that you need an infinite number of episodes. It proceeds as</p>
+
+<p><img src="/monte_carlo_es.png" alt="MC ES" /></p>
+
+<p>Notice that we don&rsquo;t need the assumption of an infinite number of episodes because we don&rsquo;t do a full policy evaluation each step.</p>
+
+<p>To do away with the exploring starts assumption we need to define a few more terms.</p>
+
+<ul>
+<li>A policy $\pi$ is said to be <strong>$\varepsilon$-soft</strong> if $\pi(a|s) &gt; \frac{\varepsilon}{| A(s) |}$ for all $a \in A$ and $s \in S$.</li>
+<li>An <strong>$\varepsilon$-greedy</strong> is a policy where all non-greedy actions are chosen with probability $\frac{\varepsilon}{| A(s) |}$, while the greedy policy is chosen with probability $1 - \varepsilon + \frac{\varepsilon}{| A(s) |}$.</li>
+<li><strong>On-policy</strong> methods evaluate and improve the policy that is used to make decisions.</li>
+<li><strong>Off-policy</strong> methods use one policy to make decisions while trying to evaluate and improve another policy.</li>
+<li>A <strong>first-visit</strong> MC method uses only the <em>return</em> (not reward) after the <em>first</em> occurance of a state (or state-action pair) when doing evaluation. An <strong>every-visit</strong> method uses the <em>return</em> after every occurance of a state (or state-action pair) when doing evaluation.</li>
+</ul>
+
+<p>An on-policy first-visit MC control algorithm for $\varepsilon$-soft policies is given below:</p>
+
+<p><img src="/on_policy_eps_soft_mc_control.png" alt="On-policy first-visit MC control" /></p>
+
+<h3 id="importance-sampling">Importance sampling</h3>
+
+<p>This section will include more prediction and control methods, but is an important enough concept that it deserves its own section.</p>
+
+</div>
+
+
+  <footer class="container">
+  <div class="container navigation no-print">
+  <h2>Navigation</h2>
+  
+  
+
+    
+    <a class="prev" href="http://notes.spencerlyon.com/2016/06/29/reinforcement-learning-intro/" title="Reinforcement Learning Intro">
+      Previous
+    </a>
+    
+
+    
+
+  
+
+
+</div>
+
+  <div class="container comments">
+  <h2>Comments</h2>
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//sglyon.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+</article>
+      <footer id="main-footer" class="container main_footer">
+  <script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+  <div class="container nav foot no-print">
+  
+
+  <a class="toplink" href="#">back to top</a>
+
+</div>
+
+  <div class="container credits">
+  
+<div class="container footline">
+  
+
+</div>
+
+
+  
+<div class="container copyright">
+  
+  &copy; 2015 Spencer Lyon.
+
+
+</div>
+
+
+</div>
+
+</footer>
+
+    </main>
+    
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//sglyon.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+<script src="http://notes.spencerlyon.com/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+    
+  </body>
+</html>
+

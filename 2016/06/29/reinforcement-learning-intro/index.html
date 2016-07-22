@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Reinforcement Learning Intro  &middot; Random Notes</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="" />
+
+<meta name="keywords" content="DP, ML, RL, algorithms, ">
+
+
+<meta property="og:title" content="Reinforcement Learning Intro  &middot; Random Notes ">
+<meta property="og:site_name" content="Random Notes"/>
+<meta property="og:url" content="http://notes.spencerlyon.com/2016/06/29/reinforcement-learning-intro/" />
+<meta property="og:locale" content="en-EN">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content=""/>
+<meta property="og:article:published_time" content="2016-06-29T00:00:00Z" />
+<meta property="og:article:modified_time" content="2016-06-29T00:00:00Z" />
+
+  
+    
+<meta property="og:article:tag" content="DP">
+    
+<meta property="og:article:tag" content="ML">
+    
+<meta property="og:article:tag" content="RL">
+    
+<meta property="og:article:tag" content="algorithms">
+    
+  
+
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@" />
+<meta name="twitter:title" content="Reinforcement Learning Intro" />
+<meta name="twitter:description" content="" />
+<meta name="twitter:url" content="http://notes.spencerlyon.com/2016/06/29/reinforcement-learning-intro/" />
+<meta name="twitter:domain" content="http://notes.spencerlyon.com/">
+  
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "Reinforcement Learning Intro",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2016-06-29",
+    "description": "",
+    "wordCount":  887 
+  }
+</script>
+
+
+
+<link rel="canonical" href="http://notes.spencerlyon.com/2016/06/29/reinforcement-learning-intro/" />
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://notes.spencerlyon.com/touch-icon-144-precomposed.png">
+<link href="http://notes.spencerlyon.com/favicon.png" rel="icon">
+
+<meta name="generator" content="Hugo 0.16-DEV" />
+
+  <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link href='https://fonts.googleapis.com/css?family=Merriweather:300%7CRaleway%7COpen+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="http://notes.spencerlyon.com/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://notes.spencerlyon.com/css/style.css">
+<link rel="stylesheet" href="http://notes.spencerlyon.com/css/highlight/solarized_dark.css">
+
+  
+</head>
+<body>
+  <main id="main-wrapper" class="container main_wrapper has-sidebar">
+    <header id="main-header" class="container main_header">
+  <div class="container brand">
+  <div class="container title h1-like">
+  <a class="baselink" href="http://notes.spencerlyon.com/">
+  <em>Random Notes</em>
+
+</a>
+
+</div>
+
+  
+<div class="container topline">
+  
+  Spencer Lyon
+
+
+</div>
+
+
+</div>
+
+  <nav class="container nav primary no-print">
+  
+
+<a class="homelink" href="http://notes.spencerlyon.com/">Random Notes</a>
+
+
+  
+<a href="http://notes.spencerlyon.com/post" title="Show list of posts">Posts</a>
+
+<a href="http://notes.spencerlyon.com/tags" title="Show list of tags">Tags</a>
+
+<a href="http://notes.spencerlyon.com/series" title="Show list of series">Series</a>
+
+
+</nav>
+
+<div class="container nav secondary no-print">
+  
+<a id="contact-link-email" class="contact_link" href="mailto:spencer.lyon@stern.nyu.edu">
+  <span class="fa fa-envelope-square"></span><span>email</span></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+  
+
+</header>
+
+
+<article id="main-content" class="container main_content single">
+  <header class="container hat">
+  <h1>Reinforcement Learning Intro
+</h1>
+
+  <div class="metas">
+<time datetime="2016-06-29">29 Jun, 2016</time>
+
+
+  
+    &middot; by Spencer Lyon
+  
+  &middot; Read in about 5 min
+  &middot; (887 Words)
+  <br>
+  
+<a class="label" href="http://notes.spencerlyon.com/tags/dp">DP</a>
+
+<a class="label" href="http://notes.spencerlyon.com/tags/ml">ML</a>
+
+<a class="label" href="http://notes.spencerlyon.com/tags/rl">RL</a>
+
+<a class="label" href="http://notes.spencerlyon.com/tags/algorithms">algorithms</a>
+
+
+
+</div>
+
+</header>
+
+  <div class="container content">
+  
+
+<p>This is part 1 in the reinforcement learning for economists notes. For a list of all entries in the series go <a href="/series/reinforcement-learning">here</a></p>
+
+<p>These notes mostly follow Sutton, R. S., &amp; Barto, A. G. (2015). Reinforcement Learning: An Introduction (2 Draft, Vol. 9). <a href="http://doi.org/10.1109/TNN.1998.712192">http://doi.org/10.1109/TNN.1998.712192</a></p>
+
+<p>The notes themselves might be interpreted as a macro-economist&rsquo;s view of reinforcement learning (RL). I will cast many objects/ideas from the book into the domain-specific framework I am familiar with.</p>
+
+<h1 id="what-is-reinforcement-learning:14a4c2b55a012de9d01c88422abd12c3">What is reinforcement learning?</h1>
+
+<p><strong>Reinforcement Learning</strong> is a branch of machine learning that aims to learn by doing.</p>
+
+<h1 id="basic-strcture:14a4c2b55a012de9d01c88422abd12c3">Basic strcture</h1>
+
+<p>The basic structure of the RL problem is similar to a dynamic programming (DP) problem. Both summarize the environment an agent faces via a state variable $s$ that is a member of the state space $S$. Agents must choose actions from an action space $A(s)$. The dependence on $s$ takes into account any state-dependent constraints that specify which actions are feasible from that given state. A generic element of the space $A$ is called an action and is denoted $a \in A$.</p>
+
+<p>In both RL and DP, algorithms are constructed to choose policies $\pi: S -&gt; \Delta(A)$ and approximate or evaluate the value of such policies. The notaiton $\Delta(A)$ is a simplex or probability distribution over $A$. When we write $\pi(a | s)$ the probability of choosing $a$ in state $s$ under the policy $\pi$. In most economic models policies are degenerate, meaning that they specify a single action with probablity 1 for each state. In this case we may write $a = \pi(s)$ as the policy.</p>
+
+<p>In DP these values are often expresesd as a value function $V: S -&gt; R$. This is known as a <strong>state-value</strong> function.</p>
+
+<p>In RL values are either expressed using $V$, or using a <strong>action-value</strong> function $Q: S \times A -&gt; R$.</p>
+
+<p>Let $\gamma \in [0, 1]$ be a discount factor.</p>
+
+<p>Timing in Sutton and Barto is such that in time $t$ the agent sees state $S_t \in S$, chooses action $A_t \in A(S<em>t)$, then recieves a <strong>reward</strong> $R</em>{t+1}$, and finally observes a new state $S_{t+1} \in S$.</p>
+
+<p>A <strong>Return</strong> $G_t \in R$ is the sum of discounted rewards:</p>
+
+<!-- NOTE: for hugo we need to escape the `_` for some reason... -->
+
+<p>$$G_t = \sum_{k=0}^{\infty} \gamma^k R_{t+k+1}$$</p>
+
+<p>We can write the value of following a particular policy $\pi$ starting in a state $s$ using state-value functions as:</p>
+
+<p>$$v_{\pi}(s) \equiv E_{\pi} \left[G_t | S_t = s \right] = E_{\pi} \left[\sum_{k=0}^{\infty} \gamma^k R_{t+k+1} | S_t = s \right].$$</p>
+
+<p>Likewise we can write the action-value of following policy $\pi$ from state $s$ and action $a$ as</p>
+
+<p>$$q_{\pi}(s, a) \equiv E_{\pi} \left[G_t | S_t = s A_t = a\right] = E_{\pi} \left[\sum_{k=0}^{\infty} \gamma^k R_{t+k+1} | S_t = s, A_t = a \right].$$</p>
+
+<p>We define the optimal state-value function as $v(s) \equiv \max_{\pi} v_{\pi}(s)$ and the optimal action-value function as $q(s, a) \equiv \max_{\pi} q_{\pi}(s, a)$. We can obtain $v$ from $q$ as $v = \max_{a} q(s, a)$. Thus, knowing $q$ gives more information than knowing $v$: $q$ gives the optimal value of taking <em>any</em> action from state $s$ and $v$ gives the optimal value of taking the <em>optimal</em> value from state $s$.</p>
+
+<h1 id="algorithms:14a4c2b55a012de9d01c88422abd12c3">Algorithms</h1>
+
+<p>The class of RL algorithms can be understood by first defining some terms from DP.</p>
+
+<p>Given a policy $\pi$, <strong>policy evaluation</strong> is the process by which the state-or-action-value function is computed from $\pi$. This typically happens via some sort of backup operation. In DP we use a <strong>full-backup</strong> where &laquo;each iteration of iterative policy evaluation backs up the value of every state once to produce the new approximate value function&raquo;. Economists call this full-backup one iteration on the Bellman equation.</p>
+
+<p>In a control problem, after evaluating a policy we typically seek to improve it. <strong>policy-improvement</strong> is often implemented by selecting a <strong>greedy</strong> policy state by state. That is, a new policy $\pi&rsquo;$ is obtained from $\pi$ by selecting $\pi&rsquo;(s) = \text{argmax}_a q_{\pi}(s, a)$.</p>
+
+<h2 id="dp-algorithms:14a4c2b55a012de9d01c88422abd12c3">DP Algorithms</h2>
+
+<p><strong>Generalized policy iteration (GPI)</strong> is a major concept in the Sutton and Barto book. The core idea is alternating between policy evaluation and policy improvement. Policy evaluation drives the estimated value function towards the value of the policy while policy improvement improecs the policy with respect to the estimated value function. These two operations are competing in some sense as each one creates a moving target for the other. If both evaluation and improvement components have stabalized, then the value and policy functions must be optimal. The value function only converges when it is consistent with the current policy and the policy function only converges when it is optimal with respect to the current value function.</p>
+
+<p><strong>Policy-iteration</strong> is an example of GPI where we alternate on full policy evaluation and full policy improvment. The evaluation step provides the value of the current policy. The improvement step obtains a new policy, taking into account the values associated with the current policy.</p>
+
+<p><strong>Value-iteration</strong> is another example of GPI where one iteration of the bellman operator is applied as a partial policy evaluation, followed by a full policy improvement.</p>
+
+<p><strong>Asynchronous DP algorithms</strong> are modifications of policy or value iteration where you do not perform a full backup of the policy or value functions on each iteration (meaning you don&rsquo;t update the policy and value functions for all states in every iteration). Instead, these methods vary in which states they update, using whatever values for other states happen to be available.</p>
+
+</div>
+
+
+  <footer class="container">
+  <div class="container navigation no-print">
+  <h2>Navigation</h2>
+  
+  
+
+    
+    <a class="prev" href="http://notes.spencerlyon.com/2016/06/01/rust/" title="Rust">
+      Previous
+    </a>
+    
+
+    
+    <a class="next" href="http://notes.spencerlyon.com/2016/06/29/monte-carlo-methods/" title="Monte Carlo methods">
+      Next
+    </a>
+    
+
+  
+
+
+</div>
+
+  <div class="container comments">
+  <h2>Comments</h2>
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//sglyon.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+</article>
+      <footer id="main-footer" class="container main_footer">
+  <script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+  <div class="container nav foot no-print">
+  
+
+  <a class="toplink" href="#">back to top</a>
+
+</div>
+
+  <div class="container credits">
+  
+<div class="container footline">
+  
+
+</div>
+
+
+  
+<div class="container copyright">
+  
+  &copy; 2015 Spencer Lyon.
+
+
+</div>
+
+
+</div>
+
+</footer>
+
+    </main>
+    
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//sglyon.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+<script src="http://notes.spencerlyon.com/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+    
+  </body>
+</html>
+

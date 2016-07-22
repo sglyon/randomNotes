@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Continuous Time on Random Notes</title>
+    <link>http://notes.spencerlyon.com/tags/continuous-time/</link>
+    <description>Recent content in Continuous Time on Random Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-EN</language>
+    <managingEditor>spencer.lyon@stern.nyu.edu (Spencer Lyon)</managingEditor>
+    <webMaster>spencer.lyon@stern.nyu.edu (Spencer Lyon)</webMaster>
+    <copyright>(c) 2015 Spencer Lyon.</copyright>
+    <lastBuildDate>Mon, 12 Jan 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://notes.spencerlyon.com/tags/continuous-time/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Continuous Time</title>
+      <link>http://notes.spencerlyon.com/2015/01/12/continuous-time/</link>
+      <pubDate>Mon, 12 Jan 2015 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2015/01/12/continuous-time/</guid>
+      <description>
+
+&lt;h1 id=&#34;continuous-time-macro&#34;&gt;Continuous Time Macro&lt;/h1&gt;
+
+&lt;h2 id=&#34;solving-an-hjb&#34;&gt;Solving an HJB&lt;/h2&gt;
+
+&lt;p&gt;The HJB usually takes the form&lt;/p&gt;
+
+&lt;p&gt;$$\rho V_t (N&lt;em&gt;t) = \max&lt;/em&gt;{C, a} \left{ u&amp;copy; + \mathcal{A} V_t(N_t)\right},$$&lt;/p&gt;
+
+&lt;p&gt;where $\mathcal{A} V_t(N_t)$ is the drift of $dV_T(N_t)$, $\rho$ is the discount rate, $u&amp;copy;$ is the flow payoff of $C$. To solve this equation follow these steps:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Take FOC wrt controls (here $C, a$)&lt;/li&gt;
+&lt;li&gt;Stare at it for a while and make a guess of the functional form of the solution to the PDE. In this case if $u&amp;copy; = \ln&amp;copy;$ we would have chosen $V(N) = v_0 + v_1 \ln(N)$. You really learn how to do this by practice.&lt;/li&gt;
+&lt;li&gt;Plug the assumed functional form into the HJB (take necessary derivatives and replace all instances of $V(N)$)&lt;/li&gt;
+&lt;li&gt;Plug in FOC from step 1&lt;/li&gt;
+&lt;li&gt;Use method of undetermined coefficients to extract coefficients in assumed functional form. If you are unable to do this, try one more time because you might have made a dumb algebra mistake. After that start over at step 2 with a new guess&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;em&gt;Note:&lt;/em&gt; If you aren&amp;rsquo;t able to provide an explicit functional form, but rather have a more general guess like $V(x, y) = f(x) + y g(x)$, then you should alter your approach slightly. Starting from step 5 you will need to do the following:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;You should be able to use the method of undetermined coefficients to come up with ODEs for each of the generic functions in your guess (in this case $f$, and $g$).&lt;/li&gt;
+&lt;li&gt;Solve these ODEs however you know how&lt;/li&gt;
+&lt;li&gt;If you can&amp;rsquo;t, you probably made a bad guess for the form of the solution, so start over at step 2.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;ito-processes&#34;&gt;Ito processes&lt;/h2&gt;
+
+&lt;h3 id=&#34;gbm&#34;&gt;GBM&lt;/h3&gt;
+
+&lt;p&gt;A geometric Brownian motion solves the following SDE&lt;/p&gt;
+
+&lt;p&gt;$$dS_t = \mu S_t dt + \sigma S_t dW_t.$$&lt;/p&gt;
+
+&lt;p&gt;The solution is&lt;/p&gt;
+
+&lt;p&gt;$$S_t = S_0 \exp \left( \left(\mu - \frac{\sigma^2}{2} \right)t + \sigma W_t \right).$$&lt;/p&gt;
+
+&lt;p&gt;We often write GMB as&lt;/p&gt;
+
+&lt;p&gt;$$\frac{dS_t}{S_t} = \mu dt + \sigma dW_t$$&lt;/p&gt;
+
+&lt;p&gt;or even in terms of $d \log S_t$. By Ito&amp;rsquo;s lemma we have that&lt;/p&gt;
+
+&lt;p&gt;$$d \log S_t = \frac{d S_t}{S_t} - \frac{1}{2} \sigma^2 dt.$$&lt;/p&gt;
+
+&lt;p&gt;Solving for $\frac{d S_t}{S_t}$ and matching coefficients we see that we must have&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;drift of $d \log S_t = \mu - \frac{1}{2} \sigma^2$&lt;/li&gt;
+&lt;li&gt;Volatility of $d \log S_t = \sigma$.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

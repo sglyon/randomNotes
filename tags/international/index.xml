@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>International on Random Notes</title>
+    <link>http://notes.spencerlyon.com/tags/international/</link>
+    <description>Recent content in International on Random Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-EN</language>
+    <managingEditor>spencer.lyon@stern.nyu.edu (Spencer Lyon)</managingEditor>
+    <webMaster>spencer.lyon@stern.nyu.edu (Spencer Lyon)</webMaster>
+    <copyright>(c) 2015 Spencer Lyon.</copyright>
+    <lastBuildDate>Mon, 28 Dec 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://notes.spencerlyon.com/tags/international/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Melitz model</title>
+      <link>http://notes.spencerlyon.com/2015/12/28/melitz-model/</link>
+      <pubDate>Mon, 28 Dec 2015 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2015/12/28/melitz-model/</guid>
+      <description>
+
+&lt;h2 id=&#34;melitz-model:59872fcd8dcf8db6b89cd09aaf104fc2&#34;&gt;Melitz model&lt;/h2&gt;
+
+&lt;p&gt;These are some of my notes to summplement what can be found in Kim Ruhl&amp;rsquo;s notes &lt;a href=&#34;http://static1.1.sqspcdn.com/static/f/360458/25987035/1424882580650/Melitz.pdf?token=EjvdoKYt47uOcwtmJUz0K3aXxHU%3D&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;notation:59872fcd8dcf8db6b89cd09aaf104fc2&#34;&gt;Notation&lt;/h3&gt;
+
+&lt;p&gt;Below is a table of notation. WLOG a subscript $i$ means for country $i$. Also, sometimes there are variants &lt;code&gt;$x_{ij}$&lt;/code&gt; and &lt;code&gt;$x_i$&lt;/code&gt; of variables. Here we only list the &lt;code&gt;$x_{ij}$&lt;/code&gt; variant and it is to be understood that the version without the $j$ is an aggregate for country $i$ across all other countries $j$ or simply shorthand to ease notation &amp;ndash; which use is clear by context. Model parameters are not included in the table.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;right&#34;&gt;variable&lt;/th&gt;
+&lt;th&gt;meaning&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;$N$&lt;/td&gt;
+&lt;td&gt;number of countries&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;$L_i$&lt;/td&gt;
+&lt;td&gt;labor endowment (i)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;$Y_i$&lt;/td&gt;
+&lt;td&gt;total income (i)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;$\mu_i$&lt;/td&gt;
+&lt;td&gt;potential entrants (i)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;$c_{ij}(\omega)$&lt;/td&gt;
+&lt;td&gt;consumption of good $\omega$ (i)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;$p_{ij}(\omega)$&lt;/td&gt;
+&lt;td&gt;price of selling good $\omega$ to $j$ (i)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;$w_i$&lt;/td&gt;
+&lt;td&gt;country specific wage (i)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;$\pi_i$&lt;/td&gt;
+&lt;td&gt;profit of all firms (i)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;$P_i$&lt;/td&gt;
+&lt;td&gt;aggregate price index (i)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;$y_{ij}(\omega)$&lt;/td&gt;
+&lt;td&gt;production to sell in $j$ (i)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;$\varphi(\omega)$&lt;/td&gt;
+&lt;td&gt;productivity of firm selling $\omega$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;$\kappa_{ij}$&lt;/td&gt;
+&lt;td&gt;fixed cost of selling to $j$ (i)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;$\tau_{ij}$&lt;/td&gt;
+&lt;td&gt;variable trade cost of selling to $j$ (i)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;$\pi_{ij}(\omega)$&lt;/td&gt;
+&lt;td&gt;profit from selling to $j$ (i)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;$l_{ij}(\omega)$&lt;/td&gt;
+&lt;td&gt;labor to produce good $\omega$ for $j$ (i)&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;right&#34;&gt;$\varphi_{ij}$&lt;/td&gt;
+&lt;td&gt;cutoff productivity to export to $j$&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;demand-for-varieties:59872fcd8dcf8db6b89cd09aaf104fc2&#34;&gt;Demand for Varieties&lt;/h3&gt;
+
+&lt;p&gt;To derive equation (3) (CES demand for goods), I follow these steps:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Take FOC wrt $c_{0i}$ and $c_i(\omega)$.&lt;/li&gt;
+&lt;li&gt;Use the FOC wrt $c_i(\omega)$ for a good $\omega_1$ and a generic good $\omega$ and take the ratio&lt;/li&gt;
+&lt;li&gt;Do some algebra to put $p_i(\omega) c_i(\omega)$ alone on the RHS. This will require multiplying by 1 and moving some $p_i(\omega)$ terms to the LHS.&lt;/li&gt;
+&lt;li&gt;Integrate both sides over all $\omega$.&lt;/li&gt;
+&lt;li&gt;Use budget constraint to eliminate the $\int p_i(\omega) c_i(\omega) d \omega$ on the RHS.&lt;/li&gt;
+&lt;li&gt;Re-arrange to get something that looks like equation 3.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;At the time of writing (2015-12-28 15:09), Applying this set of steps gave me an expression that differs from Kim&amp;rsquo;s in two ways:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;He has a leading $\alpha$, where mine cancelled out in step 2&lt;/li&gt;
+&lt;li&gt;He doesn&amp;rsquo;t have a &lt;code&gt;$-p_{0i} c_{0i}$&lt;/code&gt; anywhwere and I do (it came in step 5).&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&#34;firm-problem:59872fcd8dcf8db6b89cd09aaf104fc2&#34;&gt;Firm problem&lt;/h3&gt;
+
+&lt;p&gt;The firm problem is pretty straightforward. Just remember that the firm takes demand (equation 3) as given, which means we plug it in to the objective.&lt;/p&gt;
+
+&lt;p&gt;Also, we can read labor directly off the constraint.&lt;/p&gt;
+
+&lt;div class=&#34;intuition&#34;&gt;
+Notice a few things about the prices:
+
+- They feature a constant markup over marginal pricing
+- Prices don&#39;t differ across markets, except to compensate for vairable trade costs. This means that firms don&#39;t price discriminate across markets (*In the data they do*)
+- Prices depend only on the productivity of the firm producing a good, not by the name of the good (not directly a function of $\omega$)
+- Profits are a constant fraction of total revenues (driven by CES demand and monopolistic competition)
+&lt;/div&gt;
+
+&lt;h3 id=&#34;equilibrium:59872fcd8dcf8db6b89cd09aaf104fc2&#34;&gt;Equilibrium&lt;/h3&gt;
+
+&lt;p&gt;In equilibrium, for each $i,j$ country pair a firm from country $i$ with cutoff productivity &lt;code&gt;$\hat{\varphi}_{ij}$&lt;/code&gt; is indifferent to selling in market $j$. This is characterized by the setting &lt;code&gt;$\pi_{ij}(\hat{\varphi}_{ij}) = 0$&lt;/code&gt; and solving for &lt;code&gt;$\hat{\varphi}_{ij}$&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;This means that not all firms export &lt;em&gt;and&lt;/em&gt; that larger/more productive firms are the exporters. This &lt;strong&gt;is&lt;/strong&gt; found in the data and is driven by the modeling assumption of fixed export costs between $i$ and $j$.&lt;/p&gt;
+
+&lt;p&gt;In this world we end up with a linear system of equations in terms of per country total profits. We get existence of equilibrium from the existence of a solution to this system (work comes through Perron Frobeneius theory).&lt;/p&gt;
+
+&lt;p&gt;Trade flows from $i$ to $j$ (value of goods $i$ exports to $j$: &lt;code&gt;$p_{ij} c_{ij}$&lt;/code&gt;) in this model are simply a share of total expenditure (or total profit &amp;ndash; in eq. they are the same with no assets) in country $j$.&lt;/p&gt;
+
+&lt;p&gt;Studying the intensive margin reveals that trade flows move with parameter governing degree of heterogeneity, not elasticity of substitution &amp;ndash; driven by assumed distribution of productivity.&lt;/p&gt;
+
+&lt;p&gt;Elasticity of trade wrt variable trade costs is higher in this model than in one without heterogeneity in productivity.&lt;/p&gt;
+
+&lt;p&gt;Elasticity of trade wrt fixed trade costs is higher when elasticity of consumption is low (extensive margin &amp;ndash; low elasticity =&amp;gt; low substitutibility =&amp;gt; high opportunity for profit).&lt;/p&gt;
+
+&lt;h3 id=&#34;chaney-s-financial-structure:59872fcd8dcf8db6b89cd09aaf104fc2&#34;&gt;Chaney&amp;rsquo;s financial structure&lt;/h3&gt;
+
+&lt;p&gt;Chaney 2008 assumes that &lt;code&gt;$Y_i = w_i L_i (1 + \pi)$&lt;/code&gt;, where $\pi$ is the return on a global mutual fund. In our setup we had &lt;code&gt;$Y_i = w_i L_i + \pi_i$&lt;/code&gt; (from assumption that agents in country $i$ own firms in country $i$.)&lt;/p&gt;
+
+&lt;p&gt;It is kinda remarkable that Chaney&amp;rsquo;s structure ends up giving the same country level profits as the model here, even with asymmetric trade costs.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

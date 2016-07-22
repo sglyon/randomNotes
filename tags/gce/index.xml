@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gce on Random Notes</title>
+    <link>http://notes.spencerlyon.com/tags/gce/</link>
+    <description>Recent content in Gce on Random Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-EN</language>
+    <managingEditor>spencer.lyon@stern.nyu.edu (Spencer Lyon)</managingEditor>
+    <webMaster>spencer.lyon@stern.nyu.edu (Spencer Lyon)</webMaster>
+    <copyright>(c) 2015 Spencer Lyon.</copyright>
+    <lastBuildDate>Sun, 05 Oct 2014 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://notes.spencerlyon.com/tags/gce/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Cloud tips</title>
+      <link>http://notes.spencerlyon.com/2014/10/05/cloud-tips/</link>
+      <pubDate>Sun, 05 Oct 2014 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2014/10/05/cloud-tips/</guid>
+      <description>
+
+&lt;h1 id=&#34;cloud:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;Cloud&lt;/h1&gt;
+
+&lt;h2 id=&#34;aws:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;AWS&lt;/h2&gt;
+
+&lt;h3 id=&#34;persistent-notebook:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;Persistent notebook&lt;/h3&gt;
+
+&lt;p&gt;I have a persistent instance running.&lt;/p&gt;
+
+&lt;p&gt;I followed &lt;a href=&#34;https://grollchristian.wordpress.com/2014/09/01/ijulia-for-amazon-ec2/&#34;&gt;this blog post&lt;/a&gt; to get it set up.&lt;/p&gt;
+
+&lt;p&gt;I can connect to it via&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ssh -i ~/dotfiles/sglyon-mbp.pem.txt ubuntu@ec2-54-201-41-126.us-west-2.compute.amazonaws.com
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;ipython notebook --profile=julia&lt;/code&gt; is running. I can connect to it from any browser by going to&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;https://ec2-54-201-41-126.us-west-2.compute.amazonaws.com:8998
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The password is &lt;code&gt;lyon0409&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;I needed to add the &lt;code&gt;IJulia all tcp&lt;/code&gt; security group to the instance through the AWS online management console.&lt;/p&gt;
+
+&lt;h4 id=&#34;new-user:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;new user&lt;/h4&gt;
+
+&lt;p&gt;I made a new user here by following the ideas &lt;a href=&#34;http://brianflove.com/2013/06/18/add-new-sudo-user-to-ec2-ubuntu/&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;mounting-a-volume:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;Mounting a volume&lt;/h4&gt;
+
+&lt;p&gt;I mounted a volume to &lt;code&gt;~/storage&lt;/code&gt; (&lt;code&gt;sudo mount /dev/xvdf /home/sglyon/storage)&lt;/code&gt;, but didn&amp;rsquo;t have permission to do anything. To fix that I chowned it: &lt;code&gt;sudo chown -R sglyon ~/storage&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;gce:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;GCE&lt;/h2&gt;
+
+&lt;p&gt;First step is to install the tools. This is a one time thing where I enter this command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;curl https://sdk.cloud.google.com | bash
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then follow the prompts and such until it is installed. I chose the directory &lt;code&gt;~/google-cloud-sdk&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;I didn&amp;rsquo;t have it alter my path for me, but  I added the following line in my list where I set &lt;code&gt;$PATH&lt;/code&gt; from within my ~/.zshenv:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$HOME/google-cloud-sdk/bin
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;julia-and-gce:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;Julia and GCE&lt;/h3&gt;
+
+&lt;p&gt;I (partially) followed &lt;a href=&#34;http://www.blog.juliaferraioli.com/2013/12/julia-on-google-compute-engine.html&#34;&gt;this blog post&lt;/a&gt; to get things started.&lt;/p&gt;
+
+&lt;p&gt;To create a new instance from the command line I need to run the following&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;gcloud compute --project &amp;quot;sgl-julia&amp;quot; instances create &amp;quot;instance-name&amp;quot; --zone &amp;quot;us-central1-b&amp;quot; --machine-type &amp;quot;n1-standard-1&amp;quot; --network &amp;quot;default&amp;quot; --maintenance-policy &amp;quot;MIGRATE&amp;quot; --scopes &amp;quot;https://www.googleapis.com/auth/devstorage.read_only&amp;quot; --image &amp;quot;https://www.googleapis.com/compute/v1/projects/sgl-julia/global/images/julia-src-deb-10212014&amp;quot; --no-boot-disk-auto-delete
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;where &lt;code&gt;instance-name&lt;/code&gt; is replaced with the actual name of the instance I want to create.&lt;/p&gt;
+
+&lt;p&gt;I can then ssh into the new instance (after it is created) by running&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;gcloud compute --project &amp;quot;sgl-julia&amp;quot; ssh --zone &amp;quot;us-central1-b&amp;quot; &amp;quot;instance-name&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If I want to select a different type of instance, I would change the &lt;code&gt;--machine-type&lt;/code&gt; parameter name. See &lt;a href=&#34;https://developers.google.com/compute/pricing&#34;&gt;this page&lt;/a&gt; for an explanation of the different types and prices.&lt;/p&gt;
+
+&lt;p&gt;To turn off (delete) my instance I would enter the following command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;gcloud compute --project &amp;quot;sgl-julia&amp;quot; instances delete &amp;quot;instance-1&amp;quot; --zone &amp;quot;us-central1-b&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If I also wanted to delete the corresponding persistent disk I would enter&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;gcloud compute --project &amp;quot;sgl-julia&amp;quot; disks delete &amp;quot;instance-1&amp;quot; --zone &amp;quot;us-central1-b&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;writing-the-package:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;Writing the package&lt;/h4&gt;
+
+&lt;p&gt;I had to install &lt;a href=&#34;https://github.com/markcarver/mac-ssh-askpass&#34;&gt;this script&lt;/a&gt; in order for ssh to work. I did the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cd ~/Downloads
+git clone https://github.com/markcarver/mac-ssh-askpass
+cd mac-ssh-askpass
+sudo ./INSTALL
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The package also requires that &lt;code&gt;gcloud&lt;/code&gt; and friends are installed.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

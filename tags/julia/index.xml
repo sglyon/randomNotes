@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Julia on Random Notes</title>
+    <link>http://notes.spencerlyon.com/tags/julia/</link>
+    <description>Recent content in Julia on Random Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-EN</language>
+    <managingEditor>spencer.lyon@stern.nyu.edu (Spencer Lyon)</managingEditor>
+    <webMaster>spencer.lyon@stern.nyu.edu (Spencer Lyon)</webMaster>
+    <copyright>(c) 2015 Spencer Lyon.</copyright>
+    <lastBuildDate>Tue, 12 Feb 2013 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://notes.spencerlyon.com/tags/julia/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Julia</title>
+      <link>http://notes.spencerlyon.com/2013/02/12/julia/</link>
+      <pubDate>Tue, 12 Feb 2013 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2013/02/12/julia/</guid>
+      <description>
+
+&lt;h2 id=&#34;tips-and-tricks&#34;&gt;Tips and tricks&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Sometimes you want to have a reference to a variable defined within a scoped block when that block finished. To do that declare &lt;code&gt;local varname&lt;/code&gt; as in this example from the Gadfly source:
+&lt;code&gt;julia
+local xs, ys
+try
+(xs, ys) = map(toVecOrDist, (aes.x, aes.y))
+catch e
+error(&amp;quot;Stat.qq requires that x and y be bound to either a Distribution or to arrays of plain numbers.&amp;quot;)
+end
+&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;calling-c-code&#34;&gt;Calling C code&lt;/h2&gt;
+
+&lt;h3 id=&#34;compiling-c-extensions-in-osx&#34;&gt;Compiling C extensions in OSX&lt;/h3&gt;
+
+&lt;p&gt;Consider the following C file (call it &lt;code&gt;pisum.c&lt;/code&gt;):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-C&#34;&gt;#include&amp;lt;math.h&amp;gt;
+
+double pisum(long n)
+{
+    int i;
+    double j;
+    j=0;
+    for (i = 1; i &amp;lt; n; i++)
+    {
+        j += pow(-1, i + 1) / (2.0*i-1);
+    }
+    j=4*j;
+    return j;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I would compile this for use in Julia using&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ gcc -shared -fPIC pisum.c -o pisum
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then In julia I can wrap it like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-julia&#34;&gt;c_pisum(x=80000000) = ccall((:pisum, &amp;quot;pisum&amp;quot;), Float64, (Clong), convert(Clong, x))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;compiling-in-ubuntu&#34;&gt;Compiling in ubuntu&lt;/h3&gt;
+
+&lt;p&gt;I need to do these things in ubuntu for same example&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ gcc -c -Wall -Werror -fpic my_c_file.c
+$ gcc -shared -o lib_my_c_lib.so my_c_file.o
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then in julia I call it like this&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-julia&#34;&gt;c_pisum3() = ccall((:foo, &amp;quot;lib_my_c_lib.so&amp;quot;), ...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;why-do-i-like-julia-for-economics&#34;&gt;Why do I like Julia for Economics?&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Fast
+
+&lt;ul&gt;
+&lt;li&gt;Economists write down problems with many state variables&lt;/li&gt;
+&lt;li&gt;Solve functional equations on that state space&lt;/li&gt;
+&lt;li&gt;explicit looping iteration over matrices that represent those functions on&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Functional
+
+&lt;ul&gt;
+&lt;li&gt;Proper support for concepts for basic functional programming makes code readable and concise
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;do&lt;/code&gt; notation&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;map&lt;/code&gt;, &lt;code&gt;fold&lt;/code&gt;, &lt;code&gt;reduce&lt;/code&gt;, &lt;code&gt;pmap&lt;/code&gt;, comprehensions&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&amp;laquo;Leightweight&amp;raquo; data types allow us to have very small types (types can be thought of a dict that can additional specify how functions operate on it, even relative to other arguments the function is called with)&lt;/li&gt;
+&lt;li&gt;Multiple dispatch allows us to combine previous two points in unique and powerful ways (type-based API &amp;ndash; not kwarg)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Flexible
+
+&lt;ul&gt;
+&lt;li&gt;Most of Julia&amp;rsquo;s standard library is written in Julia &amp;ndash; and is very fast&lt;/li&gt;
+&lt;li&gt;This means other code written in Julia has potential to perform at the same level as standard library code (if written well)&lt;/li&gt;
+&lt;li&gt;Not true of other popular languages for economists (e.g., R, MATLAB, Python &amp;ndash; they all require you to write some variant of C code that you wrap or hook into)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Call C code
+
+&lt;ul&gt;
+&lt;li&gt;Many great numerical libraries are written in C/Fortran&lt;/li&gt;
+&lt;li&gt;Ability to have zero overhead, zero-wrapper (call directly into shared-object file) access to these libraries gives added flexibility and power
+
+&lt;ul&gt;
+&lt;li&gt;Dierckx&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Projects like PyCall, JavaCall, RCall let you use the tools you  have become dependent on as you make a gradual transition to working within python. Dependent on API&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Parallel
+
+&lt;ul&gt;
+&lt;li&gt;Parallel programming building blocks built into the language.&lt;/li&gt;
+&lt;li&gt;Makes writing parallel code much easier.&lt;/li&gt;
+&lt;li&gt;Important for economists that loop over arrays as long as on each iteration one element does not depend on updated values of other elements from that same iteration (common).&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Other notes:
+- Many users of other languages. Would need to convince them that the benefit of learning julia outweighs the cost of learning a new language and perhaps abandoning a subset of collected tools.
+    + Users of Matlab or Python specifically will be able to pick up Julia in almost a copy/paste fashion and just change some syntax. This is not &amp;laquo;optimal Julia&amp;raquo;, but it will function.&lt;/p&gt;
+
+&lt;p&gt;Deficiencies:&lt;/p&gt;
+
+&lt;p&gt;Jonathan:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;code from scratch, Julia is easier to write performant code&lt;/li&gt;
+&lt;li&gt;When you don&amp;rsquo;t write everything from scratch (e.g. numerical optimization) it is often harder to find mature (in terms of users/tests) packages than in other languages. Young (but growing) package ecosystem relative to Python, Matlab, R (partially mitigated by ability to call these languages)&lt;/li&gt;
+&lt;li&gt;Weak conventions for documentation. Changing soon with new documentation system.&lt;/li&gt;
+&lt;li&gt;Less materials online for learning the language.&lt;/li&gt;
+&lt;li&gt;Many OOP people will feel like Julia&amp;rsquo;s types are lacking. They play similar roles, but do so in a different way. Types are more functional. More OOP programmers in this audience (python, Matlab) than functional programmers&lt;/li&gt;
+&lt;li&gt;Need materials that show how to leverage Julia&amp;rsquo;s type-system. Easy to get off the ground programming, hard to master (skiing vs snowboarding).&lt;/li&gt;
+&lt;li&gt;How to use functional programming in a way that is natural and readable. How to keep track of how computation happens. Easier to trace through procedural style&lt;/li&gt;
+&lt;li&gt;CONVENTIONS&lt;/li&gt;
+&lt;li&gt;Hard to determine which function is going to be called. Need to use @edit, @which, @less&lt;/li&gt;
+&lt;li&gt;How to get involved with the community? issues list, mailing list&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

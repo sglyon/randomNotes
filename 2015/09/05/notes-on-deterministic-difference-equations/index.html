@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Notes on Deterministic Difference Equations  &middot; Random Notes</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="" />
+
+<meta name="keywords" content="math, ">
+
+
+<meta property="og:title" content="Notes on Deterministic Difference Equations  &middot; Random Notes ">
+<meta property="og:site_name" content="Random Notes"/>
+<meta property="og:url" content="http://notes.spencerlyon.com/2015/09/05/notes-on-deterministic-difference-equations/" />
+<meta property="og:locale" content="en-EN">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content=""/>
+<meta property="og:article:published_time" content="2015-09-05T00:00:00Z" />
+<meta property="og:article:modified_time" content="2015-09-05T00:00:00Z" />
+
+  
+    
+<meta property="og:article:tag" content="math">
+    
+  
+
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@" />
+<meta name="twitter:title" content="Notes on Deterministic Difference Equations" />
+<meta name="twitter:description" content="" />
+<meta name="twitter:url" content="http://notes.spencerlyon.com/2015/09/05/notes-on-deterministic-difference-equations/" />
+<meta name="twitter:domain" content="http://notes.spencerlyon.com/">
+  
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "Notes on Deterministic Difference Equations",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2015-09-05",
+    "description": "",
+    "wordCount":  1281 
+  }
+</script>
+
+
+
+<link rel="canonical" href="http://notes.spencerlyon.com/2015/09/05/notes-on-deterministic-difference-equations/" />
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://notes.spencerlyon.com/touch-icon-144-precomposed.png">
+<link href="http://notes.spencerlyon.com/favicon.png" rel="icon">
+
+<meta name="generator" content="Hugo 0.16-DEV" />
+
+  <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link href='https://fonts.googleapis.com/css?family=Merriweather:300%7CRaleway%7COpen+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="http://notes.spencerlyon.com/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://notes.spencerlyon.com/css/style.css">
+<link rel="stylesheet" href="http://notes.spencerlyon.com/css/highlight/solarized_dark.css">
+
+  
+</head>
+<body>
+  <main id="main-wrapper" class="container main_wrapper has-sidebar">
+    <header id="main-header" class="container main_header">
+  <div class="container brand">
+  <div class="container title h1-like">
+  <a class="baselink" href="http://notes.spencerlyon.com/">
+  <em>Random Notes</em>
+
+</a>
+
+</div>
+
+  
+<div class="container topline">
+  
+  Spencer Lyon
+
+
+</div>
+
+
+</div>
+
+  <nav class="container nav primary no-print">
+  
+
+<a class="homelink" href="http://notes.spencerlyon.com/">Random Notes</a>
+
+
+  
+<a href="http://notes.spencerlyon.com/post" title="Show list of posts">Posts</a>
+
+<a href="http://notes.spencerlyon.com/tags" title="Show list of tags">Tags</a>
+
+<a href="http://notes.spencerlyon.com/series" title="Show list of series">Series</a>
+
+
+</nav>
+
+<div class="container nav secondary no-print">
+  
+<a id="contact-link-email" class="contact_link" href="mailto:spencer.lyon@stern.nyu.edu">
+  <span class="fa fa-envelope-square"></span><span>email</span></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+  
+
+</header>
+
+
+<article id="main-content" class="container main_content single">
+  <header class="container hat">
+  <h1>Notes on Deterministic Difference Equations
+</h1>
+
+  <div class="metas">
+<time datetime="2015-09-05">5 Sep, 2015</time>
+
+
+  
+    &middot; by Chase Coleman
+  
+  &middot; Read in about 7 min
+  &middot; (1281 Words)
+  <br>
+  
+<a class="label" href="http://notes.spencerlyon.com/tags/math">math</a>
+
+
+
+</div>
+
+</header>
+
+  <div class="container content">
+  
+
+<h1 id="deterministic-difference-equations">Deterministic Difference Equations</h1>
+
+<h2 id="scalar-first-order-linear-equations">Scalar First-Order Linear Equations</h2>
+
+<p>The basic scalar first-order difference equation can be represented by:</p>
+
+<p><code>$$x_{t+1} = b x_t + c z_t, \quad t \geq 0$$</code></p>
+
+<p>where $x_t, b, c, z_t$ are all real numbers. Since these equations are deterministic then we already know the sequence ${ z_t }$ and will assume it is bounded. If $z_t$ is constant for all $t$ then this equation is called <em>autonomous</em>. If $c z_t = 0$ for all $t$ then this equation is called homogenous. A particular solution to this difference equation is the constant solution where $x_t = \bar{x}$ for all $t$ and $\bar{x} = \frac{c}{1-b}$ for $b \neq 1$. This solution is known as a <em>stationary point</em> or <em>steady state.</em> A more general solution to the autonomous difference equation can be given by</p>
+
+<p><code>$$x_t = (x_0 - \bar{x}) b^t + \bar{x}$$</code></p>
+
+<p>We can describe the behavior of this solution by</p>
+
+<table>
+<thead>
+<tr>
+<th></span></th>
+<th>$x_0$ given</th>
+<th>$x_0$ unknown</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>$abs(b) &gt; 1$</td>
+<td>Exploding unless $x_0 = \bar{x}$</td>
+<td>$x_t = \bar{x}$ $\forall t \geq 0$</td>
+</tr>
+
+<tr>
+<td>$abs(b) &lt; 1$</td>
+<td>Globally asympototically stable</td>
+<td>Indeterminancy</td>
+</tr>
+</tbody>
+</table>
+
+<p>A general solution for the nonautonomous case depends on whether $x_0$ is given or not. If $x_0$ is given then we can solve for $x_t$ through backwards substitution to obtain</p>
+
+<p><code>$$x_t = c \sum_{j=0}^{t-1} b^j z_{t - 1 - j} + b^t x_0$$</code></p>
+
+<p>If $|b| &lt; 1$ then in the limit it converges to the <em>generalized steady state</em> which is</p>
+
+<p><code>$$\lim_{t \rightarrow \infty} x_t = \lim_{t \rightarrow infty} c \sum_{j=0}^{t-1} b^j z_{t-1-j}$$</code></p>
+
+<p>Now consider the case when $x_0$ is not given, for example, imagine that the process $x_t$ representes an asset&rsquo;s price. In our example the difference equation is simply an asset pricing equation and to solve for the price at $t$ we can substitute forward and get</p>
+
+<p><code>$$x_t = \left( \frac{1}{b} \right)^T x_{t+T} - \frac{c}{b} \sum_{j=0}^{T-1} \left(\frac{1}{b} \right)^j z_{t+j}$$</code></p>
+
+<p>for any $T \geq 1$. If we take $T \rightarrow \infty$ and assume the <em>transversality condition</em> (also known as the <em>no-bubble condition</em>) which says</p>
+
+<p><code>$$\lim_{T \rightarrow \infty} \left( \frac{1}{b} \right)^T x_{t+T} = 0$$</code></p>
+
+<p>then we can obtain the forward looking solution</p>
+
+<p><code>$$x_t = - \frac{c}{b} \sum_{j=0}^{\infty} \left( \frac{1}{b} \right)^j z_{t+j}$$</code></p>
+
+<p>If $|b| &gt; 1$ then this sum converges.</p>
+
+<p>Now imagine that $|b| &gt; 1$ and we remove the transversality condition then the solution admits many unstable solutions. Define <code>$x_t^*$</code> as the solution given by the sum above, then for any <code>$\{B_t\}$</code> satisfying <code>$B_{t+1} = b B_t$</code> the expression <code>$x_t = x_t^* + B_t$</code> is a solution. In this case, we refer to <code>$x_t^*$</code> as the <em>fundamental value</em> and $B_t$ as a <em>bubble</em>.</p>
+
+<p>If $|b| &lt; 1$ then this sum likely doesn&rsquo;t converge. In similar fashion as previously, we could write the solutions as $x_t = \frac{c}{1 - b} + B_t$ and for any $B_t$ that follows the same process (<code>$B_{t+1} = b B_t$</code>).</p>
+
+<p>We have seen that two conditions determine what the solutions to our first-order scalar difference equations look like, namely:</p>
+
+<p>1) Whether the initial value is given : This determines whether $x_t$ is <em>predetermined</em>.
+2) Whether $b$ is greater or less than 1 : This is determines whether the eigenvalue is stable.</p>
+
+<h2 id="lag-operators-and-scalar-second-order-linear-difference-equations">Lag Operators and Scalar Second-Order Linear Difference Equations</h2>
+
+<p>We now introduce an operator that is common in the economics literature and is known as the <em>lag operator</em>. The lag operator, $L$, operates on a dynamics process ${x_t }$ in the following fashion:</p>
+
+<ul>
+<li><code>$L x_t = x_{t-1}$</code></li>
+<li><code>$L^n x_t = x_{t-n}$</code></li>
+<li><code>$L^n c = c$</code> for any constant <code>$c$</code></li>
+</ul>
+
+<p>Additionally, there are some useful formulas that we include for $ |\lambda| &lt; 1$</p>
+
+<p><code>$$\frac{1}{1 - \lambda L^n} = \sum_{j=0}^\infty \lambda^j L^{nj}$$</code>
+<code>$$\frac{1}{(1 - \lambda L^n)^2} = \sum_{j=0}^\infty (j + 1) \lambda^j L^{nj}$$</code></p>
+
+<p>and for a matrix $A$ with all of its eigenvalues in the unit circle</p>
+
+<p><code>$$(I - A L^n)^{-1} = \sum_{j=0}^\infty A^j L^{nj}$$</code></p>
+
+<p>Consider a second-order linear difference equation</p>
+
+<p><code>$$x_{t+2} = a x_{t+1} + b x_{t} + c z_{t}$$</code></p>
+
+<p>where <code>$x_0 \in \mathbb{R}$</code> is given, $a, b, c$ are real-valued constants, and <code>$\{ z_t \}$</code> is a given sequence of bounded real-valued numbers. We could express this equation in terms of the lag-operator by</p>
+
+<p><code>$$(L^{-2} - a L^{-1} - b) x_t = c z_t$$</code></p>
+
+<p>with characteristic equation</p>
+
+<p><code>$$\lambda^2 - a \lambda - b = 0$$</code></p>
+
+<p>This characteristic equation has two roots <code>$\lambda_1$</code> and <code>$\lambda_2$</code>. We could factor the difference equation into</p>
+
+<p><code>$$(L^{-1} - \lambda_1) (L^{-1} - \lambda_2) x_t = c z_t$$</code></p>
+
+<p>Then without loss of generality consider 3 possible cases: Either <code>$\lambda_1, \lambda_2 \in \mathbb{R}$</code> with <code>$\lambda_1 \neq \lambda_2$</code>, <code>$\lambda_1, \lambda_2 \in \mathbb{R}$</code> with <code>$\lambda_1 = \lambda_2$</code>, or <code>$\lambda_1, \lambda_2 \in \mathbb{C}$</code>. I will only think about the first case here: We can break this case into several sub-cases.</p>
+
+<ul>
+<li><code>$ | \lambda_1 | &gt; | \lambda_2 | &gt; 1$</code> : Then the solution explodes as time proceeds &ndash; We call the steady state the <em>source</em> (it is constant there and to either side it blows up).</li>
+<li><code>$ | \lambda_1 | &lt; | \lambda_2 | &lt; 1$</code> : Then for any initial value, the solution converges to the steady state &ndash; We call the steady state the <em>sink</em> (everything sinks towards this point).</li>
+<li><code>$| \lambda_1 | &lt; 1 &lt; | \lambda_2 |$</code> The solution for this case is known as the <em>saddle path solution</em>. Then by sending <code>$(L^{-1} - \lambda_2)$</code> to the RHS we can write <code>$$(L^{-1} - \lambda_1) x_t = - \frac{c}{\lambda_2} \frac{z_t}{(1 - \lambda_2^{-1} L^{-1})}$$</code> which reduces to <code>$$x_{t+1} = \lambda_1 x_t -\frac{c}{\lambda_2} \sum_{j=0}^\infty \left( \frac{1}{\lambda_2} \right)^{j} z_{t + j}$$.</code></li>
+</ul>
+
+<h2 id="first-order-linear-systems">First-Order Linear Systems</h2>
+
+<p>We now consider first-order linear systems. We can write many higher order lineary systems down as a first-order linear system, so this will be the form that we consider</p>
+
+<p><code>$$A x_{t+1} = B x_{t} + C z_t$$</code></p>
+
+<p>Additionally, we will assume what is known as regularity &ndash; That $\text{det}(A \alpha - B) \neq 0$ identically in $\alpha$. What this does is restrict ourselves to processes with solutions for generic exogenous sequences (Imagine that in the scalar case $a = b = 0$ then we wouldn&rsquo;t have a solution for generic processes for $c z_t$ because we would have the equation $0 = c z_t$). Additionally, depending on what we are working with we sometimes assume that there exists $T &gt; 0$ such that $z_t = \bar{z}$ for all $t &gt; T$ &ndash; This assumption makes it possible for our system to have a steady state.</p>
+
+<p>We define a steady state by a point $\bar{x}$ such that if $x_t = \bar{x}$ then $x_s = \bar{x}$ for all $s &gt; t$. If $(A - B)$ is invertible (and we include our assumption on the constant values of $\bar{z}$) then our unique steady state is defined by $\bar{x} = (A - B)^{-1} C \bar{z}$.</p>
+
+<p>A sequence <code>$\{ x_t \}$</code> is <em>stable</em> if there exists $M &gt; 0$ such that <code>$|| x_t ||_{\text{max}} &lt; M$</code> for all $t$; where the operation <code>$||x_{t}||_{\text{max}} = \max_j | X_j |$</code> for any $x \in \mathbb{R}^n$.</p>
+
+<p>A point $\bar{x}$ is <em>asymptotically stable</em> for the sequence <code>$\{ x_t \}$</code> if <code>$\lim_{t \rightarrow \infty} x_t = \bar{x}$</code> for some <code>$x_0$</code>. The <em>basin</em> (or <em>attraction</em>) of an asymptotically stable steady state $\bar{x}$ is the set of all points <code>$x_0$</code> such that <code>$\lim_{t \rightarrow \infty} = \bar{x}$</code>.</p>
+
+<p>A point $\bar{x}$ is <em>globally (asymptotically) stable</em> for the sequence <code>$\{ x_t \}$ if $\lim_{t \rightarrow \infty} x_t = \bar{x}$</code> for any value <code>$x_0$</code>.</p>
+
+<p>We will assume that <code>$\{ z_t \}$</code> is a stable sequence.</p>
+
+<h3 id="nonsingular-systems">Nonsingular systems</h3>
+
+<p>Let $A$ be nonsingular then we can write our first-order linear system as</p>
+
+<p><code>$$x_{t+1} = A^{-1} B x_t + A^{-1} C z_t$$</code></p>
+
+<h2 id="references">References</h2>
+
+<ul>
+<li>Jianjun Miao. &laquo;Economic dynamics in discrete time.&raquo; MIT Press. 2014.</li>
+<li>Lars Ljunqvist and Thomas Sargent. &laquo;Recursive Macroeconomic Theory.&raquo; MIT Press. 2013</li>
+</ul>
+
+</div>
+
+
+  <footer class="container">
+  <div class="container navigation no-print">
+  <h2>Navigation</h2>
+  
+  
+
+    
+    <a class="prev" href="http://notes.spencerlyon.com/2015/07/01/using-docker/" title="Using Docker">
+      Previous
+    </a>
+    
+
+    
+    <a class="next" href="http://notes.spencerlyon.com/2015/09/18/osx-tips/" title="OSX tips">
+      Next
+    </a>
+    
+
+  
+
+
+</div>
+
+  <div class="container comments">
+  <h2>Comments</h2>
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//sglyon.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+</article>
+      <footer id="main-footer" class="container main_footer">
+  <script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+  <div class="container nav foot no-print">
+  
+
+  <a class="toplink" href="#">back to top</a>
+
+</div>
+
+  <div class="container credits">
+  
+<div class="container footline">
+  
+
+</div>
+
+
+  
+<div class="container copyright">
+  
+  &copy; 2015 Spencer Lyon.
+
+
+</div>
+
+
+</div>
+
+</footer>
+
+    </main>
+    
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//sglyon.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+<script src="http://notes.spencerlyon.com/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+    
+  </body>
+</html>
+

@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Martingale Decomposition  &middot; Random Notes</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="" />
+
+<meta name="keywords" content="math, continuous time, ">
+
+
+<meta property="og:title" content="Martingale Decomposition  &middot; Random Notes ">
+<meta property="og:site_name" content="Random Notes"/>
+<meta property="og:url" content="http://notes.spencerlyon.com/2015/04/23/martingale-decomposition/" />
+<meta property="og:locale" content="en-EN">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content=""/>
+<meta property="og:article:published_time" content="2015-04-23T00:00:00Z" />
+<meta property="og:article:modified_time" content="2015-04-23T00:00:00Z" />
+
+  
+    
+<meta property="og:article:tag" content="math">
+    
+<meta property="og:article:tag" content="continuous time">
+    
+  
+
+  
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@" />
+<meta name="twitter:title" content="Martingale Decomposition" />
+<meta name="twitter:description" content="" />
+<meta name="twitter:url" content="http://notes.spencerlyon.com/2015/04/23/martingale-decomposition/" />
+<meta name="twitter:domain" content="http://notes.spencerlyon.com/">
+  
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "Martingale Decomposition",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2015-04-23",
+    "description": "",
+    "wordCount":  1280 
+  }
+</script>
+
+
+
+<link rel="canonical" href="http://notes.spencerlyon.com/2015/04/23/martingale-decomposition/" />
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://notes.spencerlyon.com/touch-icon-144-precomposed.png">
+<link href="http://notes.spencerlyon.com/favicon.png" rel="icon">
+
+<meta name="generator" content="Hugo 0.16-DEV" />
+
+  <!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link href='https://fonts.googleapis.com/css?family=Merriweather:300%7CRaleway%7COpen+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="http://notes.spencerlyon.com/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://notes.spencerlyon.com/css/style.css">
+<link rel="stylesheet" href="http://notes.spencerlyon.com/css/highlight/solarized_dark.css">
+
+  
+</head>
+<body>
+  <main id="main-wrapper" class="container main_wrapper has-sidebar">
+    <header id="main-header" class="container main_header">
+  <div class="container brand">
+  <div class="container title h1-like">
+  <a class="baselink" href="http://notes.spencerlyon.com/">
+  <em>Random Notes</em>
+
+</a>
+
+</div>
+
+  
+<div class="container topline">
+  
+  Spencer Lyon
+
+
+</div>
+
+
+</div>
+
+  <nav class="container nav primary no-print">
+  
+
+<a class="homelink" href="http://notes.spencerlyon.com/">Random Notes</a>
+
+
+  
+<a href="http://notes.spencerlyon.com/post" title="Show list of posts">Posts</a>
+
+<a href="http://notes.spencerlyon.com/tags" title="Show list of tags">Tags</a>
+
+<a href="http://notes.spencerlyon.com/series" title="Show list of series">Series</a>
+
+
+</nav>
+
+<div class="container nav secondary no-print">
+  
+<a id="contact-link-email" class="contact_link" href="mailto:spencer.lyon@stern.nyu.edu">
+  <span class="fa fa-envelope-square"></span><span>email</span></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+  
+
+</header>
+
+
+<article id="main-content" class="container main_content single">
+  <header class="container hat">
+  <h1>Martingale Decomposition
+</h1>
+
+  <div class="metas">
+<time datetime="2015-04-23">23 Apr, 2015</time>
+
+
+  
+    &middot; by Spencer Lyon
+  
+  &middot; Read in about 7 min
+  &middot; (1280 Words)
+  <br>
+  
+<a class="label" href="http://notes.spencerlyon.com/tags/math">math</a>
+
+<a class="label" href="http://notes.spencerlyon.com/tags/continuous-time">continuous time</a>
+
+
+
+</div>
+
+</header>
+
+  <div class="container content">
+  
+
+<h1 id="martingale-decomposition-of-sdf:2fbf0d07e43ce036739ad1a66f109e70">Martingale Decomposition of SDF</h1>
+
+<p>Notes on identifying martingale component of SDF</p>
+
+<h2 id="misspecified-recovery-hansen-borovicka-scheinkman-2014:2fbf0d07e43ce036739ad1a66f109e70">Misspecified Recovery (Hansen, Borovicka, Scheinkman; 2014)</h2>
+
+<h3 id="framework-notation:2fbf0d07e43ce036739ad1a66f109e70">Framework Notation</h3>
+
+<ul>
+<li>$\left{ \Omega, \mathcal{F}, P \right}$: probability space</li>
+<li>$T$: set of time indices</li>
+<li>$X = \left{X_t : t \in T \right}$: stationary n-d Markov process</li>
+<li>$W$: jointly (with $X$) stationary stochastic process</li>
+<li>$\mathcal{F} = \left{ \mathcal{F}_t: t \in T\right}$: Filtration generated by $\left{ W\right}$ and $X_0$</li>
+</ul>
+
+<p>In continuous time we write the evolution of $X$ and the log of a multiplicative functional as</p>
+
+<p>\begin{align<em>}
+    dX_t = \mu(X_t) dt + \sigma(X_t) dW_t \
+    d \log M_t &amp;= \beta(X_t) dt + \alpha(X_t) \cdot dW_t
+\end{align</em>}</p>
+
+<p>We will use notation $Y(X, W)$  to denote first-order Markov processes. The composite system $Y$ &laquo;has a triangular structure because $X<em>t$ is the relevant state vector for $(X</em>{t+1}, \Delta W<em>{t+1}$)&laquo;. In our continuous time setting this means that the distribution of $(X</em>{t+\tau}, W_{t+\tau} - W_t)$, conditioned on $\mathcal{F}_t$ is only dependent on $X_t$.</p>
+
+<h4 id="sdf:2fbf0d07e43ce036739ad1a66f109e70">SDF</h4>
+
+<p>The stochastic discount factor is a positive multiplicative functional $S$ with finite first moment such that at any time $\tau$, any $\mathcal{F}_{t}$ claim $\phi_t, t &gt; \tau$ is priced as</p>
+
+<p>$$\Pi_{\tau, t}(\phi_t) = E \left[ \frac{S<em>t}{S</em>{\tau}} \phi<em>t \bigm\vert \cal{F}</em>{\tau} \right].$$</p>
+
+<p>Thus, for bounded claims dependent only on our Markov state, the price is</p>
+
+<p>$$<a href="x">Q_t \psi</a> = E[S_t \psi(X_t) | X_0 = x]$$</p>
+
+<h4 id="martingales-and-measures:2fbf0d07e43ce036739ad1a66f109e70">Martingales and Measures</h4>
+
+<p>let $H$ be an $\mathcal{F}$ martingale where $E[H<em>0] = 1$. We can define another probability measure $P^H$ such that if $A \in \mathcal{F}</em>{\tau}$ for some $\tau &gt; 0$,</p>
+
+<p>$$P^H(A) = E[1<em>A H</em>{\tau}].$$</p>
+
+<p>In our continuous time model, we have (TODO: don&rsquo;t understand this, shouldn&rsquo;t martingale have zero drift):</p>
+
+<p>$$\beta(x) = - \frac{1}{2} \alpha(x) \cdot \alpha(x).$$</p>
+
+<p>Under the change of measure $W_t$ has a drift given by $\alpha(X_t)$. $Y$ will remain a martingale, under new measure, but $W$ and $X$ may not. Also $X$ may not be stationary under $P^H$.</p>
+
+<h3 id="identification:2fbf0d07e43ce036739ad1a66f109e70">Identification</h3>
+
+<p>A SDF and probability measure $(S, P)$ explains asset prices for all adapted, bounded claims. If we let $H$ be a multiplicative functional and a martingale, then together with the probability measure $P^H$ we can define</p>
+
+<p>$$S^H = S \frac{H_0}{H}.$$</p>
+
+<p><strong>Proposition</strong>: Let $H$ is a multiplicative martingale (written according to form above) and $E[H_0] = 1$; and $S$ is a multiplicative functional with $S_0=1$. If $(S, P)$ describes asset prices, so does $(S^H, P^H)$. Also $S^H_0 = 1$.</p>
+
+<p>The proposition tells us that SDFs are only well-defined for a specific probability measure. When we change the probability measure, we must also change the SDF. We now have multiple ways to write asset prices:</p>
+
+<p>$$\Pi_{\tau, t}(\phi_t) = E \left[ \frac{S<em>t}{S</em>{\tau}} \phi<em>t \bigm\vert \cal{F}</em>{\tau} \right] = E^H \left[ \frac{S^H<em>t}{S^H</em>{\tau}} \phi<em>t \bigm\vert \cal{F}</em>{\tau} \right],$$</p>
+
+<p>where $E^H$ is the expectation operator under $P^H$. Now, investors typically cannot observe $S$ or $P$ directly, but instead observe prices. Given this single data source, we cannot uniquely identify the pair $(S, P)$. In other words &laquo;we cannot recover investor beliefs from the Arrow prices alone. To achieve identification of investor beliefs, either we have to restrict the stochastic discount factor process $S$ or we have to restrict the probability distribution used to represent the valuation operators $\Pi_{\tau, t}$.&raquo;</p>
+
+<p>There are many ways people have tried to address this lack of identification:</p>
+
+<ul>
+<li>Impose rational expectations, observe time series of prices, let LLN for stationary distributions determine probabilities. This lets us identify $S$.</li>
+<li>We might impose risk-neutral pricing, which means that the SDF is locally predictable and thus identifiable.</li>
+<li>A new restriction, proposed here, of the form</li>
+</ul>
+
+<p>$$S_t = \exp(- \delta_t) \frac{m(X_t)}{m(X_0)}.$$</p>
+
+<h3 id="recovery:2fbf0d07e43ce036739ad1a66f109e70">Recovery</h3>
+
+<p>As we just discussed, observing asset prices does not identify both $S$ and $P$. However, if we assume that $X$ is stationary and ergodic under $P^H$, then we do get a unique identification of $S$ and $P$, where $S$ satisfies the functional form above (ERGODIC + SDF as specific MF =&gt; UNIQUENESS).</p>
+
+<p><strong>Proposition 5.3</strong> Suppose $(S, P)$ explains asset prices and $S$ satisfies $S_t = \exp(- \delta_t) \frac{m(X_t)}{m(X_0)}.$ Let $H$ be a positive multiplicative martingale such that $(S^H, P^H)$ also explain asset prices and $X$ is stationary and ergodic under $P^H$. If $S^H also satisfies functional form of $S$, then $H \equiv 1$.</p>
+
+<p>The proposition tells us that with functional form restriction on SDF <em>and</em> ergodicity of $S^H$, that we can uniquely identify <em>both</em> $S^H$ and $P^H$ from asset prices.</p>
+
+<h3 id="relaxing-functional-form:2fbf0d07e43ce036739ad1a66f109e70">Relaxing functional form</h3>
+
+<p>If we relax the functional form assumption, but retain ergodicity, then we will <em>recover</em> an SDF that differs from the actual SDF by a martingale (the mtg. is equal to 1 and hence not distorting if and only if the functional form restriction is imposed &ndash; meaning if functional form is different, there <strong>must</strong> be distortion).</p>
+
+<p><strong>Perron-Frobenius problem</strong>: To find a scalar $\tilde{\eta}$ and a function $\tilde{e} &gt; 0$ such that for every $t \in T$</p>
+
+<p>$$ (Q_t \tilde{e})(x) = \exp(\tilde{\eta} t) \tilde{e}(x).$$</p>
+
+<p>The solution will necessarily satisfy</p>
+
+<p>$$E[S_t \tilde{e}X_t) | \mathcal{F}<em>t] = \exp[(t - \tau) \tilde{\eta}] S</em>{\tau} \tilde{e}(X_{\tau})$$</p>
+
+<p>for $t \ge \tau$. When the state space is finite, functions of $X$ are all vectors and the expectation operator is a matrix. In this case we are solving an eigen vector problem. Eigenvectors are unique only up to a scalar multiple. In general state space models we have to solve the associated eigen-function problem and we might end up with multiple solutions, each unique only up to a scalar multiple. When we do have a solution, we will define a process $\tilde{H}$ as</p>
+
+<p>$$\frac{\tilde{H}_t}{\tilde{H}_0} = \exp(- \tilde{\eta} t) S_t \frac{\tilde{e}(X_t)}{\tilde{e}(X_0)}.$$</p>
+
+<p>The process $\tilde{H}$ is an $\mathcal{F}$ martingale under $P$. This construction of $\tilde{H}$ may not be unique, but if we impose the restriction that $X$ is stationary and ergodic under the implied change of measure, then there can be at most one such $\tilde{H}$ (uniqueness, but not necessarily existence).</p>
+
+<p>Recall that $\tilde{H} = 1$ if and only if we restrict the form of the SDF. This leads us to a proposition</p>
+
+<p><strong>Proposition 6.2</strong>: $S$ satisfies functional form restriction if and only if there exists a solution $\tilde{e} &gt;0$ to the Perron-Frobenius problem and the associated $\tilde{\eta}% such that</p>
+
+<p>$$\frac{\tilde{H}_t}{\tilde{H}_0} = \exp(- \tilde{\eta} t) S_t \frac{\tilde{e}(X_t)}{\tilde{e}(X_0)} \equiv 1.$$</p>
+
+<p><em>This proposition means that if the Perron-Frobenius problem has a solution where $\tilde{H} =1$, then the only measure that can be recovered is $P$. However, if $S$ contains a martingale component $\tilde{H} \ne 1$ (generally true) then $\tilde{P} \ne P$ is the measure that is recovered by solving the Perron-Frobenius problem.</em> In other words, without the restriction on the functional form of $S$, the recovery procedure will not identify the actual probability measure, but will instead recover $\tilde{P}$ implied by $\tilde{H}$. The associated SDF is</p>
+
+<p>$$\tilde{S}_t = S_t \frac{\tilde{H}_0}{\tilde{H}_t} = \exp(\tilde{\eta} t) \frac{\tilde{e}(X_0)}{\tilde{e}(X_t)}$$</p>
+
+<p>There are two problems with the recovery procedure:</p>
+
+<ol>
+<li>The candidate solution for $\tilde{e}(x)$ may not be unique &ndash; addressed with ergodicity restriction</li>
+<li>Even if we do have a unique $\tilde{e}(x)$, the procedure may will not recover the true probability distribution unless we also impose functional form restriction on SDF.</li>
+</ol>
+
+<p><strong>NOTE: skipped from start of 6.3 to start of 8</strong></p>
+
+<h3 id="quantitative-example:2fbf0d07e43ce036739ad1a66f109e70">Quantitative example</h3>
+
+<p>How to twist:</p>
+
+<ul>
+<li>Must solve PDE for value function and then with that in hand PDE for SDF.</li>
+<li>After those are ready, go to Perron-Frobenius problem and get PDE $\mathcbb(S)e = \eta e$, where the generator is given in appendix D.1. This will put $e$ and $\eta$ in terms of $\alpha_s$ and other parameters. The $\alpha_s$ was solved for above.</li>
+<li>Then we can solve for our martingale $d \log H_t$. This will be in terms of model parameters and the $e$ and $\eta$ solution.</li>
+<li>With this in hand, we can now just adjust the law of motion for the states by writing them in terms of the recovered (twisted) Brownian motion.</li>
+<li>Done.</li>
+</ul>
+
+</div>
+
+
+  <footer class="container">
+  <div class="container navigation no-print">
+  <h2>Navigation</h2>
+  
+  
+
+    
+    <a class="prev" href="http://notes.spencerlyon.com/2015/04/09/using-pandoc/" title="Using Pandoc">
+      Previous
+    </a>
+    
+
+    
+    <a class="next" href="http://notes.spencerlyon.com/2015/05/05/shock-elasticities/" title="Shock Elasticities">
+      Next
+    </a>
+    
+
+  
+
+
+</div>
+
+  <div class="container comments">
+  <h2>Comments</h2>
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//sglyon.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+</article>
+      <footer id="main-footer" class="container main_footer">
+  <script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+  <div class="container nav foot no-print">
+  
+
+  <a class="toplink" href="#">back to top</a>
+
+</div>
+
+  <div class="container credits">
+  
+<div class="container footline">
+  
+
+</div>
+
+
+  
+<div class="container copyright">
+  
+  &copy; 2015 Spencer Lyon.
+
+
+</div>
+
+
+</div>
+
+</footer>
+
+    </main>
+    
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//sglyon.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+<script src="http://notes.spencerlyon.com/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+    
+  </body>
+</html>
+

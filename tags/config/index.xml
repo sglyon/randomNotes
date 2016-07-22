@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Config on Random Notes</title>
+    <link>http://notes.spencerlyon.com/tags/config/</link>
+    <description>Recent content in Config on Random Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-EN</language>
+    <managingEditor>spencer.lyon@stern.nyu.edu (Spencer Lyon)</managingEditor>
+    <webMaster>spencer.lyon@stern.nyu.edu (Spencer Lyon)</webMaster>
+    <copyright>(c) 2015 Spencer Lyon.</copyright>
+    <lastBuildDate>Thu, 09 Apr 2015 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://notes.spencerlyon.com/tags/config/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Using Pandoc</title>
+      <link>http://notes.spencerlyon.com/2015/04/09/using-pandoc/</link>
+      <pubDate>Thu, 09 Apr 2015 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2015/04/09/using-pandoc/</guid>
+      <description>&lt;p&gt;I have tweaked my pandoc settings. They are mostly a copy of &lt;a href=&#34;https://github.com/kjhealy/pandoc-templates&#34;&gt;Keiran Healy&amp;rsquo;s&lt;/a&gt; settings, but I have made a few modifications.&lt;/p&gt;
+
+&lt;p&gt;These are the steps I took to get things working how I wanted to:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;git clone git@github.com:kjhealy/pandoc-templates.git&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;that directory into &lt;code&gt;~/.pandoc&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;s&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt; :See the readme for &lt;a href=&#34;https://github.com/spencerlyon2/pandoc-templates&#34;&gt;my pandoc-templates&lt;/a&gt; repo&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
