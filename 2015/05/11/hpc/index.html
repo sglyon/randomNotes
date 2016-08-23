@@ -185,12 +185,12 @@
   <div class="container content">
   
 
-<h1 id="julia-and-mercer">Julia and mercer</h1>
+<h1 id="julia-and-mercer:ff48448d64372c17f3e0867e116b4b29">Julia and mercer</h1>
 
 <p>Here are some tips, tricks I&rsquo;ve picked up for working with Julia on NYUs super
 computer.</p>
 
-<h2 id="installing-julia">Installing Julia</h2>
+<h2 id="installing-julia:ff48448d64372c17f3e0867e116b4b29">Installing Julia</h2>
 
 <p>I have a shell script that I periodically run to download the latest released
 version of Julia:</p>
@@ -219,14 +219,14 @@ my julia installation I do <code>bash $WORK/bin/update_julia</code>.</p>
 <p>This script will put the Julia binary in <code>$WORK/bin/julia</code> (that&rsquo;s what I enter
 to run Julia.)</p>
 
-<h2 id="installing-specific-packages">Installing specific packages</h2>
+<h2 id="installing-specific-packages:ff48448d64372c17f3e0867e116b4b29">Installing specific packages</h2>
 
 <p>Most packages are installable using either <code>Pkg.clone</code> or <code>Pkg.add</code>. However,
 some require extra setup.</p>
 
 <p>Here are specailized instructions for installing specific packages.</p>
 
-<h3 id="hdf5-jl">HDF5.jl</h3>
+<h3 id="hdf5-jl:ff48448d64372c17f3e0867e116b4b29">HDF5.jl</h3>
 
 <p>I first tried <code>Pkg.add(&quot;HDF5&quot;)</code>. That didn&rsquo;t work. The problem is that I don&rsquo;t
 have access to a package manager on mercer, so I need to link against libhdf5
@@ -261,7 +261,7 @@ will work without a problem.</p>
 
 <p>You do <strong>not</strong> need to run <code>Pkg.build(&quot;HDF5&quot;)</code> after updating deps.jl</p>
 
-<h3 id="mbedtls-jl">MbedTLS.jl</h3>
+<h3 id="mbedtls-jl:ff48448d64372c17f3e0867e116b4b29">MbedTLS.jl</h3>
 
 <p>If you need to install MbedTLS.jl or if it is a dependency of something else
 you need to install, you will probably see an error about <code>cmake</code> not being
@@ -272,7 +272,7 @@ start Julia in that same session, and try <code>Pkg.add(&quot;MbedTLS&quot;)</co
 <code>Pkg.build(&quot;MbedTLS&quot;)</code> again (run <code>Pkg.build</code> if you already tried <code>Pkg.add</code>
 and it failed).</p>
 
-<h1 id="mpi-jobs">MPI jobs</h1>
+<h1 id="mpi-jobs:ff48448d64372c17f3e0867e116b4b29">MPI jobs</h1>
 
 <p>I got this script from <a href="http://csc.cnsi.ucsb.edu/docs/running-jobs-torque">here</a></p>
 
@@ -315,7 +315,7 @@ mpirun -np $NO_OF_CORES -machinefile nodes ./pi3 &gt;&amp; log
 <li><a href="https://wiki.anl.gov/cnm/HPC/Submitting_and_Managing_Jobs/Example_Job_Script">https://wiki.anl.gov/cnm/HPC/Submitting_and_Managing_Jobs/Example_Job_Script</a></li>
 </ul>
 
-<h2 id="julia-on-a-cluster">Julia on a cluster</h2>
+<h2 id="julia-on-a-cluster:ff48448d64372c17f3e0867e116b4b29">Julia on a cluster</h2>
 
 <p>I can&rsquo;t just do <code>julia -p N</code> or <code>addprocs(N)</code> to get it to work. That would
 give me <code>N</code> procs on the login node. What I need instead is to use the
@@ -383,7 +383,7 @@ parameterization I am working with.</p>
 <p>The comment at the end is simply there as a placeholder for you to put the code
 that actually does the work.</p>
 
-<h1 id="sharing-folders">Sharing folders</h1>
+<h1 id="sharing-folders:ff48448d64372c17f3e0867e116b4b29">Sharing folders</h1>
 
 <p>To share a folder <code>/scratch/sgl290/awesomeness</code> with user <code>abc123</code> I would need
 to enter the following commands on mercer:</p>

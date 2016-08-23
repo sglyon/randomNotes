@@ -189,11 +189,11 @@
   <div class="container content">
   
 
-<h1 id="cloud:b4b4b2a2fd994675c7f6b325e6b2a679">Cloud</h1>
+<h1 id="cloud">Cloud</h1>
 
-<h2 id="aws:b4b4b2a2fd994675c7f6b325e6b2a679">AWS</h2>
+<h2 id="aws">AWS</h2>
 
-<h3 id="persistent-notebook:b4b4b2a2fd994675c7f6b325e6b2a679">Persistent notebook</h3>
+<h3 id="persistent-notebook">Persistent notebook</h3>
 
 <p>I have a persistent instance running.</p>
 
@@ -213,15 +213,15 @@
 
 <p>I needed to add the <code>IJulia all tcp</code> security group to the instance through the AWS online management console.</p>
 
-<h4 id="new-user:b4b4b2a2fd994675c7f6b325e6b2a679">new user</h4>
+<h4 id="new-user">new user</h4>
 
 <p>I made a new user here by following the ideas <a href="http://brianflove.com/2013/06/18/add-new-sudo-user-to-ec2-ubuntu/">here</a></p>
 
-<h4 id="mounting-a-volume:b4b4b2a2fd994675c7f6b325e6b2a679">Mounting a volume</h4>
+<h4 id="mounting-a-volume">Mounting a volume</h4>
 
 <p>I mounted a volume to <code>~/storage</code> (<code>sudo mount /dev/xvdf /home/sglyon/storage)</code>, but didn&rsquo;t have permission to do anything. To fix that I chowned it: <code>sudo chown -R sglyon ~/storage</code></p>
 
-<h2 id="gce:b4b4b2a2fd994675c7f6b325e6b2a679">GCE</h2>
+<h2 id="gce">GCE</h2>
 
 <p>First step is to install the tools. This is a one time thing where I enter this command:</p>
 
@@ -235,7 +235,7 @@
 <pre><code>$HOME/google-cloud-sdk/bin
 </code></pre>
 
-<h3 id="julia-and-gce:b4b4b2a2fd994675c7f6b325e6b2a679">Julia and GCE</h3>
+<h3 id="julia-and-gce">Julia and GCE</h3>
 
 <p>I (partially) followed <a href="http://www.blog.juliaferraioli.com/2013/12/julia-on-google-compute-engine.html">this blog post</a> to get things started.</p>
 
@@ -263,7 +263,7 @@
 <pre><code>gcloud compute --project &quot;sgl-julia&quot; disks delete &quot;instance-1&quot; --zone &quot;us-central1-b&quot;
 </code></pre>
 
-<h4 id="writing-the-package:b4b4b2a2fd994675c7f6b325e6b2a679">Writing the package</h4>
+<h4 id="writing-the-package">Writing the package</h4>
 
 <p>I had to install <a href="https://github.com/markcarver/mac-ssh-askpass">this script</a> in order for ssh to work. I did the following:</p>
 

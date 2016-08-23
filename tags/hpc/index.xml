@@ -20,12 +20,12 @@
       <guid>http://notes.spencerlyon.com/2015/05/11/hpc/</guid>
       <description>
 
-&lt;h1 id=&#34;julia-and-mercer&#34;&gt;Julia and mercer&lt;/h1&gt;
+&lt;h1 id=&#34;julia-and-mercer:ff48448d64372c17f3e0867e116b4b29&#34;&gt;Julia and mercer&lt;/h1&gt;
 
 &lt;p&gt;Here are some tips, tricks I&amp;rsquo;ve picked up for working with Julia on NYUs super
 computer.&lt;/p&gt;
 
-&lt;h2 id=&#34;installing-julia&#34;&gt;Installing Julia&lt;/h2&gt;
+&lt;h2 id=&#34;installing-julia:ff48448d64372c17f3e0867e116b4b29&#34;&gt;Installing Julia&lt;/h2&gt;
 
 &lt;p&gt;I have a shell script that I periodically run to download the latest released
 version of Julia:&lt;/p&gt;
@@ -54,14 +54,14 @@ my julia installation I do &lt;code&gt;bash $WORK/bin/update_julia&lt;/code&gt;.
 &lt;p&gt;This script will put the Julia binary in &lt;code&gt;$WORK/bin/julia&lt;/code&gt; (that&amp;rsquo;s what I enter
 to run Julia.)&lt;/p&gt;
 
-&lt;h2 id=&#34;installing-specific-packages&#34;&gt;Installing specific packages&lt;/h2&gt;
+&lt;h2 id=&#34;installing-specific-packages:ff48448d64372c17f3e0867e116b4b29&#34;&gt;Installing specific packages&lt;/h2&gt;
 
 &lt;p&gt;Most packages are installable using either &lt;code&gt;Pkg.clone&lt;/code&gt; or &lt;code&gt;Pkg.add&lt;/code&gt;. However,
 some require extra setup.&lt;/p&gt;
 
 &lt;p&gt;Here are specailized instructions for installing specific packages.&lt;/p&gt;
 
-&lt;h3 id=&#34;hdf5-jl&#34;&gt;HDF5.jl&lt;/h3&gt;
+&lt;h3 id=&#34;hdf5-jl:ff48448d64372c17f3e0867e116b4b29&#34;&gt;HDF5.jl&lt;/h3&gt;
 
 &lt;p&gt;I first tried &lt;code&gt;Pkg.add(&amp;quot;HDF5&amp;quot;)&lt;/code&gt;. That didn&amp;rsquo;t work. The problem is that I don&amp;rsquo;t
 have access to a package manager on mercer, so I need to link against libhdf5
@@ -96,7 +96,7 @@ will work without a problem.&lt;/p&gt;
 
 &lt;p&gt;You do &lt;strong&gt;not&lt;/strong&gt; need to run &lt;code&gt;Pkg.build(&amp;quot;HDF5&amp;quot;)&lt;/code&gt; after updating deps.jl&lt;/p&gt;
 
-&lt;h3 id=&#34;mbedtls-jl&#34;&gt;MbedTLS.jl&lt;/h3&gt;
+&lt;h3 id=&#34;mbedtls-jl:ff48448d64372c17f3e0867e116b4b29&#34;&gt;MbedTLS.jl&lt;/h3&gt;
 
 &lt;p&gt;If you need to install MbedTLS.jl or if it is a dependency of something else
 you need to install, you will probably see an error about &lt;code&gt;cmake&lt;/code&gt; not being
@@ -107,7 +107,7 @@ start Julia in that same session, and try &lt;code&gt;Pkg.add(&amp;quot;MbedTLS&
 &lt;code&gt;Pkg.build(&amp;quot;MbedTLS&amp;quot;)&lt;/code&gt; again (run &lt;code&gt;Pkg.build&lt;/code&gt; if you already tried &lt;code&gt;Pkg.add&lt;/code&gt;
 and it failed).&lt;/p&gt;
 
-&lt;h1 id=&#34;mpi-jobs&#34;&gt;MPI jobs&lt;/h1&gt;
+&lt;h1 id=&#34;mpi-jobs:ff48448d64372c17f3e0867e116b4b29&#34;&gt;MPI jobs&lt;/h1&gt;
 
 &lt;p&gt;I got this script from &lt;a href=&#34;http://csc.cnsi.ucsb.edu/docs/running-jobs-torque&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
 
@@ -150,7 +150,7 @@ mpirun -np $NO_OF_CORES -machinefile nodes ./pi3 &amp;gt;&amp;amp; log
 &lt;li&gt;&lt;a href=&#34;https://wiki.anl.gov/cnm/HPC/Submitting_and_Managing_Jobs/Example_Job_Script&#34;&gt;https://wiki.anl.gov/cnm/HPC/Submitting_and_Managing_Jobs/Example_Job_Script&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;julia-on-a-cluster&#34;&gt;Julia on a cluster&lt;/h2&gt;
+&lt;h2 id=&#34;julia-on-a-cluster:ff48448d64372c17f3e0867e116b4b29&#34;&gt;Julia on a cluster&lt;/h2&gt;
 
 &lt;p&gt;I can&amp;rsquo;t just do &lt;code&gt;julia -p N&lt;/code&gt; or &lt;code&gt;addprocs(N)&lt;/code&gt; to get it to work. That would
 give me &lt;code&gt;N&lt;/code&gt; procs on the login node. What I need instead is to use the
@@ -218,7 +218,7 @@ parameterization I am working with.&lt;/p&gt;
 &lt;p&gt;The comment at the end is simply there as a placeholder for you to put the code
 that actually does the work.&lt;/p&gt;
 
-&lt;h1 id=&#34;sharing-folders&#34;&gt;Sharing folders&lt;/h1&gt;
+&lt;h1 id=&#34;sharing-folders:ff48448d64372c17f3e0867e116b4b29&#34;&gt;Sharing folders&lt;/h1&gt;
 
 &lt;p&gt;To share a folder &lt;code&gt;/scratch/sgl290/awesomeness&lt;/code&gt; with user &lt;code&gt;abc123&lt;/code&gt; I would need
 to enter the following commands on mercer:&lt;/p&gt;

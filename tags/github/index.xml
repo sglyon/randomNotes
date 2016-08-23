@@ -73,6 +73,19 @@ used was&lt;/p&gt;
 &lt;p&gt;To update the notebook, simply put a new version of it into that &lt;code&gt;notebook_gist&lt;/code&gt; repo, commit, and push. The changes should go live on nbviewer.&lt;/p&gt;
 
 &lt;p&gt;If you aren&amp;rsquo;t seeing an updated version of the notebook after pushing to the gist repo, you might need to visit the url in private mode or reset the browser cache.&lt;/p&gt;
+
+&lt;h2 id=&#34;checking-out-pull-requests:93ed8abeb42c248f3c551d1cb44159d4&#34;&gt;Checking out pull requests&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://gist.github.com/piscisaureus/3342247&#34;&gt;This gist&lt;/a&gt; explains how to add to the &lt;code&gt;.git/config&lt;/code&gt; file inside a git repo so you can check out pull requests from the remote as if they were branches on the remote.&lt;/p&gt;
+
+&lt;p&gt;The tl;dr version is add the following to the file &lt;code&gt;.git/config&lt;/code&gt; within your repo:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;fetch = +refs/pull/*/head:refs/remotes/origin/pr/*
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;where &lt;code&gt;origin&lt;/code&gt; is the name of the remote.&lt;/p&gt;
+
+&lt;p&gt;Then you can do &lt;code&gt;git fetch origin&lt;/code&gt; and &lt;code&gt;git checkout pr/XX&lt;/code&gt; where &lt;code&gt;XX&lt;/code&gt; is the pull request number.&lt;/p&gt;
 </description>
     </item>
     

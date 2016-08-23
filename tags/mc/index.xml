@@ -22,11 +22,11 @@
 
 &lt;p&gt;This is part 2 in the reinforcement learning for economists notes. For part 1 see &lt;a href=&#34;http://notes.spencerlyon.com/2016/06/29/reinforcement-learning-intro/&#34;&gt;Reinforcement Learning Intro&lt;/a&gt;. For a list of all entries in the series go &lt;a href=&#34;http://notes.spencerlyon.com/series/reinforcement-learning&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;monte-carlo-methods&#34;&gt;Monte Carlo methods&lt;/h2&gt;
+&lt;h2 id=&#34;monte-carlo-methods:964a223c8e04568e33b563cd2d9e42fe&#34;&gt;Monte Carlo methods&lt;/h2&gt;
 
 &lt;p&gt;As defined in &lt;a href=&#34;http://notes.spencerlyon.com/2016/06/29/reinforcement-learning-intro/&#34;&gt;Reinforcement Learning Intro&lt;/a&gt; &lt;em&gt;GPI&lt;/em&gt; encompasses the core ideas for all the RL algorithms in this book. One family of such algorithms is Monte Carlo (MC) methods. One distinguishing feature of these methods is that they can be implemented in a completely &lt;strong&gt;model-free&lt;/strong&gt; way. This means that to apply them we need to know nothing about the dynamics of the model; we simply need to be able to observe sequences of states, actions, and rewards.&lt;/p&gt;
 
-&lt;h3 id=&#34;prediciton-methods&#34;&gt;Prediciton methods&lt;/h3&gt;
+&lt;h3 id=&#34;prediciton-methods:964a223c8e04568e33b563cd2d9e42fe&#34;&gt;Prediciton methods&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;Monte Carlo prediciton&lt;/strong&gt; is a method for learning the state-value function for a given policy. The algorithm is given by:&lt;/p&gt;
 
@@ -34,7 +34,7 @@
 
 &lt;p&gt;Notice that the MC prediction algorithm does not update any estimates of the value function until &lt;em&gt;after&lt;/em&gt; the entire episode is realized. In this sense we would say that the method does not &lt;strong&gt;bootstrap&lt;/strong&gt;, meaning it does not use approximations of the value in other states to update the value in a particular state (value iteration is bootstrapping).&lt;/p&gt;
 
-&lt;h3 id=&#34;control-methods&#34;&gt;Control methods&lt;/h3&gt;
+&lt;h3 id=&#34;control-methods:964a223c8e04568e33b563cd2d9e42fe&#34;&gt;Control methods&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;Monte Carlo control&lt;/strong&gt; is an iterative algorithm where each iteration contains a Monte Carlo prediction step followed by a policy improvment step. The improvement step is simply done by making the policy greedy with the predicted value function.&lt;/p&gt;
 
@@ -67,7 +67,7 @@
 
 &lt;p&gt;&lt;img src=&#34;http://notes.spencerlyon.com/on_policy_eps_soft_mc_control.png&#34; alt=&#34;On-policy first-visit MC control&#34; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;importance-sampling&#34;&gt;Importance sampling&lt;/h3&gt;
+&lt;h3 id=&#34;importance-sampling:964a223c8e04568e33b563cd2d9e42fe&#34;&gt;Importance sampling&lt;/h3&gt;
 
 &lt;p&gt;This section will include more prediction and control methods, but is an important enough concept that it deserves its own section.&lt;/p&gt;
 </description>

@@ -20,11 +20,11 @@
       <guid>http://notes.spencerlyon.com/2014/10/05/cloud-tips/</guid>
       <description>
 
-&lt;h1 id=&#34;cloud:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;Cloud&lt;/h1&gt;
+&lt;h1 id=&#34;cloud&#34;&gt;Cloud&lt;/h1&gt;
 
-&lt;h2 id=&#34;aws:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;AWS&lt;/h2&gt;
+&lt;h2 id=&#34;aws&#34;&gt;AWS&lt;/h2&gt;
 
-&lt;h3 id=&#34;persistent-notebook:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;Persistent notebook&lt;/h3&gt;
+&lt;h3 id=&#34;persistent-notebook&#34;&gt;Persistent notebook&lt;/h3&gt;
 
 &lt;p&gt;I have a persistent instance running.&lt;/p&gt;
 
@@ -44,15 +44,15 @@
 
 &lt;p&gt;I needed to add the &lt;code&gt;IJulia all tcp&lt;/code&gt; security group to the instance through the AWS online management console.&lt;/p&gt;
 
-&lt;h4 id=&#34;new-user:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;new user&lt;/h4&gt;
+&lt;h4 id=&#34;new-user&#34;&gt;new user&lt;/h4&gt;
 
 &lt;p&gt;I made a new user here by following the ideas &lt;a href=&#34;http://brianflove.com/2013/06/18/add-new-sudo-user-to-ec2-ubuntu/&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;mounting-a-volume:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;Mounting a volume&lt;/h4&gt;
+&lt;h4 id=&#34;mounting-a-volume&#34;&gt;Mounting a volume&lt;/h4&gt;
 
 &lt;p&gt;I mounted a volume to &lt;code&gt;~/storage&lt;/code&gt; (&lt;code&gt;sudo mount /dev/xvdf /home/sglyon/storage)&lt;/code&gt;, but didn&amp;rsquo;t have permission to do anything. To fix that I chowned it: &lt;code&gt;sudo chown -R sglyon ~/storage&lt;/code&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;gce:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;GCE&lt;/h2&gt;
+&lt;h2 id=&#34;gce&#34;&gt;GCE&lt;/h2&gt;
 
 &lt;p&gt;First step is to install the tools. This is a one time thing where I enter this command:&lt;/p&gt;
 
@@ -66,7 +66,7 @@
 &lt;pre&gt;&lt;code&gt;$HOME/google-cloud-sdk/bin
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;julia-and-gce:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;Julia and GCE&lt;/h3&gt;
+&lt;h3 id=&#34;julia-and-gce&#34;&gt;Julia and GCE&lt;/h3&gt;
 
 &lt;p&gt;I (partially) followed &lt;a href=&#34;http://www.blog.juliaferraioli.com/2013/12/julia-on-google-compute-engine.html&#34;&gt;this blog post&lt;/a&gt; to get things started.&lt;/p&gt;
 
@@ -94,7 +94,7 @@
 &lt;pre&gt;&lt;code&gt;gcloud compute --project &amp;quot;sgl-julia&amp;quot; disks delete &amp;quot;instance-1&amp;quot; --zone &amp;quot;us-central1-b&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;writing-the-package:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;Writing the package&lt;/h4&gt;
+&lt;h4 id=&#34;writing-the-package&#34;&gt;Writing the package&lt;/h4&gt;
 
 &lt;p&gt;I had to install &lt;a href=&#34;https://github.com/markcarver/mac-ssh-askpass&#34;&gt;this script&lt;/a&gt; in order for ssh to work. I did the following:&lt;/p&gt;
 

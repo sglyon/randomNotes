@@ -5,7 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <title>Rust  &middot; Random Notes</title>
+  <title>Temporal-Difference methods  &middot; Random Notes</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
@@ -14,25 +14,27 @@
 
 <meta name="description" content="" />
 
-<meta name="keywords" content="tips, rust, ">
+<meta name="keywords" content="TD, RL, algorithms, ">
 
 
-<meta property="og:title" content="Rust  &middot; Random Notes ">
+<meta property="og:title" content="Temporal-Difference methods  &middot; Random Notes ">
 <meta property="og:site_name" content="Random Notes"/>
-<meta property="og:url" content="http://notes.spencerlyon.com/2016/06/01/rust/" />
+<meta property="og:url" content="http://notes.spencerlyon.com/2016/06/29/temporal-difference-methods/" />
 <meta property="og:locale" content="en-EN">
 
 
 <meta property="og:type" content="article" />
 <meta property="og:description" content=""/>
-<meta property="og:article:published_time" content="2016-06-01T00:00:00Z" />
-<meta property="og:article:modified_time" content="2016-06-01T00:00:00Z" />
+<meta property="og:article:published_time" content="2016-06-29T00:00:00Z" />
+<meta property="og:article:modified_time" content="2016-06-29T00:00:00Z" />
 
   
     
-<meta property="og:article:tag" content="tips">
+<meta property="og:article:tag" content="TD">
     
-<meta property="og:article:tag" content="rust">
+<meta property="og:article:tag" content="RL">
+    
+<meta property="og:article:tag" content="algorithms">
     
   
 
@@ -40,9 +42,9 @@
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@" />
 <meta name="twitter:creator" content="@" />
-<meta name="twitter:title" content="Rust" />
+<meta name="twitter:title" content="Temporal-Difference methods" />
 <meta name="twitter:description" content="" />
-<meta name="twitter:url" content="http://notes.spencerlyon.com/2016/06/01/rust/" />
+<meta name="twitter:url" content="http://notes.spencerlyon.com/2016/06/29/temporal-difference-methods/" />
 <meta name="twitter:domain" content="http://notes.spencerlyon.com/">
   
 
@@ -50,20 +52,20 @@
   {
     "@context": "http://schema.org",
     "@type": "Article",
-    "headline": "Rust",
+    "headline": "Temporal-Difference methods",
     "author": {
       "@type": "Person",
       "name": "http://profiles.google.com/+?rel=author"
     },
-    "datePublished": "2016-06-01",
+    "datePublished": "2016-06-29",
     "description": "",
-    "wordCount":  28 
+    "wordCount":  133 
   }
 </script>
 
 
 
-<link rel="canonical" href="http://notes.spencerlyon.com/2016/06/01/rust/" />
+<link rel="canonical" href="http://notes.spencerlyon.com/2016/06/29/temporal-difference-methods/" />
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://notes.spencerlyon.com/touch-icon-144-precomposed.png">
 <link href="http://notes.spencerlyon.com/favicon.png" rel="icon">
@@ -154,23 +156,25 @@
 
 <article id="main-content" class="container main_content single">
   <header class="container hat">
-  <h1>Rust
+  <h1>Temporal-Difference methods
 </h1>
 
   <div class="metas">
-<time datetime="2016-06-01">1 Jun, 2016</time>
+<time datetime="2016-06-29">29 Jun, 2016</time>
 
 
   
     &middot; by Spencer Lyon
   
   &middot; Read in about 1 min
-  &middot; (28 Words)
+  &middot; (133 Words)
   <br>
   
-<a class="label" href="http://notes.spencerlyon.com/tags/tips">tips</a>
+<a class="label" href="http://notes.spencerlyon.com/tags/td">TD</a>
 
-<a class="label" href="http://notes.spencerlyon.com/tags/rust">rust</a>
+<a class="label" href="http://notes.spencerlyon.com/tags/rl">RL</a>
+
+<a class="label" href="http://notes.spencerlyon.com/tags/algorithms">algorithms</a>
 
 
 
@@ -181,15 +185,21 @@
   <div class="container content">
   
 
-<h2 id="openssl:d3c7600f67cc433a55785816ff4c3a47">openssl</h2>
+<p>This is part 3 in the reinforcement learning for economists notes. For part 1 see <a href="/2016/06/29/reinforcement-learning-intro/">Reinforcement Learning Intro</a>. For a list of all entries in the series go <a href="/series/reinforcement-learning">here</a></p>
 
-<p>I couldn&rsquo;t get any cargo projects that depend on open ssl to build. I just did:</p>
+<h2 id="temporal-difference-methods:da6883fa7b910696263cbcc1c81deb69">Temporal Difference methods</h2>
 
-<pre><code>brew install openssl
-brew link --force openssl
-</code></pre>
+<p>We continue our study of applying <strong>GPI</strong> to the RL problem by looking now at <strong>temporal difference (TD)</strong> methods.</p>
 
-<p>Answer came from <a href="https://github.com/sfackler/rust-openssl/issues/255#issuecomment-145092826">here</a>)</p>
+<h3 id="one-step-td-td-0:da6883fa7b910696263cbcc1c81deb69">One step TD (TD(0))</h3>
+
+<!-- TODO: clean this exposition up -- it's not well written -->
+
+<p>Let&rsquo;s begin our exploration of TD methods by considering the problem of evaluating or predicting the state-value function $V(s)$. The simplest TD algorithm will update $V(s)$ according to the following rule:</p>
+
+<p>$$V(s) \leftarrow V(s) + \alpha \left[G - V(S) \right],$$</p>
+
+<p>where $G$ is the return from state $s$. The term in the brackets is the difference between the actual reward in state $s$ ($G$) and the current estimate of that reward ($V(s)$) and is called the temporal difference.</p>
 
 </div>
 
@@ -201,13 +211,13 @@ brew link --force openssl
   
 
     
-    <a class="prev" href="http://notes.spencerlyon.com/2016/01/04/github-pro-tips/" title="GitHub pro tips">
+    <a class="prev" href="http://notes.spencerlyon.com/2016/06/01/rust/" title="Rust">
       Previous
     </a>
     
 
     
-    <a class="next" href="http://notes.spencerlyon.com/2016/06/29/temporal-difference-methods/" title="Temporal-Difference methods">
+    <a class="next" href="http://notes.spencerlyon.com/2016/06/29/reinforcement-learning-intro/" title="Reinforcement Learning Intro">
       Next
     </a>
     

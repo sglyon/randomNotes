@@ -22,11 +22,11 @@
 
 &lt;p&gt;This is part 2 in the reinforcement learning for economists notes. For part 1 see &lt;a href=&#34;http://notes.spencerlyon.com/2016/06/29/reinforcement-learning-intro/&#34;&gt;Reinforcement Learning Intro&lt;/a&gt;. For a list of all entries in the series go &lt;a href=&#34;http://notes.spencerlyon.com/series/reinforcement-learning&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;monte-carlo-methods&#34;&gt;Monte Carlo methods&lt;/h2&gt;
+&lt;h2 id=&#34;monte-carlo-methods:964a223c8e04568e33b563cd2d9e42fe&#34;&gt;Monte Carlo methods&lt;/h2&gt;
 
 &lt;p&gt;As defined in &lt;a href=&#34;http://notes.spencerlyon.com/2016/06/29/reinforcement-learning-intro/&#34;&gt;Reinforcement Learning Intro&lt;/a&gt; &lt;em&gt;GPI&lt;/em&gt; encompasses the core ideas for all the RL algorithms in this book. One family of such algorithms is Monte Carlo (MC) methods. One distinguishing feature of these methods is that they can be implemented in a completely &lt;strong&gt;model-free&lt;/strong&gt; way. This means that to apply them we need to know nothing about the dynamics of the model; we simply need to be able to observe sequences of states, actions, and rewards.&lt;/p&gt;
 
-&lt;h3 id=&#34;prediciton-methods&#34;&gt;Prediciton methods&lt;/h3&gt;
+&lt;h3 id=&#34;prediciton-methods:964a223c8e04568e33b563cd2d9e42fe&#34;&gt;Prediciton methods&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;Monte Carlo prediciton&lt;/strong&gt; is a method for learning the state-value function for a given policy. The algorithm is given by:&lt;/p&gt;
 
@@ -34,7 +34,7 @@
 
 &lt;p&gt;Notice that the MC prediction algorithm does not update any estimates of the value function until &lt;em&gt;after&lt;/em&gt; the entire episode is realized. In this sense we would say that the method does not &lt;strong&gt;bootstrap&lt;/strong&gt;, meaning it does not use approximations of the value in other states to update the value in a particular state (value iteration is bootstrapping).&lt;/p&gt;
 
-&lt;h3 id=&#34;control-methods&#34;&gt;Control methods&lt;/h3&gt;
+&lt;h3 id=&#34;control-methods:964a223c8e04568e33b563cd2d9e42fe&#34;&gt;Control methods&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;Monte Carlo control&lt;/strong&gt; is an iterative algorithm where each iteration contains a Monte Carlo prediction step followed by a policy improvment step. The improvement step is simply done by making the policy greedy with the predicted value function.&lt;/p&gt;
 
@@ -67,7 +67,7 @@
 
 &lt;p&gt;&lt;img src=&#34;http://notes.spencerlyon.com/on_policy_eps_soft_mc_control.png&#34; alt=&#34;On-policy first-visit MC control&#34; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;importance-sampling&#34;&gt;Importance sampling&lt;/h3&gt;
+&lt;h3 id=&#34;importance-sampling:964a223c8e04568e33b563cd2d9e42fe&#34;&gt;Importance sampling&lt;/h3&gt;
 
 &lt;p&gt;This section will include more prediction and control methods, but is an important enough concept that it deserves its own section.&lt;/p&gt;
 </description>
@@ -138,6 +138,32 @@
 &lt;p&gt;&lt;strong&gt;Value-iteration&lt;/strong&gt; is another example of GPI where one iteration of the bellman operator is applied as a partial policy evaluation, followed by a full policy improvement.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Asynchronous DP algorithms&lt;/strong&gt; are modifications of policy or value iteration where you do not perform a full backup of the policy or value functions on each iteration (meaning you don&amp;rsquo;t update the policy and value functions for all states in every iteration). Instead, these methods vary in which states they update, using whatever values for other states happen to be available.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Temporal-Difference methods</title>
+      <link>http://notes.spencerlyon.com/2016/06/29/temporal-difference-methods/</link>
+      <pubDate>Wed, 29 Jun 2016 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/2016/06/29/temporal-difference-methods/</guid>
+      <description>
+
+&lt;p&gt;This is part 3 in the reinforcement learning for economists notes. For part 1 see &lt;a href=&#34;http://notes.spencerlyon.com/2016/06/29/reinforcement-learning-intro/&#34;&gt;Reinforcement Learning Intro&lt;/a&gt;. For a list of all entries in the series go &lt;a href=&#34;http://notes.spencerlyon.com/series/reinforcement-learning&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;temporal-difference-methods:da6883fa7b910696263cbcc1c81deb69&#34;&gt;Temporal Difference methods&lt;/h2&gt;
+
+&lt;p&gt;We continue our study of applying &lt;strong&gt;GPI&lt;/strong&gt; to the RL problem by looking now at &lt;strong&gt;temporal difference (TD)&lt;/strong&gt; methods.&lt;/p&gt;
+
+&lt;h3 id=&#34;one-step-td-td-0:da6883fa7b910696263cbcc1c81deb69&#34;&gt;One step TD (TD(0))&lt;/h3&gt;
+
+&lt;!-- TODO: clean this exposition up -- it&#39;s not well written --&gt;
+
+&lt;p&gt;Let&amp;rsquo;s begin our exploration of TD methods by considering the problem of evaluating or predicting the state-value function $V(s)$. The simplest TD algorithm will update $V(s)$ according to the following rule:&lt;/p&gt;
+
+&lt;p&gt;$$V(s) \leftarrow V(s) + \alpha \left[G - V(S) \right],$$&lt;/p&gt;
+
+&lt;p&gt;where $G$ is the return from state $s$. The term in the brackets is the difference between the actual reward in state $s$ ($G$) and the current estimate of that reward ($V(s)$) and is called the temporal difference.&lt;/p&gt;
 </description>
     </item>
     
@@ -222,6 +248,19 @@ used was&lt;/p&gt;
 &lt;p&gt;To update the notebook, simply put a new version of it into that &lt;code&gt;notebook_gist&lt;/code&gt; repo, commit, and push. The changes should go live on nbviewer.&lt;/p&gt;
 
 &lt;p&gt;If you aren&amp;rsquo;t seeing an updated version of the notebook after pushing to the gist repo, you might need to visit the url in private mode or reset the browser cache.&lt;/p&gt;
+
+&lt;h2 id=&#34;checking-out-pull-requests:93ed8abeb42c248f3c551d1cb44159d4&#34;&gt;Checking out pull requests&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://gist.github.com/piscisaureus/3342247&#34;&gt;This gist&lt;/a&gt; explains how to add to the &lt;code&gt;.git/config&lt;/code&gt; file inside a git repo so you can check out pull requests from the remote as if they were branches on the remote.&lt;/p&gt;
+
+&lt;p&gt;The tl;dr version is add the following to the file &lt;code&gt;.git/config&lt;/code&gt; within your repo:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;fetch = +refs/pull/*/head:refs/remotes/origin/pr/*
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;where &lt;code&gt;origin&lt;/code&gt; is the name of the remote.&lt;/p&gt;
+
+&lt;p&gt;Then you can do &lt;code&gt;git fetch origin&lt;/code&gt; and &lt;code&gt;git checkout pr/XX&lt;/code&gt; where &lt;code&gt;XX&lt;/code&gt; is the pull request number.&lt;/p&gt;
 </description>
     </item>
     
@@ -269,9 +308,9 @@ used was&lt;/p&gt;
       <guid>http://notes.spencerlyon.com/2015/09/05/notes-on-deterministic-difference-equations/</guid>
       <description>
 
-&lt;h1 id=&#34;deterministic-difference-equations&#34;&gt;Deterministic Difference Equations&lt;/h1&gt;
+&lt;h1 id=&#34;deterministic-difference-equations:574909179535890c815234db02dad66b&#34;&gt;Deterministic Difference Equations&lt;/h1&gt;
 
-&lt;h2 id=&#34;scalar-first-order-linear-equations&#34;&gt;Scalar First-Order Linear Equations&lt;/h2&gt;
+&lt;h2 id=&#34;scalar-first-order-linear-equations:574909179535890c815234db02dad66b&#34;&gt;Scalar First-Order Linear Equations&lt;/h2&gt;
 
 &lt;p&gt;The basic scalar first-order difference equation can be represented by:&lt;/p&gt;
 
@@ -338,7 +377,7 @@ used was&lt;/p&gt;
 &lt;p&gt;1) Whether the initial value is given : This determines whether $x_t$ is &lt;em&gt;predetermined&lt;/em&gt;.
 2) Whether $b$ is greater or less than 1 : This is determines whether the eigenvalue is stable.&lt;/p&gt;
 
-&lt;h2 id=&#34;lag-operators-and-scalar-second-order-linear-difference-equations&#34;&gt;Lag Operators and Scalar Second-Order Linear Difference Equations&lt;/h2&gt;
+&lt;h2 id=&#34;lag-operators-and-scalar-second-order-linear-difference-equations:574909179535890c815234db02dad66b&#34;&gt;Lag Operators and Scalar Second-Order Linear Difference Equations&lt;/h2&gt;
 
 &lt;p&gt;We now introduce an operator that is common in the economics literature and is known as the &lt;em&gt;lag operator&lt;/em&gt;. The lag operator, $L$, operates on a dynamics process ${x_t }$ in the following fashion:&lt;/p&gt;
 
@@ -381,7 +420,7 @@ used was&lt;/p&gt;
 &lt;li&gt;&lt;code&gt;$| \lambda_1 | &amp;lt; 1 &amp;lt; | \lambda_2 |$&lt;/code&gt; The solution for this case is known as the &lt;em&gt;saddle path solution&lt;/em&gt;. Then by sending &lt;code&gt;$(L^{-1} - \lambda_2)$&lt;/code&gt; to the RHS we can write &lt;code&gt;$$(L^{-1} - \lambda_1) x_t = - \frac{c}{\lambda_2} \frac{z_t}{(1 - \lambda_2^{-1} L^{-1})}$$&lt;/code&gt; which reduces to &lt;code&gt;$$x_{t+1} = \lambda_1 x_t -\frac{c}{\lambda_2} \sum_{j=0}^\infty \left( \frac{1}{\lambda_2} \right)^{j} z_{t + j}$$.&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;first-order-linear-systems&#34;&gt;First-Order Linear Systems&lt;/h2&gt;
+&lt;h2 id=&#34;first-order-linear-systems:574909179535890c815234db02dad66b&#34;&gt;First-Order Linear Systems&lt;/h2&gt;
 
 &lt;p&gt;We now consider first-order linear systems. We can write many higher order lineary systems down as a first-order linear system, so this will be the form that we consider&lt;/p&gt;
 
@@ -399,13 +438,13 @@ used was&lt;/p&gt;
 
 &lt;p&gt;We will assume that &lt;code&gt;$\{ z_t \}$&lt;/code&gt; is a stable sequence.&lt;/p&gt;
 
-&lt;h3 id=&#34;nonsingular-systems&#34;&gt;Nonsingular systems&lt;/h3&gt;
+&lt;h3 id=&#34;nonsingular-systems:574909179535890c815234db02dad66b&#34;&gt;Nonsingular systems&lt;/h3&gt;
 
 &lt;p&gt;Let $A$ be nonsingular then we can write our first-order linear system as&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;$$x_{t+1} = A^{-1} B x_t + A^{-1} C z_t$$&lt;/code&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+&lt;h2 id=&#34;references:574909179535890c815234db02dad66b&#34;&gt;References&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Jianjun Miao. &amp;laquo;Economic dynamics in discrete time.&amp;raquo; MIT Press. 2014.&lt;/li&gt;
@@ -450,12 +489,12 @@ used was&lt;/p&gt;
       <guid>http://notes.spencerlyon.com/2015/05/11/hpc/</guid>
       <description>
 
-&lt;h1 id=&#34;julia-and-mercer&#34;&gt;Julia and mercer&lt;/h1&gt;
+&lt;h1 id=&#34;julia-and-mercer:ff48448d64372c17f3e0867e116b4b29&#34;&gt;Julia and mercer&lt;/h1&gt;
 
 &lt;p&gt;Here are some tips, tricks I&amp;rsquo;ve picked up for working with Julia on NYUs super
 computer.&lt;/p&gt;
 
-&lt;h2 id=&#34;installing-julia&#34;&gt;Installing Julia&lt;/h2&gt;
+&lt;h2 id=&#34;installing-julia:ff48448d64372c17f3e0867e116b4b29&#34;&gt;Installing Julia&lt;/h2&gt;
 
 &lt;p&gt;I have a shell script that I periodically run to download the latest released
 version of Julia:&lt;/p&gt;
@@ -484,14 +523,14 @@ my julia installation I do &lt;code&gt;bash $WORK/bin/update_julia&lt;/code&gt;.
 &lt;p&gt;This script will put the Julia binary in &lt;code&gt;$WORK/bin/julia&lt;/code&gt; (that&amp;rsquo;s what I enter
 to run Julia.)&lt;/p&gt;
 
-&lt;h2 id=&#34;installing-specific-packages&#34;&gt;Installing specific packages&lt;/h2&gt;
+&lt;h2 id=&#34;installing-specific-packages:ff48448d64372c17f3e0867e116b4b29&#34;&gt;Installing specific packages&lt;/h2&gt;
 
 &lt;p&gt;Most packages are installable using either &lt;code&gt;Pkg.clone&lt;/code&gt; or &lt;code&gt;Pkg.add&lt;/code&gt;. However,
 some require extra setup.&lt;/p&gt;
 
 &lt;p&gt;Here are specailized instructions for installing specific packages.&lt;/p&gt;
 
-&lt;h3 id=&#34;hdf5-jl&#34;&gt;HDF5.jl&lt;/h3&gt;
+&lt;h3 id=&#34;hdf5-jl:ff48448d64372c17f3e0867e116b4b29&#34;&gt;HDF5.jl&lt;/h3&gt;
 
 &lt;p&gt;I first tried &lt;code&gt;Pkg.add(&amp;quot;HDF5&amp;quot;)&lt;/code&gt;. That didn&amp;rsquo;t work. The problem is that I don&amp;rsquo;t
 have access to a package manager on mercer, so I need to link against libhdf5
@@ -526,7 +565,7 @@ will work without a problem.&lt;/p&gt;
 
 &lt;p&gt;You do &lt;strong&gt;not&lt;/strong&gt; need to run &lt;code&gt;Pkg.build(&amp;quot;HDF5&amp;quot;)&lt;/code&gt; after updating deps.jl&lt;/p&gt;
 
-&lt;h3 id=&#34;mbedtls-jl&#34;&gt;MbedTLS.jl&lt;/h3&gt;
+&lt;h3 id=&#34;mbedtls-jl:ff48448d64372c17f3e0867e116b4b29&#34;&gt;MbedTLS.jl&lt;/h3&gt;
 
 &lt;p&gt;If you need to install MbedTLS.jl or if it is a dependency of something else
 you need to install, you will probably see an error about &lt;code&gt;cmake&lt;/code&gt; not being
@@ -537,7 +576,7 @@ start Julia in that same session, and try &lt;code&gt;Pkg.add(&amp;quot;MbedTLS&
 &lt;code&gt;Pkg.build(&amp;quot;MbedTLS&amp;quot;)&lt;/code&gt; again (run &lt;code&gt;Pkg.build&lt;/code&gt; if you already tried &lt;code&gt;Pkg.add&lt;/code&gt;
 and it failed).&lt;/p&gt;
 
-&lt;h1 id=&#34;mpi-jobs&#34;&gt;MPI jobs&lt;/h1&gt;
+&lt;h1 id=&#34;mpi-jobs:ff48448d64372c17f3e0867e116b4b29&#34;&gt;MPI jobs&lt;/h1&gt;
 
 &lt;p&gt;I got this script from &lt;a href=&#34;http://csc.cnsi.ucsb.edu/docs/running-jobs-torque&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
 
@@ -580,7 +619,7 @@ mpirun -np $NO_OF_CORES -machinefile nodes ./pi3 &amp;gt;&amp;amp; log
 &lt;li&gt;&lt;a href=&#34;https://wiki.anl.gov/cnm/HPC/Submitting_and_Managing_Jobs/Example_Job_Script&#34;&gt;https://wiki.anl.gov/cnm/HPC/Submitting_and_Managing_Jobs/Example_Job_Script&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;julia-on-a-cluster&#34;&gt;Julia on a cluster&lt;/h2&gt;
+&lt;h2 id=&#34;julia-on-a-cluster:ff48448d64372c17f3e0867e116b4b29&#34;&gt;Julia on a cluster&lt;/h2&gt;
 
 &lt;p&gt;I can&amp;rsquo;t just do &lt;code&gt;julia -p N&lt;/code&gt; or &lt;code&gt;addprocs(N)&lt;/code&gt; to get it to work. That would
 give me &lt;code&gt;N&lt;/code&gt; procs on the login node. What I need instead is to use the
@@ -648,7 +687,7 @@ parameterization I am working with.&lt;/p&gt;
 &lt;p&gt;The comment at the end is simply there as a placeholder for you to put the code
 that actually does the work.&lt;/p&gt;
 
-&lt;h1 id=&#34;sharing-folders&#34;&gt;Sharing folders&lt;/h1&gt;
+&lt;h1 id=&#34;sharing-folders:ff48448d64372c17f3e0867e116b4b29&#34;&gt;Sharing folders&lt;/h1&gt;
 
 &lt;p&gt;To share a folder &lt;code&gt;/scratch/sgl290/awesomeness&lt;/code&gt; with user &lt;code&gt;abc123&lt;/code&gt; I would need
 to enter the following commands on mercer:&lt;/p&gt;
@@ -716,9 +755,9 @@ awesomeness folder all sub files/folders.&lt;/p&gt;
       <guid>http://notes.spencerlyon.com/2015/01/29/scala-notes/</guid>
       <description>
 
-&lt;h1 id=&#34;scala&#34;&gt;Scala&lt;/h1&gt;
+&lt;h1 id=&#34;scala:1204e6e7d382e6899bda98d07e3dc5df&#34;&gt;Scala&lt;/h1&gt;
 
-&lt;h2 id=&#34;notes-from-functional-programming-in-scala&#34;&gt;Notes from &amp;laquo;Functional Programming in Scala&amp;raquo;&lt;/h2&gt;
+&lt;h2 id=&#34;notes-from-functional-programming-in-scala:1204e6e7d382e6899bda98d07e3dc5df&#34;&gt;Notes from &amp;laquo;Functional Programming in Scala&amp;raquo;&lt;/h2&gt;
 
 &lt;p&gt;The &lt;code&gt;Option&lt;/code&gt; class in
 &lt;a href=&#34;https://github.com/spencerlyon2/fpinscala/blob/master/exercises/src/main/scala/fpinscala/errorhandling/Option.scala&#34;&gt;Option.scala&lt;/a&gt;
@@ -738,9 +777,9 @@ a bit weird. Stare at it for a while if you want to figure out how powerful
       <guid>http://notes.spencerlyon.com/2015/01/12/continuous-time/</guid>
       <description>
 
-&lt;h1 id=&#34;continuous-time-macro&#34;&gt;Continuous Time Macro&lt;/h1&gt;
+&lt;h1 id=&#34;continuous-time-macro:61d217c3709abf694a0a0f3e47670c8d&#34;&gt;Continuous Time Macro&lt;/h1&gt;
 
-&lt;h2 id=&#34;solving-an-hjb&#34;&gt;Solving an HJB&lt;/h2&gt;
+&lt;h2 id=&#34;solving-an-hjb:61d217c3709abf694a0a0f3e47670c8d&#34;&gt;Solving an HJB&lt;/h2&gt;
 
 &lt;p&gt;The HJB usually takes the form&lt;/p&gt;
 
@@ -764,9 +803,9 @@ a bit weird. Stare at it for a while if you want to figure out how powerful
 &lt;li&gt;If you can&amp;rsquo;t, you probably made a bad guess for the form of the solution, so start over at step 2.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&#34;ito-processes&#34;&gt;Ito processes&lt;/h2&gt;
+&lt;h2 id=&#34;ito-processes:61d217c3709abf694a0a0f3e47670c8d&#34;&gt;Ito processes&lt;/h2&gt;
 
-&lt;h3 id=&#34;gbm&#34;&gt;GBM&lt;/h3&gt;
+&lt;h3 id=&#34;gbm:61d217c3709abf694a0a0f3e47670c8d&#34;&gt;GBM&lt;/h3&gt;
 
 &lt;p&gt;A geometric Brownian motion solves the following SDE&lt;/p&gt;
 
@@ -873,102 +912,6 @@ open http://127.0.0.1:8000
 &lt;p&gt;Editing: &lt;code&gt;/usr/local/share/jupyter/nbextensions/livereveal/main.js&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;hello&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Cloud tips</title>
-      <link>http://notes.spencerlyon.com/2014/10/05/cloud-tips/</link>
-      <pubDate>Sun, 05 Oct 2014 00:00:00 +0000</pubDate>
-      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
-      <guid>http://notes.spencerlyon.com/2014/10/05/cloud-tips/</guid>
-      <description>
-
-&lt;h1 id=&#34;cloud:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;Cloud&lt;/h1&gt;
-
-&lt;h2 id=&#34;aws:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;AWS&lt;/h2&gt;
-
-&lt;h3 id=&#34;persistent-notebook:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;Persistent notebook&lt;/h3&gt;
-
-&lt;p&gt;I have a persistent instance running.&lt;/p&gt;
-
-&lt;p&gt;I followed &lt;a href=&#34;https://grollchristian.wordpress.com/2014/09/01/ijulia-for-amazon-ec2/&#34;&gt;this blog post&lt;/a&gt; to get it set up.&lt;/p&gt;
-
-&lt;p&gt;I can connect to it via&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;ssh -i ~/dotfiles/sglyon-mbp.pem.txt ubuntu@ec2-54-201-41-126.us-west-2.compute.amazonaws.com
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;ipython notebook --profile=julia&lt;/code&gt; is running. I can connect to it from any browser by going to&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;https://ec2-54-201-41-126.us-west-2.compute.amazonaws.com:8998
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The password is &lt;code&gt;lyon0409&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;I needed to add the &lt;code&gt;IJulia all tcp&lt;/code&gt; security group to the instance through the AWS online management console.&lt;/p&gt;
-
-&lt;h4 id=&#34;new-user:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;new user&lt;/h4&gt;
-
-&lt;p&gt;I made a new user here by following the ideas &lt;a href=&#34;http://brianflove.com/2013/06/18/add-new-sudo-user-to-ec2-ubuntu/&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;mounting-a-volume:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;Mounting a volume&lt;/h4&gt;
-
-&lt;p&gt;I mounted a volume to &lt;code&gt;~/storage&lt;/code&gt; (&lt;code&gt;sudo mount /dev/xvdf /home/sglyon/storage)&lt;/code&gt;, but didn&amp;rsquo;t have permission to do anything. To fix that I chowned it: &lt;code&gt;sudo chown -R sglyon ~/storage&lt;/code&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;gce:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;GCE&lt;/h2&gt;
-
-&lt;p&gt;First step is to install the tools. This is a one time thing where I enter this command:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;curl https://sdk.cloud.google.com | bash
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Then follow the prompts and such until it is installed. I chose the directory &lt;code&gt;~/google-cloud-sdk&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;I didn&amp;rsquo;t have it alter my path for me, but  I added the following line in my list where I set &lt;code&gt;$PATH&lt;/code&gt; from within my ~/.zshenv:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$HOME/google-cloud-sdk/bin
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;julia-and-gce:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;Julia and GCE&lt;/h3&gt;
-
-&lt;p&gt;I (partially) followed &lt;a href=&#34;http://www.blog.juliaferraioli.com/2013/12/julia-on-google-compute-engine.html&#34;&gt;this blog post&lt;/a&gt; to get things started.&lt;/p&gt;
-
-&lt;p&gt;To create a new instance from the command line I need to run the following&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;gcloud compute --project &amp;quot;sgl-julia&amp;quot; instances create &amp;quot;instance-name&amp;quot; --zone &amp;quot;us-central1-b&amp;quot; --machine-type &amp;quot;n1-standard-1&amp;quot; --network &amp;quot;default&amp;quot; --maintenance-policy &amp;quot;MIGRATE&amp;quot; --scopes &amp;quot;https://www.googleapis.com/auth/devstorage.read_only&amp;quot; --image &amp;quot;https://www.googleapis.com/compute/v1/projects/sgl-julia/global/images/julia-src-deb-10212014&amp;quot; --no-boot-disk-auto-delete
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;where &lt;code&gt;instance-name&lt;/code&gt; is replaced with the actual name of the instance I want to create.&lt;/p&gt;
-
-&lt;p&gt;I can then ssh into the new instance (after it is created) by running&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;gcloud compute --project &amp;quot;sgl-julia&amp;quot; ssh --zone &amp;quot;us-central1-b&amp;quot; &amp;quot;instance-name&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;If I want to select a different type of instance, I would change the &lt;code&gt;--machine-type&lt;/code&gt; parameter name. See &lt;a href=&#34;https://developers.google.com/compute/pricing&#34;&gt;this page&lt;/a&gt; for an explanation of the different types and prices.&lt;/p&gt;
-
-&lt;p&gt;To turn off (delete) my instance I would enter the following command:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;gcloud compute --project &amp;quot;sgl-julia&amp;quot; instances delete &amp;quot;instance-1&amp;quot; --zone &amp;quot;us-central1-b&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;If I also wanted to delete the corresponding persistent disk I would enter&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;gcloud compute --project &amp;quot;sgl-julia&amp;quot; disks delete &amp;quot;instance-1&amp;quot; --zone &amp;quot;us-central1-b&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;writing-the-package:b4b4b2a2fd994675c7f6b325e6b2a679&#34;&gt;Writing the package&lt;/h4&gt;
-
-&lt;p&gt;I had to install &lt;a href=&#34;https://github.com/markcarver/mac-ssh-askpass&#34;&gt;this script&lt;/a&gt; in order for ssh to work. I did the following:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;cd ~/Downloads
-git clone https://github.com/markcarver/mac-ssh-askpass
-cd mac-ssh-askpass
-sudo ./INSTALL
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The package also requires that &lt;code&gt;gcloud&lt;/code&gt; and friends are installed.&lt;/p&gt;
 </description>
     </item>
     

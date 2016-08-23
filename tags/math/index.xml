@@ -38,9 +38,9 @@
       <guid>http://notes.spencerlyon.com/2015/09/05/notes-on-deterministic-difference-equations/</guid>
       <description>
 
-&lt;h1 id=&#34;deterministic-difference-equations&#34;&gt;Deterministic Difference Equations&lt;/h1&gt;
+&lt;h1 id=&#34;deterministic-difference-equations:574909179535890c815234db02dad66b&#34;&gt;Deterministic Difference Equations&lt;/h1&gt;
 
-&lt;h2 id=&#34;scalar-first-order-linear-equations&#34;&gt;Scalar First-Order Linear Equations&lt;/h2&gt;
+&lt;h2 id=&#34;scalar-first-order-linear-equations:574909179535890c815234db02dad66b&#34;&gt;Scalar First-Order Linear Equations&lt;/h2&gt;
 
 &lt;p&gt;The basic scalar first-order difference equation can be represented by:&lt;/p&gt;
 
@@ -107,7 +107,7 @@
 &lt;p&gt;1) Whether the initial value is given : This determines whether $x_t$ is &lt;em&gt;predetermined&lt;/em&gt;.
 2) Whether $b$ is greater or less than 1 : This is determines whether the eigenvalue is stable.&lt;/p&gt;
 
-&lt;h2 id=&#34;lag-operators-and-scalar-second-order-linear-difference-equations&#34;&gt;Lag Operators and Scalar Second-Order Linear Difference Equations&lt;/h2&gt;
+&lt;h2 id=&#34;lag-operators-and-scalar-second-order-linear-difference-equations:574909179535890c815234db02dad66b&#34;&gt;Lag Operators and Scalar Second-Order Linear Difference Equations&lt;/h2&gt;
 
 &lt;p&gt;We now introduce an operator that is common in the economics literature and is known as the &lt;em&gt;lag operator&lt;/em&gt;. The lag operator, $L$, operates on a dynamics process ${x_t }$ in the following fashion:&lt;/p&gt;
 
@@ -150,7 +150,7 @@
 &lt;li&gt;&lt;code&gt;$| \lambda_1 | &amp;lt; 1 &amp;lt; | \lambda_2 |$&lt;/code&gt; The solution for this case is known as the &lt;em&gt;saddle path solution&lt;/em&gt;. Then by sending &lt;code&gt;$(L^{-1} - \lambda_2)$&lt;/code&gt; to the RHS we can write &lt;code&gt;$$(L^{-1} - \lambda_1) x_t = - \frac{c}{\lambda_2} \frac{z_t}{(1 - \lambda_2^{-1} L^{-1})}$$&lt;/code&gt; which reduces to &lt;code&gt;$$x_{t+1} = \lambda_1 x_t -\frac{c}{\lambda_2} \sum_{j=0}^\infty \left( \frac{1}{\lambda_2} \right)^{j} z_{t + j}$$.&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;first-order-linear-systems&#34;&gt;First-Order Linear Systems&lt;/h2&gt;
+&lt;h2 id=&#34;first-order-linear-systems:574909179535890c815234db02dad66b&#34;&gt;First-Order Linear Systems&lt;/h2&gt;
 
 &lt;p&gt;We now consider first-order linear systems. We can write many higher order lineary systems down as a first-order linear system, so this will be the form that we consider&lt;/p&gt;
 
@@ -168,13 +168,13 @@
 
 &lt;p&gt;We will assume that &lt;code&gt;$\{ z_t \}$&lt;/code&gt; is a stable sequence.&lt;/p&gt;
 
-&lt;h3 id=&#34;nonsingular-systems&#34;&gt;Nonsingular systems&lt;/h3&gt;
+&lt;h3 id=&#34;nonsingular-systems:574909179535890c815234db02dad66b&#34;&gt;Nonsingular systems&lt;/h3&gt;
 
 &lt;p&gt;Let $A$ be nonsingular then we can write our first-order linear system as&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;$$x_{t+1} = A^{-1} B x_t + A^{-1} C z_t$$&lt;/code&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+&lt;h2 id=&#34;references:574909179535890c815234db02dad66b&#34;&gt;References&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Jianjun Miao. &amp;laquo;Economic dynamics in discrete time.&amp;raquo; MIT Press. 2014.&lt;/li&gt;
@@ -191,9 +191,9 @@
       <guid>http://notes.spencerlyon.com/2015/01/12/continuous-time/</guid>
       <description>
 
-&lt;h1 id=&#34;continuous-time-macro&#34;&gt;Continuous Time Macro&lt;/h1&gt;
+&lt;h1 id=&#34;continuous-time-macro:61d217c3709abf694a0a0f3e47670c8d&#34;&gt;Continuous Time Macro&lt;/h1&gt;
 
-&lt;h2 id=&#34;solving-an-hjb&#34;&gt;Solving an HJB&lt;/h2&gt;
+&lt;h2 id=&#34;solving-an-hjb:61d217c3709abf694a0a0f3e47670c8d&#34;&gt;Solving an HJB&lt;/h2&gt;
 
 &lt;p&gt;The HJB usually takes the form&lt;/p&gt;
 
@@ -217,9 +217,9 @@
 &lt;li&gt;If you can&amp;rsquo;t, you probably made a bad guess for the form of the solution, so start over at step 2.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&#34;ito-processes&#34;&gt;Ito processes&lt;/h2&gt;
+&lt;h2 id=&#34;ito-processes:61d217c3709abf694a0a0f3e47670c8d&#34;&gt;Ito processes&lt;/h2&gt;
 
-&lt;h3 id=&#34;gbm&#34;&gt;GBM&lt;/h3&gt;
+&lt;h3 id=&#34;gbm:61d217c3709abf694a0a0f3e47670c8d&#34;&gt;GBM&lt;/h3&gt;
 
 &lt;p&gt;A geometric Brownian motion solves the following SDE&lt;/p&gt;
 
@@ -303,23 +303,23 @@ $$ = E&lt;em&gt;t \left[ A \hat{x}&lt;/em&gt;{t-1 | t-1} + B \varepsilon&lt;em&g
       <guid>http://notes.spencerlyon.com/1/01/01/notes-on-mcmc-methods/</guid>
       <description>
 
-&lt;h1 id=&#34;basic-idea:57acf39946df9a4c07fcdea2d9aa68c1&#34;&gt;Basic Idea&lt;/h1&gt;
+&lt;h1 id=&#34;basic-idea&#34;&gt;Basic Idea&lt;/h1&gt;
 
 &lt;p&gt;The key idea behind the MCMC algorithms is that under certain conditions, Markov chains have a stationary distribution. If we can build a Markov chain whose stationary distribution is the distribution that we would like to sample from then it is relatively easy to get draws from this distribution by simulating lots of points and then randomly drawing from them.&lt;/p&gt;
 
-&lt;h1 id=&#34;metropolis-hastings:57acf39946df9a4c07fcdea2d9aa68c1&#34;&gt;Metropolis-Hastings&lt;/h1&gt;
+&lt;h1 id=&#34;metropolis-hastings&#34;&gt;Metropolis-Hastings&lt;/h1&gt;
 
 &lt;p&gt;Both the Metropolis and Gibbs algorithms are special cases of the Metropolis-Hastings algorithm. It has &amp;hellip;&lt;/p&gt;
 
-&lt;h1 id=&#34;metropolis:57acf39946df9a4c07fcdea2d9aa68c1&#34;&gt;Metropolis&lt;/h1&gt;
+&lt;h1 id=&#34;metropolis&#34;&gt;Metropolis&lt;/h1&gt;
 
 &lt;p&gt;As previously mentioned, the Metropolis algorithm is a special case of Metropolis-Hastings &amp;ndash; In particular, it is the case in which we have a symmetric proposal density (People often use random walks)&lt;/p&gt;
 
-&lt;h1 id=&#34;gibbs:57acf39946df9a4c07fcdea2d9aa68c1&#34;&gt;Gibbs&lt;/h1&gt;
+&lt;h1 id=&#34;gibbs&#34;&gt;Gibbs&lt;/h1&gt;
 
 &lt;p&gt;Gibbs sampling uses closed form expressions for conditionals such that we accept each draw.&lt;/p&gt;
 
-&lt;h1 id=&#34;coupling-from-the-past:57acf39946df9a4c07fcdea2d9aa68c1&#34;&gt;Coupling From the Past&lt;/h1&gt;
+&lt;h1 id=&#34;coupling-from-the-past&#34;&gt;Coupling From the Past&lt;/h1&gt;
 
 &lt;p&gt;Imagine we have a Markovian process ${ X_t }$ whose stationary distribution we would like to draw from. One natural way to draw from this process is to start at some $x_0$ and simulate the process forward until it &amp;laquo;converges&amp;raquo; in some sense to the stationary distribution &amp;ndash; Remember under certain conditions (such as irreducibility etc&amp;hellip;) Markov processes are guaranteed to converge to their stationary distribution as $t \rightarrow \infty$. While intuitive, this approach has several short comings:&lt;/p&gt;
 
@@ -329,7 +329,7 @@ $$ = E&lt;em&gt;t \left[ A \hat{x}&lt;/em&gt;{t-1 | t-1} + B \varepsilon&lt;em&g
 
 &lt;p&gt;In order to deal with this, we can take advantage of a very simple idea. Let&amp;rsquo;s start a process at period $-\infty$ and simulate it forward until period 0. At period 0, it should have converged to the stationary distribution. In continuous state spaces it is more difficult, so I will explain it for discrete spaces. Imagine we have $N$ states in our Markov chain then at period $-T$, it has to have arrived at one of the $N$ states. Start $N$ processes (one at each state) at period $-T$ and simulate them forward until period 0 (with the same set of shocks!). If all of these processes have converged to a single state then we know that our original process would have also converged to that state and thus the process is now in its stationary distribution (because we have &amp;laquo;simulated&amp;raquo; the process for an infinite number of periods). If it hasn&amp;rsquo;t converged then try again with a larger $T$ &amp;ndash; These processes are guaranteed to &amp;laquo;coalesce&amp;raquo; in finite number of states.&lt;/p&gt;
 
-&lt;h1 id=&#34;references:57acf39946df9a4c07fcdea2d9aa68c1&#34;&gt;References&lt;/h1&gt;
+&lt;h1 id=&#34;references&#34;&gt;References&lt;/h1&gt;
 
 &lt;p&gt;John Stachurski&amp;rsquo;s coupling from the past papers&lt;/p&gt;
 </description>
