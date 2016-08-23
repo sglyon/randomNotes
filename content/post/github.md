@@ -54,3 +54,17 @@ Here’s what I do to put a notebook in a gist:
 To update the notebook, simply put a new version of it into that `notebook_gist` repo, commit, and push. The changes should go live on nbviewer.
 
 If you aren't seeing an updated version of the notebook after pushing to the gist repo, you might need to visit the url in private mode or reset the browser cache.
+
+## Checking out pull requests
+
+[This gist](https://gist.github.com/piscisaureus/3342247) explains how to add to the `.git/config` file inside a git repo so you can check out pull requests from the remote as if they were branches on the remote.
+
+The tl;dr version is add the following to the file `.git/config` within your repo:
+
+```
+fetch = +refs/pull/*/head:refs/remotes/origin/pr/*
+```
+
+where `origin` is the name of the remote.
+
+Then you can do `git fetch origin` and `git checkout pr/XX` where `XX` is the pull request number.
