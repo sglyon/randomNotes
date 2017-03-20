@@ -55,7 +55,7 @@
     },
     "datePublished": "2013-12-28",
     "description": "",
-    "wordCount":  228 
+    "wordCount": 228
   }
 </script>
 
@@ -66,7 +66,7 @@
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://notes.spencerlyon.com/touch-icon-144-precomposed.png">
 <link href="http://notes.spencerlyon.com/favicon.png" rel="icon">
 
-<meta name="generator" content="Hugo 0.16-DEV" />
+<meta name="generator" content="Hugo 0.20-DEV" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -177,7 +177,7 @@
   <div class="container content">
   
 
-<h2 id="dpkg-errors:34fe9f2d9cc3cd7e319ca75e7da08332">dpkg errors</h2>
+<h2 id="dpkg-errors">dpkg errors</h2>
 
 <p>I wasn&rsquo;t able to get <code>apt-get</code> to do anything. The problem was that my <code>/boot</code> partition was full.</p>
 
@@ -205,7 +205,7 @@
 
 <p>Followed hints <a href="http://askubuntu.com/questions/89710/how-do-i-free-up-more-space-in-boot">here</a></p>
 
-<h3 id="curl-certs:34fe9f2d9cc3cd7e319ca75e7da08332">curl certs</h3>
+<h3 id="curl-certs">curl certs</h3>
 
 <p>Sometimes when updating a Julia package that uses <code>curl</code> to get dependencies I get the following error:</p>
 
@@ -313,11 +313,11 @@ MathJax.Hub.Config({
 
 <script type="text/x-mathjax-config">
   MathJax.Hub.Queue(function() {
-    
-    
-    
+    // Fix <code> tags after MathJax finishes running. This is a
+    // hack to overcome a shortcoming of Markdown. Discussion at
+    // https://github.com/mojombo/jekyll/issues/199
     var all = MathJax.Hub.getAllJax(), i;
-    for(i = 0; i < all.length; i += 1) {
+    for(i = 0; i &lt; all.length; i += 1) {
         all[i].SourceElement().parentNode.className += ' has-jax';
     }
 });

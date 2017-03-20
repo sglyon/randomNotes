@@ -61,7 +61,7 @@
     },
     "datePublished": "2016-06-29",
     "description": "",
-    "wordCount":  887 
+    "wordCount": 887
   }
 </script>
 
@@ -72,7 +72,7 @@
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://notes.spencerlyon.com/touch-icon-144-precomposed.png">
 <link href="http://notes.spencerlyon.com/favicon.png" rel="icon">
 
-<meta name="generator" content="Hugo 0.16-DEV" />
+<meta name="generator" content="Hugo 0.20-DEV" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -195,11 +195,11 @@
 
 <p>The notes themselves might be interpreted as a macro-economist&rsquo;s view of reinforcement learning (RL). I will cast many objects/ideas from the book into the domain-specific framework I am familiar with.</p>
 
-<h1 id="what-is-reinforcement-learning:14a4c2b55a012de9d01c88422abd12c3">What is reinforcement learning?</h1>
+<h1 id="what-is-reinforcement-learning">What is reinforcement learning?</h1>
 
 <p><strong>Reinforcement Learning</strong> is a branch of machine learning that aims to learn by doing.</p>
 
-<h1 id="basic-strcture:14a4c2b55a012de9d01c88422abd12c3">Basic strcture</h1>
+<h1 id="basic-strcture">Basic strcture</h1>
 
 <p>The basic structure of the RL problem is similar to a dynamic programming (DP) problem. Both summarize the environment an agent faces via a state variable $s$ that is a member of the state space $S$. Agents must choose actions from an action space $A(s)$. The dependence on $s$ takes into account any state-dependent constraints that specify which actions are feasible from that given state. A generic element of the space $A$ is called an action and is denoted $a \in A$.</p>
 
@@ -229,7 +229,7 @@
 
 <p>We define the optimal state-value function as $v(s) \equiv \max_{\pi} v_{\pi}(s)$ and the optimal action-value function as $q(s, a) \equiv \max_{\pi} q_{\pi}(s, a)$. We can obtain $v$ from $q$ as $v = \max_{a} q(s, a)$. Thus, knowing $q$ gives more information than knowing $v$: $q$ gives the optimal value of taking <em>any</em> action from state $s$ and $v$ gives the optimal value of taking the <em>optimal</em> value from state $s$.</p>
 
-<h1 id="algorithms:14a4c2b55a012de9d01c88422abd12c3">Algorithms</h1>
+<h1 id="algorithms">Algorithms</h1>
 
 <p>The class of RL algorithms can be understood by first defining some terms from DP.</p>
 
@@ -237,7 +237,7 @@
 
 <p>In a control problem, after evaluating a policy we typically seek to improve it. <strong>policy-improvement</strong> is often implemented by selecting a <strong>greedy</strong> policy state by state. That is, a new policy $\pi&rsquo;$ is obtained from $\pi$ by selecting $\pi&rsquo;(s) = \text{argmax}_a q_{\pi}(s, a)$.</p>
 
-<h2 id="dp-algorithms:14a4c2b55a012de9d01c88422abd12c3">DP Algorithms</h2>
+<h2 id="dp-algorithms">DP Algorithms</h2>
 
 <p><strong>Generalized policy iteration (GPI)</strong> is a major concept in the Sutton and Barto book. The core idea is alternating between policy evaluation and policy improvement. Policy evaluation drives the estimated value function towards the value of the policy while policy improvement improecs the policy with respect to the estimated value function. These two operations are competing in some sense as each one creates a moving target for the other. If both evaluation and improvement components have stabalized, then the value and policy functions must be optimal. The value function only converges when it is consistent with the current policy and the policy function only converges when it is optimal with respect to the current value function.</p>
 
@@ -318,11 +318,11 @@ MathJax.Hub.Config({
 
 <script type="text/x-mathjax-config">
   MathJax.Hub.Queue(function() {
-    
-    
-    
+    // Fix <code> tags after MathJax finishes running. This is a
+    // hack to overcome a shortcoming of Markdown. Discussion at
+    // https://github.com/mojombo/jekyll/issues/199
     var all = MathJax.Hub.getAllJax(), i;
-    for(i = 0; i < all.length; i += 1) {
+    for(i = 0; i &lt; all.length; i += 1) {
         all[i].SourceElement().parentNode.className += ' has-jax';
     }
 });

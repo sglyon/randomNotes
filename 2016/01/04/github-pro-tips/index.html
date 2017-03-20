@@ -57,7 +57,7 @@
     },
     "datePublished": "2016-01-04",
     "description": "",
-    "wordCount":  534 
+    "wordCount": 534
   }
 </script>
 
@@ -68,7 +68,7 @@
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://notes.spencerlyon.com/touch-icon-144-precomposed.png">
 <link href="http://notes.spencerlyon.com/favicon.png" rel="icon">
 
-<meta name="generator" content="Hugo 0.16-DEV" />
+<meta name="generator" content="Hugo 0.20-DEV" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -181,7 +181,7 @@
   <div class="container content">
   
 
-<h2 id="post-commit-hooks:93ed8abeb42c248f3c551d1cb44159d4">Post-commit hooks</h2>
+<h2 id="post-commit-hooks">Post-commit hooks</h2>
 
 <p>You can use github post commit hooks to send an HTTP payload to a server after
 every commit. The payload will contain data about the commit that you can then
@@ -217,7 +217,7 @@ used was</p>
 
 <p>See the example <code>hook.json</code> file <a href="https://github.com/DaveBackus/Data_Bootcamp/blob/master/website/hook.json">here</a></p>
 
-<h2 id="jupyter-notebooks-in-gists:93ed8abeb42c248f3c551d1cb44159d4">Jupyter notebooks in gists</h2>
+<h2 id="jupyter-notebooks-in-gists">Jupyter notebooks in gists</h2>
 
 <p>Here’s what I do to put a notebook in a gist:</p>
 
@@ -235,7 +235,7 @@ used was</p>
 
 <p>If you aren&rsquo;t seeing an updated version of the notebook after pushing to the gist repo, you might need to visit the url in private mode or reset the browser cache.</p>
 
-<h2 id="checking-out-pull-requests:93ed8abeb42c248f3c551d1cb44159d4">Checking out pull requests</h2>
+<h2 id="checking-out-pull-requests">Checking out pull requests</h2>
 
 <p><a href="https://gist.github.com/piscisaureus/3342247">This gist</a> explains how to add to the <code>.git/config</code> file inside a git repo so you can check out pull requests from the remote as if they were branches on the remote.</p>
 
@@ -319,11 +319,11 @@ MathJax.Hub.Config({
 
 <script type="text/x-mathjax-config">
   MathJax.Hub.Queue(function() {
-    
-    
-    
+    // Fix <code> tags after MathJax finishes running. This is a
+    // hack to overcome a shortcoming of Markdown. Discussion at
+    // https://github.com/mojombo/jekyll/issues/199
     var all = MathJax.Hub.getAllJax(), i;
-    for(i = 0; i < all.length; i += 1) {
+    for(i = 0; i &lt; all.length; i += 1) {
         all[i].SourceElement().parentNode.className += ' has-jax';
     }
 });

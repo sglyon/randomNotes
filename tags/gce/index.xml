@@ -2,14 +2,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Gce on Random Notes</title>
-    <link>http://notes.spencerlyon.com/tags/gce/</link>
+    <link>http://notes.spencerlyon.com/tags/gce/index.xml</link>
     <description>Recent content in Gce on Random Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-EN</language>
     <managingEditor>spencer.lyon@stern.nyu.edu (Spencer Lyon)</managingEditor>
     <webMaster>spencer.lyon@stern.nyu.edu (Spencer Lyon)</webMaster>
     <copyright>(c) 2015 Spencer Lyon.</copyright>
-    <lastBuildDate>Sun, 05 Oct 2014 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://notes.spencerlyon.com/tags/gce/index.xml" rel="self" type="application/rss+xml" />
     
     <item>

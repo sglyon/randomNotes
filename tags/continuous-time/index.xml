@@ -2,14 +2,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Continuous Time on Random Notes</title>
-    <link>http://notes.spencerlyon.com/tags/continuous-time/</link>
+    <link>http://notes.spencerlyon.com/tags/continuous-time/index.xml</link>
     <description>Recent content in Continuous Time on Random Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-EN</language>
     <managingEditor>spencer.lyon@stern.nyu.edu (Spencer Lyon)</managingEditor>
     <webMaster>spencer.lyon@stern.nyu.edu (Spencer Lyon)</webMaster>
     <copyright>(c) 2015 Spencer Lyon.</copyright>
-    <lastBuildDate>Mon, 12 Jan 2015 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://notes.spencerlyon.com/tags/continuous-time/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -20,9 +19,9 @@
       <guid>http://notes.spencerlyon.com/2015/01/12/continuous-time/</guid>
       <description>
 
-&lt;h1 id=&#34;continuous-time-macro:61d217c3709abf694a0a0f3e47670c8d&#34;&gt;Continuous Time Macro&lt;/h1&gt;
+&lt;h1 id=&#34;continuous-time-macro&#34;&gt;Continuous Time Macro&lt;/h1&gt;
 
-&lt;h2 id=&#34;solving-an-hjb:61d217c3709abf694a0a0f3e47670c8d&#34;&gt;Solving an HJB&lt;/h2&gt;
+&lt;h2 id=&#34;solving-an-hjb&#34;&gt;Solving an HJB&lt;/h2&gt;
 
 &lt;p&gt;The HJB usually takes the form&lt;/p&gt;
 
@@ -46,9 +45,9 @@
 &lt;li&gt;If you can&amp;rsquo;t, you probably made a bad guess for the form of the solution, so start over at step 2.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&#34;ito-processes:61d217c3709abf694a0a0f3e47670c8d&#34;&gt;Ito processes&lt;/h2&gt;
+&lt;h2 id=&#34;ito-processes&#34;&gt;Ito processes&lt;/h2&gt;
 
-&lt;h3 id=&#34;gbm:61d217c3709abf694a0a0f3e47670c8d&#34;&gt;GBM&lt;/h3&gt;
+&lt;h3 id=&#34;gbm&#34;&gt;GBM&lt;/h3&gt;
 
 &lt;p&gt;A geometric Brownian motion solves the following SDE&lt;/p&gt;
 

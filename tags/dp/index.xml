@@ -2,14 +2,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Dp on Random Notes</title>
-    <link>http://notes.spencerlyon.com/tags/dp/</link>
+    <link>http://notes.spencerlyon.com/tags/dp/index.xml</link>
     <description>Recent content in Dp on Random Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-EN</language>
     <managingEditor>spencer.lyon@stern.nyu.edu (Spencer Lyon)</managingEditor>
     <webMaster>spencer.lyon@stern.nyu.edu (Spencer Lyon)</webMaster>
     <copyright>(c) 2015 Spencer Lyon.</copyright>
-    <lastBuildDate>Wed, 29 Jun 2016 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://notes.spencerlyon.com/tags/dp/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -26,11 +25,11 @@
 
 &lt;p&gt;The notes themselves might be interpreted as a macro-economist&amp;rsquo;s view of reinforcement learning (RL). I will cast many objects/ideas from the book into the domain-specific framework I am familiar with.&lt;/p&gt;
 
-&lt;h1 id=&#34;what-is-reinforcement-learning:14a4c2b55a012de9d01c88422abd12c3&#34;&gt;What is reinforcement learning?&lt;/h1&gt;
+&lt;h1 id=&#34;what-is-reinforcement-learning&#34;&gt;What is reinforcement learning?&lt;/h1&gt;
 
 &lt;p&gt;&lt;strong&gt;Reinforcement Learning&lt;/strong&gt; is a branch of machine learning that aims to learn by doing.&lt;/p&gt;
 
-&lt;h1 id=&#34;basic-strcture:14a4c2b55a012de9d01c88422abd12c3&#34;&gt;Basic strcture&lt;/h1&gt;
+&lt;h1 id=&#34;basic-strcture&#34;&gt;Basic strcture&lt;/h1&gt;
 
 &lt;p&gt;The basic structure of the RL problem is similar to a dynamic programming (DP) problem. Both summarize the environment an agent faces via a state variable $s$ that is a member of the state space $S$. Agents must choose actions from an action space $A(s)$. The dependence on $s$ takes into account any state-dependent constraints that specify which actions are feasible from that given state. A generic element of the space $A$ is called an action and is denoted $a \in A$.&lt;/p&gt;
 
@@ -60,7 +59,7 @@
 
 &lt;p&gt;We define the optimal state-value function as $v(s) \equiv \max_{\pi} v_{\pi}(s)$ and the optimal action-value function as $q(s, a) \equiv \max_{\pi} q_{\pi}(s, a)$. We can obtain $v$ from $q$ as $v = \max_{a} q(s, a)$. Thus, knowing $q$ gives more information than knowing $v$: $q$ gives the optimal value of taking &lt;em&gt;any&lt;/em&gt; action from state $s$ and $v$ gives the optimal value of taking the &lt;em&gt;optimal&lt;/em&gt; value from state $s$.&lt;/p&gt;
 
-&lt;h1 id=&#34;algorithms:14a4c2b55a012de9d01c88422abd12c3&#34;&gt;Algorithms&lt;/h1&gt;
+&lt;h1 id=&#34;algorithms&#34;&gt;Algorithms&lt;/h1&gt;
 
 &lt;p&gt;The class of RL algorithms can be understood by first defining some terms from DP.&lt;/p&gt;
 
@@ -68,7 +67,7 @@
 
 &lt;p&gt;In a control problem, after evaluating a policy we typically seek to improve it. &lt;strong&gt;policy-improvement&lt;/strong&gt; is often implemented by selecting a &lt;strong&gt;greedy&lt;/strong&gt; policy state by state. That is, a new policy $\pi&amp;rsquo;$ is obtained from $\pi$ by selecting $\pi&amp;rsquo;(s) = \text{argmax}_a q_{\pi}(s, a)$.&lt;/p&gt;
 
-&lt;h2 id=&#34;dp-algorithms:14a4c2b55a012de9d01c88422abd12c3&#34;&gt;DP Algorithms&lt;/h2&gt;
+&lt;h2 id=&#34;dp-algorithms&#34;&gt;DP Algorithms&lt;/h2&gt;
 
 &lt;p&gt;&lt;strong&gt;Generalized policy iteration (GPI)&lt;/strong&gt; is a major concept in the Sutton and Barto book. The core idea is alternating between policy evaluation and policy improvement. Policy evaluation drives the estimated value function towards the value of the policy while policy improvement improecs the policy with respect to the estimated value function. These two operations are competing in some sense as each one creates a moving target for the other. If both evaluation and improvement components have stabalized, then the value and policy functions must be optimal. The value function only converges when it is consistent with the current policy and the policy function only converges when it is optimal with respect to the current value function.&lt;/p&gt;
 

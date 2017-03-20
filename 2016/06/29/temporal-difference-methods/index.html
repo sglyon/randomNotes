@@ -59,7 +59,7 @@
     },
     "datePublished": "2016-06-29",
     "description": "",
-    "wordCount":  133 
+    "wordCount": 133
   }
 </script>
 
@@ -70,7 +70,7 @@
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://notes.spencerlyon.com/touch-icon-144-precomposed.png">
 <link href="http://notes.spencerlyon.com/favicon.png" rel="icon">
 
-<meta name="generator" content="Hugo 0.16-DEV" />
+<meta name="generator" content="Hugo 0.20-DEV" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -187,11 +187,11 @@
 
 <p>This is part 3 in the reinforcement learning for economists notes. For part 1 see <a href="/2016/06/29/reinforcement-learning-intro/">Reinforcement Learning Intro</a>. For a list of all entries in the series go <a href="/series/reinforcement-learning">here</a></p>
 
-<h2 id="temporal-difference-methods:da6883fa7b910696263cbcc1c81deb69">Temporal Difference methods</h2>
+<h2 id="temporal-difference-methods">Temporal Difference methods</h2>
 
 <p>We continue our study of applying <strong>GPI</strong> to the RL problem by looking now at <strong>temporal difference (TD)</strong> methods.</p>
 
-<h3 id="one-step-td-td-0:da6883fa7b910696263cbcc1c81deb69">One step TD (TD(0))</h3>
+<h3 id="one-step-td-td-0">One step TD (TD(0))</h3>
 
 <!-- TODO: clean this exposition up -- it's not well written -->
 
@@ -272,11 +272,11 @@ MathJax.Hub.Config({
 
 <script type="text/x-mathjax-config">
   MathJax.Hub.Queue(function() {
-    
-    
-    
+    // Fix <code> tags after MathJax finishes running. This is a
+    // hack to overcome a shortcoming of Markdown. Discussion at
+    // https://github.com/mojombo/jekyll/issues/199
     var all = MathJax.Hub.getAllJax(), i;
-    for(i = 0; i < all.length; i += 1) {
+    for(i = 0; i &lt; all.length; i += 1) {
         all[i].SourceElement().parentNode.className += ' has-jax';
     }
 });

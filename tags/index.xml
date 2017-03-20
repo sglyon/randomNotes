@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Random Notes</title>
+    <link>http://notes.spencerlyon.com/tags/index.xml</link>
+    <description>Recent content in Tags on Random Notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-EN</language>
+    <managingEditor>spencer.lyon@stern.nyu.edu (Spencer Lyon)</managingEditor>
+    <webMaster>spencer.lyon@stern.nyu.edu (Spencer Lyon)</webMaster>
+    <copyright>(c) 2015 Spencer Lyon.</copyright>
+    <lastBuildDate>Wed, 29 Jun 2016 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://notes.spencerlyon.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Algorithms</title>
+      <link>http://notes.spencerlyon.com/tags/algorithms/</link>
+      <pubDate>Wed, 29 Jun 2016 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/tags/algorithms/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Aws</title>
+      <link>http://notes.spencerlyon.com/tags/aws/</link>
+      <pubDate>Sun, 05 Oct 2014 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/tags/aws/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cloud</title>
+      <link>http://notes.spencerlyon.com/tags/cloud/</link>
+      <pubDate>Sun, 05 Oct 2014 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/tags/cloud/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Computing</title>
+      <link>http://notes.spencerlyon.com/tags/computing/</link>
+      <pubDate>Mon, 11 May 2015 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/tags/computing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Config</title>
+      <link>http://notes.spencerlyon.com/tags/config/</link>
+      <pubDate>Thu, 09 Apr 2015 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/tags/config/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Continuous Time</title>
+      <link>http://notes.spencerlyon.com/tags/continuous-time/</link>
+      <pubDate>Mon, 12 Jan 2015 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/tags/continuous-time/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Dp</title>
+      <link>http://notes.spencerlyon.com/tags/dp/</link>
+      <pubDate>Wed, 29 Jun 2016 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/tags/dp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Filtering</title>
+      <link>http://notes.spencerlyon.com/tags/filtering/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/tags/filtering/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Gce</title>
+      <link>http://notes.spencerlyon.com/tags/gce/</link>
+      <pubDate>Sun, 05 Oct 2014 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/tags/gce/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Github</title>
+      <link>http://notes.spencerlyon.com/tags/github/</link>
+      <pubDate>Mon, 04 Jan 2016 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/tags/github/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hiddenmarkov</title>
+      <link>http://notes.spencerlyon.com/tags/hiddenmarkov/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/tags/hiddenmarkov/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hpc</title>
+      <link>http://notes.spencerlyon.com/tags/hpc/</link>
+      <pubDate>Mon, 11 May 2015 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/tags/hpc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ipython</title>
+      <link>http://notes.spencerlyon.com/tags/ipython/</link>
+      <pubDate>Tue, 02 Dec 2014 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/tags/ipython/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Julia</title>
+      <link>http://notes.spencerlyon.com/tags/julia/</link>
+      <pubDate>Tue, 12 Feb 2013 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/tags/julia/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Markov</title>
+      <link>http://notes.spencerlyon.com/tags/markov/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>spencer.lyon@stern.nyu.edu (Spencer Lyon)</author>
+      <guid>http://notes.spencerlyon.com/tags/markov/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

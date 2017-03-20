@@ -2,14 +2,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Probability  Statistics on Random Notes</title>
-    <link>http://notes.spencerlyon.com/series/probability--statistics/</link>
+    <link>http://notes.spencerlyon.com/series/probability--statistics/index.xml</link>
     <description>Recent content in Probability  Statistics on Random Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-EN</language>
     <managingEditor>spencer.lyon@stern.nyu.edu (Spencer Lyon)</managingEditor>
     <webMaster>spencer.lyon@stern.nyu.edu (Spencer Lyon)</webMaster>
     <copyright>(c) 2015 Spencer Lyon.</copyright>
-    <lastBuildDate>Mon, 28 Dec 2015 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://notes.spencerlyon.com/series/probability--statistics/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -38,7 +37,7 @@
       <guid>http://notes.spencerlyon.com/1/01/01/notes-on-kalman-filter/</guid>
       <description>
 
-&lt;h1 id=&#34;kalman-filter:c4efa121509565b86b05f158ad1df0bd&#34;&gt;Kalman Filter&lt;/h1&gt;
+&lt;h1 id=&#34;kalman-filter&#34;&gt;Kalman Filter&lt;/h1&gt;
 
 &lt;p&gt;The Kalman filter is a vital tool in any macro-economist&amp;rsquo;s (and more generally any modelers) toolbox. A filtering problem is loosely described by the use of a history of observed information to infer information about the history of some other unobservable variable (state). The Kalman filter is a recursive filter in the sense that if we have a best guess for the state value for the previous period, $t-1$, then the period $t$ observation in conjunction with the best guess for the state value in the previous period is sufficient to provide a best guess for the state value in this period.&lt;/p&gt;
 
@@ -49,7 +48,7 @@ $$x&lt;em&gt;t = A x&lt;/em&gt;{t-1} + B \eta_t$$&lt;/p&gt;
 
 &lt;p&gt;The matrices $(A, B, C, D)$ are all known and the model noise, $\varepsilon_t$ and $\eta_t$, are both identically and independently distributed as standard normals. The first equation is often referred to as the &lt;em&gt;measurement equation&lt;/em&gt; because the history of $y^t$ is observable to the agent at period $t$.  The second equation is known as the state evolution equation, and is fundamentally different than the measurement equation because $s^t$ is unobservable. The fact that one equation is observable while the other is not and the Markov properties of the model put this model into a broader class of models known as &lt;em&gt;hidden Markov models&lt;/em&gt;.&lt;/p&gt;
 
-&lt;h2 id=&#34;derivation:c4efa121509565b86b05f158ad1df0bd&#34;&gt;Derivation&lt;/h2&gt;
+&lt;h2 id=&#34;derivation&#34;&gt;Derivation&lt;/h2&gt;
 
 &lt;p&gt;I will now present the derivation of the Kalman filter. As mentioned earlier, we would like to infer information about the states, $x_t$, using information that we observe $y_t$. More specifically, we would like to infer the value of $x_t$ given a history of $y^t$. We begin by having some initial condition on $x_0$ &amp;ndash; This condition can be either a distribution &lt;em&gt;or&lt;/em&gt; simply a value. We will denote the estimated values of the state using a hat i.e. write $\hat{x}$&lt;/p&gt;
 
@@ -67,7 +66,7 @@ $$ = E&lt;em&gt;t \left[ A \hat{x}&lt;/em&gt;{t-1 | t-1} + B \varepsilon&lt;em&g
 
 &lt;p&gt;$$K_t = &amp;hellip; $$&lt;/p&gt;
 
-&lt;h1 id=&#34;references:c4efa121509565b86b05f158ad1df0bd&#34;&gt;References&lt;/h1&gt;
+&lt;h1 id=&#34;references&#34;&gt;References&lt;/h1&gt;
 
 &lt;p&gt;Fill these in more adequately later&lt;/p&gt;
 

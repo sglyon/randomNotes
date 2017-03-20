@@ -2,12 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://notes.spencerlyon.com/</loc>
-    <lastmod>2016-06-29T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>http://notes.spencerlyon.com/2016/06/29/monte-carlo-methods/</loc>
     <lastmod>2016-06-29T00:00:00+00:00</lastmod>
   </url>
@@ -107,11 +101,217 @@
   </url>
   
   <url>
+    <loc>http://notes.spencerlyon.com/django/</loc>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/latex/</loc>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/presentations/</loc>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/tags/algorithms/</loc>
+    <lastmod>2016-06-29T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/tags/aws/</loc>
+    <lastmod>2014-10-05T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/tags/cloud/</loc>
+    <lastmod>2014-10-05T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/tags/computing/</loc>
+    <lastmod>2015-05-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/tags/config/</loc>
+    <lastmod>2015-04-09T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/tags/continuous-time/</loc>
+    <lastmod>2015-01-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/tags/dp/</loc>
+    <lastmod>2016-06-29T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/series/economics/</loc>
+    <lastmod>2015-01-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/tags/filtering/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/tags/gce/</loc>
+    <lastmod>2014-10-05T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/tags/github/</loc>
+    <lastmod>2016-01-04T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/series/hacking/</loc>
+    <lastmod>2016-06-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/tags/hiddenmarkov/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/tags/hpc/</loc>
+    <lastmod>2015-05-11T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/tags/ipython/</loc>
+    <lastmod>2014-12-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/tags/julia/</loc>
+    <lastmod>2013-02-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/tags/markov/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/tags/math/</loc>
+    <lastmod>2015-12-28T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/tags/mc/</loc>
+    <lastmod>2016-06-29T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/tags/ml/</loc>
+    <lastmod>2016-06-29T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/tags/montecarlo/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://notes.spencerlyon.com/1/01/01/notes-on-kalman-filter/</loc>
   </url>
   
   <url>
     <loc>http://notes.spencerlyon.com/1/01/01/notes-on-mcmc-methods/</loc>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/post/</loc>
+    <lastmod>2016-06-29T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/series/probability--statistics/</loc>
+    <lastmod>2015-12-28T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/tags/python/</loc>
+    <lastmod>2014-12-02T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/</loc>
+    <lastmod>2016-06-29T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/series/reinforcement-learning/</loc>
+    <lastmod>2016-06-29T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/series/research/</loc>
+    <lastmod>2015-05-05T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/tags/rl/</loc>
+    <lastmod>2016-06-29T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/tags/rust/</loc>
+    <lastmod>2016-06-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/series/</loc>
+    <lastmod>2015-01-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/tags/</loc>
+    <lastmod>2016-06-29T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/tags/td/</loc>
+    <lastmod>2016-06-29T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://notes.spencerlyon.com/tags/tips/</loc>
+    <lastmod>2016-06-01T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
 </urlset>

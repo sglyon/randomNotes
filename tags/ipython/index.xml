@@ -2,14 +2,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ipython on Random Notes</title>
-    <link>http://notes.spencerlyon.com/tags/ipython/</link>
+    <link>http://notes.spencerlyon.com/tags/ipython/index.xml</link>
     <description>Recent content in Ipython on Random Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-EN</language>
     <managingEditor>spencer.lyon@stern.nyu.edu (Spencer Lyon)</managingEditor>
     <webMaster>spencer.lyon@stern.nyu.edu (Spencer Lyon)</webMaster>
     <copyright>(c) 2015 Spencer Lyon.</copyright>
-    <lastBuildDate>Tue, 02 Dec 2014 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://notes.spencerlyon.com/tags/ipython/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -20,9 +19,9 @@
       <guid>http://notes.spencerlyon.com/2014/12/02/the-jupyter-notebook/</guid>
       <description>
 
-&lt;h1 id=&#34;ipynb:4fa1436551b3df29c2923e4fe3e62959&#34;&gt;Ipynb&lt;/h1&gt;
+&lt;h1 id=&#34;ipynb&#34;&gt;Ipynb&lt;/h1&gt;
 
-&lt;h2 id=&#34;slidemode:4fa1436551b3df29c2923e4fe3e62959&#34;&gt;Slidemode&lt;/h2&gt;
+&lt;h2 id=&#34;slidemode&#34;&gt;Slidemode&lt;/h2&gt;
 
 &lt;p&gt;To activate slide mode I did the following&lt;/p&gt;
 
@@ -45,7 +44,7 @@ python -m SimpleHTTPServer 8000
 open http://127.0.0.1:8000
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;registering-kernels-in-ipython-3-0:4fa1436551b3df29c2923e4fe3e62959&#34;&gt;Registering kernels in IPython 3.0+&lt;/h2&gt;
+&lt;h2 id=&#34;registering-kernels-in-ipython-3-0&#34;&gt;Registering kernels in IPython 3.0+&lt;/h2&gt;
 
 &lt;p&gt;IPython versions 3.0+ have a great feature where you can launch the notebook and then select the kernel you want from a dropdown list. Right now I have python2, python3, R, and Julia ready to go. This makes it so we can switch from notebooks in different languages without having to restart IPython.&lt;/p&gt;
 
@@ -81,11 +80,11 @@ open http://127.0.0.1:8000
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;remote-access-to-ipynb:4fa1436551b3df29c2923e4fe3e62959&#34;&gt;Remote access to ipynb&lt;/h3&gt;
+&lt;h3 id=&#34;remote-access-to-ipynb&#34;&gt;Remote access to ipynb&lt;/h3&gt;
 
 &lt;p&gt;See also the note about setting up a persistent notebook on GCE in the cloud.md file.&lt;/p&gt;
 
-&lt;h3 id=&#34;extensions:4fa1436551b3df29c2923e4fe3e62959&#34;&gt;Extensions&lt;/h3&gt;
+&lt;h3 id=&#34;extensions&#34;&gt;Extensions&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/ipython-contrib/IPython-notebook-extensions/wiki/config-extension&#34;&gt;https://github.com/ipython-contrib/IPython-notebook-extensions/wiki/config-extension&lt;/a&gt;&lt;/p&gt;
 

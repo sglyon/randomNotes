@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Montecarlo on Random Notes</title>
-    <link>http://notes.spencerlyon.com/tags/montecarlo/</link>
+    <link>http://notes.spencerlyon.com/tags/montecarlo/index.xml</link>
     <description>Recent content in Montecarlo on Random Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-EN</language>

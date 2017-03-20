@@ -2,14 +2,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Math on Random Notes</title>
-    <link>http://notes.spencerlyon.com/tags/math/</link>
+    <link>http://notes.spencerlyon.com/tags/math/index.xml</link>
     <description>Recent content in Math on Random Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-EN</language>
     <managingEditor>spencer.lyon@stern.nyu.edu (Spencer Lyon)</managingEditor>
     <webMaster>spencer.lyon@stern.nyu.edu (Spencer Lyon)</webMaster>
     <copyright>(c) 2015 Spencer Lyon.</copyright>
-    <lastBuildDate>Mon, 28 Dec 2015 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://notes.spencerlyon.com/tags/math/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -38,9 +37,9 @@
       <guid>http://notes.spencerlyon.com/2015/09/05/notes-on-deterministic-difference-equations/</guid>
       <description>
 
-&lt;h1 id=&#34;deterministic-difference-equations:574909179535890c815234db02dad66b&#34;&gt;Deterministic Difference Equations&lt;/h1&gt;
+&lt;h1 id=&#34;deterministic-difference-equations&#34;&gt;Deterministic Difference Equations&lt;/h1&gt;
 
-&lt;h2 id=&#34;scalar-first-order-linear-equations:574909179535890c815234db02dad66b&#34;&gt;Scalar First-Order Linear Equations&lt;/h2&gt;
+&lt;h2 id=&#34;scalar-first-order-linear-equations&#34;&gt;Scalar First-Order Linear Equations&lt;/h2&gt;
 
 &lt;p&gt;The basic scalar first-order difference equation can be represented by:&lt;/p&gt;
 
@@ -107,7 +106,7 @@
 &lt;p&gt;1) Whether the initial value is given : This determines whether $x_t$ is &lt;em&gt;predetermined&lt;/em&gt;.
 2) Whether $b$ is greater or less than 1 : This is determines whether the eigenvalue is stable.&lt;/p&gt;
 
-&lt;h2 id=&#34;lag-operators-and-scalar-second-order-linear-difference-equations:574909179535890c815234db02dad66b&#34;&gt;Lag Operators and Scalar Second-Order Linear Difference Equations&lt;/h2&gt;
+&lt;h2 id=&#34;lag-operators-and-scalar-second-order-linear-difference-equations&#34;&gt;Lag Operators and Scalar Second-Order Linear Difference Equations&lt;/h2&gt;
 
 &lt;p&gt;We now introduce an operator that is common in the economics literature and is known as the &lt;em&gt;lag operator&lt;/em&gt;. The lag operator, $L$, operates on a dynamics process ${x_t }$ in the following fashion:&lt;/p&gt;
 
@@ -150,7 +149,7 @@
 &lt;li&gt;&lt;code&gt;$| \lambda_1 | &amp;lt; 1 &amp;lt; | \lambda_2 |$&lt;/code&gt; The solution for this case is known as the &lt;em&gt;saddle path solution&lt;/em&gt;. Then by sending &lt;code&gt;$(L^{-1} - \lambda_2)$&lt;/code&gt; to the RHS we can write &lt;code&gt;$$(L^{-1} - \lambda_1) x_t = - \frac{c}{\lambda_2} \frac{z_t}{(1 - \lambda_2^{-1} L^{-1})}$$&lt;/code&gt; which reduces to &lt;code&gt;$$x_{t+1} = \lambda_1 x_t -\frac{c}{\lambda_2} \sum_{j=0}^\infty \left( \frac{1}{\lambda_2} \right)^{j} z_{t + j}$$.&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;first-order-linear-systems:574909179535890c815234db02dad66b&#34;&gt;First-Order Linear Systems&lt;/h2&gt;
+&lt;h2 id=&#34;first-order-linear-systems&#34;&gt;First-Order Linear Systems&lt;/h2&gt;
 
 &lt;p&gt;We now consider first-order linear systems. We can write many higher order lineary systems down as a first-order linear system, so this will be the form that we consider&lt;/p&gt;
 
@@ -168,13 +167,13 @@
 
 &lt;p&gt;We will assume that &lt;code&gt;$\{ z_t \}$&lt;/code&gt; is a stable sequence.&lt;/p&gt;
 
-&lt;h3 id=&#34;nonsingular-systems:574909179535890c815234db02dad66b&#34;&gt;Nonsingular systems&lt;/h3&gt;
+&lt;h3 id=&#34;nonsingular-systems&#34;&gt;Nonsingular systems&lt;/h3&gt;
 
 &lt;p&gt;Let $A$ be nonsingular then we can write our first-order linear system as&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;$$x_{t+1} = A^{-1} B x_t + A^{-1} C z_t$$&lt;/code&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;references:574909179535890c815234db02dad66b&#34;&gt;References&lt;/h2&gt;
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Jianjun Miao. &amp;laquo;Economic dynamics in discrete time.&amp;raquo; MIT Press. 2014.&lt;/li&gt;
@@ -191,9 +190,9 @@
       <guid>http://notes.spencerlyon.com/2015/01/12/continuous-time/</guid>
       <description>
 
-&lt;h1 id=&#34;continuous-time-macro:61d217c3709abf694a0a0f3e47670c8d&#34;&gt;Continuous Time Macro&lt;/h1&gt;
+&lt;h1 id=&#34;continuous-time-macro&#34;&gt;Continuous Time Macro&lt;/h1&gt;
 
-&lt;h2 id=&#34;solving-an-hjb:61d217c3709abf694a0a0f3e47670c8d&#34;&gt;Solving an HJB&lt;/h2&gt;
+&lt;h2 id=&#34;solving-an-hjb&#34;&gt;Solving an HJB&lt;/h2&gt;
 
 &lt;p&gt;The HJB usually takes the form&lt;/p&gt;
 
@@ -217,9 +216,9 @@
 &lt;li&gt;If you can&amp;rsquo;t, you probably made a bad guess for the form of the solution, so start over at step 2.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&#34;ito-processes:61d217c3709abf694a0a0f3e47670c8d&#34;&gt;Ito processes&lt;/h2&gt;
+&lt;h2 id=&#34;ito-processes&#34;&gt;Ito processes&lt;/h2&gt;
 
-&lt;h3 id=&#34;gbm:61d217c3709abf694a0a0f3e47670c8d&#34;&gt;GBM&lt;/h3&gt;
+&lt;h3 id=&#34;gbm&#34;&gt;GBM&lt;/h3&gt;
 
 &lt;p&gt;A geometric Brownian motion solves the following SDE&lt;/p&gt;
 
@@ -254,7 +253,7 @@
       <guid>http://notes.spencerlyon.com/1/01/01/notes-on-kalman-filter/</guid>
       <description>
 
-&lt;h1 id=&#34;kalman-filter:c4efa121509565b86b05f158ad1df0bd&#34;&gt;Kalman Filter&lt;/h1&gt;
+&lt;h1 id=&#34;kalman-filter&#34;&gt;Kalman Filter&lt;/h1&gt;
 
 &lt;p&gt;The Kalman filter is a vital tool in any macro-economist&amp;rsquo;s (and more generally any modelers) toolbox. A filtering problem is loosely described by the use of a history of observed information to infer information about the history of some other unobservable variable (state). The Kalman filter is a recursive filter in the sense that if we have a best guess for the state value for the previous period, $t-1$, then the period $t$ observation in conjunction with the best guess for the state value in the previous period is sufficient to provide a best guess for the state value in this period.&lt;/p&gt;
 
@@ -265,7 +264,7 @@ $$x&lt;em&gt;t = A x&lt;/em&gt;{t-1} + B \eta_t$$&lt;/p&gt;
 
 &lt;p&gt;The matrices $(A, B, C, D)$ are all known and the model noise, $\varepsilon_t$ and $\eta_t$, are both identically and independently distributed as standard normals. The first equation is often referred to as the &lt;em&gt;measurement equation&lt;/em&gt; because the history of $y^t$ is observable to the agent at period $t$.  The second equation is known as the state evolution equation, and is fundamentally different than the measurement equation because $s^t$ is unobservable. The fact that one equation is observable while the other is not and the Markov properties of the model put this model into a broader class of models known as &lt;em&gt;hidden Markov models&lt;/em&gt;.&lt;/p&gt;
 
-&lt;h2 id=&#34;derivation:c4efa121509565b86b05f158ad1df0bd&#34;&gt;Derivation&lt;/h2&gt;
+&lt;h2 id=&#34;derivation&#34;&gt;Derivation&lt;/h2&gt;
 
 &lt;p&gt;I will now present the derivation of the Kalman filter. As mentioned earlier, we would like to infer information about the states, $x_t$, using information that we observe $y_t$. More specifically, we would like to infer the value of $x_t$ given a history of $y^t$. We begin by having some initial condition on $x_0$ &amp;ndash; This condition can be either a distribution &lt;em&gt;or&lt;/em&gt; simply a value. We will denote the estimated values of the state using a hat i.e. write $\hat{x}$&lt;/p&gt;
 
@@ -283,7 +282,7 @@ $$ = E&lt;em&gt;t \left[ A \hat{x}&lt;/em&gt;{t-1 | t-1} + B \varepsilon&lt;em&g
 
 &lt;p&gt;$$K_t = &amp;hellip; $$&lt;/p&gt;
 
-&lt;h1 id=&#34;references:c4efa121509565b86b05f158ad1df0bd&#34;&gt;References&lt;/h1&gt;
+&lt;h1 id=&#34;references&#34;&gt;References&lt;/h1&gt;
 
 &lt;p&gt;Fill these in more adequately later&lt;/p&gt;
 

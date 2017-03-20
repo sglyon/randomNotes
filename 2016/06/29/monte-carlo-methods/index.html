@@ -59,7 +59,7 @@
     },
     "datePublished": "2016-06-29",
     "description": "",
-    "wordCount":  494 
+    "wordCount": 494
   }
 </script>
 
@@ -70,7 +70,7 @@
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://notes.spencerlyon.com/touch-icon-144-precomposed.png">
 <link href="http://notes.spencerlyon.com/favicon.png" rel="icon">
 
-<meta name="generator" content="Hugo 0.16-DEV" />
+<meta name="generator" content="Hugo 0.20-DEV" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -187,11 +187,11 @@
 
 <p>This is part 2 in the reinforcement learning for economists notes. For part 1 see <a href="/2016/06/29/reinforcement-learning-intro/">Reinforcement Learning Intro</a>. For a list of all entries in the series go <a href="/series/reinforcement-learning">here</a></p>
 
-<h2 id="monte-carlo-methods:964a223c8e04568e33b563cd2d9e42fe">Monte Carlo methods</h2>
+<h2 id="monte-carlo-methods">Monte Carlo methods</h2>
 
 <p>As defined in <a href="/2016/06/29/reinforcement-learning-intro/">Reinforcement Learning Intro</a> <em>GPI</em> encompasses the core ideas for all the RL algorithms in this book. One family of such algorithms is Monte Carlo (MC) methods. One distinguishing feature of these methods is that they can be implemented in a completely <strong>model-free</strong> way. This means that to apply them we need to know nothing about the dynamics of the model; we simply need to be able to observe sequences of states, actions, and rewards.</p>
 
-<h3 id="prediciton-methods:964a223c8e04568e33b563cd2d9e42fe">Prediciton methods</h3>
+<h3 id="prediciton-methods">Prediciton methods</h3>
 
 <p><strong>Monte Carlo prediciton</strong> is a method for learning the state-value function for a given policy. The algorithm is given by:</p>
 
@@ -199,7 +199,7 @@
 
 <p>Notice that the MC prediction algorithm does not update any estimates of the value function until <em>after</em> the entire episode is realized. In this sense we would say that the method does not <strong>bootstrap</strong>, meaning it does not use approximations of the value in other states to update the value in a particular state (value iteration is bootstrapping).</p>
 
-<h3 id="control-methods:964a223c8e04568e33b563cd2d9e42fe">Control methods</h3>
+<h3 id="control-methods">Control methods</h3>
 
 <p><strong>Monte Carlo control</strong> is an iterative algorithm where each iteration contains a Monte Carlo prediction step followed by a policy improvment step. The improvement step is simply done by making the policy greedy with the predicted value function.</p>
 
@@ -232,7 +232,7 @@
 
 <p><img src="/on_policy_eps_soft_mc_control.png" alt="On-policy first-visit MC control" /></p>
 
-<h3 id="importance-sampling:964a223c8e04568e33b563cd2d9e42fe">Importance sampling</h3>
+<h3 id="importance-sampling">Importance sampling</h3>
 
 <p>This section will include more prediction and control methods, but is an important enough concept that it deserves its own section.</p>
 
@@ -303,11 +303,11 @@ MathJax.Hub.Config({
 
 <script type="text/x-mathjax-config">
   MathJax.Hub.Queue(function() {
-    
-    
-    
+    // Fix <code> tags after MathJax finishes running. This is a
+    // hack to overcome a shortcoming of Markdown. Discussion at
+    // https://github.com/mojombo/jekyll/issues/199
     var all = MathJax.Hub.getAllJax(), i;
-    for(i = 0; i < all.length; i += 1) {
+    for(i = 0; i &lt; all.length; i += 1) {
         all[i].SourceElement().parentNode.className += ' has-jax';
     }
 });

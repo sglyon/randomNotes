@@ -34,7 +34,7 @@
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://notes.spencerlyon.com/touch-icon-144-precomposed.png">
 <link href="http://notes.spencerlyon.com/favicon.png" rel="icon">
 
-<meta name="generator" content="Hugo 0.16-DEV" />
+<meta name="generator" content="Hugo 0.20-DEV" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -142,7 +142,8 @@
   <p class="container content">
   
   
-    This is part 2 in the reinforcement learning for economists notes. For part 1 see Reinforcement Learning Intro. For a list of all entries in the series go here Monte Carlo methods As defined in Reinforcement Learning Intro GPI encompasses the core ideas for all the RL algorithms in this book. One family of such algorithms is Monte Carlo (MC) methods. One distinguishing feature of these methods is that they can be implemented in a completely model-free way.
+    This is part 2 in the reinforcement learning for economists notes. For part 1 see Reinforcement Learning Intro. For a list of all entries in the series go here
+Monte Carlo methods As defined in Reinforcement Learning Intro GPI encompasses the core ideas for all the RL algorithms in this book. One family of such algorithms is Monte Carlo (MC) methods. One distinguishing feature of these methods is that they can be implemented in a completely model-free way.
   
 
 
@@ -171,7 +172,9 @@
   <p class="container content">
   
   
-    This is part 1 in the reinforcement learning for economists notes. For a list of all entries in the series go here These notes mostly follow Sutton, R. S., &amp; Barto, A. G. (2015). Reinforcement Learning: An Introduction (2 Draft, Vol. 9). http://doi.org/10.1109/TNN.1998.712192 The notes themselves might be interpreted as a macro-economist&rsquo;s view of reinforcement learning (RL). I will cast many objects/ideas from the book into the domain-specific framework I am familiar with.
+    This is part 1 in the reinforcement learning for economists notes. For a list of all entries in the series go here
+These notes mostly follow Sutton, R. S., &amp; Barto, A. G. (2015). Reinforcement Learning: An Introduction (2 Draft, Vol. 9). http://doi.org/10.1109/TNN.1998.712192
+The notes themselves might be interpreted as a macro-economist&rsquo;s view of reinforcement learning (RL). I will cast many objects/ideas from the book into the domain-specific framework I am familiar with.
   
 
 
@@ -200,7 +203,9 @@
   <p class="container content">
   
   
-    This is part 3 in the reinforcement learning for economists notes. For part 1 see Reinforcement Learning Intro. For a list of all entries in the series go here Temporal Difference methods We continue our study of applying GPI to the RL problem by looking now at temporal difference (TD) methods. One step TD (TD(0)) Let&rsquo;s begin our exploration of TD methods by considering the problem of evaluating or predicting the state-value function $V(s)$.
+    This is part 3 in the reinforcement learning for economists notes. For part 1 see Reinforcement Learning Intro. For a list of all entries in the series go here
+Temporal Difference methods We continue our study of applying GPI to the RL problem by looking now at temporal difference (TD) methods.
+One step TD (TD(0)) Let&rsquo;s begin our exploration of TD methods by considering the problem of evaluating or predicting the state-value function $V(s)$.
   
 
 
@@ -229,7 +234,8 @@
   <p class="container content">
   
   
-    openssl I couldn&rsquo;t get any cargo projects that depend on open ssl to build. I just did: brew install openssl brew link --force openssl Answer came from here)
+    openssl I couldn&rsquo;t get any cargo projects that depend on open ssl to build. I just did:
+brew install openssl export OPENSSL_INCLUDE_DIR=/usr/local/opt/openssl/include export DEP_OPENSSL_INCLUDE=/usr/local/opt/openssl/include  Answer came from here
   
 
 
@@ -258,7 +264,9 @@
   <p class="container content">
   
   
-    Post-commit hooks You can use github post commit hooks to send an HTTP payload to a server after every commit. The payload will contain data about the commit that you can then use to trigger arbitrary actions (e.g. run scripts) on the server. I&rsquo;ve used a simple go library webhook to do this. To get it up and running I did the following: Install webhook with: go get github.com/adnanh/webhook Configure a post-commit webhook on github by: Going to the repository settings then &laquo;Webhooks and services&raquo; Clicking &laquo;Add webook&raquo; Enter http://SERVER-IP:9000/hooks/HOOK-ID, where SERVER-IP is the ip address of the server and HOOK-ID is the name of a hook I will use in the next step Enter a &laquo;password&raquo; in the secret field.
+    Post-commit hooks You can use github post commit hooks to send an HTTP payload to a server after every commit. The payload will contain data about the commit that you can then use to trigger arbitrary actions (e.g. run scripts) on the server.
+I&rsquo;ve used a simple go library webhook to do this. To get it up and running I did the following:
+ Install webhook with: go get github.
   
 
 
@@ -287,7 +295,9 @@
   <p class="container content">
   
   
-    Some probability distributions that are useful (usually to economists) for one reason or another. Pareto Distribution The Pareto distribution has a simple CDF: $G(x) = 1 - \underline{x}^{\gamma}x^{-\gamma}$, where $\underline{x}$ satisfies $G(\underline{x}) = 0$ and $\gamma$ governs the variance. A useful property of the Pareto distribution is that when it is truncated, the truncated CDF is the same as the original, except that $\underline{x}$ is moved up.
+    Some probability distributions that are useful (usually to economists) for one reason or another.
+Pareto Distribution The Pareto distribution has a simple CDF: $G(x) = 1 - \underline{x}^{\gamma}x^{-\gamma}$, where $\underline{x}$ satisfies $G(\underline{x}) = 0$ and $\gamma$ governs the variance.
+A useful property of the Pareto distribution is that when it is truncated, the truncated CDF is the same as the original, except that $\underline{x}$ is moved up.
   
 
 
@@ -316,7 +326,8 @@
   <p class="container content">
   
   
-    When I install Iterm fresh I need to do a few things in settings -&gt; profiles -&gt; keys: Change so left option is Esc+ Map option right arrow to escape sequence f Map option left arrow to escape sequence b I got the last two tips from here
+    When I install Iterm fresh I need to do a few things in settings -&gt; profiles -&gt; keys:
+ Change so left option is Esc+ Map option right arrow to escape sequence f Map option left arrow to escape sequence b  I got the last two tips from here
   
 
 
@@ -345,7 +356,9 @@
   <p class="container content">
   
   
-    Deterministic Difference Equations Scalar First-Order Linear Equations The basic scalar first-order difference equation can be represented by: $$x_{t+1} = b x_t + c z_t, \quad t \geq 0$$ where $x_t, b, c, z_t$ are all real numbers. Since these equations are deterministic then we already know the sequence ${ z_t }$ and will assume it is bounded. If $z_t$ is constant for all $t$ then this equation is called autonomous. If $c z_t = 0$ for all $t$ then this equation is called homogenous.
+    Deterministic Difference Equations Scalar First-Order Linear Equations The basic scalar first-order difference equation can be represented by:
+$$x_{t+1} = b x_t + c z_t, \quad t \geq 0$$
+where $x_t, b, c, z_t$ are all real numbers. Since these equations are deterministic then we already know the sequence ${ z_t }$ and will assume it is bounded. If $z_t$ is constant for all $t$ then this equation is called autonomous.
   
 
 
@@ -374,7 +387,8 @@
   <p class="container content">
   
   
-    Common commands I use: boot2docker up: This launches the boot2docker daemon on osx. After running I then have to copy/paste the export statements printed by this command to set up ports. An alternative is $(boot2docker shellinit), which will do the copy/pase of exports for me. docker ps -a: lists all containers docker rm $(docker ps -a -q): remove all containers (running or not) docker images: list local images docker run IMAGE_NAME: runs the docker image.
+    Common commands I use:
+ boot2docker up: This launches the boot2docker daemon on osx. After running I then have to copy/paste the export statements printed by this command to set up ports. An alternative is $(boot2docker shellinit), which will do the copy/pase of exports for me. docker ps -a: lists all containers docker rm $(docker ps -a -q): remove all containers (running or not) docker images: list local images docker run IMAGE_NAME: runs the docker image.
   
 
 
@@ -403,7 +417,9 @@
   <p class="container content">
   
   
-    Julia and mercer Here are some tips, tricks I&rsquo;ve picked up for working with Julia on NYUs super computer. Installing Julia I have a shell script that I periodically run to download the latest released version of Julia: #!/usr/bin/env sh wget -O julia_binary.tar.gz https://julialang.s3.amazonaws.com/bin/linux/x64/0.4/julia-0.4-latest-linux-x86_64.tar.gz rm -rf $WORK/src/julia* mkdir -p $WORK/src/julia tar -C $WORK/src/julia -zxf julia_binary.tar.gz --strip-components=1 rm julia_binary.tar.gz # prepend julia to path export PATH=$WORK/src/julia/bin:$PATH # remove old symlink and make a new one mkdir $WORK/bin rm -f $WORK/bin/julia ln -s $WORK/src/julia/bin/julia $WORK/bin/julia I put this in a file $WORK/bin/update_julia, then whenever I need to update my julia installation I do bash $WORK/bin/update_julia.
+    Julia and mercer Here are some tips, tricks I&rsquo;ve picked up for working with Julia on NYUs super computer.
+Installing Julia I have a shell script that I periodically run to download the latest released version of Julia:
+#!/usr/bin/env sh wget -O julia_binary.tar.gz https://julialang.s3.amazonaws.com/bin/linux/x64/0.4/julia-0.4-latest-linux-x86_64.tar.gz rm -rf $WORK/src/julia* mkdir -p $WORK/src/julia tar -C $WORK/src/julia -zxf julia_binary.tar.gz --strip-components=1 rm julia_binary.tar.gz # prepend julia to path export PATH=$WORK/src/julia/bin:$PATH # remove old symlink and make a new one mkdir $WORK/bin rm -f $WORK/bin/julia ln -s $WORK/src/julia/bin/julia $WORK/bin/julia  I put this in a file $WORK/bin/update_julia, then whenever I need to update my julia installation I do bash $WORK/bin/update_julia.
   
 
 
@@ -432,7 +448,9 @@
   <p class="container content">
   
   
-    Tips from Gianluca about writing referee reports: Remember that when you are writing a referee report, you are writing the report to the editor. Make it easy for them to read and reference by: Number points in critical assessment section Don&rsquo;t just say &laquo;I don&rsquo;t like this assumption&raquo;. Instead, with each criticism do these three steps: Don&rsquo;t like this Here&rsquo;s why Here&rsquo;s a better alternative
+    Tips from Gianluca about writing referee reports:
+Remember that when you are writing a referee report, you are writing the report to the editor. Make it easy for them to read and reference by:
+ Number points in critical assessment section Don&rsquo;t just say &laquo;I don&rsquo;t like this assumption&raquo;. Instead, with each criticism do these three steps:  Don&rsquo;t like this Here&rsquo;s why Here&rsquo;s a better alternative   
   
 
 
@@ -461,7 +479,9 @@
   <p class="container content">
   
   
-    I have tweaked my pandoc settings. They are mostly a copy of Keiran Healy&rsquo;s settings, but I have made a few modifications. These are the steps I took to get things working how I wanted to: git clone git@github.com:kjhealy/pandoc-templates.git that directory into ~/.pandoc s NOTE :See the readme for my pandoc-templates repo
+    I have tweaked my pandoc settings. They are mostly a copy of Keiran Healy&rsquo;s settings, but I have made a few modifications.
+These are the steps I took to get things working how I wanted to:
+ git clone git@github.com:kjhealy/pandoc-templates.git that directory into ~/.pandoc s  NOTE :See the readme for my pandoc-templates repo
   
 
 
@@ -519,7 +539,10 @@
   <p class="container content">
   
   
-    Continuous Time Macro Solving an HJB The HJB usually takes the form $$\rho V_t (Nt) = \max{C, a} \left{ u&copy; + \mathcal{A} V_t(N_t)\right},$$ where $\mathcal{A} V_t(N_t)$ is the drift of $dV_T(N_t)$, $\rho$ is the discount rate, $u&copy;$ is the flow payoff of $C$. To solve this equation follow these steps: Take FOC wrt controls (here $C, a$) Stare at it for a while and make a guess of the functional form of the solution to the PDE.
+    Continuous Time Macro Solving an HJB The HJB usually takes the form
+$$\rho V_t (Nt) = \max{C, a} \left{ u&copy; + \mathcal{A} V_t(N_t)\right},$$
+where $\mathcal{A} V_t(N_t)$ is the drift of $dV_T(N_t)$, $\rho$ is the discount rate, $u&copy;$ is the flow payoff of $C$. To solve this equation follow these steps:
+ Take FOC wrt controls (here $C, a$) Stare at it for a while and make a guess of the functional form of the solution to the PDE.
   
 
 
@@ -548,7 +571,9 @@
   <p class="container content">
   
   
-    Ipynb Slidemode To activate slide mode I did the following Clone nbextensions repo into the right place: cd ~/.ipython git clone git@github.com:ipython-contrib/IPython-notebook-extensions.git nbextensions Edit ~/.ipython/profile_default and ~/.ipython/profile_default so that in the section titled $([IPython.events]).on('app_initialized.NotebookApp', function(){ I had the line IPython.load_extensions('slidemode/main'). If I want to use nbconvert to give me reveal.js slides and then view them locally I need to start a python webserver: ipython nbconvert --to slides my_notebook.ipynb python -m SimpleHTTPServer 8000 open http://127.0.0.1:8000 Registering kernels in IPython 3.0+ IPython versions 3.0+ have a great feature where you can launch the notebook and then select the kernel you want from a dropdown list.
+    Ipynb Slidemode To activate slide mode I did the following
+ Clone nbextensions repo into the right place:  cd ~/.ipython git clone git@github.com:ipython-contrib/IPython-notebook-extensions.git nbextensions   Edit ~/.ipython/profile_default and ~/.ipython/profile_default so that in the section titled $([IPython.events]).on('app_initialized.NotebookApp', function(){ I had the line IPython.load_extensions('slidemode/main').  If I want to use nbconvert to give me reveal.js slides and then view them locally I need to start a python webserver:
+ipython nbconvert --to slides my_notebook.
   
 
 
@@ -622,11 +647,11 @@ MathJax.Hub.Config({
 
 <script type="text/x-mathjax-config">
   MathJax.Hub.Queue(function() {
-    
-    
-    
+    // Fix <code> tags after MathJax finishes running. This is a
+    // hack to overcome a shortcoming of Markdown. Discussion at
+    // https://github.com/mojombo/jekyll/issues/199
     var all = MathJax.Hub.getAllJax(), i;
-    for(i = 0; i < all.length; i += 1) {
+    for(i = 0; i &lt; all.length; i += 1) {
         all[i].SourceElement().parentNode.className += ' has-jax';
     }
 });

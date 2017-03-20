@@ -57,7 +57,7 @@
     },
     "datePublished": "2015-01-12",
     "description": "",
-    "wordCount":  374 
+    "wordCount": 374
   }
 </script>
 
@@ -68,7 +68,7 @@
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://notes.spencerlyon.com/touch-icon-144-precomposed.png">
 <link href="http://notes.spencerlyon.com/favicon.png" rel="icon">
 
-<meta name="generator" content="Hugo 0.16-DEV" />
+<meta name="generator" content="Hugo 0.20-DEV" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -181,9 +181,9 @@
   <div class="container content">
   
 
-<h1 id="continuous-time-macro:61d217c3709abf694a0a0f3e47670c8d">Continuous Time Macro</h1>
+<h1 id="continuous-time-macro">Continuous Time Macro</h1>
 
-<h2 id="solving-an-hjb:61d217c3709abf694a0a0f3e47670c8d">Solving an HJB</h2>
+<h2 id="solving-an-hjb">Solving an HJB</h2>
 
 <p>The HJB usually takes the form</p>
 
@@ -207,9 +207,9 @@
 <li>If you can&rsquo;t, you probably made a bad guess for the form of the solution, so start over at step 2.</li>
 </ol>
 
-<h2 id="ito-processes:61d217c3709abf694a0a0f3e47670c8d">Ito processes</h2>
+<h2 id="ito-processes">Ito processes</h2>
 
-<h3 id="gbm:61d217c3709abf694a0a0f3e47670c8d">GBM</h3>
+<h3 id="gbm">GBM</h3>
 
 <p>A geometric Brownian motion solves the following SDE</p>
 
@@ -305,11 +305,11 @@ MathJax.Hub.Config({
 
 <script type="text/x-mathjax-config">
   MathJax.Hub.Queue(function() {
-    
-    
-    
+    // Fix <code> tags after MathJax finishes running. This is a
+    // hack to overcome a shortcoming of Markdown. Discussion at
+    // https://github.com/mojombo/jekyll/issues/199
     var all = MathJax.Hub.getAllJax(), i;
-    for(i = 0; i < all.length; i += 1) {
+    for(i = 0; i &lt; all.length; i += 1) {
         all[i].SourceElement().parentNode.className += ' has-jax';
     }
 });

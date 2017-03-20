@@ -55,7 +55,7 @@
     },
     "datePublished": "2015-07-01",
     "description": "",
-    "wordCount":  251 
+    "wordCount": 275
   }
 </script>
 
@@ -66,7 +66,7 @@
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://notes.spencerlyon.com/touch-icon-144-precomposed.png">
 <link href="http://notes.spencerlyon.com/favicon.png" rel="icon">
 
-<meta name="generator" content="Hugo 0.16-DEV" />
+<meta name="generator" content="Hugo 0.20-DEV" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -163,7 +163,7 @@
     &middot; by Spencer Lyon
   
   &middot; Read in about 2 min
-  &middot; (251 Words)
+  &middot; (275 Words)
   <br>
   
 <a class="label" href="http://notes.spencerlyon.com/tags/tips">tips</a>
@@ -175,7 +175,9 @@
 </header>
 
   <div class="container content">
-  <p>Common commands I use:</p>
+  
+
+<p>Common commands I use:</p>
 
 <ul>
 <li><code>boot2docker up</code>: This launches the boot2docker daemon on osx. After running I then have to copy/paste the <code>export</code> statements printed by this command to set up ports. An alternative is <code>$(boot2docker shellinit)</code>, which will do the copy/pase of <code>export</code>s for me.</li>
@@ -194,6 +196,10 @@
 <li><code>docker stop IMAGE_ID</code>: stops an image</li>
 <li><code>docker run -p IMAGE_PORT:LOCAL_PORT ....</code>: runs an image (with other args and image name omitted) and maps port <code>IMAGE_PORT</code> on the image to <code>LOCAL_PORT</code> on my machine.</li>
 </ul>
+
+<h2 id="working-on-ubuntu">Working on ubuntu</h2>
+
+<p>I didn&rsquo;t like having to use sudo to use docker commands. <a href="https://askubuntu.com/questions/477551/how-can-i-use-docker-without-sudo/477554#477554?newreg=e4d7530499284d9282f29973fe41414e">This</a> stackoverflow Q/A has a workaround that worked for me</p>
 
 </div>
 
@@ -266,11 +272,11 @@ MathJax.Hub.Config({
 
 <script type="text/x-mathjax-config">
   MathJax.Hub.Queue(function() {
-    
-    
-    
+    // Fix <code> tags after MathJax finishes running. This is a
+    // hack to overcome a shortcoming of Markdown. Discussion at
+    // https://github.com/mojombo/jekyll/issues/199
     var all = MathJax.Hub.getAllJax(), i;
-    for(i = 0; i < all.length; i += 1) {
+    for(i = 0; i &lt; all.length; i += 1) {
         all[i].SourceElement().parentNode.className += ' has-jax';
     }
 });

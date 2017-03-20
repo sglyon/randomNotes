@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Markov on Random Notes</title>
-    <link>http://notes.spencerlyon.com/tags/markov/</link>
+    <link>http://notes.spencerlyon.com/tags/markov/index.xml</link>
     <description>Recent content in Markov on Random Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-EN</language>

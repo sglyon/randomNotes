@@ -59,7 +59,7 @@
     },
     "datePublished": "0001-01-01",
     "description": "",
-    "wordCount":  577 
+    "wordCount": 577
   }
 </script>
 
@@ -70,7 +70,7 @@
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://notes.spencerlyon.com/touch-icon-144-precomposed.png">
 <link href="http://notes.spencerlyon.com/favicon.png" rel="icon">
 
-<meta name="generator" content="Hugo 0.16-DEV" />
+<meta name="generator" content="Hugo 0.20-DEV" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -185,7 +185,7 @@
   <div class="container content">
   
 
-<h1 id="kalman-filter:c4efa121509565b86b05f158ad1df0bd">Kalman Filter</h1>
+<h1 id="kalman-filter">Kalman Filter</h1>
 
 <p>The Kalman filter is a vital tool in any macro-economist&rsquo;s (and more generally any modelers) toolbox. A filtering problem is loosely described by the use of a history of observed information to infer information about the history of some other unobservable variable (state). The Kalman filter is a recursive filter in the sense that if we have a best guess for the state value for the previous period, $t-1$, then the period $t$ observation in conjunction with the best guess for the state value in the previous period is sufficient to provide a best guess for the state value in this period.</p>
 
@@ -196,7 +196,7 @@ $$x<em>t = A x</em>{t-1} + B \eta_t$$</p>
 
 <p>The matrices $(A, B, C, D)$ are all known and the model noise, $\varepsilon_t$ and $\eta_t$, are both identically and independently distributed as standard normals. The first equation is often referred to as the <em>measurement equation</em> because the history of $y^t$ is observable to the agent at period $t$.  The second equation is known as the state evolution equation, and is fundamentally different than the measurement equation because $s^t$ is unobservable. The fact that one equation is observable while the other is not and the Markov properties of the model put this model into a broader class of models known as <em>hidden Markov models</em>.</p>
 
-<h2 id="derivation:c4efa121509565b86b05f158ad1df0bd">Derivation</h2>
+<h2 id="derivation">Derivation</h2>
 
 <p>I will now present the derivation of the Kalman filter. As mentioned earlier, we would like to infer information about the states, $x_t$, using information that we observe $y_t$. More specifically, we would like to infer the value of $x_t$ given a history of $y^t$. We begin by having some initial condition on $x_0$ &ndash; This condition can be either a distribution <em>or</em> simply a value. We will denote the estimated values of the state using a hat i.e. write $\hat{x}$</p>
 
@@ -214,7 +214,7 @@ $$ = E<em>t \left[ A \hat{x}</em>{t-1 | t-1} + B \varepsilon<em>t \right] = A \h
 
 <p>$$K_t = &hellip; $$</p>
 
-<h1 id="references:c4efa121509565b86b05f158ad1df0bd">References</h1>
+<h1 id="references">References</h1>
 
 <p>Fill these in more adequately later</p>
 
@@ -295,11 +295,11 @@ MathJax.Hub.Config({
 
 <script type="text/x-mathjax-config">
   MathJax.Hub.Queue(function() {
-    
-    
-    
+    // Fix <code> tags after MathJax finishes running. This is a
+    // hack to overcome a shortcoming of Markdown. Discussion at
+    // https://github.com/mojombo/jekyll/issues/199
     var all = MathJax.Hub.getAllJax(), i;
-    for(i = 0; i < all.length; i += 1) {
+    for(i = 0; i &lt; all.length; i += 1) {
         all[i].SourceElement().parentNode.className += ' has-jax';
     }
 });

@@ -55,7 +55,7 @@
     },
     "datePublished": "2015-09-05",
     "description": "",
-    "wordCount":  1281 
+    "wordCount": 1281
   }
 </script>
 
@@ -66,7 +66,7 @@
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://notes.spencerlyon.com/touch-icon-144-precomposed.png">
 <link href="http://notes.spencerlyon.com/favicon.png" rel="icon">
 
-<meta name="generator" content="Hugo 0.16-DEV" />
+<meta name="generator" content="Hugo 0.20-DEV" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -177,9 +177,9 @@
   <div class="container content">
   
 
-<h1 id="deterministic-difference-equations:574909179535890c815234db02dad66b">Deterministic Difference Equations</h1>
+<h1 id="deterministic-difference-equations">Deterministic Difference Equations</h1>
 
-<h2 id="scalar-first-order-linear-equations:574909179535890c815234db02dad66b">Scalar First-Order Linear Equations</h2>
+<h2 id="scalar-first-order-linear-equations">Scalar First-Order Linear Equations</h2>
 
 <p>The basic scalar first-order difference equation can be represented by:</p>
 
@@ -246,7 +246,7 @@
 <p>1) Whether the initial value is given : This determines whether $x_t$ is <em>predetermined</em>.
 2) Whether $b$ is greater or less than 1 : This is determines whether the eigenvalue is stable.</p>
 
-<h2 id="lag-operators-and-scalar-second-order-linear-difference-equations:574909179535890c815234db02dad66b">Lag Operators and Scalar Second-Order Linear Difference Equations</h2>
+<h2 id="lag-operators-and-scalar-second-order-linear-difference-equations">Lag Operators and Scalar Second-Order Linear Difference Equations</h2>
 
 <p>We now introduce an operator that is common in the economics literature and is known as the <em>lag operator</em>. The lag operator, $L$, operates on a dynamics process ${x_t }$ in the following fashion:</p>
 
@@ -289,7 +289,7 @@
 <li><code>$| \lambda_1 | &lt; 1 &lt; | \lambda_2 |$</code> The solution for this case is known as the <em>saddle path solution</em>. Then by sending <code>$(L^{-1} - \lambda_2)$</code> to the RHS we can write <code>$$(L^{-1} - \lambda_1) x_t = - \frac{c}{\lambda_2} \frac{z_t}{(1 - \lambda_2^{-1} L^{-1})}$$</code> which reduces to <code>$$x_{t+1} = \lambda_1 x_t -\frac{c}{\lambda_2} \sum_{j=0}^\infty \left( \frac{1}{\lambda_2} \right)^{j} z_{t + j}$$.</code></li>
 </ul>
 
-<h2 id="first-order-linear-systems:574909179535890c815234db02dad66b">First-Order Linear Systems</h2>
+<h2 id="first-order-linear-systems">First-Order Linear Systems</h2>
 
 <p>We now consider first-order linear systems. We can write many higher order lineary systems down as a first-order linear system, so this will be the form that we consider</p>
 
@@ -307,13 +307,13 @@
 
 <p>We will assume that <code>$\{ z_t \}$</code> is a stable sequence.</p>
 
-<h3 id="nonsingular-systems:574909179535890c815234db02dad66b">Nonsingular systems</h3>
+<h3 id="nonsingular-systems">Nonsingular systems</h3>
 
 <p>Let $A$ be nonsingular then we can write our first-order linear system as</p>
 
 <p><code>$$x_{t+1} = A^{-1} B x_t + A^{-1} C z_t$$</code></p>
 
-<h2 id="references:574909179535890c815234db02dad66b">References</h2>
+<h2 id="references">References</h2>
 
 <ul>
 <li>Jianjun Miao. &laquo;Economic dynamics in discrete time.&raquo; MIT Press. 2014.</li>
@@ -391,11 +391,11 @@ MathJax.Hub.Config({
 
 <script type="text/x-mathjax-config">
   MathJax.Hub.Queue(function() {
-    
-    
-    
+    // Fix <code> tags after MathJax finishes running. This is a
+    // hack to overcome a shortcoming of Markdown. Discussion at
+    // https://github.com/mojombo/jekyll/issues/199
     var all = MathJax.Hub.getAllJax(), i;
-    for(i = 0; i < all.length; i += 1) {
+    for(i = 0; i &lt; all.length; i += 1) {
         all[i].SourceElement().parentNode.className += ' has-jax';
     }
 });

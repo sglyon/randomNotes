@@ -59,7 +59,7 @@
     },
     "datePublished": "2014-12-02",
     "description": "",
-    "wordCount":  221 
+    "wordCount": 221
   }
 </script>
 
@@ -70,7 +70,7 @@
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://notes.spencerlyon.com/touch-icon-144-precomposed.png">
 <link href="http://notes.spencerlyon.com/favicon.png" rel="icon">
 
-<meta name="generator" content="Hugo 0.16-DEV" />
+<meta name="generator" content="Hugo 0.20-DEV" />
 
   <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -185,9 +185,9 @@
   <div class="container content">
   
 
-<h1 id="ipynb:4fa1436551b3df29c2923e4fe3e62959">Ipynb</h1>
+<h1 id="ipynb">Ipynb</h1>
 
-<h2 id="slidemode:4fa1436551b3df29c2923e4fe3e62959">Slidemode</h2>
+<h2 id="slidemode">Slidemode</h2>
 
 <p>To activate slide mode I did the following</p>
 
@@ -210,7 +210,7 @@ python -m SimpleHTTPServer 8000
 open http://127.0.0.1:8000
 </code></pre>
 
-<h2 id="registering-kernels-in-ipython-3-0:4fa1436551b3df29c2923e4fe3e62959">Registering kernels in IPython 3.0+</h2>
+<h2 id="registering-kernels-in-ipython-3-0">Registering kernels in IPython 3.0+</h2>
 
 <p>IPython versions 3.0+ have a great feature where you can launch the notebook and then select the kernel you want from a dropdown list. Right now I have python2, python3, R, and Julia ready to go. This makes it so we can switch from notebooks in different languages without having to restart IPython.</p>
 
@@ -246,11 +246,11 @@ open http://127.0.0.1:8000
 }
 </code></pre>
 
-<h3 id="remote-access-to-ipynb:4fa1436551b3df29c2923e4fe3e62959">Remote access to ipynb</h3>
+<h3 id="remote-access-to-ipynb">Remote access to ipynb</h3>
 
 <p>See also the note about setting up a persistent notebook on GCE in the cloud.md file.</p>
 
-<h3 id="extensions:4fa1436551b3df29c2923e4fe3e62959">Extensions</h3>
+<h3 id="extensions">Extensions</h3>
 
 <p><a href="https://github.com/ipython-contrib/IPython-notebook-extensions/wiki/config-extension">https://github.com/ipython-contrib/IPython-notebook-extensions/wiki/config-extension</a></p>
 
@@ -329,11 +329,11 @@ MathJax.Hub.Config({
 
 <script type="text/x-mathjax-config">
   MathJax.Hub.Queue(function() {
-    
-    
-    
+    // Fix <code> tags after MathJax finishes running. This is a
+    // hack to overcome a shortcoming of Markdown. Discussion at
+    // https://github.com/mojombo/jekyll/issues/199
     var all = MathJax.Hub.getAllJax(), i;
-    for(i = 0; i < all.length; i += 1) {
+    for(i = 0; i &lt; all.length; i += 1) {
         all[i].SourceElement().parentNode.className += ' has-jax';
     }
 });
