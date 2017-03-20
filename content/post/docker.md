@@ -23,3 +23,7 @@ Common commands I use:
 - `docker rmi IMAGE_ID1 IMAGE_ID2`: remove images by ID. Can list multiple images at once
 - `docker stop IMAGE_ID`: stops an image
 - `docker run -p IMAGE_PORT:LOCAL_PORT ....`: runs an image (with other args and image name omitted) and maps port `IMAGE_PORT` on the image to `LOCAL_PORT` on my machine.
+
+## Working on ubuntu
+
+I didn't like having to use sudo to use docker commands. [This](https://askubuntu.com/questions/477551/how-can-i-use-docker-without-sudo/477554#477554?newreg=e4d7530499284d9282f29973fe41414e) stackoverflow Q/A has a workaround that worked for me

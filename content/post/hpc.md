@@ -95,6 +95,13 @@ start Julia in that same session, and try `Pkg.add("MbedTLS")` or
 `Pkg.build("MbedTLS")` again (run `Pkg.build` if you already tried `Pkg.add`
 and it failed).
 
+# Mercer tips/tricks
+
+- Three steps to check CPU utilization of a running job. 
+    1. See what nodes your job is running on by executing `qstat -at -u $USER -n -1`, 
+    2. Run `ssh X` where `X` is the name of the node from the previous command. Note that you can do this from the login node on mercer
+    3. Once on the compute node run `htop -u $USER`
+
 # MPI jobs
 
 I got this script from [here](http://csc.cnsi.ucsb.edu/docs/running-jobs-torque)
