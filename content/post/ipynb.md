@@ -82,4 +82,11 @@ https://github.com/ipython-contrib/IPython-notebook-extensions/wiki/config-exten
 
 Editing: `/usr/local/share/jupyter/nbextensions/livereveal/main.js`
 
-hello
+
+## nbviewer
+
+nbviewer caches the rendered version of a notebook. If you recently updated the
+source and want to see the updated version on nbviewer, append
+`?flush_cache=true` to the url.
+
+For example, to force a re-compile of the notebook at `http://nbviewer.jupyter.org/gist/sglyon/d884a4f7ef9e9bd5862428303179b2bd` you would visit the url `http://nbviewer.jupyter.org/gist/sglyon/d884a4f7ef9e9bd5862428303179b2bd?flush_cache=true`
