@@ -185,6 +185,15 @@ export DEP_OPENSSL_INCLUDE=/usr/local/opt/openssl/include
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Answer came from &lt;a href=&#34;https://github.com/sfackler/rust-openssl/issues/255#issuecomment-163501227&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;openblas&#34;&gt;openblas&lt;/h2&gt;
+
+&lt;p&gt;I also had a hard time getting open-blas to build because it couldn&amp;rsquo;t find libgfortran&lt;/p&gt;
+
+&lt;p&gt;I fixed it by running&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;LIBRARY_PATH=/usr/local/Cellar/gcc/6.3.0_1/lib/gcc/6 cargo build --release
+&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
@@ -930,7 +939,13 @@ open http://127.0.0.1:8000
 
 &lt;p&gt;Editing: &lt;code&gt;/usr/local/share/jupyter/nbextensions/livereveal/main.js&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;hello&lt;/p&gt;
+&lt;h2 id=&#34;nbviewer&#34;&gt;nbviewer&lt;/h2&gt;
+
+&lt;p&gt;nbviewer caches the rendered version of a notebook. If you recently updated the
+source and want to see the updated version on nbviewer, append
+&lt;code&gt;?flush_cache=true&lt;/code&gt; to the url.&lt;/p&gt;
+
+&lt;p&gt;For example, to force a re-compile of the notebook at &lt;code&gt;http://nbviewer.jupyter.org/gist/sglyon/d884a4f7ef9e9bd5862428303179b2bd&lt;/code&gt; you would visit the url &lt;code&gt;http://nbviewer.jupyter.org/gist/sglyon/d884a4f7ef9e9bd5862428303179b2bd?flush_cache=true&lt;/code&gt;&lt;/p&gt;
 </description>
     </item>
     

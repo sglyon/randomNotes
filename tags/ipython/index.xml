@@ -90,7 +90,13 @@ open http://127.0.0.1:8000
 
 &lt;p&gt;Editing: &lt;code&gt;/usr/local/share/jupyter/nbextensions/livereveal/main.js&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;hello&lt;/p&gt;
+&lt;h2 id=&#34;nbviewer&#34;&gt;nbviewer&lt;/h2&gt;
+
+&lt;p&gt;nbviewer caches the rendered version of a notebook. If you recently updated the
+source and want to see the updated version on nbviewer, append
+&lt;code&gt;?flush_cache=true&lt;/code&gt; to the url.&lt;/p&gt;
+
+&lt;p&gt;For example, to force a re-compile of the notebook at &lt;code&gt;http://nbviewer.jupyter.org/gist/sglyon/d884a4f7ef9e9bd5862428303179b2bd&lt;/code&gt; you would visit the url &lt;code&gt;http://nbviewer.jupyter.org/gist/sglyon/d884a4f7ef9e9bd5862428303179b2bd?flush_cache=true&lt;/code&gt;&lt;/p&gt;
 </description>
     </item>
     

@@ -234,8 +234,11 @@ One step TD (TD(0)) Let&rsquo;s begin our exploration of TD methods by consideri
   <p class="container content">
   
   
-    openssl I couldn&rsquo;t get any cargo projects that depend on open ssl to build. I just did:
+     openssl I couldn&rsquo;t get any cargo projects that depend on open ssl to build. I just did:
 brew install openssl export OPENSSL_INCLUDE_DIR=/usr/local/opt/openssl/include export DEP_OPENSSL_INCLUDE=/usr/local/opt/openssl/include  Answer came from here
+openblas I also had a hard time getting open-blas to build because it couldn&rsquo;t find libgfortran
+I fixed it by running
+LIBRARY_PATH=/usr/local/Cellar/gcc/6.3.0_1/lib/gcc/6 cargo build --release  
   
 
 

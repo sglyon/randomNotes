@@ -29,6 +29,15 @@ export DEP_OPENSSL_INCLUDE=/usr/local/opt/openssl/include
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Answer came from &lt;a href=&#34;https://github.com/sfackler/rust-openssl/issues/255#issuecomment-163501227&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;openblas&#34;&gt;openblas&lt;/h2&gt;
+
+&lt;p&gt;I also had a hard time getting open-blas to build because it couldn&amp;rsquo;t find libgfortran&lt;/p&gt;
+
+&lt;p&gt;I fixed it by running&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;LIBRARY_PATH=/usr/local/Cellar/gcc/6.3.0_1/lib/gcc/6 cargo build --release
+&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
