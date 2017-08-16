@@ -1,3 +1,3 @@
 # Summary
 
-[cloud stuff](content/post/cloud.md)
+* [cloud stuff](content/post/cloud.md)
