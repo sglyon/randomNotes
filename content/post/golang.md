@@ -2,6 +2,8 @@
 
 ## Tips and tricks
 
+### "Interface" assert
+
 Sometimes I see things lke this
 
 ```go
