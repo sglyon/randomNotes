@@ -29,8 +29,6 @@ ssh -i ~/dotfiles/sglyon-mbp.pem.txt ubuntu@ec2-54-201-41-126.us-west-2.compute.
 https://ec2-54-201-41-126.us-west-2.compute.amazonaws.com:8998
 ```
 
-The password is `lyon0409`.
-
 I needed to add the `IJulia all tcp` security group to the instance through the AWS online management console.
 
 #### new user
