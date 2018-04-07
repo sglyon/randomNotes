@@ -23,6 +23,8 @@ Common commands I use:
 - `docker rmi IMAGE_ID1 IMAGE_ID2`: remove images by ID. Can list multiple images at once
 - `docker stop IMAGE_ID`: stops an image
 - `docker run -p IMAGE_PORT:LOCAL_PORT ....`: runs an image (with other args and image name omitted) and maps port `IMAGE_PORT` on the image to `LOCAL_PORT` on my machine.
+- `docker cp <containerId>:/file/path/within/container /host/path/target`: copy a file from the container to the host
+
 
 ## Working on ubuntu
 
